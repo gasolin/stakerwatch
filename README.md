@@ -16,6 +16,26 @@ $ npx staker stats
 [▓▓▓▓▓▓░░░░░░░░░░░░░░░░░░░░░░░░] 19.29%
 ```
 
+### Observe Address or Contract
+
+Given a ETH address and get related live stats
+
+```sh
+$ npx staker addr (or $ npx staker address)
+
+Account Balance 1 ETH
+
+With ? ETH2 validator(s) (TBD)
+```
+
+Given a ETH address and open the browser to search address on etherscan
+
+```sh
+$ npx staker etherscan [addr]
+
+(open browser to search [addr] on etherscan)
+```
+
 ### Get current Gas Fee (from multiple sources)
 
 ```sh
@@ -36,13 +56,6 @@ $ npx staker gasstation
 Current gas fee (report by gasstation) is H:90 M:70 L:60 gwei
 ```
 
-### Check Address or Contract
-
-```sh
-$ npx staker etherscan [addr]
-
-(open browser to search [addr] on etherscan)
-```
 
 # Config options
 
