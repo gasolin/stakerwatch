@@ -13,3 +13,8 @@ Support skills
 * etherscan|scan [address] - check contract address on etherscan
 * qrcode [text] - Generate QRCode with [text]
 * help - list available skills
+
+- i18n support (en, zh_TW)
+- random pick ethereum nodes
+- add npm badge
+- add Contribution section

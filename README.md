@@ -18,6 +18,8 @@ $ npx staker stats
 [▓▓▓▓▓▓░░░░░░░░░░░░░░░░░░░░░░░░] 19.29%
 ```
 
+Or, find all skills that `staker` command can do by type
+
 ```
 $ npx staker help
 
@@ -49,7 +51,7 @@ $ npx staker stats
 Given a ETH address and get related live stats
 
 ```sh
-$ npx staker addr (or $ npx staker address)
+$ npx staker balance [addr]
 
 The Address has 1 ETH
 
@@ -97,7 +99,7 @@ $ npx staker gastracker
 Current gas fee (report by etherscan) is H:90 M:70 L:60 gwei
 ```
 
-# Config options
+# Configuable options
 
 ### Show result in different languages
 
@@ -117,7 +119,9 @@ Set `SAIHUBOT_NODE_URL` to the node you want to use, ex: infura, or pick from ht
 
 # Credit
 
-Based on [Saihubot](https://github.com/gasolin/saihubot)
+Stakerwatch is based on [Saihubot](https://github.com/gasolin/saihubot), the chatbot ops framework without server requirement.
+
+It's command line adapter is based on React for CLIs ([ink](https://www.npmjs.com/package/ink)).
 
 ## License
 
@@ -130,3 +134,15 @@ Check [ChangeLog](https://github.com/gasolin/stakerwatch/blob/gh-pages/CHANGELOG
 ## Document
 
 Check [Document](https://gasolin.github.io/stakerwatch/doc/)
+
+## Contribution
+
+There are plenty ways to contribute to stakerwatch.
+
+Share your creative Usage on social media.
+
+Translate skills to your languages.
+
+Report bug, add your ideas to https://github.com/gasolin/stakerwatch/issues
+
+Send patch to https://github.com/gasolin/stakerwatch/pulls
