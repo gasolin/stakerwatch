@@ -1,7 +1,9 @@
 # stakerwatch
 Command line Utillity for Ethereum stakers.
 
-In each command call, this tool randomly pick free Ethereum Node to fetch the on-chain data.
+[![npm version](https://badge.fury.io/js/saihubot.svg)](https://www.npmjs.com/package/saihubot)
+
+This utility tool randomly pick free Ethereum Node to fetch the on-chain data in each command call. (Or you can specify a node if you want to)
 
 # Usage
 
