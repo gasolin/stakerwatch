@@ -21,8 +21,15 @@ $ npx staker stats
 ```
 $ npx staker help
 
-I have n skills:
-* stats - get ETH2 staking stats
+I have 10 skills:
+* stats - lastest ETH2 stake state
+* lastblock|block - get the lastest block number
+* balance - last balance of [address]
+* gasfee - Show current on-chain gas fee
+* gasnow|now - Show current gas fee via gasnow
+* gasstation|station - Show current gas fee via ETH Gas Station
+* gastracker|tracker - Show current gas fee via Etherscan Gas Tracker
+* etherscan|scan [address] - check contract address on etherscan
 * qrcode [text] - Generate QRCode with [text]
 * help - list available skills
 ...
