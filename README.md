@@ -1,5 +1,5 @@
 # stakerwatch
-Utillity for Ethereum stakers
+Command line Utillity for Ethereum stakers.
 
 # Usage
 
