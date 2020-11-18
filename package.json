@@ -1,9 +1,9 @@
 {
   "name": "staker",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Command line Utillity for Ethereum stakers",
   "bin": {
-    "saihu": "./dist/cli.js"
+    "staker": "./dist/cli.js"
   },
   "files": [
     "dist/**",
