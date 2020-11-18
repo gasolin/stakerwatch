@@ -12,11 +12,10 @@ const ETH_NODES = [
   'https://cloudflare-eth.com/', // Cloudflare
   'https://mainnet-nethermind.blockscout.com/', // Blockscout
   'https://nodes.mewapi.io/rpc/eth', // MyEtherWallet
-  'https://main-rpc.linkpool.io/', // LinkPool
   'https://mainnet.eth.cloud.ava.do/', // AVADO
 ];
 
-const cachedNodeURL = '';
+let cachedNodeURL = '';
 
 /**
  * Random pick ethereum node.
@@ -29,6 +28,7 @@ export const getNodeURL = () => {
   cachedNodeURL = envUrl
     ? envUrl
     : ETH_NODES[Math.floor(Math.random() * ETH_NODES.length)];
+  // console.log(cachedNodeURL)
   return cachedNodeURL;
 }
 
@@ -156,7 +156,7 @@ const ProgressBar = ({percent, message, title}) => {
  */
 export const skillEth2Stats = {
   name: 'stakestat',
-  help: 'stakestat - lastest ETH2 stake state',
+  help: 'stats - lastest ETH2 stake state',
   requirements: {
     addons: ['fetch'],
   },
