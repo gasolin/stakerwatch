@@ -1,0 +1,70 @@
+{
+  "name": "staker",
+  "version": "0.1.0",
+  "description": "Command line Utillity for Ethereum stakers",
+  "bin": {
+    "saihu": "./dist/cli.js"
+  },
+  "files": [
+    "dist/**",
+    "src/**"
+  ],
+  "scripts": {
+    "start": "babel-node --presets @babel/preset-env src/cli.js",
+    "build": "babel --root-mode=upward ./src --out-dir ./dist --copy-files",
+    "prepublish": "npm run build && npm run doc",
+    "doc": "documentation build src -f html -o docs",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gasolin/stakerwatch.git"
+  },
+  "keywords": [
+    "saihubot",
+    "cli",
+    "ethereum"
+  ],
+  "author": "Fred Lin <gasolin+saihubot@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/gasolin/stakerwatch/issues"
+  },
+  "homepage": "https://github.com/gasolin/stakerwatch#readme",
+  "dependencies": {
+    "ascii-bar": "^1.0.3",
+    "react": "^16.14.0",
+    "saihubot": "^0.33.0",
+    "saihubot-cli-adapter": "^0.33.0",
+    "saihubot-cli-skill-qrcode": "^0.33.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.12.1",
+    "@babel/core": "^7.12.3",
+    "@babel/eslint-parser": "^7.12.1",
+    "@babel/node": "^7.12.6",
+    "@babel/preset-env": "^7.12.1",
+    "@babel/preset-react": "^7.12.5",
+    "@babel/register": "^7.12.1",
+    "chalk": "^4.1.0",
+    "eslint": "^7.12.1",
+    "eslint-config-google": "^0.14.0",
+    "eslint-plugin-react": "^7.21.5",
+    "eslint-plugin-react-hooks": "^4.2.0"
+  },
+  "eslintConfig": {
+    "extends": [
+      "eslint:recommended",
+      "google"
+    ],
+    "env": {
+      "browser": true,
+      "es6": true
+    },
+    "parser": "@babel/eslint-parser",
+    "parserOptions": {
+      "sourceType": "module",
+      "allowImportExportEverywhere": true
+    }
+  }
+}
