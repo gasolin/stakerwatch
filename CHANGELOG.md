@@ -1,4 +1,4 @@
-# 0.3.0
+# 0.3.0 2020/11/19
 
 Feature
 - Add `beaconscan`, `beaconchain` command to search validator info
