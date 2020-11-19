@@ -160,18 +160,21 @@ export const skillSearchBeaconscan = {
     },
     props: ['balance']
   },
-  rule: /(^beaconscan )(.*)/i,
+  rule: /(^beaconscan )(.*)|^beaconscan/i,
 	action: function(robot, msg) {
+    let validator = '';
     if (msg[2] === undefined) {
-      const validator = getConfig('VALIDATOR', '');
+      validator = getConfig('VALIDATOR', '');
       if (validator === '') {
         robot.send(t('needAddr', {i18n: this.i18n}));
         robot.render();
         return;
       }
     }
-    const url = 'https://beaconscan.com/medalla/validator/' + msg[2];
-    robot.addons.search('Check', msg[2], url, 'beaconscan(medalla)');
+    console.log(validator, msg[2], typeof msg[2])
+    const data = validator || msg[2];
+    const url = 'https://beaconscan.com/medalla/validator/' + data;
+    robot.addons.search('Check', data, url, 'beaconscan(medalla)');
   },
 };
 
@@ -196,18 +199,20 @@ export const skillSearchBeaconchain = {
     },
     props: ['balance']
   },
-  rule: /(^beaconchain |^beaconcha |^beaconcha\.in )(.*)/i,
+  rule: /(^beaconchain |^beaconcha |^beaconcha\.in )(.*)|^beaconchain|^beaconcha|^beaconcha\.in/i,
 	action: function(robot, msg) {
+    let validator = '';
     if (msg[2] === undefined) {
-      const validator = getConfig('VALIDATOR', '');
+      validator = getConfig('VALIDATOR', '');
       if (validator === '') {
         robot.send(t('needAddr', {i18n: this.i18n}));
         robot.render();
         return;
       }
     }
-    const url = 'https://medalla.beaconcha.in/validator/' + msg[2];
-    robot.addons.search('Check', msg[2], url, 'beaconcha.in(medalla)');
+    const data = validator || msg[2];
+    const url = 'https://medalla.beaconcha.in/validator/' + data;
+    robot.addons.search('Check', data, url, 'beaconcha.in(medalla)');
   },
 };
 

@@ -128,13 +128,17 @@ export const skillGetBlance = {
   },
   rule: /(^balance )(.*)|^balance/i,
   action: function(robot, msg) {
-    const addr = getConfig('ETH_ADDR', '');
-    if (addr === '') {
-      robot.send(t('needAddr', {i18n: this.i18n}));
-      robot.render();
-      return;
+    let addr = '';
+    if (msg[2] === undefined) {
+      addr = getConfig('ETH_ADDR', '');
+      if (addr === '') {
+        robot.send(t('needAddr', {i18n: this.i18n}));
+        robot.render();
+        return;
+      }
     }
-    ethFetch(robot.addons.fetch, rpcEthBalance(addr))
+    const data = addr || msg[2];
+    ethFetch(robot.addons.fetch, rpcEthBalance(data))
     .then(json => {
       const msg = t('summary', {
         i18n: this.i18n,
