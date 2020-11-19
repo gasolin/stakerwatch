@@ -3,7 +3,7 @@ Command line Utillity for Ethereum stakers.
 
 [![npm version](https://badge.fury.io/js/staker.svg)](https://www.npmjs.com/package/staker)
 
-This utility tool randomly pick free Ethereum Node to fetch the on-chain data in each command call. (Or you can specify a node if you want to)
+This utility tool doesn't count on Infura, but randomly pick a free Ethereum Node to fetch the on-chain data. (You can specify a node if you want to)
 
 # Usage
 

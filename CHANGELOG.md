@@ -1,3 +1,8 @@
+# 0.2.0 2020/11/19
+
+- reduce download size by delegate qrcode generation via saihu qrcode
+- fix i18n issue
+
 # 0.1.0 2020/11/18
 
 Initial version to ask for feedback

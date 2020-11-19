@@ -8,7 +8,7 @@ import {
   addonFetch,
   skillHelp,
 } from 'saihubot-cli-adapter';
-import {skillQRCode} from 'saihubot-cli-skill-qrcode';
+import {skillQRCode} from './saihubot-cli-skill-delegate-qrcode';
 import {skills as skillsEth} from './saihubot-cli-skill-eth';
 import {skills as slillsChain} from './saihubot-cli-skill-chain';
 
