@@ -23,7 +23,7 @@ Or, find all skills that `staker` command can do by type
 ```
 $ npx staker help
 
-I have 10 skills:
+I have 12 skills:
 * stats - lastest ETH2 stake state
 * lastblock|block - get the lastest block number
 * balance - last balance of [address]
@@ -32,6 +32,8 @@ I have 10 skills:
 * gasstation|station - Show current gas fee via ETH Gas Station
 * gastracker|tracker - Show current gas fee via Etherscan Gas Tracker
 * etherscan|scan [address] - check contract address on etherscan
+* beaconscan|scan [address] - check validator address or number on beaconscan
+* beaconchain|beaconcha|beaconcha.in [address] - check validator address or number on beaconscan
 * qrcode [text] - Generate QRCode with [text]
 * help - list available skills
 ...
@@ -44,6 +46,23 @@ $ npx staker stats
 
 101151 ETH has been deposited for 3160 validators
 [▓▓▓▓▓▓░░░░░░░░░░░░░░░░░░░░░░░░] 19.29%
+```
+
+### Get validator summary
+
+Via [beaconscan](https://beaconscan.com/)
+
+```sh
+$ npx staker beaconscan [address or index]
+
+Check [address or index] via beaconscan(medalla)
+```
+
+Via [beaconcha.in](https://www.beaconcha.in/)
+```sh
+$ npx staker beaconchain [address or index]
+
+Check [address or index] via beaconcha.in(medalla)
 ```
 
 ### Observe Address or Contract
@@ -116,6 +135,27 @@ Then run the command.
 ### Use specified Ethereum Node
 
 Set `SAIHUBOT_NODE_URL` to the node you want to use, ex: infura, or pick from https://ethereumnodes.com/
+
+### Pre-define Ethereum Address
+
+do `export SAIHUBOT_ETH_ADDR=0x.....` and you can use balance command without pass the address
+
+```sh
+npx staker balance
+
+The Address has 1 ETH
+```
+
+### Pre-define Validator Address
+
+do `export SAIHUBOT_ETH_VALIDATOR=12345` and you can use `beaconchain` or `beaconscan` command without pass the address
+
+```sh
+npx staker beaconchain
+
+Check 12345 via beaconchain
+```
+
 
 # Credit
 

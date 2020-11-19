@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'React';
 import {Text} from 'ink';
 import {t} from 'saihubot/dist/i18n';
+import {getConfig} from './utils';
 
 const API = {
   GASSTATION: 'https://ethgasstation.info/api/ethgasAPI.json',
@@ -138,10 +139,84 @@ export const skillSearchEtherscan = {
   },
 };
 
+/**
+ * check validator address on beaconscan.
+ *
+ * can pass the validator index or address, or pre-define the
+ * SAIHUBOT_VALIDATOR environment variable
+ */
+export const skillSearchBeaconscan = {
+  name: 'beaconscan',
+  help: 'beaconscan|scan [address] - check validator address or number on beaconscan',
+  requirements: {
+    addons: ['search'],
+  },
+  i18n: {
+    'en': {
+      needAddr: 'Please pass the index/address or define SAIHUBOT_VALIDATOR first'
+    },
+    'zh_TW': {
+      needAddr: '請傳入索引/地址，或是預先定義 SAIHUBOT_VALIDATOR 參數'
+    },
+    props: ['balance']
+  },
+  rule: /(^beaconscan )(.*)/i,
+	action: function(robot, msg) {
+    if (msg[2] === undefined) {
+      const validator = getConfig('VALIDATOR', '');
+      if (validator === '') {
+        robot.send(t('needAddr', {i18n: this.i18n}));
+        robot.render();
+        return;
+      }
+    }
+    const url = 'https://beaconscan.com/medalla/validator/' + msg[2];
+    robot.addons.search('Check', msg[2], url, 'beaconscan(medalla)');
+  },
+};
+
+/**
+ * check validator address on beaconcha.in.
+ *
+ * can pass the validator index or address, or pre-define the
+ * SAIHUBOT_VALIDATOR environment variable
+ */
+export const skillSearchBeaconchain = {
+  name: 'beaconchain',
+  help: 'beaconchain|beaconcha|beaconcha.in [address] - check validator address or number on beaconscan',
+  requirements: {
+    addons: ['search'],
+  },
+  i18n: {
+    'en': {
+      needAddr: 'Please pass the index/address or define SAIHUBOT_VALIDATOR first'
+    },
+    'zh_TW': {
+      needAddr: '請傳入索引/地址，或是預先定義 SAIHUBOT_VALIDATOR 參數'
+    },
+    props: ['balance']
+  },
+  rule: /(^beaconchain |^beaconcha |^beaconcha\.in )(.*)/i,
+	action: function(robot, msg) {
+    if (msg[2] === undefined) {
+      const validator = getConfig('VALIDATOR', '');
+      if (validator === '') {
+        robot.send(t('needAddr', {i18n: this.i18n}));
+        robot.render();
+        return;
+      }
+    }
+    const url = 'https://medalla.beaconcha.in/validator/' + msg[2];
+    robot.addons.search('Check', msg[2], url, 'beaconcha.in(medalla)');
+  },
+};
+
 const skills = [
   skillGasNow,
   skillGasStation,
   skillGasTracker,
   skillSearchEtherscan,
+  skillSearchBeaconscan,
+  skillSearchBeaconchain,
 ];
 export {skills};

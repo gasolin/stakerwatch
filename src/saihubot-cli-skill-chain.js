@@ -4,6 +4,7 @@ import React from 'react';
 import { Text } from 'ink';
 import AsciiBar from 'ascii-bar';
 import { t } from 'saihubot/dist/i18n';
+import {getConfig} from './utils';
 
 // free nodes without API keys from https://ethereumnodes.com/
 const ETH_NODES = [
@@ -18,17 +19,17 @@ const ETH_NODES = [
 let cachedNodeURL = '';
 
 /**
- * Random pick ethereum node.
- * can set youts via set SAIHUBOT_NODE_URL environment variable.
+ * Random pick a ethereum node.
+ *
+ * can set yours via set SAIHUBOT_NODE_URL environment variable.
  */
 export const getNodeURL = () => {
   if (cachedNodeURL) return cachedNodeURL;
 
-  const envUrl = process.env.SAIHUBOT_NODE_URL;
-  cachedNodeURL = envUrl
-    ? envUrl
-    : ETH_NODES[Math.floor(Math.random() * ETH_NODES.length)];
-  // console.log(cachedNodeURL)
+  cachedNodeURL = getConfig(
+    'NODE_URL',
+    ETH_NODES[Math.floor(Math.random() * ETH_NODES.length)]
+  );
   return cachedNodeURL;
 }
 
@@ -73,6 +74,9 @@ const rpcGasPrice = () => JSON.stringify({
   params: [],
 });
 
+/**
+ * Get the lastest block number.
+ */
 export const skillLastBlock = {
   name: 'lastblock',
   help: 'lastblock|block - get the lastest block number',
@@ -99,6 +103,12 @@ export const skillLastBlock = {
   },
 }
 
+/**
+ * Get balance of [address].
+ *
+ * can pass the address, or pre-define the
+ * SAIHUBOT_ETH_ADDR environment variable
+ */
 export const skillGetBlance = {
   name: 'balance',
   help: 'balance - last balance of [address]',
@@ -108,15 +118,23 @@ export const skillGetBlance = {
   i18n: {
     'en': {
       summary: 'The Address has {{balance}} ETH',
+      needAddr: 'Please pass the address or define SAIHUBOT_ETH_ADDR first'
     },
     'zh_TW': {
       summary: '此地址擁有 {{balance}} ETH',
+      needAddr: '請傳入地址或是預先定義 SAIHUBOT_ETH_ADDR 參數'
     },
     props: ['balance']
   },
-  rule: /(^balance )(.*)/i,
+  rule: /(^balance )(.*)|^balance/i,
   action: function(robot, msg) {
-    ethFetch(robot.addons.fetch, rpcEthBalance(msg[2]))
+    const addr = getConfig('ETH_ADDR', '');
+    if (addr === '') {
+      robot.send(t('needAddr', {i18n: this.i18n}));
+      robot.render();
+      return;
+    }
+    ethFetch(robot.addons.fetch, rpcEthBalance(addr))
     .then(json => {
       const msg = t('summary', {
         i18n: this.i18n,
@@ -191,6 +209,9 @@ export const skillEth2Stats = {
   },
 }
 
+/**
+ * Show current ethereum Gas fee from the chain.
+ */
 export const skillGasFee = {
   name: 'gasfee',
   help: 'gasfee - Show current on-chain gas fee',

@@ -1,5 +1,13 @@
+# 0.3.0
+
+Feature
+- Add `beaconscan`, `beaconchain` command to search validator info
+- Support pre-define Ethereum Address via SAIHUBOT_ETH_ADDR
+- Support pre-define validator address via SAIHUBOT_ETH_VALIDATOR
+
 # 0.2.1 2020/11/19
 
+Enhancement
 - reduce download size by
   - move i18n and addon.exec to saihu 0.34
   - delegate qrcode generation via saihu qrcode
