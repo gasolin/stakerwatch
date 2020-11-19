@@ -1,7 +1,7 @@
 'use strict';
 import React, { useEffect, useState } from 'React';
 import {Text} from 'ink';
-import {t} from './i18n';
+import {t} from 'saihubot/dist/i18n';
 
 const API = {
   GASSTATION: 'https://ethgasstation.info/api/ethgasAPI.json',

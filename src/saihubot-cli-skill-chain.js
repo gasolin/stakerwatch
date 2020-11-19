@@ -3,7 +3,7 @@
 import React from 'react';
 import { Text } from 'ink';
 import AsciiBar from 'ascii-bar';
-import { t } from './i18n';
+import { t } from 'saihubot/dist/i18n';
 
 // free nodes without API keys from https://ethereumnodes.com/
 const ETH_NODES = [

@@ -6,6 +6,7 @@ import {
   cliAdapter,
   addonSearch,
   addonFetch,
+  addonExec,
   skillHelp,
 } from 'saihubot-cli-adapter';
 import {skillQRCode} from './saihubot-cli-skill-delegate-qrcode';
@@ -33,7 +34,7 @@ const cli = meow(`
 const bot = new SaihuBot({
   adapter: cliAdapter(cli),
   bot: '🤖',
-  addons: [addonSearch, addonFetch],
+  addons: [addonSearch, addonFetch, addonExec],
   skills: [
     ...slillsChain,
     ...skillsEth,
