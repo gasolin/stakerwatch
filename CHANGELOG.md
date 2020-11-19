@@ -1,7 +1,7 @@
 # 0.4.0 2020/11/20
 
 Feature
-- Add `bloxy`, `blockchair` command to get address related information
+- Add `bloxy`, `blockchair`, `bitquery` command to get address related information
 - Add `awesome/lucky` command to randomly pick a useful tool
 
 # 0.3.1 2020/11/19

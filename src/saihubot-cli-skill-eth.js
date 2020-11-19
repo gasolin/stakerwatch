@@ -288,7 +288,45 @@ export const skillSearchBlockchair = {
     }
     const data = addr || msg[2];
     const url = 'https://blockchair.com/ethereum/address/' + data;
-    robot.addons.search('Check', data, url, 'bloxy.info');
+    robot.addons.search('Check', data, url, 'blockchair');
+  },
+};
+
+/**
+ * check address on bitquery.
+ *
+ * can pass the address, or pre-define the
+ * SAIHUBOT_ETH_ADDR environment variable
+ */
+export const skillSearchBitQuery = {
+  name: 'bitquery',
+  help: 'bitquery [address] - check address on explorer.bitquery.io',
+  requirements: {
+    addons: ['search'],
+  },
+  i18n: {
+    'en': {
+      needAddr: 'Please pass the address or define SAIHUBOT_ETH_ADDR first'
+    },
+    'zh_TW': {
+      needAddr: '請傳入地址，或是預先定義 SAIHUBOT_ETH_ADDR 參數'
+    },
+    props: [],
+  },
+  rule: /(^bitquery )(.*)|^bitquery/i,
+	action: function(robot, msg) {
+    let addr = '';
+    if (msg[2] === undefined) {
+      addr = getConfig('ETH_ADDR', '');
+      if (addr === '') {
+        robot.send(t('needAddr', {i18n: this.i18n}));
+        robot.render();
+        return;
+      }
+    }
+    const data = addr || msg[2];
+    const url = 'https://explorer.bitquery.io/ethereum/address/' + data;
+    robot.addons.search('Check', data, url, 'explorer.bitquery.io');
   },
 };
 
@@ -299,6 +337,7 @@ const skills = [
   skillSearchEtherscan,
   skillSearchBloxy,
   skillSearchBlockchair,
+  skillSearchBitQuery,
   skillSearchBeaconscan,
   skillSearchBeaconchain,
 ];
