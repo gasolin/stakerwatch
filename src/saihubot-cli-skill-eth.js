@@ -158,7 +158,7 @@ export const skillSearchBeaconscan = {
     'zh_TW': {
       needAddr: '請傳入索引/地址，或是預先定義 SAIHUBOT_VALIDATOR 參數'
     },
-    props: ['balance']
+    props: [],
   },
   rule: /(^beaconscan )(.*)|^beaconscan/i,
 	action: function(robot, msg) {
@@ -197,7 +197,7 @@ export const skillSearchBeaconchain = {
     'zh_TW': {
       needAddr: '請傳入索引/地址，或是預先定義 SAIHUBOT_VALIDATOR 參數'
     },
-    props: ['balance']
+    props: [],
   },
   rule: /(^beaconchain |^beaconcha |^beaconcha\.in )(.*)|^beaconchain|^beaconcha|^beaconcha\.in/i,
 	action: function(robot, msg) {
@@ -216,11 +216,89 @@ export const skillSearchBeaconchain = {
   },
 };
 
+/**
+ * check address on bloxy.info.
+ *
+ * can pass the address, or pre-define the
+ * SAIHUBOT_ETH_ADDR environment variable
+ */
+export const skillSearchBloxy = {
+  name: 'bloxy',
+  help: 'bloxy [address] - check address on bloxy.info',
+  requirements: {
+    addons: ['search'],
+  },
+  i18n: {
+    'en': {
+      needAddr: 'Please pass the address or define SAIHUBOT_ETH_ADDR first'
+    },
+    'zh_TW': {
+      needAddr: '請傳入地址，或是預先定義 SAIHUBOT_ETH_ADDR 參數'
+    },
+    props: [],
+  },
+  rule: /(^bloxy )(.*)|^bloxy/i,
+	action: function(robot, msg) {
+    let addr = '';
+    if (msg[2] === undefined) {
+      addr = getConfig('ETH_ADDR', '');
+      if (addr === '') {
+        robot.send(t('needAddr', {i18n: this.i18n}));
+        robot.render();
+        return;
+      }
+    }
+    const data = addr || msg[2];
+    const url = 'https://bloxy.info/address/' + data;
+    robot.addons.search('Check', data, url, 'bloxy.info');
+  },
+};
+
+/**
+ * check address on blockchair.
+ *
+ * can pass the address, or pre-define the
+ * SAIHUBOT_ETH_ADDR environment variable
+ */
+export const skillSearchBlockchair = {
+  name: 'blockchair',
+  help: 'blockchair [address] - check address on blockchair.com',
+  requirements: {
+    addons: ['search'],
+  },
+  i18n: {
+    'en': {
+      needAddr: 'Please pass the address or define SAIHUBOT_ETH_ADDR first'
+    },
+    'zh_TW': {
+      needAddr: '請傳入地址，或是預先定義 SAIHUBOT_ETH_ADDR 參數'
+    },
+    props: [],
+  },
+  rule: /(^blockchair )(.*)|^blockchair/i,
+	action: function(robot, msg) {
+    let addr = '';
+    if (msg[2] === undefined) {
+      addr = getConfig('ETH_ADDR', '');
+      if (addr === '') {
+        robot.send(t('needAddr', {i18n: this.i18n}));
+        robot.render();
+        return;
+      }
+    }
+    const data = addr || msg[2];
+    const url = 'https://blockchair.com/ethereum/address/' + data;
+    robot.addons.search('Check', data, url, 'bloxy.info');
+  },
+};
+
 const skills = [
   skillGasNow,
   skillGasStation,
   skillGasTracker,
   skillSearchEtherscan,
+  skillSearchBloxy,
+  skillSearchBlockchair,
   skillSearchBeaconscan,
   skillSearchBeaconchain,
 ];

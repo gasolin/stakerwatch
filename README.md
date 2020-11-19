@@ -23,7 +23,7 @@ Or, find all skills that `staker` command can do by type
 ```
 $ npx staker help
 
-I have 12 skills:
+I have 15 skills:
 * stats - lastest ETH2 stake state
 * lastblock|block - get the lastest block number
 * balance - last balance of [address]
@@ -32,8 +32,11 @@ I have 12 skills:
 * gasstation|station - Show current gas fee via ETH Gas Station
 * gastracker|tracker - Show current gas fee via Etherscan Gas Tracker
 * etherscan|scan [address] - check contract address on etherscan
+* bloxy [address] - check address on bloxy.info
+* blockchair [address] - check address on blockchair.com
 * beaconscan|scan [address] - check validator address or number on beaconscan
 * beaconchain|beaconcha|beaconcha.in [address] - check validator address or number on beaconscan
+* awesome|lucky - Show random awesome site around ethereum
 * qrcode [text] - Generate QRCode with [text]
 * help - list available skills
 ...
@@ -73,10 +76,17 @@ Given a ETH address and get related live stats
 $ npx staker balance [addr]
 
 The Address has 1 ETH
-
 ```
 
-Given a ETH address and open the browser to search address on etherscan
+Given a ETH address and open the browser to search address on [Etherscan](https://etherscan.io/)
+
+```sh
+$ npx staker etherscan [addr]
+
+(open browser to search [addr] on etherscan)
+```
+
+Given a ETH address and open the browser to search address on [Bloxy](https://bloxy.info/)
 
 ```sh
 $ npx staker etherscan [addr]

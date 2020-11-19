@@ -5,14 +5,15 @@ import SaihuBot from 'saihubot/dist/saihubot';
 import {
   cliAdapter,
   addonSearch,
+  addonOpenLink,
   addonFetch,
   addonExec,
   skillHelp,
 } from 'saihubot-cli-adapter';
 import {skillQRCode} from './saihubot-cli-skill-delegate-qrcode';
 import {skills as skillsEth} from './saihubot-cli-skill-eth';
-import {skills as slillsChain} from './saihubot-cli-skill-chain';
-
+import {skills as skillsChain} from './saihubot-cli-skill-chain';
+import {skills as skillAwesome} from './saihubot-skill-awesome';
 const cli = meow(`
   Usage
     $ staker
@@ -34,10 +35,11 @@ const cli = meow(`
 const bot = new SaihuBot({
   adapter: cliAdapter(cli),
   bot: '🤖',
-  addons: [addonSearch, addonFetch, addonExec],
+  addons: [addonSearch, addonFetch, addonOpenLink, addonExec],
   skills: [
-    ...slillsChain,
+    ...skillsChain,
     ...skillsEth,
+    ...skillAwesome,
     skillQRCode,
     skillHelp,
   ],
