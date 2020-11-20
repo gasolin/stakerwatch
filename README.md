@@ -51,7 +51,7 @@ $ npx staker stats
 [▓▓▓▓▓▓░░░░░░░░░░░░░░░░░░░░░░░░] 19.29%
 ```
 
-### Get validator summary
+### Get ETH2 validator summary (from multiple beacon explorer)
 
 Via [beaconscan](https://beaconscan.com/)
 
@@ -68,9 +68,9 @@ $ npx staker beaconchain [address or index]
 Check [address or index] via beaconcha.in(medalla)
 ```
 
-### Observe Address or Contract
+### Observe ETH Address or Contract (from multiple explorer)
 
-Given a ETH address and get related live stats
+Given a ETH address and get related live stats (Balance)
 
 ```sh
 $ npx staker balance [addr]
