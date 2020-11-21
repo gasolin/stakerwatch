@@ -10,7 +10,7 @@ import {
   addonExec,
   skillHelp,
 } from 'saihubot-cli-adapter';
-import {skillQRCode} from './saihubot-cli-skill-delegate-qrcode';
+import {skillQRCode} from './saihubot-cli-skill-delegates';
 import {skills as skillsEth} from './saihubot-cli-skill-eth';
 import {skills as skillsChain} from './saihubot-cli-skill-chain';
 import {skills as skillAwesome} from './saihubot-skill-awesome';

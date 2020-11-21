@@ -1,3 +1,9 @@
+# 0.5.0 2020/11/21
+
+Feature
+- Register the domain http://stakerwat.ch/
+- Open @stakerwatch Twitter account https://twitter.com/stakerwatch
+
 # 0.4.0 2020/11/20
 
 Feature

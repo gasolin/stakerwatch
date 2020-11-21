@@ -7,7 +7,7 @@ import {t} from 'saihubot/dist/i18n';
 export const skillQRCode = {
   name: 'qrcode',
   help: 'qrcode [text] - Generate QRCode with [text]',
-  rule: /qrcode (.*)/i,
+  rule: /^qrcode (.*)/i,
   requirements: {
     adapters: ['cli'],
     addons: ['exec'],
