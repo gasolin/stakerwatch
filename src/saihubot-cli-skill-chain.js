@@ -2,36 +2,10 @@
 
 import React from 'react';
 import { Text } from 'ink';
+import Table from 'ink-table';
 import AsciiBar from 'ascii-bar';
 import { t } from 'saihubot/dist/i18n';
-import {getConfig} from './utils';
-
-// free nodes without API keys from https://ethereumnodes.com/
-const ETH_NODES = [
-  'https://api.mycryptoapi.com/eth', // MyCrypto
-  'https://web3.1inch.exchange/', // 1inch
-  'https://cloudflare-eth.com/', // Cloudflare
-  'https://mainnet-nethermind.blockscout.com/', // Blockscout
-  'https://nodes.mewapi.io/rpc/eth', // MyEtherWallet
-  'https://mainnet.eth.cloud.ava.do/', // AVADO
-];
-
-let cachedNodeURL = '';
-
-/**
- * Random pick a ethereum node.
- *
- * can set yours via set SAIHUBOT_NODE_URL environment variable.
- */
-export const getNodeURL = () => {
-  if (cachedNodeURL) return cachedNodeURL;
-
-  cachedNodeURL = getConfig(
-    'NODE_URL',
-    ETH_NODES[Math.floor(Math.random() * ETH_NODES.length)]
-  );
-  return cachedNodeURL;
-}
+import {getConfig, getNodeURL, TOKEN} from './utils';
 
 const ADDR = {
   ETH2_DEPOSIT: '0x00000000219ab540356cbb839cbe05303d7705fa',
@@ -44,32 +18,44 @@ const baseFetchOptions = {
   },
 };
 
-const ethFetch = (fetch, rpc) => fetch(getNodeURL(), {
-  ...baseFetchOptions,
-  body: rpc,
-}).then(response => response.json())
+const ethFetch = (fetch, rpc) =>
+  fetch(getNodeURL(), {
+    ...baseFetchOptions,
+    body: rpc,
+  }).then(response => response.json())
 
-const baseBlock = {
-  jsonrpc: '2.0',
-  id: 1,
-};
+let idx = 1;
 
 // https://eth.wiki/json-rpc/API
 const rpcLastBlock = JSON.stringify({
-  ...baseBlock,
+  jsonrpc: '2.0',
+  id: idx++,
   method: 'eth_blockNumber',
   params: [],
 });
 
 const rpcEthBalance = (address) => JSON.stringify({
-  ...baseBlock,
+  jsonrpc: '2.0',
+  id: idx++,
   method: 'eth_getBalance',
   params: [`${address}`, "latest"],
 });
 
+const rpcTokenBalance = (address, token) => JSON.stringify({
+  jsonrpc: '2.0',
+  id: idx++,
+  method: 'eth_call',
+  params: [{
+      to: token,
+      data: `0x70a08231${address.replace('0x', '').padStart(64, '0')}`,
+    },
+    'latest'
+  ],
+});
+
 const rpcGasPrice = () => JSON.stringify({
-  ...baseBlock,
-  id: 73,
+  jsonrpc: '2.0',
+  id: idx++,
   method: 'eth_gasPrice',
   params: [],
 });
@@ -117,36 +103,52 @@ export const skillGetBlance = {
   },
   i18n: {
     'en': {
-      summary: 'The Address has {{balance}} ETH',
-      needAddr: 'Please pass the address or define SAIHUBOT_ETH_ADDR first'
+      query: 'Query balance...',
+      token: 'Symbol',
+      balance: 'Balance',
+      needAddr: 'Please pass the address or define SAIHUBOT_ETH_ADDR first',
     },
     'zh_TW': {
-      summary: '此地址擁有 {{balance}} ETH',
-      needAddr: '請傳入地址或是預先定義 SAIHUBOT_ETH_ADDR 參數'
+      query: '查詢餘額中...',
+      token: '幣種',
+      balance: '餘額',
+      needAddr: '請傳入地址或是預先定義 SAIHUBOT_ETH_ADDR 參數',
     },
-    props: ['balance']
+    props: ['balance', 'usdt']
   },
   rule: /(^balance )(.*)|^balance/i,
   action: function(robot, msg) {
     let addr = '';
     if (msg[2] === undefined) {
       addr = getConfig('ETH_ADDR', '');
-      if (addr === '') {
+      if (addr.trim() === '') {
         robot.send(t('needAddr', {i18n: this.i18n}));
         robot.render();
         return;
       }
     }
-    const data = addr || msg[2];
-    ethFetch(robot.addons.fetch, rpcEthBalance(data))
-    .then(json => {
-      const msg = t('summary', {
-        i18n: this.i18n,
-        balance: (parseInt(json.result)/10**18).toFixed(4)
-      });
-      robot.send(msg);
+    const parsedAddr = addr.trim() || msg[2];
+    async function getBalances(i18n) {
+      const eth = await ethFetch(robot.addons.fetch, rpcEthBalance(parsedAddr));
+      const ethBalance = (parseInt(eth.result)/10**18).toFixed(4);
+      const usdt = await ethFetch(robot.addons.fetch, rpcTokenBalance(parsedAddr, TOKEN.USDT.addr));
+      const usdtBalance = Math.round(parseInt(usdt.result, 16) * 100 /10**TOKEN.USDT.decimals)/100;
+      let data = [
+        {
+          [t('token', {i18n})]: 'ETH',
+          [t('balance', {i18n})]: ethBalance,
+        }
+      ];
+      usdtBalance && data.push({
+        [t('token', {i18n})]: 'USDt',
+        [t('balance', {i18n})]: usdtBalance,
+      })
+      robot.sendComponent(<Table data={data} />);
       robot.render();
-    })
+    }
+    robot.send(t('query', {i18n: this.i18n}));
+    robot.render();
+    getBalances(this.i18n);
   },
 }
 
@@ -220,7 +222,7 @@ export const skillGasFee = {
   name: 'gasfee',
   help: 'gasfee - Show current on-chain gas fee',
   requirements: {
-  	addons: ['fetch'],
+    addons: ['fetch'],
   },
   i18n: {
     'en': {

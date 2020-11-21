@@ -171,7 +171,6 @@ export const skillSearchBeaconscan = {
         return;
       }
     }
-    console.log(validator, msg[2], typeof msg[2])
     const data = validator || msg[2];
     const url = 'https://beaconscan.com/medalla/validator/' + data;
     robot.addons.search('Check', data, url, 'beaconscan(medalla)');
@@ -210,7 +209,7 @@ export const skillSearchBeaconchain = {
         return;
       }
     }
-    const data = validator || msg[2];
+    const data = validator.trim() || msg[2];
     const url = 'https://medalla.beaconcha.in/validator/' + data;
     robot.addons.search('Check', data, url, 'beaconcha.in(medalla)');
   },

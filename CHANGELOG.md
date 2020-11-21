@@ -3,6 +3,11 @@
 Feature
 - Register the domain http://stakerwat.ch/
 - Open @stakerwatch Twitter account https://twitter.com/stakerwatch
+- Show balance as table in the `balance` skill
+- Show address's USDt balance in the `balance` skill
+
+Enhancement
+- not pack src/ to reduce the package size
 
 # 0.4.0 2020/11/20
 
