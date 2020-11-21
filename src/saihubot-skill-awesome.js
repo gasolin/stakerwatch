@@ -16,6 +16,7 @@ const AWESOME_LINKS = [
   'https://beaconcha.in/stakingServices',
   'https://blockchair.com/ethereum',
   'https://blog.ethereum.org/',
+  'https://launchpad.ethereum.org/',
 ];
 
 /**
