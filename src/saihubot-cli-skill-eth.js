@@ -143,7 +143,7 @@ const i18nAddr = {
 
 export const skillAddressExplorer = {
   name: 'address',
-  help: '⭐️ address|addr [address] - pick address explorer from list',
+  help: '⭐️address|addr [address] - pick address explorer from list',
   requirements: {
     addons: ['confirm']
   },

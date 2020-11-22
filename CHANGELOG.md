@@ -6,6 +6,7 @@ Feature
 
 Enhancement
 - Group address, beacon validator, gas skills in category
+- add Emoji to spot some recommend skills
 
 # 0.5.0 2020/11/21
 

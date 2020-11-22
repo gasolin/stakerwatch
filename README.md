@@ -23,14 +23,15 @@ Or, find all skills that `staker` command can do by type
 ```
 $ npx staker help
 
-I have 19 skills:
-* stats - lastest ETH2 stake state
+I have 20 skills:
+* ⭐️stats - lastest ETH2 stake state
 * lastblock|block - get the lastest block number
 * gasfee - Show current on-chain gas fee
 * gasnow|now - Show current gas fee via gasnow
 * gasstation|station - Show current gas fee via ETH Gas Station
 * gastracker|tracker - Show current gas fee via Etherscan Gas Tracker
-* balance - last balance of [address]
+* 💵balance - last balance of [address]
+* ⭐️address|addr [address] - pick address explorer from list
 * bitquery [address] - check address on explorer.bitquery.io
 * blockchair [address] - check address on blockchair.com
 * bloxy [address] - check token symbol, address or tx hash on bloxy.info
