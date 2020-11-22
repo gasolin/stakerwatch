@@ -35,7 +35,7 @@ export const skillGasTracker = {
     },
     props: ['H', 'M', 'L']
   },
-	rule: /^gastracker|^tracker/i,
+  rule: /^gastracker|^tracker/i,
   action: function(robot, msg) {
     robot.addons.fetch(API.GASTRACKER)
       .then(response => response.json())
@@ -72,7 +72,7 @@ export const skillGasStation = {
     },
     props: ['H', 'M', 'L']
   },
-	rule: /^gasstation|^station/i,
+  rule: /^gasstation|^station/i,
   action: function(robot, msg) {
     robot.addons.fetch(API.GASSTATION)
       .then(response => response.json())
@@ -109,7 +109,7 @@ export const skillGasNow = {
     },
     props: ['H', 'M', 'L']
   },
-	rule: /^gasnow|^now/i,
+  rule: /^gasnow|^now/i,
   action: function(robot, msg) {
     robot.addons.fetch(API.GASNOW)
       .then(response => response.json())
@@ -129,6 +129,16 @@ export const skillGasNow = {
 
 // ==== ADDRESS EXPLORER ===
 
+const i18nAddr = {
+  'en': {
+    needAddr: 'Please pass the address or define SAIHUBOT_ETH_ADDR first'
+  },
+  'zh_TW': {
+    needAddr: '請傳入地址，或是預先定義 SAIHUBOT_ETH_ADDR 參數'
+  },
+  props: [],
+};
+
 /** check contract address on etherscan */
 export const skillSearchEtherscan = {
   name: 'etherscan',
@@ -137,40 +147,41 @@ export const skillSearchEtherscan = {
     addons: ['search'],
   },
   rule: /(^etherscan |^scan )(.*)/i,
-	action: function(robot, msg) {
-    const url = 'https://www.etherscan.io/address/' + msg[2];
+  action: function(robot, msg) {
+    let addr = '';
+    if (msg[2] === undefined) {
+      addr = getConfig('ETH_ADDR', '');
+      if (addr === '') {
+        robot.send(t('needAddr', {i18n: i18nAddr}));
+        robot.render();
+        return;
+      }
+    }
+    const data = addr || msg[2];
+    const url = 'https://www.etherscan.io/address/' + data;
     robot.addons.search('Check', msg[2], url, 'etherscan');
   },
 };
 
 /**
- * check address on bloxy.info.
+ * check token symbol, address or tx hash on bloxy.info.
  *
- * can pass the address, or pre-define the
+ * can pass the address or pre-define the
  * SAIHUBOT_ETH_ADDR environment variable
  */
 export const skillSearchBloxy = {
   name: 'bloxy',
-  help: 'bloxy [address] - check address on bloxy.info',
+  help: 'bloxy [address] - check token symbol, address or tx hash on bloxy.info',
   requirements: {
     addons: ['search'],
   },
-  i18n: {
-    'en': {
-      needAddr: 'Please pass the address or define SAIHUBOT_ETH_ADDR first'
-    },
-    'zh_TW': {
-      needAddr: '請傳入地址，或是預先定義 SAIHUBOT_ETH_ADDR 參數'
-    },
-    props: [],
-  },
   rule: /(^bloxy )(.*)|^bloxy/i,
-	action: function(robot, msg) {
+  action: function(robot, msg) {
     let addr = '';
     if (msg[2] === undefined) {
       addr = getConfig('ETH_ADDR', '');
       if (addr === '') {
-        robot.send(t('needAddr', {i18n: this.i18n}));
+        robot.send(t('needAddr', {i18n: i18nAddr}));
         robot.render();
         return;
       }
@@ -193,22 +204,13 @@ export const skillSearchBlockchair = {
   requirements: {
     addons: ['search'],
   },
-  i18n: {
-    'en': {
-      needAddr: 'Please pass the address or define SAIHUBOT_ETH_ADDR first'
-    },
-    'zh_TW': {
-      needAddr: '請傳入地址，或是預先定義 SAIHUBOT_ETH_ADDR 參數'
-    },
-    props: [],
-  },
   rule: /(^blockchair )(.*)|^blockchair/i,
-	action: function(robot, msg) {
+  action: function(robot, msg) {
     let addr = '';
     if (msg[2] === undefined) {
       addr = getConfig('ETH_ADDR', '');
       if (addr === '') {
-        robot.send(t('needAddr', {i18n: this.i18n}));
+        robot.send(t('needAddr', {i18n: i18nAddr}));
         robot.render();
         return;
       }
@@ -231,22 +233,13 @@ export const skillSearchBitQuery = {
   requirements: {
     addons: ['search'],
   },
-  i18n: {
-    'en': {
-      needAddr: 'Please pass the address or define SAIHUBOT_ETH_ADDR first'
-    },
-    'zh_TW': {
-      needAddr: '請傳入地址，或是預先定義 SAIHUBOT_ETH_ADDR 參數'
-    },
-    props: [],
-  },
   rule: /(^bitquery )(.*)|^bitquery/i,
-	action: function(robot, msg) {
+  action: function(robot, msg) {
     let addr = '';
     if (msg[2] === undefined) {
       addr = getConfig('ETH_ADDR', '');
       if (addr === '') {
-        robot.send(t('needAddr', {i18n: this.i18n}));
+        robot.send(t('needAddr', {i18n: i18nAddr}));
         robot.render();
         return;
       }
@@ -257,7 +250,66 @@ export const skillSearchBitQuery = {
   },
 };
 
+// ==== TX ===
+
+/** check transaction (tx) on etherscan */
+export const skillSearchEtherscanTx = {
+  name: 'etherscantx',
+  help: 'etherscan-tx|etherscantx|scan-tx|scantx [tx] - check transaction (tx) on etherscan',
+  requirements: {
+    addons: ['search'],
+  },
+  rule: /(^etherscantx |^etherscan-tx |^scantx |^scan-tx )(.*)/i,
+  action: function(robot, msg) {
+    const url = 'https://www.etherscan.io/tx/' + msg[2];
+    robot.addons.search('Check tx', msg[2], url, 'etherscan');
+  },
+};
+
+
+/**
+ * check transaction (tx) on blockchair.
+ */
+export const skillSearchBlockchairTx = {
+  name: 'blockchair',
+  help: 'blockchair-tx|blockchairtx [tx] - check transaction (tx) on blockchair.com',
+  requirements: {
+    addons: ['search'],
+  },
+  rule: /(^blockchair-tx |^blockchairtx )(.*)/i,
+  action: function(robot, msg) {
+    const url = 'https://blockchair.com/ethereum/transaction/' + msg[2];
+    robot.addons.search('Check tx', data, url, 'blockchair');
+  },
+};
+
+/**
+ * check transaction (tx) on explorer.bitquery.io.
+ */
+export const skillSearchBitQueryTx = {
+  name: 'bitquerytx',
+  help: 'bitquery-tx|bitquerytx|query-tx|querytx [tx] - check transaction (tx) on bitquery',
+  requirements: {
+    addons: ['search'],
+  },
+  rule: /(^bitquerytx |^bitquery-tx |^querytx |^query-tx )(.*)/i,
+  action: function(robot, msg) {
+    const url = 'https://explorer.bitquery.io/ethereum/tx/' + msg[2];
+    robot.addons.search('Check tx', msg[2], url, 'explorer.bitquery.io');
+  },
+};
+
 // ==== BEACON VALIDATOR ===
+
+const i18nValidator = {
+  'en': {
+    needAddr: 'Please pass the index/address or define SAIHUBOT_VALIDATOR first'
+  },
+  'zh_TW': {
+    needAddr: '請傳入索引/地址，或是預先定義 SAIHUBOT_VALIDATOR 參數'
+  },
+  props: [],
+};
 
 /**
  * check validator address on beaconscan.
@@ -271,22 +323,13 @@ export const skillSearchBeaconscan = {
   requirements: {
     addons: ['search'],
   },
-  i18n: {
-    'en': {
-      needAddr: 'Please pass the index/address or define SAIHUBOT_VALIDATOR first'
-    },
-    'zh_TW': {
-      needAddr: '請傳入索引/地址，或是預先定義 SAIHUBOT_VALIDATOR 參數'
-    },
-    props: [],
-  },
   rule: /(^beaconscan )(.*)|^beaconscan/i,
-	action: function(robot, msg) {
+  action: function(robot, msg) {
     let validator = '';
     if (msg[2] === undefined) {
       validator = getConfig('VALIDATOR', '');
       if (validator === '') {
-        robot.send(t('needAddr', {i18n: this.i18n}));
+        robot.send(t('needAddr', {i18n: i18nValidator}));
         robot.render();
         return;
       }
@@ -319,12 +362,12 @@ export const skillSearchBeaconchain = {
     props: [],
   },
   rule: /(^beaconchain |^beaconcha |^beaconcha\.in )(.*)|^beaconchain|^beaconcha|^beaconcha\.in/i,
-	action: function(robot, msg) {
+  action: function(robot, msg) {
     let validator = '';
     if (msg[2] === undefined) {
       validator = getConfig('VALIDATOR', '');
       if (validator === '') {
-        robot.send(t('needAddr', {i18n: this.i18n}));
+        robot.send(t('needAddr', {i18n: i18nValidator}));
         robot.render();
         return;
       }
@@ -335,23 +378,31 @@ export const skillSearchBeaconchain = {
   },
 };
 
-export const skillsGas = [skillGasNow, skillGasStation, skillGasTracker];
-export const skillsAddress = [
-  skillSearchEtherscan,
-  skillSearchBloxy,
-  skillSearchBlockchair,
-  skillSearchBitQuery,
+export const skillsGas = [
+  skillGasNow,
+  skillGasStation,
+  skillGasTracker,
 ];
-export const skillsTx = [];
-export const skillsBeacon = [
-  skillSearchBeaconscan,
+export const skillsAddress = [
+  skillSearchBitQuery,
+  skillSearchBlockchair,
+  skillSearchBloxy,
+  skillSearchEtherscan,
+];
+export const skillsTx = [
+  skillSearchBitQueryTx,
+  skillSearchBlockchairTx,
+  skillSearchEtherscanTx,
+];
+export const skillsValidator = [
   skillSearchBeaconchain,
+  skillSearchBeaconscan,
 ];
 
 const skills = [
   ...skillsGas,
   ...skillsAddress,
   ...skillsTx,
-  ...skillsBeacon,
+  ...skillsValidator,
 ];
 export {skills};

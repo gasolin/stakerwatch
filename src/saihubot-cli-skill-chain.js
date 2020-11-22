@@ -245,5 +245,6 @@ export const skillGasFee = {
   },
 }
 
-const skills = [skillEth2Stats, skillLastBlock, skillGetBlance, skillGasFee];
+export const skillsETH2 = [skillEth2Stats, skillLastBlock];
+const skills = [...skillsETH2, skillGetBlance, skillGasFee];
 export {skills};

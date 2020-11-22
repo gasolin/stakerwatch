@@ -1,7 +1,10 @@
 # 0.6.0 2020/11/22
 
+Feature
+- add tx query skills `bitquery-tx`, `blockchair-tx`, `etherscan-tx`
+
 Enhancement
-- Order address, beacon validator, gas skills in category
+- Group address, beacon validator, gas skills in category
 
 # 0.5.0 2020/11/21
 

@@ -23,20 +23,23 @@ Or, find all skills that `staker` command can do by type
 ```
 $ npx staker help
 
-I have 16 skills:
+I have 19 skills:
 * stats - lastest ETH2 stake state
 * lastblock|block - get the lastest block number
-* balance - last balance of [address]
 * gasfee - Show current on-chain gas fee
 * gasnow|now - Show current gas fee via gasnow
 * gasstation|station - Show current gas fee via ETH Gas Station
 * gastracker|tracker - Show current gas fee via Etherscan Gas Tracker
-* etherscan|scan [address] - check contract address on etherscan
-* bloxy [address] - check address on bloxy.info
-* blockchair [address] - check address on blockchair.com
+* balance - last balance of [address]
 * bitquery [address] - check address on explorer.bitquery.io
-* beaconscan|scan [address] - check validator address or number on beaconscan
+* blockchair [address] - check address on blockchair.com
+* bloxy [address] - check token symbol, address or tx hash on bloxy.info
+* etherscan|scan [address] - check contract address on etherscan
+* bitquery-tx|bitquerytx|query-tx|querytx [tx] - check transaction (tx) on bitquery
+* blockchair-tx|blockchairtx [tx] - check transaction (tx) on blockchair.com
+* etherscan-tx|etherscantx|scan-tx|scantx [tx] - check transaction (tx) on etherscan
 * beaconchain|beaconcha|beaconcha.in [address] - check validator address or number on beaconscan
+* beaconscan|scan [address] - check validator address or number on beaconscan
 * awesome|lucky - Show random awesome site around ethereum
 * qrcode [text] - Generate QRCode with [text]
 * help - list available skills
