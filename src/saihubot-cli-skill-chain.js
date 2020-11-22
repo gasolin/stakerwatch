@@ -97,7 +97,7 @@ export const skillLastBlock = {
  */
 export const skillGetBlance = {
   name: 'balance',
-  help: 'balance - last balance of [address]',
+  help: '💵 balance - last balance of [address]',
   requirements: {
     addons: ['fetch'],
   },

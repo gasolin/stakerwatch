@@ -2,6 +2,7 @@
 
 Feature
 - add tx query skills `bitquery-tx`, `blockchair-tx`, `etherscan-tx`
+- add `address` skill to pick from address explorers list. The default option is randomly open the given address with an address explorer.
 
 Enhancement
 - Group address, beacon validator, gas skills in category

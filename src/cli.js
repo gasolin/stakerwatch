@@ -4,6 +4,7 @@ import meow from 'meow';
 import SaihuBot from 'saihubot/dist/saihubot';
 import {
   cliAdapter,
+  addonConfirm,
   addonSearch,
   addonOpenLink,
   addonFetch,
@@ -35,7 +36,13 @@ const cli = meow(`
 const bot = new SaihuBot({
   adapter: cliAdapter(cli),
   bot: '🤖',
-  addons: [addonSearch, addonFetch, addonOpenLink, addonExec],
+  addons: [
+    addonConfirm,
+    addonSearch,
+    addonFetch,
+    addonOpenLink,
+    addonExec,
+  ],
   skills: [
     ...skillsETH2,
     skillGasFee,

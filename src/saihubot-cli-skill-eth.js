@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'React';
 import {Text} from 'ink';
 import {t} from 'saihubot/dist/i18n';
-import {getConfig} from './utils';
+import {getConfig, getRandomItem} from './utils';
 
 const API = {
   GASSTATION: 'https://ethgasstation.info/api/ethgasAPI.json',
@@ -131,13 +131,73 @@ export const skillGasNow = {
 
 const i18nAddr = {
   'en': {
-    needAddr: 'Please pass the address or define SAIHUBOT_ETH_ADDR first'
+    needAddr: 'Please pass the address or define SAIHUBOT_ETH_ADDR first',
+    pick: 'pick address explorer from the list',
   },
   'zh_TW': {
-    needAddr: '請傳入地址，或是預先定義 SAIHUBOT_ETH_ADDR 參數'
+    needAddr: '請傳入地址，或是預先定義 SAIHUBOT_ETH_ADDR 參數',
+    pick: '從列表中選取合適的地址探索工具',
   },
   props: [],
 };
+
+export const skillAddressExplorer = {
+  name: 'address',
+  help: '⭐️ address|addr [address] - pick address explorer from list',
+  requirements: {
+    addons: ['confirm']
+  },
+  rule: /(^address |^addr )(.*)|(^address |^addr)/i,
+  action: function(robot, msg) {
+    let addr = '';
+    if (msg[2] === undefined) {
+      addr = getConfig('ETH_ADDR', '');
+      if (addr === '') {
+        robot.send(t('needAddr', {i18n: i18nAddr}));
+        robot.render();
+        return;
+      }
+    }
+    let data = addr || msg[2];
+    robot.addons.confirm(t('pick', {i18n: i18nAddr}), [
+      {
+        title: 'Random',
+        id: 'random',
+        rule: /^random/i,
+        action: () => robot.ask(`${getRandomItem([
+          'bitquery',
+          'blockchair',
+          'bloxy',
+          'etherscan',
+        ])} ${data}`),
+      },
+      {
+        title: 'BitQuery',
+        id: 'query',
+        rule: /^query/i,
+        action: () => robot.ask(`bitquery ${data}`),
+      },
+      {
+        title: 'Blockchair',
+        id: 'chair',
+        rule: /^chair/i,
+        action: () => robot.ask(`blockchair ${data}`),
+      },
+      {
+        title: 'Bloxy',
+        id: 'bloxy',
+        rule: /^bloxy/i,
+        action: () => robot.ask(`bloxy ${data}`),
+      },
+      {
+        title: 'EtherScan',
+        id: 'scan',
+        rule: /^scan/i,
+        action: () => robot.ask(`etherscan ${data}`),
+      },
+    ]);
+  },
+}
 
 /** check contract address on etherscan */
 export const skillSearchEtherscan = {
@@ -384,6 +444,7 @@ export const skillsGas = [
   skillGasTracker,
 ];
 export const skillsAddress = [
+  skillAddressExplorer,
   skillSearchBitQuery,
   skillSearchBlockchair,
   skillSearchBloxy,

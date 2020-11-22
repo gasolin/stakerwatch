@@ -12,6 +12,9 @@ export const getConfig = (env, defaultValue) => {
     : defaultValue;
 }
 
+/** get random item from an array. */
+export const getRandomItem = (arr) => arr[Math.floor(Math.random() * arr.length)];
+
 // free nodes without API keys from https://ethereumnodes.com/
 const ETH_NODES = [
   'https://api.mycryptoapi.com/eth', // MyCrypto
@@ -31,11 +34,7 @@ let cachedNodeURL = '';
  */
 export const getNodeURL = () => {
   if (cachedNodeURL) return cachedNodeURL;
-
-  cachedNodeURL = getConfig(
-    'NODE_URL',
-    ETH_NODES[Math.floor(Math.random() * ETH_NODES.length)]
-  );
+  cachedNodeURL = getConfig('NODE_URL', getRandomItem(ETH_NODES));
   return cachedNodeURL;
 }
 
