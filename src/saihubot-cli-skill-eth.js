@@ -335,34 +335,23 @@ export const skillSearchBeaconchain = {
   },
 };
 
-const gasSkills = [skillGasNow, skillGasStation, skillGasTracker];
-const addressSkills = [
+export const skillsGas = [skillGasNow, skillGasStation, skillGasTracker];
+export const skillsAddress = [
   skillSearchEtherscan,
   skillSearchBloxy,
   skillSearchBlockchair,
   skillSearchBitQuery,
 ];
-const beaconSkills = [
+export const skillsTx = [];
+export const skillsBeacon = [
   skillSearchBeaconscan,
   skillSearchBeaconchain,
 ];
 
 const skills = [
-  // gas
-  skillGasNow,
-  skillGasStation,
-  skillGasTracker,
-  // address
-  skillSearchEtherscan,
-  skillSearchBloxy,
-  skillSearchBlockchair,
-  skillSearchBitQuery,
-  // beacon
-  skillSearchBeaconscan,
-  skillSearchBeaconchain,
-  // category
-  gasSkills,
-  addressSkills,
-  beaconSkills,
+  ...skillsGas,
+  ...skillsAddress,
+  ...skillsTx,
+  ...skillsBeacon,
 ];
 export {skills};

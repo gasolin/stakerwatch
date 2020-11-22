@@ -11,7 +11,7 @@ import {
   skillHelp,
 } from 'saihubot-cli-adapter';
 import {skillQRCode} from './saihubot-cli-skill-delegates';
-import {skills as skillsEth} from './saihubot-cli-skill-eth';
+import {skillsAddress, skillsTx, skillsBeacon, skillsGas} from './saihubot-cli-skill-eth';
 import {skills as skillsChain} from './saihubot-cli-skill-chain';
 import {skills as skillAwesome} from './saihubot-skill-awesome';
 const cli = meow(`
@@ -38,7 +38,10 @@ const bot = new SaihuBot({
   addons: [addonSearch, addonFetch, addonOpenLink, addonExec],
   skills: [
     ...skillsChain,
-    ...skillsEth,
+    ...skillsGas,
+    ...skillsAddress,
+    ...skillsTx,
+    ...skillsBeacon,
     ...skillAwesome,
     skillQRCode,
     skillHelp,
