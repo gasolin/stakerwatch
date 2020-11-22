@@ -1,3 +1,8 @@
+# 0.6.0 2020/11/22
+
+Enhancement
+- Order address, beacon validator, gas skills in category
+
 # 0.5.0 2020/11/21
 
 Feature

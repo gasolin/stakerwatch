@@ -14,6 +14,8 @@ function int(num) {
   return parseInt(num, 10);
 }
 
+// ==== GAS ===
+
 /**
  * Show current ethereum Gas fee via Etherscan Gas Tracker.
  * https://ethgasstation.info/https://etherscan.io/gastracker
@@ -125,6 +127,8 @@ export const skillGasNow = {
   },
 };
 
+// ==== ADDRESS EXPLORER ===
+
 /** check contract address on etherscan */
 export const skillSearchEtherscan = {
   name: 'etherscan',
@@ -136,82 +140,6 @@ export const skillSearchEtherscan = {
 	action: function(robot, msg) {
     const url = 'https://www.etherscan.io/address/' + msg[2];
     robot.addons.search('Check', msg[2], url, 'etherscan');
-  },
-};
-
-/**
- * check validator address on beaconscan.
- *
- * can pass the validator index or address, or pre-define the
- * SAIHUBOT_VALIDATOR environment variable
- */
-export const skillSearchBeaconscan = {
-  name: 'beaconscan',
-  help: 'beaconscan|scan [address] - check validator address or number on beaconscan',
-  requirements: {
-    addons: ['search'],
-  },
-  i18n: {
-    'en': {
-      needAddr: 'Please pass the index/address or define SAIHUBOT_VALIDATOR first'
-    },
-    'zh_TW': {
-      needAddr: '請傳入索引/地址，或是預先定義 SAIHUBOT_VALIDATOR 參數'
-    },
-    props: [],
-  },
-  rule: /(^beaconscan )(.*)|^beaconscan/i,
-	action: function(robot, msg) {
-    let validator = '';
-    if (msg[2] === undefined) {
-      validator = getConfig('VALIDATOR', '');
-      if (validator === '') {
-        robot.send(t('needAddr', {i18n: this.i18n}));
-        robot.render();
-        return;
-      }
-    }
-    const data = validator || msg[2];
-    const url = 'https://beaconscan.com/medalla/validator/' + data;
-    robot.addons.search('Check', data, url, 'beaconscan(medalla)');
-  },
-};
-
-/**
- * check validator address on beaconcha.in.
- *
- * can pass the validator index or address, or pre-define the
- * SAIHUBOT_VALIDATOR environment variable
- */
-export const skillSearchBeaconchain = {
-  name: 'beaconchain',
-  help: 'beaconchain|beaconcha|beaconcha.in [address] - check validator address or number on beaconscan',
-  requirements: {
-    addons: ['search'],
-  },
-  i18n: {
-    'en': {
-      needAddr: 'Please pass the index/address or define SAIHUBOT_VALIDATOR first'
-    },
-    'zh_TW': {
-      needAddr: '請傳入索引/地址，或是預先定義 SAIHUBOT_VALIDATOR 參數'
-    },
-    props: [],
-  },
-  rule: /(^beaconchain |^beaconcha |^beaconcha\.in )(.*)|^beaconchain|^beaconcha|^beaconcha\.in/i,
-	action: function(robot, msg) {
-    let validator = '';
-    if (msg[2] === undefined) {
-      validator = getConfig('VALIDATOR', '');
-      if (validator === '') {
-        robot.send(t('needAddr', {i18n: this.i18n}));
-        robot.render();
-        return;
-      }
-    }
-    const data = validator.trim() || msg[2];
-    const url = 'https://medalla.beaconcha.in/validator/' + data;
-    robot.addons.search('Check', data, url, 'beaconcha.in(medalla)');
   },
 };
 
@@ -329,15 +257,112 @@ export const skillSearchBitQuery = {
   },
 };
 
-const skills = [
-  skillGasNow,
-  skillGasStation,
-  skillGasTracker,
+// ==== BEACON VALIDATOR ===
+
+/**
+ * check validator address on beaconscan.
+ *
+ * can pass the validator index or address, or pre-define the
+ * SAIHUBOT_VALIDATOR environment variable
+ */
+export const skillSearchBeaconscan = {
+  name: 'beaconscan',
+  help: 'beaconscan|scan [address] - check validator address or number on beaconscan',
+  requirements: {
+    addons: ['search'],
+  },
+  i18n: {
+    'en': {
+      needAddr: 'Please pass the index/address or define SAIHUBOT_VALIDATOR first'
+    },
+    'zh_TW': {
+      needAddr: '請傳入索引/地址，或是預先定義 SAIHUBOT_VALIDATOR 參數'
+    },
+    props: [],
+  },
+  rule: /(^beaconscan )(.*)|^beaconscan/i,
+	action: function(robot, msg) {
+    let validator = '';
+    if (msg[2] === undefined) {
+      validator = getConfig('VALIDATOR', '');
+      if (validator === '') {
+        robot.send(t('needAddr', {i18n: this.i18n}));
+        robot.render();
+        return;
+      }
+    }
+    const data = validator || msg[2];
+    const url = 'https://beaconscan.com/medalla/validator/' + data;
+    robot.addons.search('Check', data, url, 'beaconscan(medalla)');
+  },
+};
+
+/**
+ * check validator address on beaconcha.in.
+ *
+ * can pass the validator index or address, or pre-define the
+ * SAIHUBOT_VALIDATOR environment variable
+ */
+export const skillSearchBeaconchain = {
+  name: 'beaconchain',
+  help: 'beaconchain|beaconcha|beaconcha.in [address] - check validator address or number on beaconscan',
+  requirements: {
+    addons: ['search'],
+  },
+  i18n: {
+    'en': {
+      needAddr: 'Please pass the index/address or define SAIHUBOT_VALIDATOR first'
+    },
+    'zh_TW': {
+      needAddr: '請傳入索引/地址，或是預先定義 SAIHUBOT_VALIDATOR 參數'
+    },
+    props: [],
+  },
+  rule: /(^beaconchain |^beaconcha |^beaconcha\.in )(.*)|^beaconchain|^beaconcha|^beaconcha\.in/i,
+	action: function(robot, msg) {
+    let validator = '';
+    if (msg[2] === undefined) {
+      validator = getConfig('VALIDATOR', '');
+      if (validator === '') {
+        robot.send(t('needAddr', {i18n: this.i18n}));
+        robot.render();
+        return;
+      }
+    }
+    const data = validator.trim() || msg[2];
+    const url = 'https://medalla.beaconcha.in/validator/' + data;
+    robot.addons.search('Check', data, url, 'beaconcha.in(medalla)');
+  },
+};
+
+const gasSkills = [skillGasNow, skillGasStation, skillGasTracker];
+const addressSkills = [
   skillSearchEtherscan,
   skillSearchBloxy,
   skillSearchBlockchair,
   skillSearchBitQuery,
+];
+const beaconSkills = [
   skillSearchBeaconscan,
   skillSearchBeaconchain,
+];
+
+const skills = [
+  // gas
+  skillGasNow,
+  skillGasStation,
+  skillGasTracker,
+  // address
+  skillSearchEtherscan,
+  skillSearchBloxy,
+  skillSearchBlockchair,
+  skillSearchBitQuery,
+  // beacon
+  skillSearchBeaconscan,
+  skillSearchBeaconchain,
+  // category
+  gasSkills,
+  addressSkills,
+  beaconSkills,
 ];
 export {skills};
