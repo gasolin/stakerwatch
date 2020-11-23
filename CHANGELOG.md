@@ -1,12 +1,15 @@
-# 0.6.0 2020/11/22
+# 0.6.1 2020/11/23
 
 Feature
 - add tx query skills `bitquery-tx`, `blockchair-tx`, `etherscan-tx`
 - add `address` skill to pick from address explorers list. The default option is randomly open the given address with an address explorer.
+- add `gas` skill to pick from gas fee estimators. The default option is fetching gas fee from a random gas estimator.
+- add `tx` skill to pick from supported transaction explorers.
+- Add `validator` skill to picke from supported beacon validator explorers.
 
 Enhancement
 - Group address, beacon validator, gas skills in category
-- add Emoji to spot some recommend skills
+- add Emoji 🗞, 💰, 🔎, 🤩 to spotlight some recommend skills
 
 # 0.5.0 2020/11/21
 

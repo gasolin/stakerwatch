@@ -97,7 +97,7 @@ export const skillLastBlock = {
  */
 export const skillGetBlance = {
   name: 'balance',
-  help: '💵balance - last balance of [address]',
+  help: '💰balance - last balance of [address]',
   requirements: {
     addons: ['fetch'],
   },
@@ -180,7 +180,7 @@ const ProgressBar = ({percent, message, title}) => {
  */
 export const skillEth2Stats = {
   name: 'stakestat',
-  help: '⭐️stats - lastest ETH2 stake state',
+  help: '🗞stats - lastest ETH2 stake state',
   requirements: {
     addons: ['fetch'],
   },

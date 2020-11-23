@@ -3,11 +3,11 @@ Command line Utillity for Ethereum stakers.
 
 [![npm version](https://badge.fury.io/js/staker.svg)](https://www.npmjs.com/package/staker)
 
-This utility tool doesn't count on [Infura](https://infura.io/), but randomly pick a [free Ethereum Node](https://ethereumnodes.com/) to fetch the on-chain data. (You can specify a node if you want to)
+The utility tool that help you check ethereum blockchain stats, account balance, address, transaction, gas fee with your terminal. And it randomly pick a [free Ethereum Node](https://ethereumnodes.com/) to fetch the on-chain data instead of counting on [Infura](https://infura.io/). (You can specify a node if you want to)
 
 # Usage
 
-Make sure `node` is installed in your device.
+Make sure [node.js](https://nodejs.org) is installed in your device.
 
 Open terminal and type
 
@@ -23,25 +23,28 @@ Or, find all skills that `staker` command can do by type
 ```
 $ npx staker help
 
-I have 20 skills:
-* ⭐️stats - lastest ETH2 stake state
+I have 23 skills:
+* 🗞stats - lastest ETH2 stake state
 * lastblock|block - get the lastest block number
 * gasfee - Show current on-chain gas fee
+* 🔎gas - pick a gas estimator from the list
 * gasnow|now - Show current gas fee via gasnow
 * gasstation|station - Show current gas fee via ETH Gas Station
 * gastracker|tracker - Show current gas fee via Etherscan Gas Tracker
-* 💵balance - last balance of [address]
-* ⭐️address|addr [address] - pick address explorer from list
+* 💰balance - last balance of [address]
+* 🔎address|addr [address] - pick address explorer from the list
 * bitquery [address] - check address on explorer.bitquery.io
 * blockchair [address] - check address on blockchair.com
 * bloxy [address] - check token symbol, address or tx hash on bloxy.info
 * etherscan|scan [address] - check contract address on etherscan
+* 🔎tx - pick a transaction (tx) explorer from the list
 * bitquery-tx|bitquerytx|query-tx|querytx [tx] - check transaction (tx) on bitquery
 * blockchair-tx|blockchairtx [tx] - check transaction (tx) on blockchair.com
 * etherscan-tx|etherscantx|scan-tx|scantx [tx] - check transaction (tx) on etherscan
+* 🔎valiidator - pick a beacon validator explorer from the list
 * beaconchain|beaconcha|beaconcha.in [address] - check validator address or number on beaconscan
 * beaconscan|scan [address] - check validator address or number on beaconscan
-* awesome|lucky - Show random awesome site around ethereum
+* 🤩awesome|lucky - Show random awesome site around ethereum
 * qrcode [text] - Generate QRCode with [text]
 * help - list available skills
 ```

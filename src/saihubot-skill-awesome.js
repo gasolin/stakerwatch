@@ -24,7 +24,7 @@ const AWESOME_LINKS = [
  */
 export const skillAwesomeEth = {
   name: 'awesome',
-  help: 'awesome|lucky - Show random awesome site around ethereum',
+  help: '🤩awesome|lucky - Show random awesome site around ethereum',
   requirements: {
     addons: ['openLink'],
   },

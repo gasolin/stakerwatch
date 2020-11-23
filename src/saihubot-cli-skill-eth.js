@@ -14,7 +14,72 @@ function int(num) {
   return parseInt(num, 10);
 }
 
+const i18nAddr = {
+  'en': {
+    needAddr: 'Please pass the address or define SAIHUBOT_ETH_ADDR first',
+    pick: 'pick address explorer from the list',
+    random: 'Random',
+  },
+  'zh_TW': {
+    needAddr: '請傳入地址，或是預先定義 SAIHUBOT_ETH_ADDR 參數',
+    pick: '從列表中選取合適的地址探索工具',
+    random: '隨機',
+  },
+  props: [],
+};
+
 // ==== GAS ===
+
+/**
+ * pick gas estimator from the list
+ */
+export const skillGasEstimator = {
+  name: 'gas',
+  help: '🔎gas - pick a gas estimator from the list',
+  requirements: {
+    addons: ['confirm']
+  },
+  rule: /^gas/i,
+  action: function(robot, msg) {
+    robot.addons.confirm(t('pick', {i18n: i18nAddr}), [
+      {
+        title: t('random', {i18n: i18nAddr}),
+        id: 'random',
+        rule: /^random/i,
+        action: () => robot.ask(`${getRandomItem([
+          'gasfee',
+          'gasnow',
+          'gasstation',
+          'gastracker',
+        ])} ${data}`),
+      },
+      {
+        title: 'Gas Fee',
+        id: 'fee',
+        rule: /^fee/i,
+        action: () => robot.ask(`gasfee ${data}`),
+      },
+      {
+        title: 'Gas Now',
+        id: 'now',
+        rule: /^now/i,
+        action: () => robot.ask(`gasnow ${data}`),
+      },
+      {
+        title: 'GasStation',
+        id: 'station',
+        rule: /^station/i,
+        action: () => robot.ask(`gasstation ${data}`),
+      },
+      {
+        title: 'Gas Tracker',
+        id: 'tracker',
+        rule: /^tracker/i,
+        action: () => robot.ask(`gastracker ${data}`),
+      },
+    ]);
+  },
+}
 
 /**
  * Show current ethereum Gas fee via Etherscan Gas Tracker.
@@ -129,21 +194,12 @@ export const skillGasNow = {
 
 // ==== ADDRESS EXPLORER ===
 
-const i18nAddr = {
-  'en': {
-    needAddr: 'Please pass the address or define SAIHUBOT_ETH_ADDR first',
-    pick: 'pick address explorer from the list',
-  },
-  'zh_TW': {
-    needAddr: '請傳入地址，或是預先定義 SAIHUBOT_ETH_ADDR 參數',
-    pick: '從列表中選取合適的地址探索工具',
-  },
-  props: [],
-};
-
+/**
+ * pick address explorer from the list
+ */
 export const skillAddressExplorer = {
   name: 'address',
-  help: '⭐️address|addr [address] - pick address explorer from list',
+  help: '🔎address|addr [address] - pick address explorer from the list',
   requirements: {
     addons: ['confirm']
   },
@@ -161,7 +217,7 @@ export const skillAddressExplorer = {
     let data = addr || msg[2];
     robot.addons.confirm(t('pick', {i18n: i18nAddr}), [
       {
-        title: 'Random',
+        title: t('random', {i18n: i18nAddr}),
         id: 'random',
         rule: /^random/i,
         action: () => robot.ask(`${getRandomItem([
@@ -312,6 +368,57 @@ export const skillSearchBitQuery = {
 
 // ==== TX ===
 
+/**
+ * pick transaction (tx) explorer from the list
+ */
+export const skillTxPicker = {
+  name: 'tx',
+  help: '🔎tx - pick a transaction (tx) explorer from the list',
+  requirements: {
+    addons: ['confirm']
+  },
+  rule: /^tx/i,
+  action: function(robot, msg) {
+    robot.addons.confirm(t('pick', {i18n: i18nAddr}), [
+      {
+        title: t('random', {i18n: i18nAddr}),
+        id: 'random',
+        rule: /^random/i,
+        action: () => robot.ask(`${getRandomItem([
+          'bitquerytx',
+          'blockchair',
+          'bloxy',
+          'etherscantx',
+        ])} ${data}`),
+      },
+      {
+        title: 'BitQuery',
+        id: 'querytx',
+        rule: /^querytx/i,
+        action: () => robot.ask(`querytx ${data}`),
+      },
+      {
+        title: 'BlockChair',
+        id: 'chairtx',
+        rule: /^chairtx/i,
+        action: () => robot.ask(`chairtx ${data}`),
+      },
+      {
+        title: 'Bloxy',
+        id: 'bloxy',
+        rule: /^bloxy/i,
+        action: () => robot.ask(`bloxy ${data}`),
+      },
+      {
+        title: 'Etherscan',
+        id: 'scantx',
+        rule: /^scantx/i,
+        action: () => robot.ask(`scantx ${data}`),
+      },
+    ]);
+  },
+}
+
 /** check transaction (tx) on etherscan */
 export const skillSearchEtherscanTx = {
   name: 'etherscantx',
@@ -370,6 +477,43 @@ const i18nValidator = {
   },
   props: [],
 };
+
+/**
+ * pick beacon validator explorer from the list
+ */
+export const skillValidatorPicker = {
+  name: 'valiidator',
+  help: '🔎valiidator - pick a beacon validator explorer from the list',
+  requirements: {
+    addons: ['confirm']
+  },
+  rule: /^valiidator/i,
+  action: function(robot, msg) {
+    robot.addons.confirm(t('pick', {i18n: i18nAddr}), [
+      {
+        title: t('random', {i18n: i18nAddr}),
+        id: 'random',
+        rule: /^random/i,
+        action: () => robot.ask(`${getRandomItem([
+          'beaconscan',
+          'beaconchain',
+        ])} ${data}`),
+      },
+      {
+        title: 'Beaconscan',
+        id: 'beaconscan',
+        rule: /^beaconscan/i,
+        action: () => robot.ask(`beaconscan ${data}`),
+      },
+      {
+        title: 'Beaconcha.in',
+        id: 'beaconchain',
+        rule: /^beaconchain/i,
+        action: () => robot.ask(`beaconchain ${data}`),
+      },
+    ]);
+  },
+}
 
 /**
  * check validator address on beaconscan.
@@ -439,6 +583,7 @@ export const skillSearchBeaconchain = {
 };
 
 export const skillsGas = [
+  skillGasEstimator,
   skillGasNow,
   skillGasStation,
   skillGasTracker,
@@ -451,11 +596,13 @@ export const skillsAddress = [
   skillSearchEtherscan,
 ];
 export const skillsTx = [
+  skillTxPicker,
   skillSearchBitQueryTx,
   skillSearchBlockchairTx,
   skillSearchEtherscanTx,
 ];
 export const skillsValidator = [
+  skillValidatorPicker,
   skillSearchBeaconchain,
   skillSearchBeaconscan,
 ];
