@@ -582,18 +582,18 @@ export const skillSearchBeaconchain = {
   },
 };
 
-// ==== Account Balance Tracking ===
+// ==== Account/DeFi Balance Tracking ===
 
 /**
  * pick account explorer from the list
  */
 export const skillAccountPicker = {
   name: 'account',
-  help: '🔎account - pick an account explorer from the list',
+  help: '🔎account|defi - pick an account explorer from the list',
   requirements: {
     addons: ['confirm']
   },
-  rule: /^account/i,
+  rule: /^account|^defi/i,
   action: function(robot, msg) {
     let addr = '';
     if (msg[2] === undefined) {
