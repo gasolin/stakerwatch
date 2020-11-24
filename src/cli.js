@@ -12,7 +12,7 @@ import {
   skillHelp,
 } from 'saihubot-cli-adapter';
 import {skillQRCode} from './saihubot-cli-skill-delegates';
-import {skillsAddress, skillsTx, skillsValidator, skillsGas} from './saihubot-cli-skill-eth';
+import {skillsAccount, skillsAddress, skillsTx, skillsValidator, skillsGas} from './saihubot-cli-skill-eth';
 import {skillsETH2, skillGetBlance, skillGasFee} from './saihubot-cli-skill-chain';
 import {skills as skillAwesome} from './saihubot-skill-awesome';
 const cli = meow(`
@@ -48,6 +48,7 @@ const bot = new SaihuBot({
     skillGasFee,
     ...skillsGas,
     skillGetBlance,
+    ...skillsAccount,
     ...skillsAddress,
     ...skillsTx,
     ...skillsValidator,

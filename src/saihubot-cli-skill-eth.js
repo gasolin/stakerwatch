@@ -87,7 +87,7 @@ export const skillGasEstimator = {
  */
 export const skillGasTracker = {
   name: 'gastracker',
-  help: 'gastracker|tracker - Show current gas fee via Etherscan Gas Tracker',
+  help: '🛢 gastracker|tracker - Show current gas fee via Etherscan Gas Tracker',
   requirements: {
     addons: ['fetch'],
   },
@@ -124,7 +124,7 @@ export const skillGasTracker = {
  */
 export const skillGasStation = {
   name: 'gasstation',
-  help: 'gasstation|station - Show current gas fee via ETH Gas Station',
+  help: '🛢 gasstation|station - Show current gas fee via ETH Gas Station',
   requirements: {
     addons: ['fetch'],
   },
@@ -161,7 +161,7 @@ export const skillGasStation = {
  */
 export const skillGasNow = {
   name: 'gasnow',
-  help: 'gasnow|now - Show current gas fee via gasnow',
+  help: '🛢 gasnow|now - Show current gas fee via gasnow',
   requirements: {
     addons: ['fetch'],
   },
@@ -195,7 +195,7 @@ export const skillGasNow = {
 // ==== ADDRESS EXPLORER ===
 
 /**
- * pick address explorer from the list
+ * Check address explorer from the list
  */
 export const skillAddressExplorer = {
   name: 'address',
@@ -255,10 +255,10 @@ export const skillAddressExplorer = {
   },
 }
 
-/** check contract address on etherscan */
+/** Check contract address on etherscan */
 export const skillSearchEtherscan = {
   name: 'etherscan',
-  help: 'etherscan|scan [address] - check contract address on etherscan',
+  help: '🏦etherscan|scan [address] - check contract address on etherscan',
   requirements: {
     addons: ['search'],
   },
@@ -280,14 +280,14 @@ export const skillSearchEtherscan = {
 };
 
 /**
- * check token symbol, address or tx hash on bloxy.info.
+ * Check token symbol, address or tx hash on bloxy.info.
  *
  * can pass the address or pre-define the
  * SAIHUBOT_ETH_ADDR environment variable
  */
 export const skillSearchBloxy = {
   name: 'bloxy',
-  help: 'bloxy [address] - check token symbol, address or tx hash on bloxy.info',
+  help: '🏦bloxy [address] - check token symbol, address or tx hash on bloxy.info',
   requirements: {
     addons: ['search'],
   },
@@ -309,14 +309,14 @@ export const skillSearchBloxy = {
 };
 
 /**
- * check address on blockchair.
+ * Check address on blockchair.
  *
  * can pass the address, or pre-define the
  * SAIHUBOT_ETH_ADDR environment variable
  */
 export const skillSearchBlockchair = {
   name: 'blockchair',
-  help: 'blockchair [address] - check address on blockchair.com',
+  help: '🏦blockchair [address] - check address on blockchair.com',
   requirements: {
     addons: ['search'],
   },
@@ -338,14 +338,14 @@ export const skillSearchBlockchair = {
 };
 
 /**
- * check address on bitquery.
+ * Check address on bitquery.
  *
  * can pass the address, or pre-define the
  * SAIHUBOT_ETH_ADDR environment variable
  */
 export const skillSearchBitQuery = {
   name: 'bitquery',
-  help: 'bitquery [address] - check address on explorer.bitquery.io',
+  help: '🏦bitquery [address] - check address on explorer.bitquery.io',
   requirements: {
     addons: ['search'],
   },
@@ -419,7 +419,7 @@ export const skillTxPicker = {
   },
 }
 
-/** check transaction (tx) on etherscan */
+/** Check transaction (tx) on etherscan */
 export const skillSearchEtherscanTx = {
   name: 'etherscantx',
   help: 'etherscan-tx|etherscantx|scan-tx|scantx [tx] - check transaction (tx) on etherscan',
@@ -435,7 +435,7 @@ export const skillSearchEtherscanTx = {
 
 
 /**
- * check transaction (tx) on blockchair.
+ * Check transaction (tx) on blockchair.
  */
 export const skillSearchBlockchairTx = {
   name: 'blockchair',
@@ -451,7 +451,7 @@ export const skillSearchBlockchairTx = {
 };
 
 /**
- * check transaction (tx) on explorer.bitquery.io.
+ * Check transaction (tx) on explorer.bitquery.io.
  */
 export const skillSearchBitQueryTx = {
   name: 'bitquerytx',
@@ -516,14 +516,14 @@ export const skillValidatorPicker = {
 }
 
 /**
- * check validator address on beaconscan.
+ * Check validator address on beaconscan.
  *
  * can pass the validator index or address, or pre-define the
  * SAIHUBOT_VALIDATOR environment variable
  */
 export const skillSearchBeaconscan = {
   name: 'beaconscan',
-  help: 'beaconscan|scan [address] - check validator address or number on beaconscan',
+  help: '🥓beaconscan|scan [address] - check validator address or number on beaconscan',
   requirements: {
     addons: ['search'],
   },
@@ -545,14 +545,14 @@ export const skillSearchBeaconscan = {
 };
 
 /**
- * check validator address on beaconcha.in.
+ * Check validator address on beaconcha.in.
  *
  * can pass the validator index or address, or pre-define the
  * SAIHUBOT_VALIDATOR environment variable
  */
 export const skillSearchBeaconchain = {
   name: 'beaconchain',
-  help: 'beaconchain|beaconcha|beaconcha.in [address] - check validator address or number on beaconscan',
+  help: '🥓beaconchain|beaconcha|beaconcha.in [address] - check validator address or number on beaconscan',
   requirements: {
     addons: ['search'],
   },
@@ -582,6 +582,150 @@ export const skillSearchBeaconchain = {
   },
 };
 
+// ==== Account Balance Tracking ===
+
+/**
+ * pick account explorer from the list
+ */
+export const skillAccountPicker = {
+  name: 'account',
+  help: '🔎account - pick an account explorer from the list',
+  requirements: {
+    addons: ['confirm']
+  },
+  rule: /^account/i,
+  action: function(robot, msg) {
+    let addr = '';
+    if (msg[2] === undefined) {
+      addr = getConfig('ETH_ADDR', '');
+      if (addr === '') {
+        robot.send(t('needAddr', {i18n: i18nAddr}));
+        robot.render();
+        return;
+      }
+    }
+    let data = addr || msg[2];
+    robot.addons.confirm(t('pick', {i18n: i18nAddr}), [
+      {
+        title: t('random', {i18n: i18nAddr}),
+        id: 'random',
+        rule: /^random/i,
+        action: () => robot.ask(`${getRandomItem([
+          'debank',
+          'zapper',
+          'zerion',
+        ])} ${data}`),
+      },
+      {
+        title: 'Debank',
+        id: 'debank',
+        rule: /^debank/i,
+        action: () => robot.ask(`debank ${data}`),
+      },
+      {
+        title: 'Zapper',
+        id: 'zapper',
+        rule: /^zapper/i,
+        action: () => robot.ask(`zapper ${data}`),
+      },
+      {
+        title: 'Zerion',
+        id: 'zerion',
+        rule: /^zerion/i,
+        action: () => robot.ask(`zerion ${data}`),
+      },
+    ]);
+  },
+}
+
+/**
+ * Check DeFi Balance on debank.
+ *
+ * can pass the address, or pre-define the
+ * SAIHUBOT_ETH_ADDR environment variable
+ */
+export const skillSearchDebank = {
+  name: 'debank',
+  help: '🧩debank [address] - check DeFi balances on Debank',
+  requirements: {
+    addons: ['search'],
+  },
+  rule: /(^debank )(.*)|^debank/i,
+  action: function(robot, msg) {
+    let addr = '';
+    if (msg[2] === undefined) {
+      addr = getConfig('ETH_ADDR', '');
+      if (addr === '') {
+        robot.send(t('needAddr', {i18n: i18nAddr}));
+        robot.render();
+        return;
+      }
+    }
+    const data = addr || msg[2];
+    const url = 'https://debank.com/portfolio/' + data;
+    robot.addons.search('Check', data, url, 'Debank');
+  },
+};
+
+/**
+ * Check DeFi Balance on Zapper.
+ *
+ * can pass the address, or pre-define the
+ * SAIHUBOT_ETH_ADDR environment variable
+ */
+export const skillSearchZapper = {
+  name: 'zapper',
+  help: '🧩zapper [address] - check DeFi balance on Zapper',
+  requirements: {
+    addons: ['search'],
+  },
+  rule: /(^zapper )(.*)|^zapper/i,
+  action: function(robot, msg) {
+    let addr = '';
+    if (msg[2] === undefined) {
+      addr = getConfig('ETH_ADDR', '');
+      if (addr === '') {
+        robot.send(t('needAddr', {i18n: i18nAddr}));
+        robot.render();
+        return;
+      }
+    }
+    const data = addr || msg[2];
+    const url = 'https://zapper.fi/dashboard?address=' + data;
+    robot.addons.search('Check', data, url, 'explorer.bitquery.io');
+  },
+};
+
+
+/**
+ * Check DeFi Balance on Zerion.
+ *
+ * can pass the address, or pre-define the
+ * SAIHUBOT_ETH_ADDR environment variable
+ */
+export const skillSearchZerion = {
+  name: 'zerion',
+  help: '🧩zerion [address] - check DeFi Balance on Zerion',
+  requirements: {
+    addons: ['search'],
+  },
+  rule: /(^zerion )(.*)|^zerion/i,
+  action: function(robot, msg) {
+    let addr = '';
+    if (msg[2] === undefined) {
+      addr = getConfig('ETH_ADDR', '');
+      if (addr === '') {
+        robot.send(t('needAddr', {i18n: i18nAddr}));
+        robot.render();
+        return;
+      }
+    }
+    const data = addr || msg[2];
+    const url = 'https://app.zerion.io/' + data + '/overview';
+    robot.addons.search('Check', data, url, 'Zerion');
+  },
+};
+
 export const skillsGas = [
   skillGasEstimator,
   skillGasNow,
@@ -606,9 +750,16 @@ export const skillsValidator = [
   skillSearchBeaconchain,
   skillSearchBeaconscan,
 ];
+export const skillsAccount = [
+  skillAccountPicker,
+  skillSearchDebank,
+  skillSearchZapper,
+  skillSearchZerion,
+];
 
 const skills = [
   ...skillsGas,
+  ...skillsAccount,
   ...skillsAddress,
   ...skillsTx,
   ...skillsValidator,

@@ -180,7 +180,7 @@ const ProgressBar = ({percent, message, title}) => {
  */
 export const skillEth2Stats = {
   name: 'stakestat',
-  help: '🗞stats - lastest ETH2 stake state',
+  help: '🗞 stats - lastest ETH2 stake state',
   requirements: {
     addons: ['fetch'],
   },
@@ -220,7 +220,7 @@ export const skillEth2Stats = {
  */
 export const skillGasFee = {
   name: 'gasfee',
-  help: 'gasfee - Show current on-chain gas fee',
+  help: '🛢 gasfee - Show current on-chain gas fee',
   requirements: {
     addons: ['fetch'],
   },
