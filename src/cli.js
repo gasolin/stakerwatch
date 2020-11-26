@@ -16,14 +16,15 @@ import {skillsAccount, skillsAddress, skillsTx, skillsValidator, skillsGas} from
 import {skillsETH2, skillGetBlance, skillGasFee} from './saihubot-cli-skill-chain';
 import {skills as skillAwesome} from './saihubot-skill-awesome';
 const cli = meow(`
+  v${process.env.npm_package_version}
   Usage
-    $ staker
+    $ staker [command]
 
   Options
     --debug show debug messages
 
   Examples
-    $ staker stats
+    $ staker help
 `, {
   flags: {
     debug: {

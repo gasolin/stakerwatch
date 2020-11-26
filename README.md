@@ -3,7 +3,7 @@ Command line Utillity for Ethereum stakers.
 
 [![npm version](https://badge.fury.io/js/staker.svg)](https://www.npmjs.com/package/staker)
 
-The utility tool that help you check ethereum blockchain stats, account balance, address, transaction, gas fee with your terminal. And it randomly pick a [free Ethereum Node](https://ethereumnodes.com/) to fetch the on-chain data instead of counting on [Infura](https://infura.io/). (You can specify a node if you want to)
+The utility tool that help you check ethereum blockchain stats, account balance, defi balances, address, transaction, gas fee with your terminal. Staker randomly pick a [free Ethereum Node](https://ethereumnodes.com/) to fetch the on-chain data instead of counting on [Infura](https://infura.io/). (You can specify a node if you want to)
 
 # Usage
 

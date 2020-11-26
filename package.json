@@ -22,8 +22,10 @@
   "keywords": [
     "saihubot",
     "cli",
+    "saihubot-skill",
     "ethereum",
-    "saihubot-skill"
+    "defi",
+    "beacon"
   ],
   "author": "Fred Lin <gasolin+saihubot@gmail.com>",
   "license": "MIT",

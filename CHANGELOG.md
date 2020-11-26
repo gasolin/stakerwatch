@@ -1,10 +1,14 @@
-# 0.7.0 2020/11/24
+# 0.7.1 2020/11/26
 
 Feature
 - add `account` skill to pick from account explorers (or defi dashboard) list. The default option is randomly open the given address with an account explorer.
 - add Defi Balance skills `debank`, `zapper`, `zerion`
+
 Enhancement
 - Applied more emojis
+
+Fix
+- fix the gas picker
 
 # 0.6.1 2020/11/23
 
