@@ -1,4 +1,4 @@
-# 0.7.1 2020/11/26
+# 0.7.2 2020/11/26
 
 Feature
 - add `account` skill to pick from account explorers (or defi dashboard) list. The default option is randomly open the given address with an account explorer.
