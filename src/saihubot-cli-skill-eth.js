@@ -374,11 +374,11 @@ export const skillSearchBitQuery = {
  */
 export const skillSearchBSCscan = {
   name: 'bscscan',
-  help: '🏦bscscan [address] - check address on Binance Smart Chain',
+  help: '🏦bsc|bscscan [address] - check address on Binance Smart Chain',
   requirements: {
     addons: ['search'],
   },
-  rule: /(^bscscan )(.*)|^bscscan/i,
+  rule: /(^bscscan |^bsc )(.*)|^bscscan|^bsc/i,
   action: function(robot, msg) {
     let addr = '';
     if (msg[2] === undefined) {
