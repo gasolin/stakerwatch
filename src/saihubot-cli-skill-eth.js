@@ -366,6 +366,65 @@ export const skillSearchBitQuery = {
   },
 };
 
+/**
+ * Check address on bscscan.
+ *
+ * can pass the address, or pre-define the
+ * SAIHUBOT_ETH_ADDR environment variable
+ */
+export const skillSearchBSCscan = {
+  name: 'bscscan',
+  help: '🏦bscscan [address] - check address on Binance Smart Chain',
+  requirements: {
+    addons: ['search'],
+  },
+  rule: /(^bscscan )(.*)|^bscscan/i,
+  action: function(robot, msg) {
+    let addr = '';
+    if (msg[2] === undefined) {
+      addr = getConfig('ETH_ADDR', '');
+      if (addr === '') {
+        robot.send(t('needAddr', {i18n: i18nAddr}));
+        robot.render();
+        return;
+      }
+    }
+    const data = addr || msg[2];
+    const url = 'https://bscscan.com/address/' + data;
+    robot.addons.search('Check', data, url, 'Binance Smart Chain');
+  },
+};
+
+
+/**
+ * Check address on xDai.
+ *
+ * can pass the address, or pre-define the
+ * SAIHUBOT_ETH_ADDR environment variable
+ */
+export const skillSearchXDai = {
+  name: 'xdai',
+  help: '🏦xdai [address] - check address on xDai Chain',
+  requirements: {
+    addons: ['search'],
+  },
+  rule: /(^xdai )(.*)|^xdai/i,
+  action: function(robot, msg) {
+    let addr = '';
+    if (msg[2] === undefined) {
+      addr = getConfig('ETH_ADDR', '');
+      if (addr === '') {
+        robot.send(t('needAddr', {i18n: i18nAddr}));
+        robot.render();
+        return;
+      }
+    }
+    const data = addr || msg[2];
+    const url = 'https://blockscout.com/poa/xdai/address/' + data + '/tokens';
+    robot.addons.search('Check', data, url, 'xDai');
+  },
+};
+
 // ==== TX ===
 
 /**
@@ -463,6 +522,38 @@ export const skillSearchBitQueryTx = {
   action: function(robot, msg) {
     const url = 'https://explorer.bitquery.io/ethereum/tx/' + msg[2];
     robot.addons.search('Check tx', msg[2], url, 'explorer.bitquery.io');
+  },
+};
+
+/**
+ * Check transaction (tx) on Binance Smart Chain.
+ */
+export const skillSearchBSCscanTx = {
+  name: 'bscscantx',
+  help: '🏦bsc-tx|bsctx|bscscan-tx|bscscantx [tx] - check transaction (tx) on Binance Smart Chain',
+  requirements: {
+    addons: ['search'],
+  },
+  rule: /(^bsc-tx |^bsctx |^bscscan-tx |^bscscantx )(.*)/i,
+  action: function(robot, msg) {
+    const url = 'https://bscscan.com/tx/' + data;
+    robot.addons.search('Check tx', data, url, 'Binance Smart Chain');
+  },
+};
+
+/**
+ * Check transaction (tx) on xDai Chain.
+ */
+export const skillSearchXDaiTx = {
+  name: 'xdaitx',
+  help: '🏦xdai-tx|xdaitx [tx] - check transaction (tx) on xDai Chain',
+  requirements: {
+    addons: ['search'],
+  },
+  rule: /(^xdai-tx |^xdaitx)(.*)/i,
+  action: function(robot, msg) {
+    const url = 'https://blockscout.com/poa/xdai/tx/' + data + '/internal-transactions';
+    robot.addons.search('Check tx', data, url, 'xDai Chain');
   },
 };
 
@@ -756,6 +847,12 @@ export const skillsAccount = [
   skillSearchZapper,
   skillSearchZerion,
 ];
+export const skillsSideChain = [
+  skillSearchBSCscan,
+  skillSearchBSCscanTx,
+  skillSearchXDai,
+  skillSearchXDaiTx,
+];
 
 const skills = [
   ...skillsGas,
@@ -763,5 +860,6 @@ const skills = [
   ...skillsAddress,
   ...skillsTx,
   ...skillsValidator,
+  ...skillsSideChain,
 ];
 export {skills};

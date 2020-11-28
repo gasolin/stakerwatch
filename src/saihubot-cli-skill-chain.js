@@ -2,10 +2,9 @@
 
 import React from 'react';
 import { Text } from 'ink';
-import Table from 'ink-table';
 import AsciiBar from 'ascii-bar';
 import { t } from 'saihubot/dist/i18n';
-import {getConfig, getNodeURL, TOKEN} from './utils';
+import {getNodeURL} from './utils';
 
 const ADDR = {
   ETH2_DEPOSIT: '0x00000000219ab540356cbb839cbe05303d7705fa',
@@ -41,7 +40,7 @@ const rpcEthBalance = (address) => JSON.stringify({
   params: [`${address}`, "latest"],
 });
 
-const rpcTokenBalance = (address, token) => JSON.stringify({
+/*const rpcTokenBalance = (address, token) => JSON.stringify({
   jsonrpc: '2.0',
   id: idx++,
   method: 'eth_call',
@@ -51,7 +50,7 @@ const rpcTokenBalance = (address, token) => JSON.stringify({
     },
     'latest'
   ],
-});
+});*/
 
 const rpcGasPrice = () => JSON.stringify({
   jsonrpc: '2.0',
@@ -86,69 +85,6 @@ export const skillLastBlock = {
       robot.send(msg);
       robot.render();
     })
-  },
-}
-
-/**
- * Get balance of [address].
- *
- * can pass the address, or pre-define the
- * SAIHUBOT_ETH_ADDR environment variable
- */
-export const skillGetBlance = {
-  name: 'balance',
-  help: '💰balance - last balance of [address]',
-  requirements: {
-    addons: ['fetch'],
-  },
-  i18n: {
-    'en': {
-      query: 'Query balance...',
-      token: 'Symbol',
-      balance: 'Balance',
-      needAddr: 'Please pass the address or define SAIHUBOT_ETH_ADDR first',
-    },
-    'zh_TW': {
-      query: '查詢餘額中...',
-      token: '幣種',
-      balance: '餘額',
-      needAddr: '請傳入地址或是預先定義 SAIHUBOT_ETH_ADDR 參數',
-    },
-    props: ['balance', 'usdt']
-  },
-  rule: /(^balance )(.*)|^balance/i,
-  action: function(robot, msg) {
-    let addr = '';
-    if (msg[2] === undefined) {
-      addr = getConfig('ETH_ADDR', '');
-      if (addr.trim() === '') {
-        robot.send(t('needAddr', {i18n: this.i18n}));
-        robot.render();
-        return;
-      }
-    }
-    const parsedAddr = addr.trim() || msg[2];
-    async function getBalances(i18n) {
-      const eth = await ethFetch(robot.addons.fetch, rpcEthBalance(parsedAddr));
-      const ethBalance = (parseInt(eth.result)/10**18).toFixed(4);
-      const usdt = await ethFetch(robot.addons.fetch, rpcTokenBalance(parsedAddr, TOKEN.USDT.addr));
-      const usdtBalance = Math.round(parseInt(usdt.result, 16) * 100 /10**TOKEN.USDT.decimals)/100;
-      let data = [
-        {
-          [t('token', {i18n})]: 'ETH',
-          [t('balance', {i18n})]: ethBalance,
-        }
-      ];
-      usdtBalance && data.push({
-        [t('token', {i18n})]: 'USDt',
-        [t('balance', {i18n})]: usdtBalance,
-      })
-      robot.sendComponent(<Table data={data} />);
-      robot.render();
-    }
-    robot.send(t('query', {i18n: this.i18n}));
-    robot.render();
-    getBalances(this.i18n);
   },
 }
 
@@ -246,5 +182,5 @@ export const skillGasFee = {
 }
 
 export const skillsETH2 = [skillEth2Stats, skillLastBlock];
-const skills = [...skillsETH2, skillGetBlance, skillGasFee];
+const skills = [...skillsETH2, /*skillGetBlance*/, skillGasFee];
 export {skills};

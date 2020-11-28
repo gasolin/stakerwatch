@@ -1,6 +1,6 @@
 {
   "name": "staker",
-  "version": "0.7.2",
+  "version": "0.8.0",
   "description": "Command line Utillity for Ethereum stakers",
   "bin": {
     "staker": "./dist/cli.js"
@@ -34,6 +34,7 @@
   },
   "homepage": "http://stakerwat.ch/",
   "dependencies": {
+    "@mycrypto/eth-scan": "^3.1.2",
     "ascii-bar": "^1.0.3",
     "ink-table": "^3.0.0",
     "react": "^16.14.0",
