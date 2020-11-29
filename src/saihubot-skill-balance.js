@@ -110,19 +110,20 @@ export const contractMap = {
 
 /**
  * Get ETH and stable coins balance of [address].
+ * Includes the stable token load in AAVE and Compound
  *
  * can pass the address, or pre-define the
  * SAIHUBOT_ETH_ADDR environment variable
  */
 export const skillGetBlance = {
   name: 'balance',
-  help: '💰balance - last balance of [address]',
+  help: '💰balance - Show current balance of [address]',
   requirements: {
     addons: ['fetch'],
   },
   i18n: {
     'en': {
-      query: 'Query balance...',
+      query: 'Query current balance...',
       token: 'Symbol',
       balance: 'Balance',
       source: 'Source',
@@ -160,6 +161,8 @@ export const skillGetBlance = {
           [t('source', {i18n})]: '',
         });
       });
+      robot.sendComponent(<Table data={data} />);
+      robot.render();
 
       const tokenBalances = await getTokensBalances(getNodeURL(), [parsedAddr], Object.keys(contractMap));
       Object.keys(tokenBalances).map(addr =>
@@ -173,7 +176,6 @@ export const skillGetBlance = {
           });
         })
       );
-
       robot.sendComponent(<Table data={data} />);
       robot.render();
     }

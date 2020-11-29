@@ -6,6 +6,9 @@ Feature
 - (rewrite) get ETH and stable coins balance of [address]
 - list stable token loan on Compound and AAVE
 
+Enhancement
+- Progressively shows ETH balance and the rest.
+
 # 0.7.2 2020/11/26
 
 Feature

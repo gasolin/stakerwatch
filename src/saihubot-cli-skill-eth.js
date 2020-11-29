@@ -35,7 +35,7 @@ const i18nAddr = {
  */
 export const skillGasEstimator = {
   name: 'gas',
-  help: '🔎gas - pick a gas estimator from the list',
+  help: '🔎gas - Pick a gas estimator from the list',
   requirements: {
     addons: ['confirm']
   },
@@ -199,7 +199,7 @@ export const skillGasNow = {
  */
 export const skillAddressExplorer = {
   name: 'address',
-  help: '🔎address|addr [address] - pick address explorer from the list',
+  help: '🔎address|addr [address] - Pick address explorer from the list',
   requirements: {
     addons: ['confirm']
   },
@@ -432,7 +432,7 @@ export const skillSearchXDai = {
  */
 export const skillTxPicker = {
   name: 'tx',
-  help: '🔎tx - pick a transaction (tx) explorer from the list',
+  help: '🔎tx - Pick a transaction (tx) explorer from the list',
   requirements: {
     addons: ['confirm']
   },
@@ -574,7 +574,7 @@ const i18nValidator = {
  */
 export const skillValidatorPicker = {
   name: 'valiidator',
-  help: '🔎valiidator - pick a beacon validator explorer from the list',
+  help: '🔎valiidator - Pick a beacon validator explorer from the list',
   requirements: {
     addons: ['confirm']
   },
@@ -680,7 +680,7 @@ export const skillSearchBeaconchain = {
  */
 export const skillAccountPicker = {
   name: 'account',
-  help: '🔎account|defi - pick an account explorer from the list',
+  help: '🔎account|defi - Pick an account explorer from the list',
   requirements: {
     addons: ['confirm']
   },
