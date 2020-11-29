@@ -1,9 +1,10 @@
-# 0.8.0 2020/11/28
+# 0.8.2 2020/11/28
 
 Feature
 - add Binance Smart Chain address and tx skill
 - add xDai chain address and tx skill
 - (rewrite) get ETH and stable coins balance of [address]
+- list stable token loan on Compound and AAVE
 
 # 0.7.2 2020/11/26
 

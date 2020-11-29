@@ -23,7 +23,7 @@ Or, find all skills that `staker` command can do by type
 ```
 $ npx staker help
 
-I have 27 skills:
+I have 31 skills:
 * 🗞 stats - lastest ETH2 stake state
 * lastblock|block - get the lastest block number
 * 🛢 gasfee - Show current on-chain gas fee
@@ -32,7 +32,7 @@ I have 27 skills:
 * 🛢 gasstation|station - Show current gas fee via ETH Gas Station
 * 🛢 gastracker|tracker - Show current gas fee via Etherscan Gas Tracker
 * 💰balance - last balance of [address]
-* 🔎account - pick an account explorer from the list
+* 🔎account|defi - pick an account explorer from the list
 * 🧩debank [address] - check DeFi balances on Debank
 * 🧩zapper [address] - check DeFi balance on Zapper
 * 🧩zerion [address] - check DeFi Balance on Zerion
@@ -48,6 +48,10 @@ I have 27 skills:
 * 🔎valiidator - pick a beacon validator explorer from the list
 * 🥓beaconchain|beaconcha|beaconcha.in [address] - check validator address or number on beaconscan
 * 🥓beaconscan|scan [address] - check validator address or number on beaconscan
+* 🏦bsc|bscscan [address] - check address on Binance Smart Chain
+* 🏦bsc-tx|bsctx|bscscan-tx|bscscantx [tx] - check transaction (tx) on Binance Smart Chain
+* 🏦xdai [address] - check address on xDai Chain
+* 🏦xdai-tx|xdaitx [tx] - check transaction (tx) on xDai Chain
 * 🤩awesome|lucky - Show random awesome site around ethereum
 * qrcode [text] - Generate QRCode with [text]
 * help - list available skills
