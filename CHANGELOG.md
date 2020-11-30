@@ -4,7 +4,7 @@ Break Change
 - [beaconscan][beaconchain] switch from medalla testnet to mainnet
 
 Fix
-- fix command [gas][tx][valiidator]
+- fix command [gas][tx][validator]
 
 # 0.8.2 2020/11/28
 

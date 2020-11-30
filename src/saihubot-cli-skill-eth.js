@@ -574,12 +574,12 @@ const i18nValidator = {
  * pick beacon validator explorer from the list
  */
 export const skillValidatorPicker = {
-  name: 'valiidator',
-  help: '🔎valiidator - Pick a beacon validator explorer from the list',
+  name: 'validator',
+  help: '🔎validator - Pick a beacon validator explorer from the list',
   requirements: {
     addons: ['confirm']
   },
-  rule: /(^valiidator )(.*)/i,
+  rule: /(^validator )(.*)/i,
   action: function(robot, msg) {
     const data = msg[2];
     robot.addons.confirm(t('pick', {i18n: i18nAddr}), [
