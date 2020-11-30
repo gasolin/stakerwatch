@@ -1,10 +1,11 @@
-# 0.9.1 2020/11/30
+# 0.9.3 2020/11/30
 
 Break Change
 - [beaconscan][beaconchain] switch from medalla testnet to mainnet
 
 Fix
-- fix command [gas][tx][validator]
+- fix skill rule [gas][tx][validator]
+- fix skill text [Zapper]
 
 # 0.8.2 2020/11/28
 

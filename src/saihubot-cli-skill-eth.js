@@ -785,7 +785,7 @@ export const skillSearchZapper = {
     }
     const data = addr || msg[2];
     const url = 'https://zapper.fi/dashboard?address=' + data;
-    robot.addons.search('Check', data, url, 'explorer.bitquery.io');
+    robot.addons.search('Check', data, url, 'Zapper');
   },
 };
 
