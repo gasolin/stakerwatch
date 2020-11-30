@@ -39,7 +39,7 @@ export const skillGasEstimator = {
   requirements: {
     addons: ['confirm']
   },
-  rule: /^gas/i,
+  rule: /^gas$/i,
   action: function(robot, msg) {
     robot.addons.confirm(t('pick', {i18n: i18nAddr}), [
       {
@@ -174,7 +174,7 @@ export const skillGasNow = {
     },
     props: ['H', 'M', 'L']
   },
-  rule: /^gasnow|^now/i,
+  rule: /^gasnow$|^now$/i,
   action: function(robot, msg) {
     robot.addons.fetch(API.GASNOW)
       .then(response => response.json())
@@ -203,7 +203,7 @@ export const skillAddressExplorer = {
   requirements: {
     addons: ['confirm']
   },
-  rule: /(^address |^addr )(.*)|(^address |^addr)/i,
+  rule: /(^address |^addr )(.*)|(^address$|^addr$)/i,
   action: function(robot, msg) {
     let addr = '';
     if (msg[2] === undefined) {
@@ -262,7 +262,7 @@ export const skillSearchEtherscan = {
   requirements: {
     addons: ['search'],
   },
-  rule: /(^etherscan |^scan )(.*)/i,
+  rule: /(^etherscan |^scan )(.*)|^etherscan$|^scan$/i,
   action: function(robot, msg) {
     let addr = '';
     if (msg[2] === undefined) {
@@ -291,7 +291,7 @@ export const skillSearchBloxy = {
   requirements: {
     addons: ['search'],
   },
-  rule: /(^bloxy )(.*)|^bloxy/i,
+  rule: /(^bloxy )(.*)|^bloxy$/i,
   action: function(robot, msg) {
     let addr = '';
     if (msg[2] === undefined) {
@@ -320,7 +320,7 @@ export const skillSearchBlockchair = {
   requirements: {
     addons: ['search'],
   },
-  rule: /(^blockchair )(.*)|^blockchair/i,
+  rule: /(^blockchair )(.*)|^blockchair$/i,
   action: function(robot, msg) {
     let addr = '';
     if (msg[2] === undefined) {
@@ -349,7 +349,7 @@ export const skillSearchBitQuery = {
   requirements: {
     addons: ['search'],
   },
-  rule: /(^bitquery )(.*)|^bitquery/i,
+  rule: /(^bitquery )(.*)|^bitquery$/i,
   action: function(robot, msg) {
     let addr = '';
     if (msg[2] === undefined) {
@@ -378,7 +378,7 @@ export const skillSearchBSCscan = {
   requirements: {
     addons: ['search'],
   },
-  rule: /(^bscscan |^bsc )(.*)|^bscscan|^bsc/i,
+  rule: /(^bscscan |^bsc )(.*)|^bscscan$|^bsc$/i,
   action: function(robot, msg) {
     let addr = '';
     if (msg[2] === undefined) {
@@ -408,7 +408,7 @@ export const skillSearchXDai = {
   requirements: {
     addons: ['search'],
   },
-  rule: /(^xdai )(.*)|^xdai/i,
+  rule: /(^xdai )(.*)|^xdai$/i,
   action: function(robot, msg) {
     let addr = '';
     if (msg[2] === undefined) {
@@ -436,8 +436,9 @@ export const skillTxPicker = {
   requirements: {
     addons: ['confirm']
   },
-  rule: /^tx/i,
+  rule: /^(tx )(.*)/i,
   action: function(robot, msg) {
+    const data = msg[2];
     robot.addons.confirm(t('pick', {i18n: i18nAddr}), [
       {
         title: t('random', {i18n: i18nAddr}),
@@ -502,7 +503,7 @@ export const skillSearchBlockchairTx = {
   requirements: {
     addons: ['search'],
   },
-  rule: /(^blockchair-tx |^blockchairtx )(.*)/i,
+  rule: /(^blockchair-tx |^blockchairtx |^chair-tx |^chairtx )(.*)/i,
   action: function(robot, msg) {
     const url = 'https://blockchair.com/ethereum/transaction/' + msg[2];
     robot.addons.search('Check tx', data, url, 'blockchair');
@@ -550,7 +551,7 @@ export const skillSearchXDaiTx = {
   requirements: {
     addons: ['search'],
   },
-  rule: /(^xdai-tx |^xdaitx)(.*)/i,
+  rule: /(^xdai-tx |^xdaitx )(.*)/i,
   action: function(robot, msg) {
     const url = 'https://blockscout.com/poa/xdai/tx/' + data + '/internal-transactions';
     robot.addons.search('Check tx', data, url, 'xDai Chain');
@@ -578,8 +579,9 @@ export const skillValidatorPicker = {
   requirements: {
     addons: ['confirm']
   },
-  rule: /^valiidator/i,
+  rule: /(^valiidator )(.*)/i,
   action: function(robot, msg) {
+    const data = msg[2];
     robot.addons.confirm(t('pick', {i18n: i18nAddr}), [
       {
         title: t('random', {i18n: i18nAddr}),
@@ -614,7 +616,7 @@ export const skillValidatorPicker = {
  */
 export const skillSearchBeaconscan = {
   name: 'beaconscan',
-  help: '🥓beaconscan|scan [address] - check validator address or number on beaconscan',
+  help: '🥓beaconscan|scan [address] - check validator address or number on BeaconScan',
   requirements: {
     addons: ['search'],
   },
@@ -630,8 +632,8 @@ export const skillSearchBeaconscan = {
       }
     }
     const data = validator || msg[2];
-    const url = 'https://beaconscan.com/medalla/validator/' + data;
-    robot.addons.search('Check', data, url, 'beaconscan(medalla)');
+    const url = 'https://beaconscan.com/validator/' + data;
+    robot.addons.search('Check', data, url, 'BeaconScan');
   },
 };
 
@@ -668,8 +670,8 @@ export const skillSearchBeaconchain = {
       }
     }
     const data = validator.trim() || msg[2];
-    const url = 'https://medalla.beaconcha.in/validator/' + data;
-    robot.addons.search('Check', data, url, 'beaconcha.in(medalla)');
+    const url = 'https://beaconcha.in/validator/' + data;
+    robot.addons.search('Check', data, url, 'beaconcha.in');
   },
 };
 
@@ -684,7 +686,7 @@ export const skillAccountPicker = {
   requirements: {
     addons: ['confirm']
   },
-  rule: /^account|^defi/i,
+  rule: /^account$|^defi$/i,
   action: function(robot, msg) {
     let addr = '';
     if (msg[2] === undefined) {
