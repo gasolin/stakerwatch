@@ -1,6 +1,5 @@
 import React from 'react';
 import { getEtherBalances, getTokensBalances } from '@mycrypto/eth-scan';
-import {Text} from 'ink';
 import Table from 'ink-table';
 import { t } from 'saihubot/dist/i18n';
 
@@ -219,8 +218,13 @@ export const skillGetValidatorBlance = {
     robot.addons.fetch(`https://beaconcha.in/api/v1/validator/${data}`)
       .then(response => response.json())
       .then(json => {
+        const data = [];
         if(json.data && json.data.balance) {
-          robot.sendComponent(<Text>{Number(json.data.balance)/10**9} ETH</Text>);
+          data.push({
+            Index: json.data.validatorindex,
+            Balance: `${Number(json.data.balance)/10**9} ETH`
+          })
+          robot.sendComponent(<Table data={data} />);
           robot.render();
         }
       });
