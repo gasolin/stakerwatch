@@ -89,7 +89,7 @@ export const skillLastBlock = {
 }
 
 const ProgressBar = ({percent, message, title}) => {
-  const barSize = 30;
+  const barSize = 20;
   const bar = new AsciiBar({
     formatString: '#bar #message',
     undoneSymbol: "░",

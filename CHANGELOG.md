@@ -1,7 +1,11 @@
-# 0.9.3 2020/11/30
+# 0.9.4 2020/12/1
 
 Break Change
 - [beaconscan][beaconchain] switch from medalla testnet to mainnet
+
+Enhancement
+- [validator] can pass the validator index or address, or pre-define the SAIHUBOT_VALIDATOR environment variable
+- [stats] shorten the progress bar to 20 chars to better fit the twitter post size
 
 Fix
 - fix skill rule [gas][tx][validator]

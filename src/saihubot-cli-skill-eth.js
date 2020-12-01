@@ -572,6 +572,9 @@ const i18nValidator = {
 
 /**
  * pick beacon validator explorer from the list
+ *
+ * can pass the validator index or address, or pre-define the
+ * SAIHUBOT_VALIDATOR environment variable
  */
 export const skillValidatorPicker = {
   name: 'validator',
@@ -579,9 +582,18 @@ export const skillValidatorPicker = {
   requirements: {
     addons: ['confirm']
   },
-  rule: /(^validator )(.*)/i,
+  rule: /(^validator )(.*)|^validator$/i,
   action: function(robot, msg) {
-    const data = msg[2];
+    let validator = '';
+    if (msg[2] === undefined) {
+      validator = getConfig('VALIDATOR', '');
+      if (validator === '') {
+        robot.send(t('needAddr', {i18n: i18nValidator}));
+        robot.render();
+        return;
+      }
+    }
+    const data = validator || msg[2];
     robot.addons.confirm(t('pick', {i18n: i18nAddr}), [
       {
         title: t('random', {i18n: i18nAddr}),
