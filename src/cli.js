@@ -22,7 +22,7 @@ import {
 } from './saihubot-cli-skill-eth';
 import {skillsETH2, skillGasFee} from './saihubot-cli-skill-chain';
 import {skills as skillAwesome} from './saihubot-skill-awesome';
-import {skillGetBlance} from './saihubot-cli-skill-balance';
+import {skills as skillBalance} from './saihubot-cli-skill-balance';
 import {skillChainId} from './saihubot-cli-skill-chainid';
 
 const cli = meow(`
@@ -58,7 +58,7 @@ const bot = new SaihuBot({
     ...skillsETH2,
     skillGasFee,
     ...skillsGas,
-    skillGetBlance,
+    ...skillBalance,
     ...skillsAccount,
     ...skillsAddress,
     ...skillsTx,

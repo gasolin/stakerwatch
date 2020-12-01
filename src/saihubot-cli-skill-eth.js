@@ -2,7 +2,9 @@
 import React, { useEffect, useState } from 'React';
 import {Text} from 'ink';
 import {t} from 'saihubot/dist/i18n';
+
 import {getConfig, getRandomItem} from './utils';
+import {i18nValidator} from './i18n';
 
 const API = {
   GASSTATION: 'https://ethgasstation.info/api/ethgasAPI.json',
@@ -559,16 +561,6 @@ export const skillSearchXDaiTx = {
 };
 
 // ==== BEACON VALIDATOR ===
-
-const i18nValidator = {
-  'en': {
-    needAddr: 'Please pass the index/address or define SAIHUBOT_VALIDATOR first'
-  },
-  'zh_TW': {
-    needAddr: '請傳入索引/地址，或是預先定義 SAIHUBOT_VALIDATOR 參數'
-  },
-  props: [],
-};
 
 /**
  * pick beacon validator explorer from the list

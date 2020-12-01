@@ -2,6 +2,7 @@
 
 Feature
 - add `chainid` skill to show the table of EVM compatible chains (that can be used in metamask custom network)
+- add `balance-validator` skill to show validator's balance
 
 # 0.9.4 2020/12/1
 

@@ -23,7 +23,7 @@ Or, find all skills that `staker` command can do by type
 ```
 $ npx staker help
 
-I have 32 skills:
+I have 33 skills:
 * 🗞 stats - lastest ETH2 stake state
 * lastblock|block - get the lastest block number
 * 🛢 gasfee - Show current on-chain gas fee
@@ -32,6 +32,7 @@ I have 32 skills:
 * 🛢 gasstation|station - Show current gas fee via ETH Gas Station
 * 🛢 gastracker|tracker - Show current gas fee via Etherscan Gas Tracker
 * 💰balance - Show current balance of [address]
+* 💰balance-validator - Show Validator's balance of [key]
 * 🔎account|defi - Pick an account explorer from the list
 * 🧩debank [address] - check DeFi balances on Debank
 * 🧩zapper [address] - check DeFi balance on Zapper

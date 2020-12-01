@@ -1,8 +1,11 @@
 import React from 'react';
 import { getEtherBalances, getTokensBalances } from '@mycrypto/eth-scan';
+import {Text} from 'ink';
 import Table from 'ink-table';
 import { t } from 'saihubot/dist/i18n';
+
 import {getConfig, getNodeURL} from './utils';
+import {i18nValidator} from './i18n';
 
 export const contractMap = {
   "0x4Fabb145d64652a948d72533023f6E7A623C7C53": {
@@ -138,7 +141,7 @@ export const skillGetBlance = {
     },
     props: ['balance', 'usdt']
   },
-  rule: /(^balance )(.*)|^balance/i,
+  rule: /(^balance )(.*)|^balance$/i,
   action: function(robot, msg) {
     let addr = '';
     if (msg[2] === undefined) {
@@ -185,5 +188,43 @@ export const skillGetBlance = {
   },
 }
 
-const skills = [skillGetBlance];
+/**
+ * Get Validator's balance of [key].
+ *
+ * can pass the validator key, or pre-define the
+ * SAIHUBOT_VALIDATOR environment variable
+ */
+export const skillGetValidatorBlance = {
+  name: 'balance-validator',
+  help: '💰balance-validator - Show Validator\'s balance of [key]',
+  requirements: {
+    addons: ['fetch'],
+  },
+  rule: /(^balance-validator )(.*)|^balance-validator$/i,
+  action: function(robot, msg) {
+    let validator = '';
+    if (msg[2] === undefined) {
+      validator = getConfig('VALIDATOR', '');
+      if (validator === '') {
+        robot.send(t('needAddr', {i18n: i18nValidator}));
+        robot.render();
+        return;
+      }
+    }
+
+    robot.send(t('query', {i18n: i18nValidator}));
+    robot.render();
+
+    const data = validator || msg[2];
+    robot.addons.fetch(`https://beaconcha.in/api/v1/validator/${data}`)
+      .then(response => response.json())
+      .then(json => {
+        if(json.data && json.data.balance) {
+          robot.sendComponent(<Text>{Number(json.data.balance)/10**9} ETH</Text>);
+          robot.render();
+        }
+      });
+  }
+}
+const skills = [skillGetBlance, skillGetValidatorBlance];
 export {skills};
