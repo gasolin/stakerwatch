@@ -23,36 +23,37 @@ Or, find all skills that `staker` command can do by type
 ```
 $ npx staker help
 
-I have 31 skills:
+I have 32 skills:
 * 🗞 stats - lastest ETH2 stake state
 * lastblock|block - get the lastest block number
 * 🛢 gasfee - Show current on-chain gas fee
-* 🔎gas - pick a gas estimator from the list
+* 🔎gas - Pick a gas estimator from the list
 * 🛢 gasnow|now - Show current gas fee via gasnow
 * 🛢 gasstation|station - Show current gas fee via ETH Gas Station
 * 🛢 gastracker|tracker - Show current gas fee via Etherscan Gas Tracker
-* 💰balance - last balance of [address]
-* 🔎account|defi - pick an account explorer from the list
+* 💰balance - Show current balance of [address]
+* 🔎account|defi - Pick an account explorer from the list
 * 🧩debank [address] - check DeFi balances on Debank
 * 🧩zapper [address] - check DeFi balance on Zapper
 * 🧩zerion [address] - check DeFi Balance on Zerion
-* 🔎address|addr [address] - pick address explorer from the list
+* 🔎address|addr [address] - Pick address explorer from the list
 * 🏦bitquery [address] - check address on explorer.bitquery.io
 * 🏦blockchair [address] - check address on blockchair.com
 * 🏦bloxy [address] - check token symbol, address or tx hash on bloxy.info
 * 🏦etherscan|scan [address] - check contract address on etherscan
-* 🔎tx - pick a transaction (tx) explorer from the list
+* 🔎tx - Pick a transaction (tx) explorer from the list
 * bitquery-tx|bitquerytx|query-tx|querytx [tx] - check transaction (tx) on bitquery
 * blockchair-tx|blockchairtx [tx] - check transaction (tx) on blockchair.com
 * etherscan-tx|etherscantx|scan-tx|scantx [tx] - check transaction (tx) on etherscan
-* 🔎valiidator - pick a beacon validator explorer from the list
+* 🔎validator - Pick a beacon validator explorer from the list
 * 🥓beaconchain|beaconcha|beaconcha.in [address] - check validator address or number on beaconscan
-* 🥓beaconscan|scan [address] - check validator address or number on beaconscan
+* 🥓beaconscan|scan [address] - check validator address or number on BeaconScan
 * 🏦bsc|bscscan [address] - check address on Binance Smart Chain
 * 🏦bsc-tx|bsctx|bscscan-tx|bscscantx [tx] - check transaction (tx) on Binance Smart Chain
 * 🏦xdai [address] - check address on xDai Chain
 * 🏦xdai-tx|xdaitx [tx] - check transaction (tx) on xDai Chain
 * 🤩awesome|lucky - Show random awesome site around ethereum
+* 📕chainid - Show EVM network providers chain and network id table
 * qrcode [text] - Generate QRCode with [text]
 * help - list available skills
 ```

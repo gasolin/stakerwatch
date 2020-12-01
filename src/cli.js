@@ -22,7 +22,9 @@ import {
 } from './saihubot-cli-skill-eth';
 import {skillsETH2, skillGasFee} from './saihubot-cli-skill-chain';
 import {skills as skillAwesome} from './saihubot-skill-awesome';
-import {skillGetBlance} from './saihubot-skill-balance';
+import {skillGetBlance} from './saihubot-cli-skill-balance';
+import {skillChainId} from './saihubot-cli-skill-chainid';
+
 const cli = meow(`
   v${process.env.npm_package_version}
   Usage
@@ -63,6 +65,7 @@ const bot = new SaihuBot({
     ...skillsValidator,
     ...skillsSideChain,
     ...skillAwesome,
+    skillChainId,
     skillQRCode,
     skillHelp,
   ],
