@@ -3,7 +3,7 @@
 import React from 'react';
 import { Text } from 'ink';
 import AsciiBar from 'ascii-bar';
-import { t } from 'saihubot/dist/i18n';
+import { t } from 'saihubot-cli-adapter/dist/i18n';
 import {getNodeURL} from './utils';
 
 const ADDR = {

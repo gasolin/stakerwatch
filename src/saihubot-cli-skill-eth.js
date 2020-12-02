@@ -1,7 +1,7 @@
 'use strict';
 import React, { useEffect, useState } from 'React';
 import {Text} from 'ink';
-import {t} from 'saihubot/dist/i18n';
+import {t} from 'saihubot-cli-adapter/dist/i18n';
 
 import {getConfig, getRandomItem} from './utils';
 import {i18nValidator} from './i18n';

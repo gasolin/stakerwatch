@@ -1,5 +1,5 @@
 'use strict';
-import {t} from 'saihubot/dist/i18n';
+import {t} from 'saihubot-cli-adapter/dist/i18n';
 
 /**
  * Delegate the QRCode rendering via `npx saihu qrcode [text]` command

@@ -1,6 +1,6 @@
 'use strict';
 
-import { t } from 'saihubot/dist/i18n';
+import { t } from 'saihubot-cli-adapter/dist/i18n';
 
 const AWESOME_LINKS = [
   'http://beaconcha.in/',
@@ -17,6 +17,7 @@ const AWESOME_LINKS = [
   'https://blockchair.com/ethereum',
   'https://blog.ethereum.org/',
   'https://launchpad.ethereum.org/',
+  'https://ethernodes.org/',
 ];
 
 /**

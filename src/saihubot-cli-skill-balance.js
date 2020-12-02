@@ -1,7 +1,7 @@
 import React from 'react';
 import { getEtherBalances, getTokensBalances } from '@mycrypto/eth-scan';
 import Table from 'ink-table';
-import { t } from 'saihubot/dist/i18n';
+import { t } from 'saihubot-cli-adapter/dist/i18n';
 
 import {getConfig, getNodeURL} from './utils';
 import {i18nValidator} from './i18n';

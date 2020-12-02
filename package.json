@@ -38,12 +38,12 @@
     "ascii-bar": "^1.0.3",
     "ink-table": "^3.0.0",
     "react": "^16.14.0",
-    "saihubot": "^0.34.0",
-    "saihubot-cli-adapter": "^0.34.2"
+    "saihubot": "^0.35.0",
+    "saihubot-cli-adapter": "^0.35.0"
   },
   "devDependencies": {
-    "@babel/cli": "^7.12.7",
-    "@babel/core": "^7.12.7",
+    "@babel/cli": "^7.12.8",
+    "@babel/core": "^7.12.9",
     "@babel/eslint-parser": "^7.12.1",
     "@babel/node": "^7.12.6",
     "@babel/preset-env": "^7.12.7",
