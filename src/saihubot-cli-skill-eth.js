@@ -10,6 +10,7 @@ const API = {
   GASSTATION: 'https://ethgasstation.info/api/ethgasAPI.json',
   GASNOW: 'https://www.gasnow.org/api/v3/gas/price?utm_source=:gaso',
   GASTRACKER: 'https://api.etherscan.io/api?module=gastracker&action=gasoracle',
+  GASPRICEORACLE: 'https://etherchain.org/api/gasPriceOracle',
 };
 
 function int(num) {
@@ -53,6 +54,7 @@ export const skillGasEstimator = {
           'gasnow',
           'gasstation',
           'gastracker',
+          'gaspriceoracle',
         ])} ${data}`),
       },
       {
@@ -66,6 +68,12 @@ export const skillGasEstimator = {
         id: 'now',
         rule: /^now/i,
         action: () => robot.ask(`gasnow`),
+      },
+      {
+        title: 'Gas Price Oracle',
+        id: 'oracle',
+        rule: /^oracle/i,
+        action: () => robot.ask(`gaspriceoracle`),
       },
       {
         title: 'GasStation',
@@ -102,7 +110,7 @@ export const skillGasTracker = {
     },
     props: ['H', 'M', 'L']
   },
-  rule: /^gastracker|^tracker/i,
+  rule: /^gastracker$|^tracker$/i,
   action: function(robot, msg) {
     robot.addons.fetch(API.GASTRACKER)
       .then(response => response.json())
@@ -139,7 +147,7 @@ export const skillGasStation = {
     },
     props: ['H', 'M', 'L']
   },
-  rule: /^gasstation|^station/i,
+  rule: /^gasstation$|^station$/i,
   action: function(robot, msg) {
     robot.addons.fetch(API.GASSTATION)
       .then(response => response.json())
@@ -194,6 +202,43 @@ export const skillGasNow = {
   },
 };
 
+/**
+ * Show current ethereum Gas fee via ETH GAS PRICE ORACLE.
+ * https://etherchain.org/tools/gasPriceOracle
+ */
+export const skillGasPriceOracle = {
+  name: 'gaspriceoracle',
+  help: '🛢 gaspriceoracle|oracle - Show current gas fee via ETH Gas Price Oracle',
+  requirements: {
+    addons: ['fetch'],
+  },
+  i18n: {
+    'en': {
+      gasfee: 'Current gas fee (report by Gas Price Oracle) is H:{{H}} M:{{M}} L:{{L}} gwei',
+    },
+    'zh_TW': {
+      gasfee: '目前的 gas 費用 (由 Gas Price Oracle 提供) H:{{H}} M:{{M}} L:{{L}} gwei',
+    },
+    props: ['H', 'M', 'L']
+  },
+  rule: /^gaspriceoracle$|^oracle$/i,
+  action: function(robot, msg) {
+    robot.addons.fetch(API.GASPRICEORACLE)
+      .then(response => response.json())
+      .then(json => {
+        robot.sendComponent(<Text>
+          {t('gasfee', {
+            i18n: this.i18n,
+            H: int(json.fastest),
+            M: int(json.standard),
+            L: int(json.safeLow),
+          })}
+        </Text>);
+        robot.render();
+      })
+  },
+};
+
 // ==== ADDRESS EXPLORER ===
 
 /**
@@ -226,6 +271,7 @@ export const skillAddressExplorer = {
           'bitquery',
           'blockchair',
           'bloxy',
+          'etherchain',
           'etherscan',
         ])} ${data}`),
       },
@@ -246,6 +292,12 @@ export const skillAddressExplorer = {
         id: 'bloxy',
         rule: /^bloxy/i,
         action: () => robot.ask(`bloxy ${data}`),
+      },
+      {
+        title: 'EtherChain',
+        id: 'chain',
+        rule: /^chain/i,
+        action: () => robot.ask(`etherchain ${data}`),
       },
       {
         title: 'EtherScan',
@@ -368,6 +420,32 @@ export const skillSearchBitQuery = {
   },
 };
 
+/** Check contract address on etherchain */
+export const skillSearchEtherchain = {
+  name: 'etherchain',
+  help: '🏦etherchain|chain [address] - check contract address on etherchain',
+  requirements: {
+    addons: ['search'],
+  },
+  rule: /(^etherchain |^chain )(.*)|^etherchain$|^chain$/i,
+  action: function(robot, msg) {
+    let addr = '';
+    if (msg[2] === undefined) {
+      addr = getConfig('ETH_ADDR', '');
+      if (addr === '') {
+        robot.send(t('needAddr', {i18n: i18nAddr}));
+        robot.render();
+        return;
+      }
+    }
+    const data = addr || msg[2];
+    const url = 'https://etherchain.org/account/' + data;
+    robot.addons.search('Check', msg[2], url, 'etherchain.org');
+  },
+};
+
+// Side Chain
+
 /**
  * Check address on bscscan.
  *
@@ -472,6 +550,12 @@ export const skillTxPicker = {
         action: () => robot.ask(`bloxy ${data}`),
       },
       {
+        title: 'Etherchain',
+        id: 'chaintx',
+        rule: /^chaintx/i,
+        action: () => robot.ask(`chaintx ${data}`),
+      },
+      {
         title: 'Etherscan',
         id: 'scantx',
         rule: /^scantx/i,
@@ -481,7 +565,9 @@ export const skillTxPicker = {
   },
 }
 
-/** Check transaction (tx) on etherscan */
+/**
+ * Check transaction (tx) on etherscan.
+ */
 export const skillSearchEtherscanTx = {
   name: 'etherscantx',
   help: 'etherscan-tx|etherscantx|scan-tx|scantx [tx] - check transaction (tx) on etherscan',
@@ -527,6 +613,24 @@ export const skillSearchBitQueryTx = {
     robot.addons.search('Check tx', msg[2], url, 'explorer.bitquery.io');
   },
 };
+
+/**
+ * Check transaction (tx) on etherchain.
+ */
+export const skillSearchEtherchainTx = {
+  name: 'etherchaintx',
+  help: 'etherchain-tx|etherchaintx|chain-tx|chaintx [tx] - check transaction (tx) on etherchain',
+  requirements: {
+    addons: ['search'],
+  },
+  rule: /(^etherchaintx |^etherchain-tx |^chaintx |^chain-tx )(.*)/i,
+  action: function(robot, msg) {
+    const url = 'https://etherchain.org/tx/' + msg[2];
+    robot.addons.search('Check tx', msg[2], url, 'etherchain');
+  },
+};
+
+// Side chain
 
 /**
  * Check transaction (tx) on Binance Smart Chain.
@@ -826,6 +930,7 @@ export const skillSearchZerion = {
 export const skillsGas = [
   skillGasEstimator,
   skillGasNow,
+  skillGasPriceOracle,
   skillGasStation,
   skillGasTracker,
 ];
@@ -834,12 +939,14 @@ export const skillsAddress = [
   skillSearchBitQuery,
   skillSearchBlockchair,
   skillSearchBloxy,
+  skillSearchEtherchain,
   skillSearchEtherscan,
 ];
 export const skillsTx = [
   skillTxPicker,
   skillSearchBitQueryTx,
   skillSearchBlockchairTx,
+  skillSearchEtherchainTx,
   skillSearchEtherscanTx,
 ];
 export const skillsValidator = [

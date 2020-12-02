@@ -1,10 +1,15 @@
-# 0.10.0 2012/12
+# 0.11.0 2012/12/2
+
+Feature
+- add `etherchain`, `etherchain-tx` skills and `gaspriceoracle` skill
+
+# 0.10.0 2012/12/1
 
 Feature
 - add `chainid` skill to show the table of EVM compatible chains (that can be used in metamask custom network)
 - add `balance-validator` skill to show validator's balance
 
-# 0.9.4 2020/12/1
+# 0.9.4 2020/11/31
 
 Break Change
 - [beaconscan][beaconchain] switch from medalla testnet to mainnet

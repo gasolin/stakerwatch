@@ -14,8 +14,8 @@ Open terminal and type
 ```sh
 $ npx staker stats
 
-101151 ETH has been deposited for 3160 validators
-[▓▓▓▓▓▓░░░░░░░░░░░░░░░░░░░░░░░░] 19.29%
+966402 ETH has been deposited for 30200 validators
+[▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓] 184.33%
 ```
 
 Or, find all skills that `staker` command can do by type
@@ -23,12 +23,13 @@ Or, find all skills that `staker` command can do by type
 ```
 $ npx staker help
 
-I have 33 skills:
+I have 36 skills:
 * 🗞 stats - lastest ETH2 stake state
 * lastblock|block - get the lastest block number
 * 🛢 gasfee - Show current on-chain gas fee
 * 🔎gas - Pick a gas estimator from the list
 * 🛢 gasnow|now - Show current gas fee via gasnow
+* 🛢 gaspriceoracle|oracle - Show current gas fee via ETH Gas Price Oracle
 * 🛢 gasstation|station - Show current gas fee via ETH Gas Station
 * 🛢 gastracker|tracker - Show current gas fee via Etherscan Gas Tracker
 * 💰balance - Show current balance of [address]
@@ -41,10 +42,12 @@ I have 33 skills:
 * 🏦bitquery [address] - check address on explorer.bitquery.io
 * 🏦blockchair [address] - check address on blockchair.com
 * 🏦bloxy [address] - check token symbol, address or tx hash on bloxy.info
+* 🏦etherchain|chain [address] - check contract address on etherchain
 * 🏦etherscan|scan [address] - check contract address on etherscan
 * 🔎tx - Pick a transaction (tx) explorer from the list
 * bitquery-tx|bitquerytx|query-tx|querytx [tx] - check transaction (tx) on bitquery
 * blockchair-tx|blockchairtx [tx] - check transaction (tx) on blockchair.com
+* etherchain-tx|etherchaintx|chain-tx|chaintx [tx] - check transaction (tx) on etherchain
 * etherscan-tx|etherscantx|scan-tx|scantx [tx] - check transaction (tx) on etherscan
 * 🔎validator - Pick a beacon validator explorer from the list
 * 🥓beaconchain|beaconcha|beaconcha.in [address] - check validator address or number on beaconscan
