@@ -623,7 +623,7 @@ export const skillSearchEtherchainTx = {
   requirements: {
     addons: ['search'],
   },
-  rule: /(^etherchaintx |^etherchain-tx |^chaintx |^chain-tx )(.*)/i,
+  rule: /(^etherchain-?tx |^chain-?tx )(.*)/i,
   action: function(robot, msg) {
     const url = 'https://etherchain.org/tx/' + msg[2];
     robot.addons.search('Check tx', msg[2], url, 'etherchain');
@@ -641,8 +641,9 @@ export const skillSearchBSCscanTx = {
   requirements: {
     addons: ['search'],
   },
-  rule: /(^bsc-tx |^bsctx |^bscscan-tx |^bscscantx )(.*)/i,
+  rule: /(^bsc(scan)?-?tx )(.*)/i,
   action: function(robot, msg) {
+    const data = msg[3];
     const url = 'https://bscscan.com/tx/' + data;
     robot.addons.search('Check tx', data, url, 'Binance Smart Chain');
   },
@@ -657,8 +658,9 @@ export const skillSearchXDaiTx = {
   requirements: {
     addons: ['search'],
   },
-  rule: /(^xdai-tx |^xdaitx )(.*)/i,
+  rule: /(^xdai-?tx )(.*)/i,
   action: function(robot, msg) {
+    const data = msg[3];
     const url = 'https://blockscout.com/poa/xdai/tx/' + data + '/internal-transactions';
     robot.addons.search('Check tx', data, url, 'xDai Chain');
   },
@@ -766,7 +768,7 @@ export const skillSearchBeaconchain = {
     },
     props: [],
   },
-  rule: /(^beaconchain |^beaconcha |^beaconcha\.in )(.*)|^beaconchain|^beaconcha|^beaconcha\.in/i,
+  rule: /(^beaconcha(in|.in)? )(.*)|^beaconcha(in|.in)?$/i,
   action: function(robot, msg) {
     let validator = '';
     if (msg[2] === undefined) {
@@ -777,7 +779,7 @@ export const skillSearchBeaconchain = {
         return;
       }
     }
-    const data = validator.trim() || msg[2];
+    const data = validator.trim() || msg[3];
     const url = 'https://beaconcha.in/validator/' + data;
     robot.addons.search('Check', data, url, 'beaconcha.in');
   },
@@ -851,7 +853,7 @@ export const skillSearchDebank = {
   requirements: {
     addons: ['search'],
   },
-  rule: /(^debank )(.*)|^debank/i,
+  rule: /(^debank )(.*)|^debank$/i,
   action: function(robot, msg) {
     let addr = '';
     if (msg[2] === undefined) {
@@ -880,7 +882,7 @@ export const skillSearchZapper = {
   requirements: {
     addons: ['search'],
   },
-  rule: /(^zapper )(.*)|^zapper/i,
+  rule: /(^zapper )(.*)|^zapper$/i,
   action: function(robot, msg) {
     let addr = '';
     if (msg[2] === undefined) {
@@ -910,7 +912,7 @@ export const skillSearchZerion = {
   requirements: {
     addons: ['search'],
   },
-  rule: /(^zerion )(.*)|^zerion/i,
+  rule: /(^zerion )(.*)|^zerion$/i,
   action: function(robot, msg) {
     let addr = '';
     if (msg[2] === undefined) {
