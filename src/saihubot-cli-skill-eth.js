@@ -110,7 +110,7 @@ export const skillGasTracker = {
     },
     props: ['H', 'M', 'L']
   },
-  rule: /^gastracker$|^tracker$/i,
+  rule: /^(gas)?tracker$/i,
   action: function(robot, msg) {
     robot.addons.fetch(API.GASTRACKER)
       .then(response => response.json())
@@ -147,7 +147,7 @@ export const skillGasStation = {
     },
     props: ['H', 'M', 'L']
   },
-  rule: /^gasstation$|^station$/i,
+  rule: /^(gas)?station$/i,
   action: function(robot, msg) {
     robot.addons.fetch(API.GASSTATION)
       .then(response => response.json())
@@ -184,7 +184,7 @@ export const skillGasNow = {
     },
     props: ['H', 'M', 'L']
   },
-  rule: /^gasnow$|^now$/i,
+  rule: /^(gas)?now$/i,
   action: function(robot, msg) {
     robot.addons.fetch(API.GASNOW)
       .then(response => response.json())
@@ -221,7 +221,7 @@ export const skillGasPriceOracle = {
     },
     props: ['H', 'M', 'L']
   },
-  rule: /^gaspriceoracle$|^oracle$/i,
+  rule: /^(gasprice)?oracle$/i,
   action: function(robot, msg) {
     robot.addons.fetch(API.GASPRICEORACLE)
       .then(response => response.json())
@@ -250,10 +250,10 @@ export const skillAddressExplorer = {
   requirements: {
     addons: ['confirm']
   },
-  rule: /(^address |^addr )(.*)|(^address$|^addr$)/i,
+  rule: /(^addr(ess)? )(.*)|(^addr(ess)?$)/i,
   action: function(robot, msg) {
     let addr = '';
-    if (msg[2] === undefined) {
+    if (msg[3] === undefined) {
       addr = getConfig('ETH_ADDR', '');
       if (addr === '') {
         robot.send(t('needAddr', {i18n: i18nAddr}));
@@ -261,7 +261,7 @@ export const skillAddressExplorer = {
         return;
       }
     }
-    let data = addr || msg[2];
+    let data = addr || msg[3];
     robot.addons.confirm(t('pick', {i18n: i18nAddr}), [
       {
         title: t('random', {i18n: i18nAddr}),
@@ -316,10 +316,10 @@ export const skillSearchEtherscan = {
   requirements: {
     addons: ['search'],
   },
-  rule: /(^etherscan |^scan )(.*)|^etherscan$|^scan$/i,
+  rule: /(^(ether)?scan )(.*)|^(ether)?scan$/i,
   action: function(robot, msg) {
     let addr = '';
-    if (msg[2] === undefined) {
+    if (msg[3] === undefined) {
       addr = getConfig('ETH_ADDR', '');
       if (addr === '') {
         robot.send(t('needAddr', {i18n: i18nAddr}));
@@ -327,9 +327,9 @@ export const skillSearchEtherscan = {
         return;
       }
     }
-    const data = addr || msg[2];
+    const data = addr || msg[3];
     const url = 'https://www.etherscan.io/address/' + data;
-    robot.addons.search('Check', msg[2], url, 'etherscan');
+    robot.addons.search('Check', data, url, 'etherscan');
   },
 };
 
@@ -427,10 +427,10 @@ export const skillSearchEtherchain = {
   requirements: {
     addons: ['search'],
   },
-  rule: /(^etherchain |^chain )(.*)|^etherchain$|^chain$/i,
+  rule: /(^(ether)?chain )(.*)|^(ether)?chain$/i,
   action: function(robot, msg) {
     let addr = '';
-    if (msg[2] === undefined) {
+    if (msg[3] === undefined) {
       addr = getConfig('ETH_ADDR', '');
       if (addr === '') {
         robot.send(t('needAddr', {i18n: i18nAddr}));
@@ -438,9 +438,9 @@ export const skillSearchEtherchain = {
         return;
       }
     }
-    const data = addr || msg[2];
+    const data = addr || msg[3];
     const url = 'https://etherchain.org/account/' + data;
-    robot.addons.search('Check', msg[2], url, 'etherchain.org');
+    robot.addons.search('Check', data, url, 'etherchain.org');
   },
 };
 
@@ -574,10 +574,11 @@ export const skillSearchEtherscanTx = {
   requirements: {
     addons: ['search'],
   },
-  rule: /(^etherscantx |^etherscan-tx |^scantx |^scan-tx )(.*)/i,
+  rule: /(^(ether)?scan-?tx )(.*)/i,
   action: function(robot, msg) {
-    const url = 'https://www.etherscan.io/tx/' + msg[2];
-    robot.addons.search('Check tx', msg[2], url, 'etherscan');
+    const data = msg[3];
+    const url = 'https://www.etherscan.io/tx/' + data;
+    robot.addons.search('Check tx', data, url, 'etherscan');
   },
 };
 
