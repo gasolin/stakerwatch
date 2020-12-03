@@ -3,6 +3,13 @@
 Feature
 - add `etherchain`, `etherchain-tx` skills and `gaspriceoracle` skill
 
+Enhancement
+- [beaconchain][etherchaintx][bitquerytx] simplify the regex
+
+Fix
+- [xdai-tx][bsc-tx][blockchair] fix the skill and simplify the regex
+
+
 # 0.10.0 2012/12/1
 
 Feature

@@ -591,9 +591,10 @@ export const skillSearchBlockchairTx = {
   requirements: {
     addons: ['search'],
   },
-  rule: /(^blockchair-tx |^blockchairtx |^chair-tx |^chairtx )(.*)/i,
+  rule: /(^(block)?chair-?tx )(.*)/i,
   action: function(robot, msg) {
-    const url = 'https://blockchair.com/ethereum/transaction/' + msg[2];
+    const data = msg[3];
+    const url = 'https://blockchair.com/ethereum/transaction/' + data;
     robot.addons.search('Check tx', data, url, 'blockchair');
   },
 };
@@ -607,10 +608,11 @@ export const skillSearchBitQueryTx = {
   requirements: {
     addons: ['search'],
   },
-  rule: /(^bitquerytx |^bitquery-tx |^querytx |^query-tx )(.*)/i,
+  rule: /(^(bit)?query-?tx )(.*)/i,
   action: function(robot, msg) {
-    const url = 'https://explorer.bitquery.io/ethereum/tx/' + msg[2];
-    robot.addons.search('Check tx', msg[2], url, 'explorer.bitquery.io');
+    const data = msg[3];
+    const url = 'https://explorer.bitquery.io/ethereum/tx/' + data;
+    robot.addons.search('Check tx', data, url, 'explorer.bitquery.io');
   },
 };
 
@@ -623,10 +625,11 @@ export const skillSearchEtherchainTx = {
   requirements: {
     addons: ['search'],
   },
-  rule: /(^etherchain-?tx |^chain-?tx )(.*)/i,
+  rule: /(^(ether)?chain-?tx )(.*)/i,
   action: function(robot, msg) {
-    const url = 'https://etherchain.org/tx/' + msg[2];
-    robot.addons.search('Check tx', msg[2], url, 'etherchain');
+    const data = msg[3];
+    const url = 'https://etherchain.org/tx/' + data;
+    robot.addons.search('Check tx', data, url, 'etherchain');
   },
 };
 
