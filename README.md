@@ -11,7 +11,7 @@ The command currently support multiple sources. You can use the default `address
 
 The command randomly pick a [free Ethereum Node](https://ethereumnodes.com/) to fetch the on-chain data instead of counting on [Infura](https://infura.io/). (You can specify a node if you want to)
 
-If you think this tool is useful, please consider support with the Gitcoin Grant https://gitcoin.co/grants/1664/stakerwatch
+If you think this tool is useful, please consider support with the [Gitcoin Grant](https://gitcoin.co/grants/1664/stakerwatch)
 
 ## Usage
 
@@ -85,7 +85,9 @@ If you expect to use this tool frequently, install it via command:
 
 ## Eth2 Stats
 
+```
 * 🗞 stats - lastest Eth2 stake state
+```
 
 Get Eth2 stats via command
 
@@ -98,11 +100,12 @@ $ npx staker stats
 
 ## Validator
 
+```
 * 💰balance-validator - Show Validator's balance of [key]
 * 🔎validator - Pick a beacon validator explorer from the list
 * 📡beaconchain|beaconcha|beaconcha.in [address] - check validator address or number on beaconscan
 * 📡beaconscan|scan [address] - check validator address or number on BeaconScan
-
+```
 
 Given a Eth2 validator address, you can get Eth2 validator balance
 
@@ -142,6 +145,7 @@ Check [address or index] via beaconcha.in
 
 ## Address
 
+```
 * 💰balance - Show current balance of [address]
 * 🔎address|addr [address] - Pick address explorer from the list
 * 🏦bitquery [address] - check address on explorer.bitquery.io
@@ -149,6 +153,7 @@ Check [address or index] via beaconcha.in
 * 🏦bloxy [address] - check token symbol, address or tx hash on bloxy.info
 * 🏦etherchain|chain [address] - check contract address on etherchain
 * 🏦etherscan|scan [address] - check contract address on etherscan
+```
 
 Use `staker balance [addr]` command, you can given a Eth address and get related account balance, including the stable coins (USDt, USDC, Dai...) and lending stable coins in [AAVE](https://aave.com/) and [Compound](https://compound.finance/).
 
@@ -182,20 +187,24 @@ $ npx staker etherscan [addr]
 
 Same as address, but use to search transaction (tx).
 
+```
 * 🔎tx - Pick a transaction (tx) explorer from the list
 * bitquery-tx|bitquerytx|query-tx|querytx [tx] - check transaction (tx) on bitquery
 * blockchair-tx|blockchairtx [tx] - check transaction (tx) on blockchair.com
 * etherchain-tx|etherchaintx|chain-tx|chaintx [tx] - check transaction (tx) on etherchain
 * etherscan-tx|etherscantx|scan-tx|scantx [tx] - check transaction (tx) on etherscan
+```
 
 ## Gas
 
+```
 * 🔎gas - Pick a gas estimator from the list
 * 🛢 gasfee - Show current on-chain gas fee
 * 🛢 gasnow|now - Show current gas fee via gasnow
 * 🛢 gaspriceoracle|oracle - Show current gas fee via Eth Gas Price Oracle
 * 🛢 gasstation|station - Show current gas fee via Eth Gas Station
 * 🛢 gastracker|tracker - Show current gas fee via Etherscan Gas Tracker
+```
 
 You can get gas fee estimator from multiple sources
 
@@ -220,11 +229,13 @@ Current gas fee (report by gasnow) is H:70 M:50 L:48 gwei
 
 ## Other Tools
 
+```
 * 🤩awesome|lucky - Show random awesome site around ethereum
 * lastblock|block - get the lastest Eth1 block number
 * 📕chainid - Show EVM network providers chain and network id table
 * qrcode [text] - Generate QRCode with [text]
 * help - list available skills
+```
 
 Given any text (ex a Eth address) and get the QRCode
 
