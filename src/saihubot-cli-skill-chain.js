@@ -64,7 +64,7 @@ const rpcGasPrice = () => JSON.stringify({
  */
 export const skillLastBlock = {
   name: 'lastblock',
-  help: 'lastblock|block - get the lastest block number',
+  help: 'lastblock|block - get the lastest Eth1 block number',
   requirements: {
     addons: ['fetch'],
   },
@@ -116,7 +116,7 @@ const ProgressBar = ({percent, message, title}) => {
  */
 export const skillEth2Stats = {
   name: 'stakestat',
-  help: '🗞 stats - lastest ETH2 stake state',
+  help: '🗞 stats - lastest Eth2 stake state',
   requirements: {
     addons: ['fetch'],
   },

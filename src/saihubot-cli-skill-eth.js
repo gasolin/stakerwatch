@@ -129,12 +129,12 @@ export const skillGasTracker = {
 };
 
 /**
- * Show current ethereum Gas fee via ETH GAS STATION.
+ * Show current ethereum Gas fee via Eth GAS STATION.
  * https://ethgasstation.info/
  */
 export const skillGasStation = {
   name: 'gasstation',
-  help: '🛢 gasstation|station - Show current gas fee via ETH Gas Station',
+  help: '🛢 gasstation|station - Show current gas fee via Eth Gas Station',
   requirements: {
     addons: ['fetch'],
   },
@@ -203,12 +203,12 @@ export const skillGasNow = {
 };
 
 /**
- * Show current ethereum Gas fee via ETH GAS PRICE ORACLE.
+ * Show current ethereum Gas fee via Eth GAS PRICE ORACLE.
  * https://etherchain.org/tools/gasPriceOracle
  */
 export const skillGasPriceOracle = {
   name: 'gaspriceoracle',
-  help: '🛢 gaspriceoracle|oracle - Show current gas fee via ETH Gas Price Oracle',
+  help: '🛢 gaspriceoracle|oracle - Show current gas fee via Eth Gas Price Oracle',
   requirements: {
     addons: ['fetch'],
   },
@@ -730,7 +730,7 @@ export const skillValidatorPicker = {
  */
 export const skillSearchBeaconscan = {
   name: 'beaconscan',
-  help: '🥓beaconscan|scan [address] - check validator address or number on BeaconScan',
+  help: '📡beaconscan|scan [address] - check validator address or number on BeaconScan',
   requirements: {
     addons: ['search'],
   },
@@ -759,7 +759,7 @@ export const skillSearchBeaconscan = {
  */
 export const skillSearchBeaconchain = {
   name: 'beaconchain',
-  help: '🥓beaconchain|beaconcha|beaconcha.in [address] - check validator address or number on beaconscan',
+  help: '📡beaconchain|beaconcha|beaconcha.in [address] - check validator address or number on beaconscan',
   requirements: {
     addons: ['search'],
   },
@@ -853,7 +853,7 @@ export const skillAccountPicker = {
  */
 export const skillSearchDebank = {
   name: 'debank',
-  help: '🧩debank [address] - check DeFi balances on Debank',
+  help: '🧩debank [address] - check DeFi balance on Debank',
   requirements: {
     addons: ['search'],
   },

@@ -1,3 +1,11 @@
+# 0.12 2012/12/4
+
+- Update readme as awesome list
+- Create Gitcoin Grant https://gitcoin.co/grants/1664/stakerwatch
+
+Enhancement
+- change beacon explorer icon to 📡
+
 # 0.11.1 2012/12/3
 
 Feature
@@ -8,7 +16,6 @@ Enhancement
 
 Fix
 - [xdai-tx][bsc-tx][blockchair] fix the skill and simplify the regex
-
 
 # 0.10.0 2012/12/1
 
