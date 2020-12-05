@@ -312,7 +312,7 @@ export const skillAddressExplorer = {
 /** Check contract address on etherscan */
 export const skillSearchEtherscan = {
   name: 'etherscan',
-  help: '🏦etherscan|scan [address] - check contract address on etherscan',
+  help: '🏦etherscan|scan [address] - check contract address on Etherscan',
   requirements: {
     addons: ['search'],
   },
@@ -329,7 +329,7 @@ export const skillSearchEtherscan = {
     }
     const data = addr || msg[3];
     const url = 'https://www.etherscan.io/address/' + data;
-    robot.addons.search('Check', data, url, 'etherscan');
+    robot.addons.search('Check', data, url, 'Etherscan');
   },
 };
 
@@ -566,11 +566,11 @@ export const skillTxPicker = {
 }
 
 /**
- * Check transaction (tx) on etherscan.
+ * Check transaction (tx) on Etherscan.
  */
 export const skillSearchEtherscanTx = {
   name: 'etherscantx',
-  help: 'etherscan-tx|etherscantx|scan-tx|scantx [tx] - check transaction (tx) on etherscan',
+  help: 'etherscan-tx|etherscantx|scan-tx|scantx [tx] - check transaction (tx) on Etherscan',
   requirements: {
     addons: ['search'],
   },
@@ -578,7 +578,7 @@ export const skillSearchEtherscanTx = {
   action: function(robot, msg) {
     const data = msg[3];
     const url = 'https://www.etherscan.io/tx/' + data;
-    robot.addons.search('Check tx', data, url, 'etherscan');
+    robot.addons.search('Check tx', data, url, 'Etherscan');
   },
 };
 

@@ -3,15 +3,17 @@ Command line Utillity for Ethereum stakers.
 
 [![npm version](https://badge.fury.io/js/staker.svg)](https://www.npmjs.com/package/staker)
 
-The utility tool works as an interactive Eth/Eth2 Awesome List on your console.
+The utility tool works as an interactive Eth/Eth2 Awesome List on your console. 
 
-For example you can use `staker` command to check Eth2 deposit stats; Check any account/address balance / transaction. Or check the gas fee before you make a deal.
+You can use `staker` command to check Eth1 address balance / transaction, check the gas fee before you make a deal.
 
-The command currently support multiple sources. You can use the default `address, validator, gas` command to explore tools that you have rarely experienced.
+If you are an Eth2 staker, you can use the command to check Eth2 deposit stats, open validator explorer or show its balance.
 
-The command randomly pick a [free Ethereum Node](https://ethereumnodes.com/) to fetch the on-chain data instead of counting on [Infura](https://infura.io/). (You can specify a node if you want to)
+Most commands support multiple tools. You can use the default `address, validator, gas` command to explore tools you have rarely experienced.
 
-If you think this tool is useful, please consider support with the [Gitcoin Grant](https://gitcoin.co/grants/1664/stakerwatch)
+If you think this tool is useful, please consider show your support with the [Gitcoin Grant](https://gitcoin.co/grants/1664/stakerwatch) along with other great projects.
+
+By the way to avoid single point of failure, the command randomly pick a [free Ethereum Node](https://ethereumnodes.com/) to fetch the on-chain data instead of counting on [Infura](https://infura.io/). (You can specify a node if you want to)
 
 ## Usage
 
@@ -51,12 +53,12 @@ I have 36 skills:
 * 🏦blockchair [address] - check address on blockchair.com
 * 🏦bloxy [address] - check token symbol, address or tx hash on bloxy.info
 * 🏦etherchain|chain [address] - check contract address on etherchain
-* 🏦etherscan|scan [address] - check contract address on etherscan
+* 🏦etherscan|scan [address] - check contract address on Etherscan
 * 🔎tx - Pick a transaction (tx) explorer from the list
 * bitquery-tx|bitquerytx|query-tx|querytx [tx] - check transaction (tx) on bitquery
 * blockchair-tx|blockchairtx [tx] - check transaction (tx) on blockchair.com
 * etherchain-tx|etherchaintx|chain-tx|chaintx [tx] - check transaction (tx) on etherchain
-* etherscan-tx|etherscantx|scan-tx|scantx [tx] - check transaction (tx) on etherscan
+* etherscan-tx|etherscantx|scan-tx|scantx [tx] - check transaction (tx) on Etherscan
 * 🔎validator - Pick a beacon validator explorer from the list
 * 📡beaconchain|beaconcha|beaconcha.in [address] - check validator address or number on beaconscan
 * 📡beaconscan|scan [address] - check validator address or number on BeaconScan
@@ -82,6 +84,7 @@ If you expect to use this tool frequently, install it via command:
 - [tx](#tx)
 - [gas](#gas)
 - [Other Tools](#other-tools)
+- [Awesome Resources](#awesome)
 
 ## Eth2 Stats
 
@@ -151,8 +154,8 @@ Check [address or index] via beaconcha.in
 * 🏦bitquery [address] - check address on explorer.bitquery.io
 * 🏦blockchair [address] - check address on blockchair.com
 * 🏦bloxy [address] - check token symbol, address or tx hash on bloxy.info
-* 🏦etherchain|chain [address] - check contract address on etherchain
-* 🏦etherscan|scan [address] - check contract address on etherscan
+* 🏦etherchain|chain [address] - check contract address on Etherchain
+* 🏦etherscan|scan [address] - check contract address on Etherscan
 ```
 
 Use `staker balance [addr]` command, you can given a Eth address and get related account balance, including the stable coins (USDt, USDC, Dai...) and lending stable coins in [AAVE](https://aave.com/) and [Compound](https://compound.finance/).
@@ -180,8 +183,10 @@ Or search address in specific explorer like [Etherscan](https://etherscan.io/)
 ```sh
 $ npx staker etherscan [addr]
 
-(open browser to search [addr] on etherscan)
+Check [addr] via Etherscan
 ```
+
+It will open browser to search [addr] on Etherscan.
 
 ## Tx
 
@@ -194,6 +199,12 @@ Same as address, but use to search transaction (tx).
 * etherchain-tx|etherchaintx|chain-tx|chaintx [tx] - check transaction (tx) on etherchain
 * etherscan-tx|etherscantx|scan-tx|scantx [tx] - check transaction (tx) on etherscan
 ```
+
+- [Bitquery](https://explorer.bitquery.io/ethereum) can check money flow
+- [Blockchair](https://blockchair.com/ethereum) provides many explorers on other chain
+- [Bloxy](https://bloxy.info/) Search Engine like interface
+- [Etherchain](https://etherchain.org/) explorer made by Beaconcha.in team
+- [Etherscan](https://etherscan.io/) De facto Eth1 explorer
 
 ## Gas
 
@@ -226,6 +237,11 @@ $ npx staker gasnow
 
 Current gas fee (report by gasnow) is H:70 M:50 L:48 gwei
 ```
+
+- [Gasnow](https://www.gasnow.org/) - Data from SparkPool Miner
+* [Gas Price Oracle](https://etherchain.org/tools/gasPriceOracle) From EtherChain team
+* [Gas Station](https://ethgasstation.info/)
+* [Ethereum Gas Tracker](https://etherscan.io/gastracker) From Etherscan team
 
 ## Other Tools
 
