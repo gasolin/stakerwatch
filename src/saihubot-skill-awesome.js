@@ -3,8 +3,7 @@
 import { t } from 'saihubot-cli-adapter/dist/i18n';
 
 const AWESOME_LINKS = [
-  'http://beaconcha.in/',
-  'http://etherscan.io/',
+  'https://twitter.com/stakerwatch',
   'https://ethstats.net/',
   'https://studio.glassnode.com/metrics?a=ETH&m=addresses.ActiveCount',
   'https://www.stateofthedapps.com/rankings/platform/ethereum',
@@ -18,6 +17,7 @@ const AWESOME_LINKS = [
   'https://blog.ethereum.org/',
   'https://launchpad.ethereum.org/',
   'https://ethernodes.org/',
+  'https://twitter.com/Eth2Bot',
 ];
 
 /**
