@@ -70,15 +70,19 @@ export const skillLastBlock = {
   },
   i18n: {
     'en': {
-      summary: 'The lastest block is {{blocknum}}',
+      fetching: 'Fetching data...',
+      summary: 'The lastest block is **{{blocknum}}**',
     },
     'zh_TW': {
-      summary: '最新的區塊是 {{blocknum}}',
+      fetching: '取得資料中...',
+      summary: '最新的區塊是 **{{blocknum}}**',
     },
     props: ['blocknum']
   },
-  rule: /^lastblock|^block/i,
+  rule: /^(last)?block$/i,
   action: function(robot, msg) {
+    robot.send(t('fetching', {i18n: this.i18n}));
+    robot.render();
     ethFetch(robot.addons.fetch, rpcLastBlock)
     .then(json => {
       const msg = t('summary', {i18n: this.i18n, blocknum: parseInt(json.result)});
@@ -123,14 +127,18 @@ export const skillEth2Stats = {
   rule: /^stats/i,
   i18n: {
     "en": {
-      summary: `{{balance}} ETH has been deposited for {{validators}} validators`,
+      fetching: 'Fetching data...',
+      summary: `**{{balance}}** ETH has been deposited for **{{validators}}** validators`,
     },
     "zh_TW": {
-      summary: `已存入 {{balance}} ETH, 支持 {{validators}} 位驗證者`,
+      fetching: '取得資料中...',
+      summary: `已存入 **{{balance}}** ETH, 支持 **{{validators}}** 位驗證者`,
     },
     props: ['balance', 'validators'],
   },
   action: function(robot, msg) {
+    robot.send(t('fetching', {i18n: this.i18n}));
+    robot.render();
     ethFetch(robot.addons.fetch, rpcEthBalance(ADDR.ETH2_DEPOSIT))
     .then(json => {
       const balance = Math.floor((json.result)/10**18);
@@ -148,6 +156,46 @@ export const skillEth2Stats = {
       )
       robot.render();
     })
+  },
+}
+
+/**
+ * Get the lastest Eth2 block number.
+ */
+export const skillBeaconLastBlock = {
+  name: 'lastBlockBeacon',
+  help: 'lastblock-eth2|lastblock-beacon|block-eth2|block-beacon - get the lastest Eth1 block number',
+  requirements: {
+    addons: ['fetch'],
+  },
+  i18n: {
+    'en': {
+      fetching: 'Fetching data...',
+      summary: 'The lastest BeaconChain Epoch **#{{epoch}}** Slot **#{{slot}}** (proposed by **#{{proposer}}**)',
+    },
+    'zh_TW': {
+      fetching: '取得資料中...',
+      summary: '最新的 BeaconChain Epoch **#{{epoch}}**Slot **#{{slot}}** (出塊者 **#{{proposer}}**)',
+    },
+    props: ['epoch', 'proposer', 'slot']
+  },
+  rule: /^(last)?block-(beacon|eth2)$/i,
+  action: function(robot, msg) {
+    robot.send(t('fetching', {i18n: this.i18n}));
+    robot.render();
+    robot.addons.fetch('https://beaconcha.in/api/v1/block/latest')
+      .then(response => response.json())
+      .then(json => {
+        const data = json.data;
+        const msg = t('summary', {
+          i18n: this.i18n,
+          epoch: data.epoch,
+          slot: data.slot,
+          proposer: data.proposer,
+        });
+        robot.send(msg);
+        robot.render();
+      })
   },
 }
 
@@ -181,6 +229,6 @@ export const skillGasFee = {
   },
 }
 
-export const skillsETH2 = [skillEth2Stats, skillLastBlock];
-const skills = [...skillsETH2, /*skillGetBlance*/, skillGasFee];
+export const skillsETH2 = [skillEth2Stats, skillLastBlock, skillBeaconLastBlock];
+const skills = [...skillsETH2, skillGasFee];
 export {skills};

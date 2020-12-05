@@ -33,9 +33,10 @@ Or type `staker help` to find all skills that `staker` command can do
 ```
 $ npx staker help
 
-I have 36 skills:
+I have 37 skills:
 * 🗞 stats - lastest Eth2 stake state
-* lastblock|block - get the lastest block number
+* lastblock|block - get the lastest Eth1 block number
+* lastblock-eth2|lastblock-beacon|block-eth2|block-beacon- get the lastest Eth1 block number
 * 🛢 gasfee - Show current on-chain gas fee
 * 🔎gas - Pick a gas estimator from the list
 * 🛢 gasnow|now - Show current gas fee via gasnow
@@ -83,6 +84,9 @@ If you expect to use this tool frequently, install it via command:
 - [Address](#address)
 - [tx](#tx)
 - [gas](#gas)
+- [Account](#account)
+- [On-Chain Data](#on-chain-data)
+- [Side Chain](#side-chain)
 - [Other Tools](#other-tools)
 - [Awesome Resources](#awesome)
 
@@ -243,12 +247,47 @@ Current gas fee (report by gasnow) is H:70 M:50 L:48 gwei
 * [Gas Station](https://ethgasstation.info/)
 * [Ethereum Gas Tracker](https://etherscan.io/gastracker) From Etherscan team
 
+## Account
+
+Check Account on Defi Explorer
+
+```
+* 🔎account|defi - Pick an account explorer from the list
+* 🧩debank [address] - check DeFi balance on Debank
+* 🧩zapper [address] - check DeFi balance on Zapper
+* 🧩zerion [address] - check DeFi Balance on Zerion
+```
+
+- [Debank](https://debank.com/)
+- [Zapper](https://zapper.fi/)
+- [Zerion](https://zerion.io/)
+
+## On-Chain Data
+
+```
+* lastblock|block - get the lastest Eth1 block number
+* lastblock-eth2|lastblock-beacon|block-eth2|block-beacon- get the lastest Eth1 block number
+```
+
+## Side Chain
+
+```
+
+* 📕chainid - Show EVM network providers chain and network id table
+* 🏦bsc|bscscan [address] - check address on Binance Smart Chain
+* 🏦bsc-tx|bsctx|bscscan-tx|bscscantx [tx] - check transaction (tx) on Binance Smart Chain
+* 🏦xdai [address] - check address on xDai Chain
+* 🏦xdai-tx|xdaitx [tx] - check transaction (tx) on xDai Chain
+```
+
+- [EVM Networks](https://chainid.network/) list appropriate Chain ID and Network ID to connect to the correct chain.
+- [BscScan](https://bscscan.com/) Binance Smart Chain explorer.
+- [Blockscout](https://blockscout.com/poa/xdai) xDai Chain explorer.
+
 ## Other Tools
 
 ```
 * 🤩awesome|lucky - Show random awesome site around ethereum
-* lastblock|block - get the lastest Eth1 block number
-* 📕chainid - Show EVM network providers chain and network id table
 * qrcode [text] - Generate QRCode with [text]
 * help - list available skills
 ```

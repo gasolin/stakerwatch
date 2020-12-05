@@ -1,5 +1,7 @@
-# 0.12 2012/12/4
+# 0.12 2012/12/5
 
+Feature
+- `lastblock-eth2` skill to show beaconchain last block, slot, and the proposer
 - Update readme as awesome list
 - Create Gitcoin Grant https://gitcoin.co/grants/1664/stakerwatch
 
