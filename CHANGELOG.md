@@ -1,20 +1,18 @@
-# 0.13 2012/12/6
+# 0.13.3 2012/12/6
 
 Feature
 - [stats] show current network and queued validators info inspired by https://twitter.com/Eth2Bot
 
 ```
 ❯ staker stats
-1129552 ETH has been deposited for 35298 validators
-[▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓] 215.44%
+💃Active Validator: 25447
+🌾Participation rate: 98.76%
+📦Latest Epoch: #1143
+👬Queued Validator: 10069
+⏳Wait time: 11 days, 5 hours
 
----Current Network---
-Active Validator: 25399
-🌾 Participation rate: 99.16%
-Latest Epoch: #1131
-
----Queue---
-Validators: 9899
+1136528 ETH has been deposited for 35516 validators
+[▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓] 216.78%
 ```
 
 Enhancement

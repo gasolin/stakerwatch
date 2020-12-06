@@ -3,6 +3,7 @@
 import React, {useEffect, useState} from 'react';
 import { Text } from 'ink';
 import AsciiBar from 'ascii-bar';
+import humanizeDuration from 'humanize-duration';
 import { t } from 'saihubot-cli-adapter/dist/i18n';
 import {getNodeURL} from './utils';
 
@@ -96,26 +97,35 @@ const statsI18n = {
   "en": {
     fetching: 'Fetching data...',
     summary: `{{balance}} ETH has been deposited for {{validators}} validators`,
-    statistics: `
----Current Network---
-Active Validator: {{activeValidator}}
-🌾 Participation rate: {{participationRate}}%
-Latest Epoch: #{{epoch}}
-Queued Validator: {{queueValidator}}
+    statistics: `💃Active Validator: {{activeValidator}}
+🌾Participation rate: {{participationRate}}%
+📦Latest Epoch: #{{epoch}}
+👬Queued Validator: {{queueValidator}}
+⏳Wait time: {{waitTime}}
 `,
   },
   "zh_TW": {
     fetching: '取得資料中...',
     summary: `已存入 {{balance}} ETH, 支持 {{validators}} 位驗證者`,
-    statistics: `
----運行網路---
-活躍驗證者: {{activeValidator}}
-🌾 參與度: {{participationRate}}%
-最近的 Epoch: #{{epoch}}
-排隊中的驗證者: {{queueValidator}}
+    statistics: `💃活躍驗證者: {{activeValidator}}
+🌾參與度: {{participationRate}}%
+📦最近的 Epoch: #{{epoch}}
+👬排隊中的驗證者: {{queueValidator}}
+⏳預估等待時間: {{waitTime}}
 `,
   },
-  props: ['balance', 'validators', 'activeValidator', 'participationRate', 'epoch', 'queueValidator'],
+  props: ['balance', 'validators', 'activeValidator', 'participationRate', 'epoch', 'queueValidator', 'waitTime'],
+}
+
+
+// https://github.com/TheRyanMiller/Eth2RewardsCalc/blob/master/getBeaconData.js
+export const calcWaitTime = (queueLength) => {
+  //225 Epochs per day (1 epoch = 32 * 12s slots)
+  //900 validators can be activated per day (4 per epoch)
+  // 1 validator every 96 seconds
+  let time = 0;
+  if (queueLength > 0) time = 96 * queueLength;
+  return humanizeDuration(time * 1000, { round: true, units: ["d", "h"] });
 }
 
 const ProgressBar = ({fetch, ethFetch}) => {
@@ -160,18 +170,20 @@ const ProgressBar = ({fetch, ethFetch}) => {
     balance: balance,
     validators: balance && validators,
   });
+  const queueValidator = beaconData && (validators - beaconData.validatorscount);
   const stats = t('statistics', {
     i18n: statsI18n,
     validators: balance && validators,
     activeValidator: beaconData && beaconData.validatorscount,
     participationRate: beaconData && Number(beaconData.globalparticipationrate * 100).toFixed(2),
     epoch: beaconData && beaconData.epoch,
-    queueValidator: beaconData && (validators - beaconData.validatorscount)
+    queueValidator,
+    waitTime: calcWaitTime(queueValidator),
   });
   return balance ? (<>
+      <Text>{stats}</Text>
       <Text>{title}</Text>
       <Text>{bar.renderLine()}</Text>
-      <Text>{stats}</Text>
     </>
   ) : <Text>{t('fetching', {i18n: statsI18n})}</Text>
 }
