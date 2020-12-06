@@ -4,6 +4,7 @@ import React, {useEffect, useState} from 'react';
 import { Text } from 'ink';
 import AsciiBar from 'ascii-bar';
 import humanizeDuration from 'humanize-duration';
+import commaNumber from 'comma-number';
 import { t } from 'saihubot-cli-adapter/dist/i18n';
 import {getNodeURL} from './utils';
 
@@ -97,21 +98,21 @@ const statsI18n = {
   "en": {
     fetching: 'Fetching data...',
     summary: `{{balance}} ETH has been deposited for {{validators}} validators`,
-    statistics: `💃Active Validator: {{activeValidator}}
-🌾Participation rate: {{participationRate}}%
-📦Latest Epoch: #{{epoch}}
-👬Queued Validator: {{queueValidator}}
-⏳Wait time: {{waitTime}}
+    statistics: `🌾 Participation rate: {{participationRate}}%
+💃 Active Validator: {{activeValidator}}
+📦 Latest Epoch: {{epoch}}
+👬 Queued Validator: {{queueValidator}}
+⏳ Wait time: {{waitTime}}
 `,
   },
   "zh_TW": {
     fetching: '取得資料中...',
     summary: `已存入 {{balance}} ETH, 支持 {{validators}} 位驗證者`,
-    statistics: `💃活躍驗證者: {{activeValidator}}
-🌾參與度: {{participationRate}}%
-📦最近的 Epoch: #{{epoch}}
-👬排隊中的驗證者: {{queueValidator}}
-⏳預估等待時間: {{waitTime}}
+    statistics: `🌾 參與度: {{participationRate}}%
+💃 活躍驗證者: {{activeValidator}}
+📦 最近的 Epoch: {{epoch}}
+👬 排隊中的驗證者: {{queueValidator}}
+⏳ 預估等待時間: {{waitTime}}
 `,
   },
   props: ['balance', 'validators', 'activeValidator', 'participationRate', 'epoch', 'queueValidator', 'waitTime'],
@@ -167,17 +168,17 @@ const ProgressBar = ({fetch, ethFetch}) => {
 
   const title = t('summary', {
     i18n: statsI18n,
-    balance: balance,
-    validators: balance && validators,
+    balance: commaNumber(balance),
+    validators: balance && commaNumber(validators),
   });
   const queueValidator = beaconData && (validators - beaconData.validatorscount);
   const stats = t('statistics', {
     i18n: statsI18n,
-    validators: balance && validators,
-    activeValidator: beaconData && beaconData.validatorscount,
+    validators: balance && commaNumber(validators),
+    activeValidator: beaconData && commaNumber(beaconData.validatorscount),
     participationRate: beaconData && Number(beaconData.globalparticipationrate * 100).toFixed(2),
     epoch: beaconData && beaconData.epoch,
-    queueValidator,
+    queueValidator: commaNumber(queueValidator),
     waitTime: calcWaitTime(queueValidator),
   });
   return balance ? (<>
