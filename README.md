@@ -27,7 +27,7 @@ $ npx staker help
 I have 37 skills:
 * 🗞 stats - lastest Eth2 stake state
 * lastblock|block - get the lastest Eth1 block number
-* lastblock-eth2|lastblock-beacon|block-eth2|block-beacon- get the lastest Eth1 block number
+* lastblock-eth2|lastblock-beacon|block-eth2|block-beacon - get the lastest Eth1 block number
 * 🛢 gasfee - Show current on-chain gas fee
 * 🔎gas - Pick a gas estimator from the list
 * 🛢 gasnow|now - Show current gas fee via gasnow
@@ -35,7 +35,7 @@ I have 37 skills:
 * 🛢 gasstation|station - Show current gas fee via Eth Gas Station
 * 🛢 gastracker|tracker - Show current gas fee via Etherscan Gas Tracker
 * 💰balance - Show current balance of [address]
-* 💰balance-validator - Show Validator's balance of [key]
+* 💰balance-validator|balance-eth2 - Show Validator's balance of [key]
 * 🔎account|defi - Pick an account explorer from the list
 * 🧩debank [address] - check DeFi balance on Debank
 * 🧩zapper [address] - check DeFi balance on Zapper
@@ -105,7 +105,7 @@ Validators: 9899
 ## Validator
 
 ```
-* 💰balance-validator - Show Validator's balance of [key]
+* 💰balance-validator|balance-eth2 - Show Validator's balance of [key]
 * 🔎validator - Pick a beacon validator explorer from the list
 * 📡beaconchain|beaconcha|beaconcha.in [address] - check validator address or number on beaconscan
 * 📡beaconscan|scan [address] - check validator address or number on BeaconScan

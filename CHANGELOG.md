@@ -1,5 +1,6 @@
 # 0.13 2012/12/6
 
+Feature
 - [stats] show current network and queued validators info inspired by https://twitter.com/Eth2Bot
 
 ```
@@ -15,6 +16,9 @@ Latest Epoch: #1131
 ---Queue---
 Validators: 9899
 ```
+
+Enhancement
+- [balance-validator] add balance-eth2 as alias
 
 # 0.12 2012/12/5
 

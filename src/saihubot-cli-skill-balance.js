@@ -195,14 +195,14 @@ export const skillGetBlance = {
  */
 export const skillGetValidatorBlance = {
   name: 'balance-validator',
-  help: '💰balance-validator - Show Validator\'s balance of [key]',
+  help: '💰balance-validator|balance-eth2 - Show Validator\'s balance of [key]',
   requirements: {
     addons: ['fetch'],
   },
-  rule: /(^balance-validator )(.*)|^balance-validator$/i,
+  rule: /(^balance-(validator|eth2) )(.*)|^balance-(validator|eth2)$/i,
   action: function(robot, msg) {
     let validator = '';
-    if (msg[2] === undefined) {
+    if (msg[3] === undefined) {
       validator = getConfig('VALIDATOR', '');
       if (validator === '') {
         robot.send(t('needAddr', {i18n: i18nValidator}));
@@ -214,7 +214,7 @@ export const skillGetValidatorBlance = {
     robot.send(t('query', {i18n: i18nValidator}));
     robot.render();
 
-    const data = validator || msg[2];
+    const data = validator || msg[3];
     robot.addons.fetch(`https://beaconcha.in/api/v1/validator/${data}`)
       .then(response => response.json())
       .then(json => {
