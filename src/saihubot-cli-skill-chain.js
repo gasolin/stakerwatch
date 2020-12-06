@@ -95,28 +95,24 @@ export const skillLastBlock = {
 const statsI18n = {
   "en": {
     fetching: 'Fetching data...',
-    summary: `**{{balance}}** ETH has been deposited for **{{validators}}** validators`,
+    summary: `{{balance}} ETH has been deposited for {{validators}} validators`,
     statistics: `
 ---Current Network---
 Active Validator: {{activeValidator}}
 🌾 Participation rate: {{participationRate}}%
 Latest Epoch: #{{epoch}}
-
----Queue---
-Validators: {{queueValidator}}
+Queued Validator: {{queueValidator}}
 `,
   },
   "zh_TW": {
     fetching: '取得資料中...',
-    summary: `已存入 **{{balance}}** ETH, 支持 **{{validators}}** 位驗證者`,
+    summary: `已存入 {{balance}} ETH, 支持 {{validators}} 位驗證者`,
     statistics: `
 ---運行網路---
 活躍驗證者: {{activeValidator}}
 🌾 參與度: {{participationRate}}%
 最近的 Epoch: #{{epoch}}
-
----排隊中---
-驗證者: {{queueValidator}}
+排隊中的驗證者: {{queueValidator}}
 `,
   },
   props: ['balance', 'validators', 'activeValidator', 'participationRate', 'epoch', 'queueValidator'],
