@@ -1,6 +1,6 @@
 'use strict';
 
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import { Text } from 'ink';
 import AsciiBar from 'ascii-bar';
 import { t } from 'saihubot-cli-adapter/dist/i18n';
@@ -92,7 +92,60 @@ export const skillLastBlock = {
   },
 }
 
-const ProgressBar = ({percent, message, title}) => {
+const statsI18n = {
+  "en": {
+    fetching: 'Fetching data...',
+    summary: `**{{balance}}** ETH has been deposited for **{{validators}}** validators`,
+    statistics: `
+---Current Network---
+Active Validator: {{activeValidator}}
+🌾 Participation rate: {{participationRate}}%
+Latest Epoch: #{{epoch}}
+
+---Queue---
+Validators: {{queueValidator}}
+`,
+  },
+  "zh_TW": {
+    fetching: '取得資料中...',
+    summary: `已存入 **{{balance}}** ETH, 支持 **{{validators}}** 位驗證者`,
+    statistics: `
+---運行網路---
+活躍驗證者: {{activeValidator}}
+🌾 參與度: {{participationRate}}%
+最近的 Epoch: #{{epoch}}
+
+---排隊中---
+驗證者: {{queueValidator}}
+`,
+  },
+  props: ['balance', 'validators', 'activeValidator', 'participationRate', 'epoch', 'queueValidator'],
+}
+
+const ProgressBar = ({fetch, ethFetch}) => {
+  const [beaconData, setBeaconData] = useState({});
+  const [balance, setBalance] = useState(0);
+  useEffect(() => {
+    async function fetchBalance() {
+      ethFetch(fetch, rpcEthBalance(ADDR.ETH2_DEPOSIT))
+      .then(json => setBalance(Math.floor((json.result)/10**18)));
+    }
+    fetchBalance();
+  }, [ethFetch, fetch]);
+
+  useEffect(() => {
+    async function fetchLatest() {
+      fetch('https://beaconcha.in/api/v1/epoch/latest')
+      .then(response => response.json())
+      .then(json => setBeaconData(json.data));
+    }
+    fetchLatest();
+  }, [fetch]);
+
+  const percent = balance/524288;
+  const validators = Math.floor(balance/32);
+  const message = `${parseFloat(percent * 100).toFixed(2)}%`;
+
   const barSize = 20;
   const bar = new AsciiBar({
     formatString: '#bar #message',
@@ -105,11 +158,26 @@ const ProgressBar = ({percent, message, title}) => {
     lastUpdateForTiming: false,
     message,
   });
-  return (<>
+
+  const title = t('summary', {
+    i18n: statsI18n,
+    balance: balance,
+    validators: balance && validators,
+  });
+  const stats = t('statistics', {
+    i18n: statsI18n,
+    validators: balance && validators,
+    activeValidator: beaconData && beaconData.validatorscount,
+    participationRate: beaconData && Number(beaconData.globalparticipationrate * 100).toFixed(2),
+    epoch: beaconData && beaconData.epoch,
+    queueValidator: beaconData && (validators - beaconData.validatorscount)
+  });
+  return balance ? (<>
       <Text>{title}</Text>
       <Text>{bar.renderLine()}</Text>
+      <Text>{stats}</Text>
     </>
-  )
+  ) : <Text>{t('fetching', {i18n: statsI18n})}</Text>
 }
 
 /**
@@ -125,37 +193,16 @@ export const skillEth2Stats = {
     addons: ['fetch'],
   },
   rule: /^stats/i,
-  i18n: {
-    "en": {
-      fetching: 'Fetching data...',
-      summary: `**{{balance}}** ETH has been deposited for **{{validators}}** validators`,
-    },
-    "zh_TW": {
-      fetching: '取得資料中...',
-      summary: `已存入 **{{balance}}** ETH, 支持 **{{validators}}** 位驗證者`,
-    },
-    props: ['balance', 'validators'],
-  },
   action: function(robot, msg) {
-    robot.send(t('fetching', {i18n: this.i18n}));
+    robot.sendComponent(
+      <>
+        <ProgressBar
+          fetch = {robot.addons.fetch}
+          ethFetch={ethFetch}
+        />
+      </>
+    )
     robot.render();
-    ethFetch(robot.addons.fetch, rpcEthBalance(ADDR.ETH2_DEPOSIT))
-    .then(json => {
-      const balance = Math.floor((json.result)/10**18);
-      const percent = balance/524288;
-      const validators = Math.floor(balance/32);
-      const result = t('summary', {i18n: this.i18n, balance, validators})
-      robot.sendComponent(
-        <>
-          <ProgressBar
-            title={result}
-            percent={percent}
-            message={`${parseFloat(percent * 100).toFixed(2)}%`}
-          />
-        </>
-      )
-      robot.render();
-    })
   },
 }
 

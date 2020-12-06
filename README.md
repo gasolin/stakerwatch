@@ -19,16 +19,7 @@ By the way to avoid single point of failure, the command randomly pick a [free E
 
 Make sure [node.js](https://nodejs.org) is installed in your device.
 
-Open terminal and type
-
-```sh
-$ npx staker stats
-
-966402 ETH has been deposited for 30200 validators
-[▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓] 184.33%
-```
-
-Or type `staker help` to find all skills that `staker` command can do
+Open terminal and type `staker help` to find all skills that `staker` command can do.
 
 ```
 $ npx staker help
@@ -99,10 +90,16 @@ If you expect to use this tool frequently, install it via command:
 Get Eth2 stats via command
 
 ```sh
-$ npx staker stats
+1129552 ETH has been deposited for 35298 validators
+[▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓] 215.44%
 
-1005666 ETH has been deposited for 31427 validators
-[▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓] 191.82%
+---Current Network---
+Active Validator: 25399
+🌾 Participation rate: 99.16%
+Latest Epoch: #1131
+
+---Queue---
+Validators: 9899
 ```
 
 ## Validator
