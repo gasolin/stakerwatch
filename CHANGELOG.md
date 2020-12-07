@@ -18,6 +18,9 @@ Feature
 Enhancement
 - [balance-validator] add balance-eth2 as alias
 
+Fix
+- nit: lastest -> latest
+
 # 0.12 2012/12/5
 
 Feature

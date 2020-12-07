@@ -25,9 +25,9 @@ Open terminal and type `staker help` to find all skills that `staker` command ca
 $ npx staker help
 
 I have 37 skills:
-* 🗞 stats - lastest Eth2 stake state
-* lastblock|block - get the lastest Eth1 block number
-* lastblock-eth2|lastblock-beacon|block-eth2|block-beacon - get the lastest Eth1 block number
+* 🗞 stats - latest Eth2 stake state
+* lastblock|block - get the latest Eth1 block number
+* lastblock-eth2|lastblock-beacon|block-eth2|block-beacon - get the latest Eth1 block number
 * 🛢 gasfee - Show current on-chain gas fee
 * 🔎gas - Pick a gas estimator from the list
 * 🛢 gasnow|now - Show current gas fee via gasnow
@@ -84,7 +84,7 @@ If you expect to use this tool frequently, install it via command:
 ## Eth2 Stats
 
 ```
-* 🗞 stats - lastest Eth2 stake state
+* 🗞 stats - latest Eth2 stake state
 ```
 
 Get Eth2 stats via command
@@ -260,8 +260,8 @@ Check Account on Defi Explorer
 ## On-Chain Data
 
 ```
-* lastblock|block - get the lastest Eth1 block number
-* lastblock-eth2|lastblock-beacon|block-eth2|block-beacon- get the lastest Eth1 block number
+* lastblock|block - get the latest Eth1 block number
+* lastblock-eth2|lastblock-beacon|block-eth2|block-beacon- get the latest Eth1 block number
 ```
 
 ## Side Chain

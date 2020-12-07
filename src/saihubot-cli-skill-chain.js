@@ -62,18 +62,18 @@ const rpcGasPrice = () => JSON.stringify({
 });
 
 /**
- * Get the lastest block number.
+ * Get the latest block number.
  */
 export const skillLastBlock = {
   name: 'lastblock',
-  help: 'lastblock|block - get the lastest Eth1 block number',
+  help: 'lastblock|block - get the latest Eth1 block number',
   requirements: {
     addons: ['fetch'],
   },
   i18n: {
     'en': {
       fetching: 'Fetching data...',
-      summary: 'The lastest block is **{{blocknum}}**',
+      summary: 'The latest block is **{{blocknum}}**',
     },
     'zh_TW': {
       fetching: '取得資料中...',
@@ -190,14 +190,20 @@ const ProgressBar = ({fetch, ethFetch}) => {
 }
 
 /**
- * get ETH2 stake progress.
+ * Get Eth2 stake state.
  *
- * 100511 ETH has been deposited for 3140 validators
- * [▓▓▓▓▓▓░░░░░░░░░░░░░░░░░░░░░░░░] 19.17%
+ * 🌾 Participation rate: 99.08%
+ * 💃 Active Validator: 25,467
+ * 📦 Latest Epoch: 1148
+ * 👬 Queued Validator: 10,054
+ * ⏳ Wait time: 11 days, 4 hours
+ *
+ * 1,136,688 ETH has been deposited for 35,521 validators
+ * [▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓] 216.81%
  */
 export const skillEth2Stats = {
   name: 'stakestat',
-  help: '🗞 stats - lastest Eth2 stake state',
+  help: '🗞 stats - latest Eth2 stake state',
   requirements: {
     addons: ['fetch'],
   },
@@ -216,18 +222,18 @@ export const skillEth2Stats = {
 }
 
 /**
- * Get the lastest Eth2 block number.
+ * Get the latest Eth2 block number.
  */
 export const skillBeaconLastBlock = {
   name: 'lastBlockBeacon',
-  help: 'lastblock-eth2|lastblock-beacon|block-eth2|block-beacon - get the lastest Eth1 block number',
+  help: 'lastblock-eth2|lastblock-beacon|block-eth2|block-beacon - get the latest Eth1 block number',
   requirements: {
     addons: ['fetch'],
   },
   i18n: {
     'en': {
       fetching: 'Fetching data...',
-      summary: 'The lastest BeaconChain Epoch **#{{epoch}}** Slot **#{{slot}}** (proposed by **#{{proposer}}**)',
+      summary: 'The latest BeaconChain Epoch **#{{epoch}}** Slot **#{{slot}}** (proposed by **#{{proposer}}**)',
     },
     'zh_TW': {
       fetching: '取得資料中...',
