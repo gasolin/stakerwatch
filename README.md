@@ -90,9 +90,11 @@ If you expect to use this tool frequently, install it via command:
 Get Eth2 stats via command
 
 ```sh
+🤑 Reward rate: 15.26%
 🌾 Participation rate: 98.94%
 💃 Active Validator: 25,463
 📦 Latest Epoch: 1147
+
 👬 Queued Validator: 10,058
 ⏳ Wait time: 11 days, 4 hours
 
