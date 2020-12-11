@@ -1,6 +1,27 @@
 # 0.15 2012/12/12
 
 Feature
+- [balance] show (Eth2) Validator balance that deposit from this address
+
+```sh
+$ npx staker balance [addr]
+
+Account Balance
+| Symbol | Balance   | Source |
+|--------|-----------|--------|
+| ETH    | 1         |        |
+| USDt   | 8888      |        |
+| Dai    | 123       |        |
+| aUSDt  | 1234.56   |AAVE    |
+| cUSDt  | 567.89    |Compound|
+
+(Eth2) Validator Balance
+| Symbol | Balance   | Index  |
+|-------|------------|--------|
+| ETH   | 32.02 ETH  | 12345  |
+| ETH   | 32.01 ETH  | 54321  |
+```
+
 - [balance] support multiple address
 
 staker balance-eth2 [addr1],[addr2]
@@ -8,6 +29,7 @@ staker balance-eth2 [addr1],[addr2]
 - [balance-eth2] support multiple validators index
 
 staker balance-eth2 12345,23456
+
 
 # 0.14 2012/12/11
 

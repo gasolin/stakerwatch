@@ -129,19 +129,31 @@ const balanceI18n = {
   props: ['balance', 'usdt']
 };
 
+// support multiple validators balance by comma (without space)
 const ValidatorBalances = ({validator, fetch}) => {
   const [balance, setBalance] = useState([]);
-  const validators = validator.indexOf(',') > -1 ? validator.split(',').map(index => index.trim()) : [validator];
+  if (!validator) return null;
+
+  let validators = typeof validator === 'string' && validator.indexOf(',') > -1
+    ? validator.split(',').map(index => index.trim())
+    : [validator + ''];
+  const isOverflow = validators.length > 100;
   const data = [];
   useEffect(() => {
+    if (isOverflow) {
+      validators = validators.slice(0, 100);
+    }
+
     async function fetchValidatorBalance() {
-      fetch(`https://beaconcha.in/api/v1/validator/${validators}`)
+      fetch(`https://beaconcha.in/api/v1/validator/${validators.join(',')}`)
         .then(response => response.json())
         .then(json => {
-          json.data && Object.values(json.data).map(validator => {
+          const arrData = Array.isArray(json.data) ? json.data : [json.data];
+          json.data && Object.values(arrData).map(validator => {
             validator.balance && data.push({
+              Symbol: 'ETH',
+              Balance: `${Number(validator.balance)/10**9}`,
               Index: validator.validatorindex,
-              Balance: `${Number(validator.balance)/10**9} ETH`
             });
           });
           setBalance(data);
@@ -151,12 +163,19 @@ const ValidatorBalances = ({validator, fetch}) => {
   }, [validator, fetch]);
 
   return balance.length > 0
-    ? (<Table data={balance} />)
+    ? (<>
+      <Text>{t('validatorBalance', {i18n: i18nValidator})}</Text>
+      <Text>{isOverflow ? '(Only shows the first 100 validators)' : ''}</Text>
+      <Table data={balance} />
+    </>)
     : (<Text>{t('query', {i18n: i18nValidator})}</Text>);
 }
 
+// support multiple account balance by comma (without space)
+// also shows validator balances
 const Balances = ({address, fetch}) => {
   const [balance, setBalance] = useState([]);
+  const [validator, setValidator] = useState('');
   const data = [];
   useEffect(() => {
     const addresses = address.indexOf(',') > -1 ? address.split(',').map(addr => addr.trim()) : [address];
@@ -188,14 +207,35 @@ const Balances = ({address, fetch}) => {
         );
         setBalance([...balance, ...data]);
     }
+
+    async function fetchValidators() {
+      for (let i = 0; i < addresses.length ; i++) {
+        const json = await fetch(`https://beaconcha.in/api/v1/validator/eth1/${addresses[i]}`)
+          .then(response => response.json());
+        const validators = Array.isArray(json.data) ? json.data : [json.data];
+        if (validators && validators.length > 0) {
+          const data = validators.length === 1
+            ? validators[0].validatorindex
+            : validators.filter(data => data.validatorindex !== 0).map(data => data.validatorindex).join(',');
+          setValidator(validator ? validator + ',' + data : data);
+        }
+      }
+    }
+
     if (address) {
       fetchEthBalance();
       fetchTokenBalance();
+      fetchValidators();
     }
   }, [address, fetch]);
 
   return balance.length > 0
-    ? (<Table data={balance} />)
+    ? (<>
+      <Text>{t('accountBalance', {i18n: i18nValidator})}</Text>
+      <Table data={balance} />
+      <Text> </Text>
+      <ValidatorBalances validator={validator} fetch={fetch} />
+    </>)
     : (<Text>{t('query', {i18n: balanceI18n})}</Text>);
 }
 

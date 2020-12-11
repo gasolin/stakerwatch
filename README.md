@@ -116,10 +116,18 @@ Given a Eth2 validator address, you can get Eth2 validator balance
 ```sh
 $ npx staker balance-validator [address or index]
 
-| Index | Balance    |
-|-------|------------|
-| 12345 | 32.02 ETH  |
+(Eth2) Validator Balance
+| Symbol | Balance   | Index  |
+|-------|------------|--------|
+| ETH   | 32.02 ETH  | 12345  |
 ```
+
+Also support multiple validators balance by comma (without space), ex
+
+```sh
+$ npx staker balance-validator 12345,23456
+```
+
 
 You can link to multiple beacon explorer via command:
 
@@ -164,13 +172,20 @@ Use `staker balance [addr]` command, you can given a Eth address and get related
 ```sh
 $ npx staker balance [addr]
 
+Account Balance
 | Symbol | Balance   | Source |
 |--------|-----------|--------|
 | ETH    | 1         |        |
 | USDt   | 8888      |        |
 | Dai    | 123       |        |
-| aUSDt  | 1234.56   | AAVE   |
+| aUSDt  | 1234.56   |AAVE    |
 | cUSDt  | 567.89    |Compound|
+
+(Eth2) Validator Balance
+| Symbol | Balance   | Index  |
+|-------|------------|--------|
+| ETH   | 32.02 ETH  | 12345  |
+| ETH   | 32.01 ETH  | 54321  |
 ```
 
 You can link to Eth Address or Contract from multiple explorer
