@@ -129,38 +129,70 @@ const balanceI18n = {
   props: ['balance', 'usdt']
 };
 
-const Balances = ({address}) => {
+const ValidatorBalances = ({validator, fetch}) => {
   const [balance, setBalance] = useState([]);
+  const validators = validator.indexOf(',') > -1 ? validator.split(',').map(index => index.trim()) : [validator];
+  const data = [];
   useEffect(() => {
+    async function fetchValidatorBalance() {
+      fetch(`https://beaconcha.in/api/v1/validator/${validators}`)
+        .then(response => response.json())
+        .then(json => {
+          json.data && Object.values(json.data).map(validator => {
+            validator.balance && data.push({
+              Index: validator.validatorindex,
+              Balance: `${Number(validator.balance)/10**9} ETH`
+            });
+          });
+          setBalance(data);
+        });
+      }
+    validator && fetchValidatorBalance();
+  }, [validator, fetch]);
+
+  return balance.length > 0
+    ? (<Table data={balance} />)
+    : (<Text>{t('query', {i18n: i18nValidator})}</Text>);
+}
+
+const Balances = ({address, fetch}) => {
+  const [balance, setBalance] = useState([]);
+  const data = [];
+  useEffect(() => {
+    const addresses = address.indexOf(',') > -1 ? address.split(',').map(addr => addr.trim()) : [address];
     async function fetchEthBalance() {
-      const ethBalances = await getEtherBalances(getNodeURL(), [address]);
+      const ethBalances = await getEtherBalances(getNodeURL(), addresses);
       Object.values(ethBalances).map(val => {
         if (val === 0n) return;
-        setBalance([{
+        data.push({
           [t('token', {i18n:balanceI18n})]: 'ETH',
           [t('balance', {i18n: balanceI18n})]: (Number(val) / 10**18).toFixed(8),
           [t('source', {i18n: balanceI18n})]: '',
-        }]);
+        });
       });
+      setBalance([...balance, ...data]);
     }
-    address && fetchEthBalance();
 
     async function fetchTokenBalance() {
-      const tokenBalances = await getTokensBalances(getNodeURL(), [address], Object.keys(contractMap));
+      const tokenBalances = await getTokensBalances(getNodeURL(), addresses, Object.keys(contractMap));
         Object.keys(tokenBalances).map(addr =>
           Object.entries(tokenBalances[addr]).map(([key, val]) => {
             if (val === 0n) return;
             const token = contractMap[key];
-            setBalance([...balance, {
+            data.push({
               Symbol: token.symbol,
               Balance: (Number(val) / 10**token.decimals).toFixed(2),
               [t('source', {i18n: balanceI18n})]: token.source || '',
-            }]);
+            });
           })
         );
+        setBalance([...balance, ...data]);
     }
-    address && fetchTokenBalance();
-  }, [address]);
+    if (address) {
+      fetchEthBalance();
+      fetchTokenBalance();
+    }
+  }, [address, fetch]);
 
   return balance.length > 0
     ? (<Table data={balance} />)
@@ -192,7 +224,7 @@ export const skillGetBlance = {
       }
     }
     const parsedAddr = addr.trim() || msg[2];
-    robot.sendComponent(<Balances address={parsedAddr} />);
+    robot.sendComponent(<Balances address={parsedAddr} fetch={robot.addons.fetch} />);
     robot.render();
   },
 }
@@ -221,23 +253,9 @@ export const skillGetValidatorBlance = {
       }
     }
 
-    robot.send(t('query', {i18n: i18nValidator}));
-    robot.render();
-
     const data = validator || msg[3];
-    robot.addons.fetch(`https://beaconcha.in/api/v1/validator/${data}`)
-      .then(response => response.json())
-      .then(json => {
-        const data = [];
-        if(json.data && json.data.balance) {
-          data.push({
-            Index: json.data.validatorindex,
-            Balance: `${Number(json.data.balance)/10**9} ETH`
-          })
-          robot.sendComponent(<Table data={data} />);
-          robot.render();
-        }
-      });
+    robot.sendComponent(<ValidatorBalances validator={data} fetch={robot.addons.fetch} />);
+    robot.render();
   }
 }
 const skills = [skillGetBlance, skillGetValidatorBlance];

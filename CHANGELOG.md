@@ -1,3 +1,14 @@
+# 0.15 2012/12/12
+
+Feature
+- [balance] support multiple address
+
+staker balance-eth2 [addr1],[addr2]
+
+- [balance-eth2] support multiple validators index
+
+staker balance-eth2 12345,23456
+
 # 0.14 2012/12/11
 
 Fix
@@ -5,7 +16,7 @@ Fix
 
 Refactor
 - update deps
-- refactor balance skill
+- [balance][balance-eth2] refactor skills
 
 # 0.13.5 2012/12/8
 

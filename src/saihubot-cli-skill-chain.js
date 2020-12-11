@@ -23,7 +23,7 @@ const ethFetch = (fetch, rpc) =>
   fetch(getNodeURL(), {
     ...baseFetchOptions,
     body: rpc,
-  }).then(response => response.json())
+  }).then(response => response.json());
 
 let idx = 1;
 
