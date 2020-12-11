@@ -1,4 +1,13 @@
-# 0.13.4 2012/12/6
+# 0.14 2012/12/11
+
+Fix
+- open browser on Windows
+
+Refactor
+- update deps
+- refactor balance skill
+
+# 0.13.5 2012/12/8
 
 Feature
 - [stats] show current network and queued validators info inspired by https://twitter.com/Eth2Bot

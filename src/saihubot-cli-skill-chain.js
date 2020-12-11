@@ -98,9 +98,11 @@ const statsI18n = {
   "en": {
     fetching: 'Fetching data...',
     summary: `{{balance}} ETH has been deposited for {{validators}} validators`,
-    statistics: `🌾 Participation rate: {{participationRate}}%
+    statistics: `🤑 Reward Rate: {{apr}}%
+🌾 Participation rate: {{participationRate}}%
 💃 Active Validator: {{activeValidator}}
 📦 Latest Epoch: {{epoch}}
+
 👬 Queued Validator: {{queueValidator}}
 ⏳ Wait time: {{waitTime}}
 `,
@@ -108,14 +110,16 @@ const statsI18n = {
   "zh_TW": {
     fetching: '取得資料中...',
     summary: `已存入 {{balance}} ETH, 支持 {{validators}} 位驗證者`,
-    statistics: `🌾 參與度: {{participationRate}}%
+    statistics: `🤑 預估收益率: {{apr}}%
+🌾 參與度: {{participationRate}}%
 💃 活躍驗證者: {{activeValidator}}
 📦 最近的 Epoch: {{epoch}}
+
 👬 排隊中的驗證者: {{queueValidator}}
 ⏳ 預估等待時間: {{waitTime}}
 `,
   },
-  props: ['balance', 'validators', 'activeValidator', 'participationRate', 'epoch', 'queueValidator', 'waitTime'],
+  props: ['apr', 'balance', 'validators', 'activeValidator', 'participationRate', 'epoch', 'queueValidator', 'waitTime'],
 }
 
 
@@ -128,6 +132,9 @@ export const calcWaitTime = (queueLength) => {
   if (queueLength > 0) time = 96 * queueLength;
   return humanizeDuration(time * 1000, { round: true, units: ["d", "h"] });
 }
+
+// https://www.reddit.com/r/ethstaker/comments/k7e9k0/what_will_be_the_minimum_apr_rate_for_eth2_stake/gexwpzq/
+export const calcAPR = (validatorscount) =>  (14300 / Math.sqrt(validatorscount)).toFixed(2);
 
 const ProgressBar = ({fetch, ethFetch}) => {
   const [beaconData, setBeaconData] = useState({});
@@ -180,6 +187,7 @@ const ProgressBar = ({fetch, ethFetch}) => {
     epoch: beaconData && beaconData.epoch,
     queueValidator: commaNumber(queueValidator),
     waitTime: calcWaitTime(queueValidator),
+    apr: beaconData &&　calcAPR(beaconData.totalvalidatorbalance / 10**9),
   });
   return balance ? (<>
       <Text>{stats}</Text>

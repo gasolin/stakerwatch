@@ -1,5 +1,6 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import { getEtherBalances, getTokensBalances } from '@mycrypto/eth-scan';
+import { Text } from 'ink';
 import Table from 'ink-table';
 import { t } from 'saihubot-cli-adapter/dist/i18n';
 
@@ -110,6 +111,62 @@ export const contractMap = {
   }
 }
 
+const balanceI18n = {
+  'en': {
+    query: 'Query current balance...',
+    token: 'Symbol',
+    balance: 'Balance',
+    source: 'Source',
+    needAddr: 'Please pass the address or define SAIHUBOT_ETH_ADDR first',
+  },
+  'zh_TW': {
+    query: '查詢餘額中...',
+    token: '幣種',
+    balance: '餘額',
+    source: '來源',
+    needAddr: '請傳入地址或是預先定義 SAIHUBOT_ETH_ADDR 參數',
+  },
+  props: ['balance', 'usdt']
+};
+
+const Balances = ({address}) => {
+  const [balance, setBalance] = useState([]);
+  useEffect(() => {
+    async function fetchEthBalance() {
+      const ethBalances = await getEtherBalances(getNodeURL(), [address]);
+      Object.values(ethBalances).map(val => {
+        if (val === 0n) return;
+        setBalance([{
+          [t('token', {i18n:balanceI18n})]: 'ETH',
+          [t('balance', {i18n: balanceI18n})]: (Number(val) / 10**18).toFixed(8),
+          [t('source', {i18n: balanceI18n})]: '',
+        }]);
+      });
+    }
+    address && fetchEthBalance();
+
+    async function fetchTokenBalance() {
+      const tokenBalances = await getTokensBalances(getNodeURL(), [address], Object.keys(contractMap));
+        Object.keys(tokenBalances).map(addr =>
+          Object.entries(tokenBalances[addr]).map(([key, val]) => {
+            if (val === 0n) return;
+            const token = contractMap[key];
+            setBalance([...balance, {
+              Symbol: token.symbol,
+              Balance: (Number(val) / 10**token.decimals).toFixed(2),
+              [t('source', {i18n: balanceI18n})]: token.source || '',
+            }]);
+          })
+        );
+    }
+    address && fetchTokenBalance();
+  }, [address]);
+
+  return balance.length > 0
+    ? (<Table data={balance} />)
+    : (<Text>{t('query', {i18n: balanceI18n})}</Text>);
+}
+
 /**
  * Get ETH and stable coins balance of [address].
  * Includes the stable token load in AAVE and Compound
@@ -123,67 +180,20 @@ export const skillGetBlance = {
   requirements: {
     addons: ['fetch'],
   },
-  i18n: {
-    'en': {
-      query: 'Query current balance...',
-      token: 'Symbol',
-      balance: 'Balance',
-      source: 'Source',
-      needAddr: 'Please pass the address or define SAIHUBOT_ETH_ADDR first',
-    },
-    'zh_TW': {
-      query: '查詢餘額中...',
-      token: '幣種',
-      balance: '餘額',
-      source: '來源',
-      needAddr: '請傳入地址或是預先定義 SAIHUBOT_ETH_ADDR 參數',
-    },
-    props: ['balance', 'usdt']
-  },
   rule: /(^balance )(.*)|^balance$/i,
   action: function(robot, msg) {
     let addr = '';
     if (msg[2] === undefined) {
       addr = getConfig('ETH_ADDR', '');
       if (addr.trim() === '') {
-        robot.send(t('needAddr', {i18n: this.i18n}));
+        robot.send(t('needAddr', {i18n: balanceI18n}));
         robot.render();
         return;
       }
     }
     const parsedAddr = addr.trim() || msg[2];
-    async function getBalances(i18n) {
-      const ethBalances = await getEtherBalances(getNodeURL(), [parsedAddr]);
-      let data = [];
-      Object.values(ethBalances).map(val => {
-        if (val === 0n) return;
-        data.push({
-          [t('token', {i18n})]: 'ETH',
-          [t('balance', {i18n})]: (Number(val) / 10**18).toFixed(8),
-          [t('source', {i18n})]: '',
-        });
-      });
-      robot.sendComponent(<Table data={data} />);
-      robot.render();
-
-      const tokenBalances = await getTokensBalances(getNodeURL(), [parsedAddr], Object.keys(contractMap));
-      Object.keys(tokenBalances).map(addr =>
-        Object.entries(tokenBalances[addr]).map(([key, val]) => {
-          if (val === 0n) return;
-          const token = contractMap[key];
-          data.push({
-            Symbol: token.symbol,
-            Balance: (Number(val) / 10**token.decimals).toFixed(2),
-            [t('source', {i18n})]: token.source || '',
-          });
-        })
-      );
-      robot.sendComponent(<Table data={data} />);
-      robot.render();
-    }
-    robot.send(t('query', {i18n: this.i18n}));
+    robot.sendComponent(<Balances address={parsedAddr} />);
     robot.render();
-    getBalances(this.i18n);
   },
 }
 
