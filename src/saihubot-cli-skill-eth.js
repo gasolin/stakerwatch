@@ -273,6 +273,7 @@ export const skillAddressExplorer = {
           'bloxy',
           'etherchain',
           'etherscan',
+          'ethplorer',
           'tokenview',
         ])} ${data}`),
       },
@@ -305,6 +306,12 @@ export const skillAddressExplorer = {
         id: 'scan',
         rule: /^scan/i,
         action: () => robot.ask(`etherscan ${data}`),
+      },
+      {
+        title: 'Ethplorer',
+        id: 'ethplorer',
+        rule: /^ethplorer/i,
+        action: () => robot.ask(`ethplorer ${data}`),
       },
       {
         title: 'Tokenview',
@@ -483,6 +490,34 @@ export const skillSearchTokenview = {
   },
 };
 
+/** Check contract address on Ethplorer.
+ *
+ * can pass the address, or pre-define the
+ * SAIHUBOT_ETH_ADDR environment variable
+ */
+export const skillSearchEthplorer = {
+  name: 'ethplorer',
+  help: '🏦ethplorer [address] - check contract address on ethplorer',
+  requirements: {
+    addons: ['search'],
+  },
+  rule: /^(ethplorer )(.*)|^ethplorer$/i,
+  action: function(robot, msg) {
+    let addr = '';
+    if (msg[2] === undefined) {
+      addr = getConfig('ETH_ADDR', '');
+      if (addr === '') {
+        robot.send(t('needAddr', {i18n: i18nAddr}));
+        robot.render();
+        return;
+      }
+    }
+    const data = addr || msg[2];
+    const url = 'https://ethplorer.io/address/' + data;
+    robot.addons.search('Check', data, url, 'Ethplorer');
+  },
+};
+
 // Side Chain
 
 /**
@@ -568,6 +603,7 @@ export const skillTxPicker = {
           'blockchair',
           'bloxy',
           'etherscantx',
+          'ethplorertx',
           'tokenviewtx',
         ])} ${data}`),
       },
@@ -602,7 +638,13 @@ export const skillTxPicker = {
         action: () => robot.ask(`scantx ${data}`),
       },
       {
-        title: 'Tokenviewt',
+        title: 'Ethplorer',
+        id: 'ethplorertx',
+        rule: /^ethplorertx/i,
+        action: () => robot.ask(`ethplorertx ${data}`),
+      },
+      {
+        title: 'Tokenview',
         id: 'tokenviewtx',
         rule: /^tokenviewtx/i,
         action: () => robot.ask(`tokenviewtx ${data}`),
@@ -694,6 +736,23 @@ export const skillSearchTokenviewTx = {
     const data = msg[2];
     const url = 'https://eth.tokenview.com/en/tx/' + data;
     robot.addons.search('Check tx', data, url, 'tokenview');
+  },
+};
+
+/**
+ * Check transaction (tx) on Ethplorer.
+ */
+export const skillSearchEthplorerTx = {
+  name: 'ethplorertx',
+  help: 'ethplorer-tx|ethplorertx [tx] - check transaction (tx) on Ethplorer',
+  requirements: {
+    addons: ['search'],
+  },
+  rule: /(^ethplorer-?tx )(.*)/i,
+  action: function(robot, msg) {
+    const data = msg[2];
+    const url = 'https://ethplorer.io/tx/' + data;
+    robot.addons.search('Check tx', data, url, 'Ethplorer');
   },
 };
 
@@ -1010,6 +1069,7 @@ export const skillsAddress = [
   skillSearchBloxy,
   skillSearchEtherchain,
   skillSearchEtherscan,
+  skillSearchEthplorer,
   skillSearchTokenview,
 ];
 export const skillsTx = [
@@ -1018,6 +1078,7 @@ export const skillsTx = [
   skillSearchBlockchairTx,
   skillSearchEtherchainTx,
   skillSearchEtherscanTx,
+  skillSearchEthplorerTx,
   skillSearchTokenviewTx,
 ];
 export const skillsValidator = [

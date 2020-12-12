@@ -2,6 +2,7 @@
 
 Feature
 - [tokenview][tokenview-tx] support tokenview explorer
+- [ethplorer][ethplorer-tx] support ethplorer explorer
 
 # 0.15 2012/12/12
 
