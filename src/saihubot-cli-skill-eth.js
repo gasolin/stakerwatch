@@ -273,6 +273,7 @@ export const skillAddressExplorer = {
           'bloxy',
           'etherchain',
           'etherscan',
+          'tokenview',
         ])} ${data}`),
       },
       {
@@ -304,6 +305,12 @@ export const skillAddressExplorer = {
         id: 'scan',
         rule: /^scan/i,
         action: () => robot.ask(`etherscan ${data}`),
+      },
+      {
+        title: 'Tokenview',
+        id: 'tokenview',
+        rule: /^tokenview/i,
+        action: () => robot.ask(`tokenview ${data}`),
       },
     ]);
   },
@@ -420,7 +427,11 @@ export const skillSearchBitQuery = {
   },
 };
 
-/** Check contract address on etherchain */
+/** Check contract address on etherchain.
+ *
+ * can pass the address, or pre-define the
+ * SAIHUBOT_ETH_ADDR environment variable
+ */
 export const skillSearchEtherchain = {
   name: 'etherchain',
   help: '🏦etherchain|chain [address] - check contract address on etherchain',
@@ -441,6 +452,34 @@ export const skillSearchEtherchain = {
     const data = addr || msg[3];
     const url = 'https://etherchain.org/account/' + data;
     robot.addons.search('Check', data, url, 'etherchain.org');
+  },
+};
+
+/** Check contract address on Tokenview.
+ *
+ * can pass the address, or pre-define the
+ * SAIHUBOT_ETH_ADDR environment variable
+ */
+export const skillSearchTokenview = {
+  name: 'tokenview',
+  help: '🏦tokenview [address] - check contract address on tokenview',
+  requirements: {
+    addons: ['search'],
+  },
+  rule: /^(tokenview )(.*)|^tokenview$/i,
+  action: function(robot, msg) {
+    let addr = '';
+    if (msg[2] === undefined) {
+      addr = getConfig('ETH_ADDR', '');
+      if (addr === '') {
+        robot.send(t('needAddr', {i18n: i18nAddr}));
+        robot.render();
+        return;
+      }
+    }
+    const data = addr || msg[2];
+    const url = 'https://eth.tokenview.com/en/address/' + data;
+    robot.addons.search('Check', data, url, 'tokenview');
   },
 };
 
@@ -529,6 +568,7 @@ export const skillTxPicker = {
           'blockchair',
           'bloxy',
           'etherscantx',
+          'tokenviewtx',
         ])} ${data}`),
       },
       {
@@ -561,6 +601,12 @@ export const skillTxPicker = {
         rule: /^scantx/i,
         action: () => robot.ask(`scantx ${data}`),
       },
+      {
+        title: 'Tokenviewt',
+        id: 'tokenviewtx',
+        rule: /^tokenviewtx/i,
+        action: () => robot.ask(`tokenviewtx ${data}`),
+      }
     ]);
   },
 }
@@ -631,6 +677,23 @@ export const skillSearchEtherchainTx = {
     const data = msg[3];
     const url = 'https://etherchain.org/tx/' + data;
     robot.addons.search('Check tx', data, url, 'etherchain');
+  },
+};
+
+/**
+ * Check transaction (tx) on Tokenview.
+ */
+export const skillSearchTokenviewTx = {
+  name: 'tokenviewtx',
+  help: 'tokenview-tx|tokenviewtx [tx] - check transaction (tx) on tokenview',
+  requirements: {
+    addons: ['search'],
+  },
+  rule: /(^tokenview-?tx )(.*)/i,
+  action: function(robot, msg) {
+    const data = msg[2];
+    const url = 'https://eth.tokenview.com/en/tx/' + data;
+    robot.addons.search('Check tx', data, url, 'tokenview');
   },
 };
 
@@ -947,6 +1010,7 @@ export const skillsAddress = [
   skillSearchBloxy,
   skillSearchEtherchain,
   skillSearchEtherscan,
+  skillSearchTokenview,
 ];
 export const skillsTx = [
   skillTxPicker,
@@ -954,6 +1018,7 @@ export const skillsTx = [
   skillSearchBlockchairTx,
   skillSearchEtherchainTx,
   skillSearchEtherscanTx,
+  skillSearchTokenviewTx,
 ];
 export const skillsValidator = [
   skillValidatorPicker,

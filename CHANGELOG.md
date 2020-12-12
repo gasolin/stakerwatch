@@ -1,3 +1,8 @@
+# 0.16 2012/12/13
+
+Feature
+- [tokenview][tokenview-tx] support tokenview explorer
+
 # 0.15 2012/12/12
 
 Feature
