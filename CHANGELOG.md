@@ -4,6 +4,9 @@ Feature
 - [tokenview][tokenview-tx] support tokenview explorer
 - [ethplorer][ethplorer-tx] support ethplorer explorer
 
+Fix
+- [lastblock-eth2] fix descriptions
+
 # 0.15 2012/12/12
 
 Feature

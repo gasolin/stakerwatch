@@ -234,7 +234,7 @@ export const skillEth2Stats = {
  */
 export const skillBeaconLastBlock = {
   name: 'lastBlockBeacon',
-  help: 'lastblock-eth2|lastblock-beacon|block-eth2|block-beacon - get the latest Eth1 block number',
+  help: 'lastblock-eth2|lastblock-beacon|block-eth2|block-beacon - get the latest Eth2 block number',
   requirements: {
     addons: ['fetch'],
   },

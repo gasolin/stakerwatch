@@ -27,7 +27,7 @@ $ npx staker help
 I have 41 skills:
 * 🛢 stats - latest Eth2 stake state
 * lastblock|block - get the latest Eth1 block number
-* lastblock-eth2|lastblock-beacon|block-eth2|block-beacon - get the latest Eth1 block number
+* lastblock-eth2|lastblock-beacon|block-eth2|block-beacon - get the latest Eth2 block number
 * 💰 gasfee - Show current on-chain gas fee
 * �💰gas - Pick a gas estimator from the list
 * 🔎 gasnow|now - Show current gas fee via gasnow
@@ -288,7 +288,7 @@ Check Account on Defi Explorer
 
 ```
 * lastblock|block - get the latest Eth1 block number
-* lastblock-eth2|lastblock-beacon|block-eth2|block-beacon- get the latest Eth1 block number
+* lastblock-eth2|lastblock-beacon|block-eth2|block-beacon- get the latest Eth2 block number
 ```
 
 ## Side Chain
