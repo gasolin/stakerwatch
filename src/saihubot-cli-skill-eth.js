@@ -268,6 +268,7 @@ export const skillAddressExplorer = {
         id: 'random',
         rule: /^random/i,
         action: () => robot.ask(`${getRandomItem([
+          'anyblock',
           'bitquery',
           'blockchair',
           'bloxy',
@@ -276,6 +277,12 @@ export const skillAddressExplorer = {
           'ethplorer',
           'tokenview',
         ])} ${data}`),
+      },
+      {
+        title: 'ANYblock',
+        id: 'anyblock',
+        rule: /^anyblock/i,
+        action: () => robot.ask(`anyblock ${data}`),
       },
       {
         title: 'BitQuery',
@@ -518,6 +525,34 @@ export const skillSearchEthplorer = {
   },
 };
 
+/** Check contract address on ANYblock.
+ *
+ * can pass the address, or pre-define the
+ * SAIHUBOT_ETH_ADDR environment variable
+ */
+export const skillSearchAnyblock = {
+  name: 'anyblock',
+  help: '🏦anyblock [address] - check contract address on ANYblock',
+  requirements: {
+    addons: ['search'],
+  },
+  rule: /^(anyblock )(.*)|^anyblock$/i,
+  action: function(robot, msg) {
+    let addr = '';
+    if (msg[2] === undefined) {
+      addr = getConfig('ETH_ADDR', '');
+      if (addr === '') {
+        robot.send(t('needAddr', {i18n: i18nAddr}));
+        robot.render();
+        return;
+      }
+    }
+    const data = addr || msg[2];
+    const url = 'https://explorer.anyblock.tools/ethereum/ethereum/mainnet/address/' + data;
+    robot.addons.search('Check', data, url, 'ANYblock');
+  },
+};
+
 // Side Chain
 
 /**
@@ -599,6 +634,7 @@ export const skillTxPicker = {
         id: 'random',
         rule: /^random/i,
         action: () => robot.ask(`${getRandomItem([
+          'anyblocktx',
           'bitquerytx',
           'blockchair',
           'bloxy',
@@ -606,6 +642,12 @@ export const skillTxPicker = {
           'ethplorertx',
           'tokenviewtx',
         ])} ${data}`),
+      },
+      {
+        title: 'ANYblock',
+        id: 'anyblocktx',
+        rule: /^anyblocktx/i,
+        action: () => robot.ask(`anyblock ${data}`),
       },
       {
         title: 'BitQuery',
@@ -753,6 +795,23 @@ export const skillSearchEthplorerTx = {
     const data = msg[2];
     const url = 'https://ethplorer.io/tx/' + data;
     robot.addons.search('Check tx', data, url, 'Ethplorer');
+  },
+};
+
+/**
+ * Check transaction (tx) on ANYblock.
+ */
+export const skillSearchAnyblockTx = {
+  name: 'anyblocktx',
+  help: 'anyblock-tx|anyblocktx [tx] - check transaction (tx) on ANYblock',
+  requirements: {
+    addons: ['search'],
+  },
+  rule: /(^anyblock-?tx )(.*)/i,
+  action: function(robot, msg) {
+    const data = msg[2];
+    const url = 'https://explorer.anyblock.tools/ethereum/ethereum/mainnet/transaction/' + data;
+    robot.addons.search('Check tx', data, url, 'ANYblock');
   },
 };
 
@@ -1064,6 +1123,7 @@ export const skillsGas = [
 ];
 export const skillsAddress = [
   skillAddressExplorer,
+  skillSearchAnyblock,
   skillSearchBitQuery,
   skillSearchBlockchair,
   skillSearchBloxy,
@@ -1074,6 +1134,7 @@ export const skillsAddress = [
 ];
 export const skillsTx = [
   skillTxPicker,
+  skillSearchAnyblockTx,
   skillSearchBitQueryTx,
   skillSearchBlockchairTx,
   skillSearchEtherchainTx,

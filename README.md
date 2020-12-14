@@ -24,46 +24,48 @@ Open terminal and type `staker help` to find all skills that `staker` command ca
 ```
 $ npx staker help
 
-I have 41 skills:
-* 🛢 stats - latest Eth2 stake state
+I have 43 skills:
+* 🗞 stats - latest Eth2 stake state
 * lastblock|block - get the latest Eth1 block number
 * lastblock-eth2|lastblock-beacon|block-eth2|block-beacon - get the latest Eth2 block number
-* 💰 gasfee - Show current on-chain gas fee
-* �💰gas - Pick a gas estimator from the list
-* 🔎 gasnow|now - Show current gas fee via gasnow
-* 🧩 gaspriceoracle|oracle - Show current gas fee via Eth Gas Price Oracle
-* 🧩 gasstation|station - Show current gas fee via Eth Gas Station
-* 🧩 gastracker|tracker - Show current gas fee via Etherscan Gas Tracker
-* �🔎balance - Show current balance of [address]
-* �🏦balance-validator|balance-eth2 - Show Validator's balance of [key]
-* �🏦account|defi - Pick an account explorer from the list
-* 🏦debank [address] - check DeFi balance on Debank
-* 🏦zapper [address] - check DeFi balance on Zapper
-* 🏦zerion [address] - check DeFi Balance on Zerion
-* �🏦address|addr [address] - Pick address explorer from the list
-* �🏦bitquery [address] - check address on explorer.bitquery.io
-* �🔎blockchair [address] - check address on blockchair.com
-* �🏦bloxy [address] - check token symbol, address or tx hash on bloxy.info
-* �🏦etherchain|chain [address] - check contract address on etherchain
-* �🏦etherscan|scan [address] - check contract address on Etherscan
-* �🏦ethplorer [address] - check contract address on ethplorer
-* �🏦tokenview [address] - check contract address on tokenview
-* �🔎tx - Pick a transaction (tx) explorer from the list
+* 🛢 gasfee - Show current on-chain gas fee
+* 🔎gas - Pick a gas estimator from the list
+* 🛢 gasnow|now - Show current gas fee via gasnow
+* 🛢 gaspriceoracle|oracle - Show current gas fee via Eth Gas Price Oracle
+* 🛢 gasstation|station - Show current gas fee via Eth Gas Station
+* 🛢 gastracker|tracker - Show current gas fee via Etherscan Gas Tracker
+* 💰balance - Show current balance of [address]
+* 💰balance-validator|balance-eth2 - Show Validator's balance of [key]
+* 🔎account|defi - Pick an account explorer from the list
+* 🧩debank [address] - check DeFi balance on Debank
+* 🧩zapper [address] - check DeFi balance on Zapper
+* 🧩zerion [address] - check DeFi Balance on Zerion
+* 🔎address|addr [address] - Pick address explorer from the list
+* 🏦anyblock [address] - check contract address on ANYblock
+* 🏦bitquery [address] - check address on explorer.bitquery.io
+* 🏦blockchair [address] - check address on blockchair.com
+* 🏦bloxy [address] - check token symbol, address or tx hash on bloxy.info
+* 🏦etherchain|chain [address] - check contract address on etherchain
+* 🏦etherscan|scan [address] - check contract address on Etherscan
+* 🏦ethplorer [address] - check contract address on ethplorer
+* 🏦tokenview [address] - check contract address on tokenview
+* 🔎tx - Pick a transaction (tx) explorer from the list
+* anyblock-tx|anyblocktx [tx] - check transaction (tx) on ANYblock
 * bitquery-tx|bitquerytx|query-tx|querytx [tx] - check transaction (tx) on bitquery
 * blockchair-tx|blockchairtx [tx] - check transaction (tx) on blockchair.com
 * etherchain-tx|etherchaintx|chain-tx|chaintx [tx] - check transaction (tx) on etherchain
 * etherscan-tx|etherscantx|scan-tx|scantx [tx] - check transaction (tx) on Etherscan
 * ethplorer-tx|ethplorertx [tx] - check transaction (tx) on Ethplorer
 * tokenview-tx|tokenviewtx [tx] - check transaction (tx) on tokenview
-* �🏦validator - Pick a beacon validator explorer from the list
-* �🤩beaconchain|beaconcha|beaconcha.in [address] - check validator address or number on beaconscan
-* �📕beaconscan|scan [address] - check validator address or number on BeaconScan
-* �🏦bsc|bscscan [address] - check address on Binance Smart Chain
-* �🔎bsc-tx|bsctx|bscscan-tx|bscscantx [tx] - check transaction (tx) on Binance Smart Chain
-* �🏦xdai [address] - check address on xDai Chain
-* �🏦xdai-tx|xdaitx [tx] - check transaction (tx) on xDai Chain
-* �🤩awesome|lucky - Show random awesome site around ethereum
-* �📕chainid - Show EVM network providers chain and network id table
+* 🔎validator - Pick a beacon validator explorer from the list
+* 📡beaconchain|beaconcha|beaconcha.in [address] - check validator address or number on beaconscan
+* 📡beaconscan|scan [address] - check validator address or number on BeaconScan
+* 🏦bsc|bscscan [address] - check address on Binance Smart Chain
+* 🏦bsc-tx|bsctx|bscscan-tx|bscscantx [tx] - check transaction (tx) on Binance Smart Chain
+* 🏦xdai [address] - check address on xDai Chain
+* 🏦xdai-tx|xdaitx [tx] - check transaction (tx) on xDai Chain
+* 🤩awesome|lucky - Show random awesome site around ethereum
+* 📕chainid - Show EVM network providers chain and network id table
 * qrcode [text] - Generate QRCode with [text]
 * help - list available skills
 ```
@@ -164,6 +166,7 @@ Check [address or index] via beaconcha.in
 ```
 * 💰balance - Show current balance of [address]
 * 🔎address|addr [address] - Pick address explorer from the list
+* 🏦anyblock [address] - check contract address on ANYblock
 * 🏦bitquery [address] - check address on explorer.bitquery.io
 * 🏦blockchair [address] - check address on blockchair.com
 * 🏦bloxy [address] - check token symbol, address or tx hash on bloxy.info
@@ -216,6 +219,7 @@ Same as address, but use to search transaction (tx).
 
 ```
 * 🔎tx - Pick a transaction (tx) explorer from the list
+* anyblock-tx|anyblocktx [tx] - check transaction (tx) on ANYblock
 * bitquery-tx|bitquerytx|query-tx|querytx [tx] - check transaction (tx) on bitquery
 * blockchair-tx|blockchairtx [tx] - check transaction (tx) on blockchair.com
 * etherchain-tx|etherchaintx|chain-tx|chaintx [tx] - check transaction (tx) on etherchain
@@ -224,6 +228,7 @@ Same as address, but use to search transaction (tx).
 * tokenview-tx|tokenviewtx [tx] - check transaction (tx) on tokenview
 ```
 
+- [ANYblock](https://explorer.anyblock.tools/ethereum/ethereum/mainnet)
 - [Bitquery](https://explorer.bitquery.io/ethereum) can check money flow
 - [Blockchair](https://blockchair.com/ethereum) provides many explorers on other chain
 - [Bloxy](https://bloxy.info/) Search Engine like interface
