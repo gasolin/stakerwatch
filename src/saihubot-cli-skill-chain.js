@@ -129,11 +129,10 @@ export const calcWaitTime = (queueLength, activeValidator) => {
   //900 validators can be activated per day (4 per epoch)
   // https://www.reddit.com/r/ethstaker/comments/k9wf4x/estimated_timeline_of_apr_and_eth_staked/gf7m0rf/
   const daylyValidators= 225 * Math.max(Math.floor(activeValidator / 6500), 4);
-  const waitTime = Math.floor(24 * 60 * 60 / daylyValidators);
-  // 1 validator every 96 seconds
-  console.log('per ', waitTime);
+  // need wait at least every 96 seconds per validator
+  const perWaitTime = Math.floor(24 * 60 * 60 / daylyValidators);
   let time = 0;
-  if (queueLength > 0) time = waitTime * queueLength;
+  if (queueLength > 0) time = perWaitTime * queueLength;
   return humanizeDuration(time * 1000, { round: true, units: ["d", "h"] });
 }
 
