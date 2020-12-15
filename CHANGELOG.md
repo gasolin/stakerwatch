@@ -1,3 +1,8 @@
+# 0.18 2012/12/15
+
+Fix
+[stats] calc daily activated validators numbers
+
 # 0.17 2012/12/14
 
 Feature

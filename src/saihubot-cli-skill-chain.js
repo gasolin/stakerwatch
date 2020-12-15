@@ -124,12 +124,16 @@ const statsI18n = {
 
 
 // https://github.com/TheRyanMiller/Eth2RewardsCalc/blob/master/getBeaconData.js
-export const calcWaitTime = (queueLength) => {
+export const calcWaitTime = (queueLength, activeValidator) => {
   //225 Epochs per day (1 epoch = 32 * 12s slots)
   //900 validators can be activated per day (4 per epoch)
+  // https://www.reddit.com/r/ethstaker/comments/k9wf4x/estimated_timeline_of_apr_and_eth_staked/gf7m0rf/
+  const daylyValidators= 225 * Math.max(Math.floor(activeValidator / 6500), 4);
+  const waitTime = Math.floor(24 * 60 * 60 / daylyValidators);
   // 1 validator every 96 seconds
+  console.log('per ', waitTime);
   let time = 0;
-  if (queueLength > 0) time = 96 * queueLength;
+  if (queueLength > 0) time = waitTime * queueLength;
   return humanizeDuration(time * 1000, { round: true, units: ["d", "h"] });
 }
 
@@ -178,6 +182,7 @@ const ProgressBar = ({fetch, ethFetch}) => {
     balance: commaNumber(balance),
     validators: balance && commaNumber(validators),
   });
+  // more accurate: active - exit
   const queueValidator = beaconData && (validators - beaconData.validatorscount);
   const stats = t('statistics', {
     i18n: statsI18n,
@@ -186,7 +191,7 @@ const ProgressBar = ({fetch, ethFetch}) => {
     participationRate: beaconData && Number(beaconData.globalparticipationrate * 100).toFixed(2),
     epoch: beaconData && beaconData.epoch,
     queueValidator: commaNumber(queueValidator),
-    waitTime: calcWaitTime(queueValidator),
+    waitTime: beaconData && calcWaitTime(queueValidator, beaconData.validatorscount),
     apr: beaconData &&　calcAPR(beaconData.totalvalidatorbalance / 10**9),
   });
   return balance ? (<>

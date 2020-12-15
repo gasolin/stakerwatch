@@ -222,6 +222,7 @@ Same as address, but use to search transaction (tx).
 * anyblock-tx|anyblocktx [tx] - check transaction (tx) on ANYblock
 * bitquery-tx|bitquerytx|query-tx|querytx [tx] - check transaction (tx) on bitquery
 * blockchair-tx|blockchairtx [tx] - check transaction (tx) on blockchair.com
+* 🏦bloxy [address] - check token symbol, address or tx hash on bloxy.info
 * etherchain-tx|etherchaintx|chain-tx|chaintx [tx] - check transaction (tx) on etherchain
 * etherscan-tx|etherscantx|scan-tx|scantx [tx] - check transaction (tx) on etherscan
 * ethplorer-tx|ethplorertx [tx] - check transaction (tx) on Ethplorer
