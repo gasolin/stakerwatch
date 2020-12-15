@@ -1,12 +1,16 @@
 # 0.18 2012/12/15
 
+Feature
+- [balance] show xDai balance on xDai chain.
+- [lastblock-xdai] support showing latest xdai block number
+
 Fix
-[stats] calc daily activated validators numbers
+- [stats] calc daily activated validators numbers
 
 # 0.17 2012/12/14
 
 Feature
-[anyblock][anyblock-tx] support anyblock explorer
+- [anyblock][anyblock-tx] support anyblock explorer
 
 # 0.16 2012/12/13
 

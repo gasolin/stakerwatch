@@ -4,7 +4,8 @@ import { Text } from 'ink';
 import Table from 'ink-table';
 import { t } from 'saihubot-cli-adapter/dist/i18n';
 
-import {getConfig, getNodeURL} from './utils';
+import {getConfig, getNodeURL, xdaiFetch} from './utils';
+import {rpcEthBalance} from './saihubot-cli-skill-chain';
 import {i18nValidator} from './i18n';
 
 export const contractMap = {
@@ -171,14 +172,45 @@ const ValidatorBalances = ({validator, fetch}) => {
     : (<Text>{t('query', {i18n: i18nValidator})}</Text>);
 }
 
+const XdaiBalances = ({addresses, fetch}) => {
+  const [balance, setBalance] = useState([]);
+  const data = [];
+  useEffect(() => {
+    async function fetchXdaiBalance() {
+      for (let i = 0; i < addresses.length ; i++) {
+        const json = await xdaiFetch(fetch, rpcEthBalance(addresses[i]))
+        const val = json.result === 0x0 ? 0 : Number(json.result)/10**18;
+        if (val > 0) {
+          data.push({
+            Symbol: 'xDai',
+            Balance: val,
+            [t('source', {i18n: balanceI18n})]: '',
+          });
+        }
+      }
+      setBalance([...balance, ...data]);
+    }
+
+    addresses && fetchXdaiBalance();
+  }, [addresses, fetch]);
+
+  return balance.length > 0
+    ? (<>
+      <Text>{t('xdaiBalance', {i18n: i18nValidator})}</Text>
+      <Text>{''}</Text>
+      <Table data={balance} />
+    </>)
+    : (<Text>{t('query', {i18n: i18nValidator})}</Text>);
+}
+
 // support multiple account balance by comma (without space)
 // also shows validator balances
 const Balances = ({address, fetch}) => {
   const [balance, setBalance] = useState([]);
   const [validator, setValidator] = useState('');
   const data = [];
+  const addresses = address.indexOf(',') > -1 ? address.split(',').map(addr => addr.trim()) : [address];
   useEffect(() => {
-    const addresses = address.indexOf(',') > -1 ? address.split(',').map(addr => addr.trim()) : [address];
     async function fetchEthBalance() {
       const ethBalances = await getEtherBalances(getNodeURL(), addresses);
       Object.values(ethBalances).map(val => {
@@ -235,6 +267,7 @@ const Balances = ({address, fetch}) => {
       <Table data={balance} />
       <Text> </Text>
       <ValidatorBalances validator={validator} fetch={fetch} />
+      <XdaiBalances addresses={addresses} fetch={fetch} />
     </>)
     : (<Text>{t('query', {i18n: balanceI18n})}</Text>);
 }

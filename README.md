@@ -1,5 +1,5 @@
 # stakerwat.ch
-Command line Utillity for Ethereum stakers.
+Command line utility for Ethereum stakers.
 
 [![npm version](https://badge.fury.io/js/staker.svg)](https://www.npmjs.com/package/staker)
 
@@ -24,7 +24,7 @@ Open terminal and type `staker help` to find all skills that `staker` command ca
 ```
 $ npx staker help
 
-I have 43 skills:
+I have 44 skills:
 * 🗞 stats - latest Eth2 stake state
 * lastblock|block - get the latest Eth1 block number
 * lastblock-eth2|lastblock-beacon|block-eth2|block-beacon - get the latest Eth2 block number
@@ -64,6 +64,7 @@ I have 43 skills:
 * 🏦bsc-tx|bsctx|bscscan-tx|bscscantx [tx] - check transaction (tx) on Binance Smart Chain
 * 🏦xdai [address] - check address on xDai Chain
 * 🏦xdai-tx|xdaitx [tx] - check transaction (tx) on xDai Chain
+* lastblock-xdai|lastblockxdai|block-xdai|blockxdai - get the latest xDai block number
 * 🤩awesome|lucky - Show random awesome site around ethereum
 * 📕chainid - Show EVM network providers chain and network id table
 * qrcode [text] - Generate QRCode with [text]
@@ -123,9 +124,11 @@ Given a Eth2 validator address, you can get Eth2 validator balance
 $ npx staker balance-validator [address or index]
 
 (Eth2) Validator Balance
-| Symbol | Balance   | Index  |
-|-------|------------|--------|
-| ETH   | 32.02 ETH  | 12345  |
+┌────────┬────────────┬────────┐
+│ Symbol │ Balance    │ Index  │
+├────────┼────────────┼────────┤
+│ ETH    │ 32.02 ETH  │ 12345  │
+└────────┴────────────┴────────┘
 ```
 
 Also support multiple validators balance by comma (without space), ex
@@ -182,19 +185,35 @@ Use `staker balance [addr]` command, you can given a Eth address and get related
 $ npx staker balance [addr]
 
 Account Balance
-| Symbol | Balance   | Source |
-|--------|-----------|--------|
-| ETH    | 1         |        |
-| USDt   | 8888      |        |
-| Dai    | 123       |        |
-| aUSDt  | 1234.56   |AAVE    |
-| cUSDt  | 567.89    |Compound|
+┌────────┬────────────┬────────┐
+│ Symbol │ Balance    │ Source │
+├────────┼────────────┼────────┤
+│ ETH    │ 1          │        │
+├────────┼────────────┼────────┤
+│ USDT   │ 8888       │        │
+├────────┼────────────┼────────┤
+│ Dai    │ 123        │        │
+├────────┼────────────┼────────┤
+│ aUSDt  │ 1234.56    │AAVE    │
+├────────┼────────────┼────────┤
+│ cUSDt  │ 567.89     │Compound│
+└────────┴────────────┴────────┘
 
 (Eth2) Validator Balance
-| Symbol | Balance   | Index  |
-|-------|------------|--------|
-| ETH   | 32.02 ETH  | 12345  |
-| ETH   | 32.01 ETH  | 54321  |
+┌────────┬────────────┬────────┐
+│ Symbol │ Balance    │ Index  │
+├────────┼────────────┼────────┤
+│ ETH    │ 32.02 ETH  │ 12345  │
+├────────┼────────────┼────────┤
+│ ETH    │ 32.01 ETH  │ 54321  │
+└────────┴────────────┴────────┘
+
+xDai Chain Balance
+┌────────┬─────────────┬────────┐
+│ Symbol │ Balance     │ Source │
+├────────┼─────────────┼────────┤
+│ xDai   │ 0.008437828 │        │
+└────────┴─────────────┴────────┘
 ```
 
 You can link to Eth Address or Contract from multiple explorer
@@ -306,6 +325,7 @@ Check Account on Defi Explorer
 * 🏦bsc-tx|bsctx|bscscan-tx|bscscantx [tx] - check transaction (tx) on Binance Smart Chain
 * 🏦xdai [address] - check address on xDai Chain
 * 🏦xdai-tx|xdaitx [tx] - check transaction (tx) on xDai Chain
+* lastblock-xdai|lastblockxdai|block-xdai|blockxdai - get the latest xDai block number
 ```
 
 - [EVM Networks](https://chainid.network/) list appropriate Chain ID and Network ID to connect to the correct chain.
