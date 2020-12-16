@@ -15,6 +15,19 @@ If you think this tool is useful, please consider show your support with the [Gi
 
 By the way to avoid single point of failure, the command randomly pick a [free Ethereum Node](https://ethereumnodes.com/) to fetch the on-chain data instead of counting on [Infura](https://infura.io/). (You can specify a node if you want to)
 
+## Contents
+
+- [Usage](#usage)
+- [Eth1](#eth1)
+- [Eth2 Validator](#eth2-validator)
+- [Address Explorer](#addres-explorer)
+- [Gas Fee Monitor](#gas-fee)
+- [Defi Explorer](#defi-explorer)
+- [On-Chain Data](#on-chain-data)
+- [Side Chain](#side-chain)
+- [Other Tools](#other-tools)
+- [Awesome Resources](#awesome)
+
 ## Usage
 
 Make sure [node.js](https://nodejs.org) is installed in your device.
@@ -24,7 +37,7 @@ Open terminal and type `staker help` to find all skills that `staker` command ca
 ```
 $ npx staker help
 
-I have 34 skills:
+I have 35 skills:
 * 🗞 stats - latest Eth2 stake state
 * lastblock|block - get the latest Eth1 block number
 * lastblock-eth2|lastblock-beacon|block-eth2|block-beacon - get the latest Eth2 block number
@@ -34,8 +47,9 @@ I have 34 skills:
 * 🛢 gaspriceoracle|oracle - Show current gas fee via Eth Gas Price Oracle
 * 🛢 gasstation|station - Show current gas fee via Eth Gas Station
 * 🛢 gastracker|tracker - Show current gas fee via Etherscan Gas Tracker
-* 💰balance - Show current balance of [address]
+* 💰balance - Show [address] balance
 * 💰balance-validator|balance-eth2 - Show Validator's balance of [key]
+* 💰balance-xdai - Show address balance on xDai chain
 * 🔎account|defi - Pick an account explorer from the list
 * 🧩debank [address] - check DeFi balance on Debank
 * 🧩zapper [address] - check DeFi balance on Zapper
@@ -65,25 +79,69 @@ If you expect to use this tool frequently, install it via command:
 
 `npm install -g staker`
 
-## Contents
+## Eth1
 
-- [Eth2 Stats](#eth2-stats)
-- [Validator](#validator)
-- [Address](#address)
-- [gas](#gas)
-- [Account](#account)
-- [On-Chain Data](#on-chain-data)
-- [Side Chain](#side-chain)
-- [Other Tools](#other-tools)
-- [Awesome Resources](#awesome)
+```
+* lastblock|block - get the latest Eth1 block number
+* 💰balance - Show [address] balance
+```
 
-## Eth2 Stats
+Use `staker balance [addr]` command, you can given a Eth address and get related account balance on Eth1, Eth2(validator), xDai Chain.
+
+Eth1 also shows the balance of stable coins (USDt, USDC, Dai...) and lending stable coins in [AAVE](https://aave.com/) and [Compound](https://compound.finance/).
+
+xDai chain shows the balance of xDai, WETH and stable coins (USDt, USDC, Dai...).
+
+Also support multiple validators balance by comma (without space).
+
+```sh
+$ npx staker balance [addr]
+
+Account Balance
+┌────────┬────────────┬────────┐
+│ Symbol │ Balance    │ Source │
+├────────┼────────────┼────────┤
+│ ETH    │ 1          │        │
+├────────┼────────────┼────────┤
+│ USDT   │ 8888       │        │
+├────────┼────────────┼────────┤
+│ Dai    │ 123        │        │
+├────────┼────────────┼────────┤
+│ aUSDt  │ 1234.56    │AAVE    │
+├────────┼────────────┼────────┤
+│ cUSDt  │ 567.89     │Compound│
+└────────┴────────────┴────────┘
+
+(Eth2) Validator Balance
+┌────────┬────────────┬────────┐
+│ Symbol │ Balance    │ Index  │
+├────────┼────────────┼────────┤
+│ ETH    │ 32.02 ETH  │ 12345  │
+├────────┼────────────┼────────┤
+│ ETH    │ 32.01 ETH  │ 54321  │
+└────────┴────────────┴────────┘
+
+xDai Chain Balance
+┌────────┬─────────────┬────────┐
+│ Symbol │ Balance     │ Source │
+├────────┼─────────────┼────────┤
+│ xDai   │ 0.008437828 │        │
+└────────┴─────────────┴────────┘
+```
+
+## Eth2 Validator
 
 ```
 * 🗞 stats - latest Eth2 stake state
+* lastblock-eth2|lastblock-beacon|block-eth2|block-beacon- get the latest Eth2 block number
+* 💰balance-validator|balance-eth2 - Show Validator's balance of [key]
+* 🔎validator - Pick a beacon validator explorer from the list
+* 📡beaconchain|beaconcha|beaconcha.in [address] - check validator address or number on beaconscan
+* 📡beaconscan|scan [address] - check validator address or number on BeaconScan
 ```
 
-Get Eth2 stats via command
+
+Get Eth2 stats via `staker stats` command
 
 ```sh
 🤑 Reward rate: 15.26%
@@ -96,15 +154,6 @@ Get Eth2 stats via command
 
 1,136,688 ETH has been deposited for 35,521 validators
 [▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓] 216.81%
-```
-
-## Validator
-
-```
-* 💰balance-validator|balance-eth2 - Show Validator's balance of [key]
-* 🔎validator - Pick a beacon validator explorer from the list
-* 📡beaconchain|beaconcha|beaconcha.in [address] - check validator address or number on beaconscan
-* 📡beaconscan|scan [address] - check validator address or number on BeaconScan
 ```
 
 Given a Eth2 validator address, you can get Eth2 validator balance
@@ -153,10 +202,9 @@ $ npx staker beaconchain [address or index]
 Check [address or index] via beaconcha.in
 ```
 
-## Address
+## Address Explorer
 
 ```
-* 💰balance - Show current balance of [address]
 * 🔎address|addr [address|tx] - Pick address explorer from the list
 * 🏦anyblock [address|tx] - check address or tx on ANYblock
 * 🏦bitquery [address|tx] - check address or tx on explorer.bitquery.io
@@ -166,43 +214,6 @@ Check [address or index] via beaconcha.in
 * 🏦etherscan|scan [address|tx] - check address or tx on Etherscan
 * 🏦ethplorer [address|tx] - check address or tx on ethplorer
 * 🏦tokenview [address|tx] - check address or tx on tokenview
-```
-
-Use `staker balance [addr]` command, you can given a Eth address and get related account balance, including the stable coins (USDt, USDC, Dai...) and lending stable coins in [AAVE](https://aave.com/) and [Compound](https://compound.finance/).
-
-```sh
-$ npx staker balance [addr]
-
-Account Balance
-┌────────┬────────────┬────────┐
-│ Symbol │ Balance    │ Source │
-├────────┼────────────┼────────┤
-│ ETH    │ 1          │        │
-├────────┼────────────┼────────┤
-│ USDT   │ 8888       │        │
-├────────┼────────────┼────────┤
-│ Dai    │ 123        │        │
-├────────┼────────────┼────────┤
-│ aUSDt  │ 1234.56    │AAVE    │
-├────────┼────────────┼────────┤
-│ cUSDt  │ 567.89     │Compound│
-└────────┴────────────┴────────┘
-
-(Eth2) Validator Balance
-┌────────┬────────────┬────────┐
-│ Symbol │ Balance    │ Index  │
-├────────┼────────────┼────────┤
-│ ETH    │ 32.02 ETH  │ 12345  │
-├────────┼────────────┼────────┤
-│ ETH    │ 32.01 ETH  │ 54321  │
-└────────┴────────────┴────────┘
-
-xDai Chain Balance
-┌────────┬─────────────┬────────┐
-│ Symbol │ Balance     │ Source │
-├────────┼─────────────┼────────┤
-│ xDai   │ 0.008437828 │        │
-└────────┴─────────────┴────────┘
 ```
 
 You can link to Eth Address or Contract from multiple explorer
@@ -232,7 +243,7 @@ These commands can be used to search transaction (tx) as well.
 - [Ethplorer](https://ethplorer.io/)
 - [Tokenview](https://eth.tokenview.com/en)
 
-## Gas
+## Gas Fee Monitor
 
 ```
 * 🔎gas - Pick a gas estimator from the list
@@ -268,8 +279,9 @@ Current gas fee (report by gasnow) is H:70 M:50 L:48 gwei
 * [Gas Price Oracle](https://etherchain.org/tools/gasPriceOracle) From EtherChain team
 * [Gas Station](https://ethgasstation.info/)
 * [Ethereum Gas Tracker](https://etherscan.io/gastracker) From Etherscan team
+* [ethgas.watch](https://ethgas.watch/) aggregated gas price feed from multiple data sources.
 
-## Account
+## Defi Explorer
 
 Check Account on Defi Explorer
 
@@ -284,13 +296,6 @@ Check Account on Defi Explorer
 - [Zapper](https://zapper.fi/)
 - [Zerion](https://zerion.io/)
 
-## On-Chain Data
-
-```
-* lastblock|block - get the latest Eth1 block number
-* lastblock-eth2|lastblock-beacon|block-eth2|block-beacon- get the latest Eth2 block number
-```
-
 ## Side Chain
 
 ```
@@ -299,6 +304,7 @@ Check Account on Defi Explorer
 * 🏦bsc|bscscan [address|tx] - check address or tx on Binance Smart Chain
 * 🏦xdai [address|tx] - check address or tx on xDai Chain
 * lastblock-xdai|lastblockxdai|block-xdai|blockxdai - get the latest xDai block number
+* 💰balance-xdai - Show address balance on xDai chain
 ```
 
 - [EVM Networks](https://chainid.network/) list appropriate Chain ID and Network ID to connect to the correct chain.
