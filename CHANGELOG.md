@@ -1,3 +1,11 @@
+# 0.19 2012/12/16
+
+Feature
+- [balance] show WETH and stable coins(USDC, USDT, Dai) balance on xDai chain.
+
+Enhancement
+- [balance] show 4 digits of stable coins
+
 # 0.18 2012/12/15
 
 Feature
