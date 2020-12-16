@@ -18,6 +18,8 @@ const AWESOME_LINKS = [
   'https://launchpad.ethereum.org/',
   'https://ethernodes.org/',
   'https://twitter.com/Eth2Bot',
+  'https://www.youtube.com/watch?v=ShJZf5lsXiM',
+  'https://ethgas.watch/',
 ];
 
 /**
