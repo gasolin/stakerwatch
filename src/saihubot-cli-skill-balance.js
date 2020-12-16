@@ -206,7 +206,7 @@ const Balances = ({address, fetch}) => {
  */
 export const skillGetBlance = {
   name: 'balance',
-  help: '💰balance - Show current balance of [address]',
+  help: '💰balance - Show [address] balance',
   requirements: {
     addons: ['fetch'],
   },
@@ -256,5 +256,35 @@ export const skillGetValidatorBlance = {
     robot.render();
   }
 }
-const skills = [skillGetBlance, skillGetValidatorBlance];
+
+/**
+ * Get balance of [addr] on xDai Chain.
+ *
+ * can pass the address, or pre-define the
+ * SAIHUBOT_ADDR environment variable
+ */
+export const skillGetXdaiBlance = {
+  name: 'balance-xdai',
+  help: '💰balance-xdai - Show address balance on xDai chain',
+  requirements: {
+    addons: ['fetch'],
+  },
+  rule: /(^balance-xdai )(.*)|^balance-xdai$/i,
+  action: function(robot, msg) {
+    let addr = '';
+    if (msg[2] === undefined) {
+      addr = getConfig('ETH_ADDR', '');
+      if (addr.trim() === '') {
+        robot.send(t('needAddr', {i18n: balanceI18n}));
+        robot.render();
+        return;
+      }
+    }
+    const parsedAddr = addr.trim() || msg[2];
+    robot.sendComponent(<XdaiBalances address={parsedAddr} fetch={robot.addons.fetch} />);
+    robot.render();
+  },
+}
+
+const skills = [skillGetBlance, skillGetValidatorBlance, skillGetXdaiBlance];
 export {skills};
