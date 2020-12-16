@@ -23,10 +23,8 @@ By the way to avoid single point of failure, the command randomly pick a [free E
 - [Address Explorer](#addres-explorer)
 - [Gas Fee Monitor](#gas-fee)
 - [Defi Explorer](#defi-explorer)
-- [On-Chain Data](#on-chain-data)
 - [Side Chain](#side-chain)
 - [Other Tools](#other-tools)
-- [Awesome Resources](#awesome)
 
 ## Usage
 
@@ -298,16 +296,20 @@ Check Account on Defi Explorer
 
 ## Side Chain
 
-```
+xDai Chain
 
-* 📕chainid - Show EVM network providers chain and network id table
-* 🏦bsc|bscscan [address|tx] - check address or tx on Binance Smart Chain
+```
 * 🏦xdai [address|tx] - check address or tx on xDai Chain
 * lastblock-xdai|lastblockxdai|block-xdai|blockxdai - get the latest xDai block number
 * 💰balance-xdai - Show address balance on xDai chain
 ```
 
-- [EVM Networks](https://chainid.network/) list appropriate Chain ID and Network ID to connect to the correct chain.
+Binance Smart Chain
+
+```
+* 🏦bsc|bscscan [address|tx] - check address or tx on Binance Smart Chain
+```
+
 - [BscScan](https://bscscan.com/) Binance Smart Chain explorer.
 - [Blockscout](https://blockscout.com/poa/xdai) xDai Chain explorer.
 
@@ -315,6 +317,7 @@ Check Account on Defi Explorer
 
 ```
 * 🤩awesome|lucky - Show random awesome site around ethereum
+* 📕chainid - Show EVM network providers chain and network id table
 * qrcode [text] - Generate QRCode with [text]
 * help - list available skills
 ```
@@ -326,6 +329,8 @@ $ npx staker qrcode [addr]
 
 (QRcode shows here)
 ```
+
+- [EVM Networks](https://chainid.network/) list appropriate Chain ID and Network ID to connect to the correct chain.
 
 ## Configuable options
 
