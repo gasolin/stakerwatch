@@ -17,6 +17,8 @@ function int(num) {
   return parseInt(num, 10);
 }
 
+const isAddr = data => data.length === 42;
+
 const i18nAddr = {
   'en': {
     needAddr: 'Please pass the address or define SAIHUBOT_ETH_ADDR first',
@@ -246,7 +248,7 @@ export const skillGasPriceOracle = {
  */
 export const skillAddressExplorer = {
   name: 'address',
-  help: '🔎address|addr [address] - Pick address explorer from the list',
+  help: '🔎address|addr [address|tx] - Pick address explorer from the list',
   requirements: {
     addons: ['confirm']
   },
@@ -330,10 +332,10 @@ export const skillAddressExplorer = {
   },
 }
 
-/** Check contract address on etherscan */
+/** Check contract address or tx on etherscan */
 export const skillSearchEtherscan = {
   name: 'etherscan',
-  help: '🏦etherscan|scan [address] - check contract address on Etherscan',
+  help: '🏦etherscan|scan [address|tx] - check address or tx on Etherscan',
   requirements: {
     addons: ['search'],
   },
@@ -349,8 +351,13 @@ export const skillSearchEtherscan = {
       }
     }
     const data = addr || msg[3];
-    const url = 'https://www.etherscan.io/address/' + data;
-    robot.addons.search('Check', data, url, 'Etherscan');
+    if(isAddr(data)) {
+      const url = 'https://www.etherscan.io/address/' + data;
+      robot.addons.search('Check', data, url, 'Etherscan');
+    } else {
+      const url = 'https://www.etherscan.io/tx/' + data;
+      robot.addons.search('Check tx', data, url, 'Etherscan');
+    }
   },
 };
 
@@ -362,7 +369,7 @@ export const skillSearchEtherscan = {
  */
 export const skillSearchBloxy = {
   name: 'bloxy',
-  help: '🏦bloxy [address] - check token symbol, address or tx hash on bloxy.info',
+  help: '🏦bloxy [address|tx] - check token symbol, address or tx hash on bloxy.info',
   requirements: {
     addons: ['search'],
   },
@@ -384,14 +391,14 @@ export const skillSearchBloxy = {
 };
 
 /**
- * Check address on blockchair.
+ * Check address or tx on blockchair.
  *
  * can pass the address, or pre-define the
  * SAIHUBOT_ETH_ADDR environment variable
  */
 export const skillSearchBlockchair = {
   name: 'blockchair',
-  help: '🏦blockchair [address] - check address on blockchair.com',
+  help: '🏦blockchair [address|tx] - check address or tx on blockchair.com',
   requirements: {
     addons: ['search'],
   },
@@ -407,20 +414,25 @@ export const skillSearchBlockchair = {
       }
     }
     const data = addr || msg[2];
-    const url = 'https://blockchair.com/ethereum/address/' + data;
-    robot.addons.search('Check', data, url, 'blockchair');
+    if(isAddr(data)) {
+      const url = 'https://blockchair.com/ethereum/address/' + data;
+      robot.addons.search('Check', data, url, 'blockchair');
+    } else {
+      const url = 'https://blockchair.com/ethereum/transaction/' + data;
+      robot.addons.search('Check tx', data, url, 'blockchair');
+    }
   },
 };
 
 /**
- * Check address on bitquery.
+ * Check address or tx on bitquery.
  *
  * can pass the address, or pre-define the
  * SAIHUBOT_ETH_ADDR environment variable
  */
 export const skillSearchBitQuery = {
   name: 'bitquery',
-  help: '🏦bitquery [address] - check address on explorer.bitquery.io',
+  help: '🏦bitquery [address|tx] - check address or tx on explorer.bitquery.io',
   requirements: {
     addons: ['search'],
   },
@@ -436,19 +448,24 @@ export const skillSearchBitQuery = {
       }
     }
     const data = addr || msg[2];
-    const url = 'https://explorer.bitquery.io/ethereum/address/' + data;
-    robot.addons.search('Check', data, url, 'explorer.bitquery.io');
+    if(isAddr(data)) {
+      const url = 'https://explorer.bitquery.io/ethereum/address/' + data;
+      robot.addons.search('Check', data, url, 'explorer.bitquery.io');
+    } else {
+      const url = 'https://explorer.bitquery.io/ethereum/tx/' + data;
+      robot.addons.search('Check tx', data, url, 'explorer.bitquery.io');
+    }
   },
 };
 
-/** Check contract address on etherchain.
+/** Check contract address or tx on etherchain.
  *
  * can pass the address, or pre-define the
  * SAIHUBOT_ETH_ADDR environment variable
  */
 export const skillSearchEtherchain = {
   name: 'etherchain',
-  help: '🏦etherchain|chain [address] - check contract address on etherchain',
+  help: '🏦etherchain|chain [address|tx] - check address or tx on etherchain',
   requirements: {
     addons: ['search'],
   },
@@ -464,19 +481,24 @@ export const skillSearchEtherchain = {
       }
     }
     const data = addr || msg[3];
-    const url = 'https://etherchain.org/account/' + data;
-    robot.addons.search('Check', data, url, 'etherchain.org');
+    if(isAddr(data)) {
+      const url = 'https://etherchain.org/account/' + data;
+      robot.addons.search('Check', data, url, 'etherchain.org');
+    } else {
+      const url = 'https://etherchain.org/tx/' + data;
+      robot.addons.search('Check tx', data, url, 'etherchain');
+    }
   },
 };
 
-/** Check contract address on Tokenview.
+/** Check contract address or tx on Tokenview.
  *
  * can pass the address, or pre-define the
  * SAIHUBOT_ETH_ADDR environment variable
  */
 export const skillSearchTokenview = {
   name: 'tokenview',
-  help: '🏦tokenview [address] - check contract address on tokenview',
+  help: '🏦tokenview [address|tx] - check address or tx on tokenview',
   requirements: {
     addons: ['search'],
   },
@@ -492,19 +514,24 @@ export const skillSearchTokenview = {
       }
     }
     const data = addr || msg[2];
-    const url = 'https://eth.tokenview.com/en/address/' + data;
-    robot.addons.search('Check', data, url, 'tokenview');
+    if(isAddr(data)) {
+      const url = 'https://eth.tokenview.com/en/address/' + data;
+      robot.addons.search('Check', data, url, 'tokenview');
+    } else {
+      const url = 'https://eth.tokenview.com/en/tx/' + data;
+      robot.addons.search('Check tx', data, url, 'tokenview');
+    }
   },
 };
 
-/** Check contract address on Ethplorer.
+/** Check contract address or tx on Ethplorer.
  *
  * can pass the address, or pre-define the
  * SAIHUBOT_ETH_ADDR environment variable
  */
 export const skillSearchEthplorer = {
   name: 'ethplorer',
-  help: '🏦ethplorer [address] - check contract address on ethplorer',
+  help: '🏦ethplorer [address|tx] - check address or tx on ethplorer',
   requirements: {
     addons: ['search'],
   },
@@ -520,19 +547,24 @@ export const skillSearchEthplorer = {
       }
     }
     const data = addr || msg[2];
-    const url = 'https://ethplorer.io/address/' + data;
-    robot.addons.search('Check', data, url, 'Ethplorer');
+    if(isAddr(data)) {
+      const url = 'https://ethplorer.io/address/' + data;
+      robot.addons.search('Check', data, url, 'Ethplorer');
+    } else {
+      const url = 'https://ethplorer.io/tx/' + data;
+      robot.addons.search('Check tx', data, url, 'Ethplorer');
+    }
   },
 };
 
-/** Check contract address on ANYblock.
+/** Check contract address or tx on ANYblock.
  *
  * can pass the address, or pre-define the
  * SAIHUBOT_ETH_ADDR environment variable
  */
 export const skillSearchAnyblock = {
   name: 'anyblock',
-  help: '🏦anyblock [address] - check contract address on ANYblock',
+  help: '🏦anyblock [address|tx] - check address or tx on ANYblock',
   requirements: {
     addons: ['search'],
   },
@@ -548,22 +580,27 @@ export const skillSearchAnyblock = {
       }
     }
     const data = addr || msg[2];
-    const url = 'https://explorer.anyblock.tools/ethereum/ethereum/mainnet/address/' + data;
-    robot.addons.search('Check', data, url, 'ANYblock');
+    if(isAddr(data)) {
+      const url = 'https://explorer.anyblock.tools/ethereum/ethereum/mainnet/address/' + data;
+      robot.addons.search('Check', data, url, 'ANYblock');
+    } else {
+      const url = 'https://explorer.anyblock.tools/ethereum/ethereum/mainnet/transaction/' + data;
+      robot.addons.search('Check tx', data, url, 'ANYblock');
+    }
   },
 };
 
 // Side Chain
 
 /**
- * Check address on bscscan.
+ * Check address or tx on bscscan.
  *
  * can pass the address, or pre-define the
  * SAIHUBOT_ETH_ADDR environment variable
  */
 export const skillSearchBSCscan = {
   name: 'bscscan',
-  help: '🏦bsc|bscscan [address] - check address on Binance Smart Chain',
+  help: '🏦bsc|bscscan [address|tx] - check address or tx on Binance Smart Chain',
   requirements: {
     addons: ['search'],
   },
@@ -579,21 +616,26 @@ export const skillSearchBSCscan = {
       }
     }
     const data = addr || msg[2];
-    const url = 'https://bscscan.com/address/' + data;
-    robot.addons.search('Check', data, url, 'Binance Smart Chain');
+    if(isAddr(data)) {
+      const url = 'https://bscscan.com/address/' + data;
+      robot.addons.search('Check', data, url, 'Binance Smart Chain');
+    } else {
+      const url = 'https://bscscan.com/tx/' + data;
+      robot.addons.search('Check tx', data, url, 'Binance Smart Chain');
+    }
   },
 };
 
 
 /**
- * Check address on xDai.
+ * Check address or tx on xDai.
  *
  * can pass the address, or pre-define the
  * SAIHUBOT_ETH_ADDR environment variable
  */
 export const skillSearchXDai = {
   name: 'xdai',
-  help: '🏦xdai [address] - check address on xDai Chain',
+  help: '🏦xdai [address|tx] - check address or tx on xDai Chain',
   requirements: {
     addons: ['search'],
   },
@@ -609,245 +651,13 @@ export const skillSearchXDai = {
       }
     }
     const data = addr || msg[2];
-    const url = 'https://blockscout.com/poa/xdai/address/' + data + '/tokens';
-    robot.addons.search('Check', data, url, 'xDai');
-  },
-};
-
-// ==== TX ===
-
-/**
- * pick transaction (tx) explorer from the list
- */
-export const skillTxPicker = {
-  name: 'tx',
-  help: '🔎tx - Pick a transaction (tx) explorer from the list',
-  requirements: {
-    addons: ['confirm']
-  },
-  rule: /^(tx )(.*)/i,
-  action: function(robot, msg) {
-    const data = msg[2];
-    robot.addons.confirm(t('pick', {i18n: i18nAddr}), [
-      {
-        title: t('random', {i18n: i18nAddr}),
-        id: 'random',
-        rule: /^random/i,
-        action: () => robot.ask(`${getRandomItem([
-          'anyblocktx',
-          'bitquerytx',
-          'blockchair',
-          'bloxy',
-          'etherscantx',
-          'ethplorertx',
-          'tokenviewtx',
-        ])} ${data}`),
-      },
-      {
-        title: 'ANYblock',
-        id: 'anyblocktx',
-        rule: /^anyblocktx/i,
-        action: () => robot.ask(`anyblock ${data}`),
-      },
-      {
-        title: 'BitQuery',
-        id: 'querytx',
-        rule: /^querytx/i,
-        action: () => robot.ask(`querytx ${data}`),
-      },
-      {
-        title: 'BlockChair',
-        id: 'chairtx',
-        rule: /^chairtx/i,
-        action: () => robot.ask(`chairtx ${data}`),
-      },
-      {
-        title: 'Bloxy',
-        id: 'bloxy',
-        rule: /^bloxy/i,
-        action: () => robot.ask(`bloxy ${data}`),
-      },
-      {
-        title: 'Etherchain',
-        id: 'chaintx',
-        rule: /^chaintx/i,
-        action: () => robot.ask(`chaintx ${data}`),
-      },
-      {
-        title: 'Etherscan',
-        id: 'scantx',
-        rule: /^scantx/i,
-        action: () => robot.ask(`scantx ${data}`),
-      },
-      {
-        title: 'Ethplorer',
-        id: 'ethplorertx',
-        rule: /^ethplorertx/i,
-        action: () => robot.ask(`ethplorertx ${data}`),
-      },
-      {
-        title: 'Tokenview',
-        id: 'tokenviewtx',
-        rule: /^tokenviewtx/i,
-        action: () => robot.ask(`tokenviewtx ${data}`),
-      }
-    ]);
-  },
-}
-
-/**
- * Check transaction (tx) on Etherscan.
- */
-export const skillSearchEtherscanTx = {
-  name: 'etherscantx',
-  help: 'etherscan-tx|etherscantx|scan-tx|scantx [tx] - check transaction (tx) on Etherscan',
-  requirements: {
-    addons: ['search'],
-  },
-  rule: /(^(ether)?scan-?tx )(.*)/i,
-  action: function(robot, msg) {
-    const data = msg[3];
-    const url = 'https://www.etherscan.io/tx/' + data;
-    robot.addons.search('Check tx', data, url, 'Etherscan');
-  },
-};
-
-
-/**
- * Check transaction (tx) on blockchair.
- */
-export const skillSearchBlockchairTx = {
-  name: 'blockchair',
-  help: 'blockchair-tx|blockchairtx [tx] - check transaction (tx) on blockchair.com',
-  requirements: {
-    addons: ['search'],
-  },
-  rule: /(^(block)?chair-?tx )(.*)/i,
-  action: function(robot, msg) {
-    const data = msg[3];
-    const url = 'https://blockchair.com/ethereum/transaction/' + data;
-    robot.addons.search('Check tx', data, url, 'blockchair');
-  },
-};
-
-/**
- * Check transaction (tx) on explorer.bitquery.io.
- */
-export const skillSearchBitQueryTx = {
-  name: 'bitquerytx',
-  help: 'bitquery-tx|bitquerytx|query-tx|querytx [tx] - check transaction (tx) on bitquery',
-  requirements: {
-    addons: ['search'],
-  },
-  rule: /(^(bit)?query-?tx )(.*)/i,
-  action: function(robot, msg) {
-    const data = msg[3];
-    const url = 'https://explorer.bitquery.io/ethereum/tx/' + data;
-    robot.addons.search('Check tx', data, url, 'explorer.bitquery.io');
-  },
-};
-
-/**
- * Check transaction (tx) on etherchain.
- */
-export const skillSearchEtherchainTx = {
-  name: 'etherchaintx',
-  help: 'etherchain-tx|etherchaintx|chain-tx|chaintx [tx] - check transaction (tx) on etherchain',
-  requirements: {
-    addons: ['search'],
-  },
-  rule: /(^(ether)?chain-?tx )(.*)/i,
-  action: function(robot, msg) {
-    const data = msg[3];
-    const url = 'https://etherchain.org/tx/' + data;
-    robot.addons.search('Check tx', data, url, 'etherchain');
-  },
-};
-
-/**
- * Check transaction (tx) on Tokenview.
- */
-export const skillSearchTokenviewTx = {
-  name: 'tokenviewtx',
-  help: 'tokenview-tx|tokenviewtx [tx] - check transaction (tx) on tokenview',
-  requirements: {
-    addons: ['search'],
-  },
-  rule: /(^tokenview-?tx )(.*)/i,
-  action: function(robot, msg) {
-    const data = msg[2];
-    const url = 'https://eth.tokenview.com/en/tx/' + data;
-    robot.addons.search('Check tx', data, url, 'tokenview');
-  },
-};
-
-/**
- * Check transaction (tx) on Ethplorer.
- */
-export const skillSearchEthplorerTx = {
-  name: 'ethplorertx',
-  help: 'ethplorer-tx|ethplorertx [tx] - check transaction (tx) on Ethplorer',
-  requirements: {
-    addons: ['search'],
-  },
-  rule: /(^ethplorer-?tx )(.*)/i,
-  action: function(robot, msg) {
-    const data = msg[2];
-    const url = 'https://ethplorer.io/tx/' + data;
-    robot.addons.search('Check tx', data, url, 'Ethplorer');
-  },
-};
-
-/**
- * Check transaction (tx) on ANYblock.
- */
-export const skillSearchAnyblockTx = {
-  name: 'anyblocktx',
-  help: 'anyblock-tx|anyblocktx [tx] - check transaction (tx) on ANYblock',
-  requirements: {
-    addons: ['search'],
-  },
-  rule: /(^anyblock-?tx )(.*)/i,
-  action: function(robot, msg) {
-    const data = msg[2];
-    const url = 'https://explorer.anyblock.tools/ethereum/ethereum/mainnet/transaction/' + data;
-    robot.addons.search('Check tx', data, url, 'ANYblock');
-  },
-};
-
-// Side chain
-
-/**
- * Check transaction (tx) on Binance Smart Chain.
- */
-export const skillSearchBSCscanTx = {
-  name: 'bscscantx',
-  help: '🏦bsc-tx|bsctx|bscscan-tx|bscscantx [tx] - check transaction (tx) on Binance Smart Chain',
-  requirements: {
-    addons: ['search'],
-  },
-  rule: /(^bsc(scan)?-?tx )(.*)/i,
-  action: function(robot, msg) {
-    const data = msg[3];
-    const url = 'https://bscscan.com/tx/' + data;
-    robot.addons.search('Check tx', data, url, 'Binance Smart Chain');
-  },
-};
-
-/**
- * Check transaction (tx) on xDai Chain.
- */
-export const skillSearchXDaiTx = {
-  name: 'xdaitx',
-  help: '🏦xdai-tx|xdaitx [tx] - check transaction (tx) on xDai Chain',
-  requirements: {
-    addons: ['search'],
-  },
-  rule: /(^xdai-?tx )(.*)/i,
-  action: function(robot, msg) {
-    const data = msg[3];
-    const url = 'https://blockscout.com/poa/xdai/tx/' + data + '/internal-transactions';
-    robot.addons.search('Check tx', data, url, 'xDai Chain');
+    if(isAddr(data)) {
+      const url = 'https://blockscout.com/poa/xdai/address/' + data + '/tokens';
+      robot.addons.search('Check', data, url, 'xDai');
+    } else {
+      const url = 'https://blockscout.com/poa/xdai/tx/' + data + '/internal-transactions';
+      robot.addons.search('Check tx', data, url, 'xDai Chain');
+    }
   },
 };
 
@@ -1132,16 +942,6 @@ export const skillsAddress = [
   skillSearchEthplorer,
   skillSearchTokenview,
 ];
-export const skillsTx = [
-  skillTxPicker,
-  skillSearchAnyblockTx,
-  skillSearchBitQueryTx,
-  skillSearchBlockchairTx,
-  skillSearchEtherchainTx,
-  skillSearchEtherscanTx,
-  skillSearchEthplorerTx,
-  skillSearchTokenviewTx,
-];
 export const skillsValidator = [
   skillValidatorPicker,
   skillSearchBeaconchain,
@@ -1155,16 +955,13 @@ export const skillsAccount = [
 ];
 export const skillsSideChain = [
   skillSearchBSCscan,
-  skillSearchBSCscanTx,
   skillSearchXDai,
-  skillSearchXDaiTx,
 ];
 
 const skills = [
   ...skillsGas,
   ...skillsAccount,
   ...skillsAddress,
-  ...skillsTx,
   ...skillsValidator,
   ...skillsSideChain,
 ];

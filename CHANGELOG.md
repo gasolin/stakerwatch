@@ -2,6 +2,7 @@
 
 Feature
 - [balance] show WETH and stable coins(USDC, USDT, Dai) balance on xDai chain.
+- merge addr/tx search in the same explorer command
 
 Enhancement
 - [balance] show 4 digits of stable coins

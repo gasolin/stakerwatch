@@ -15,7 +15,6 @@ import {skillQRCode} from './saihubot-cli-skill-delegates';
 import {
   skillsAccount,
   skillsAddress,
-  skillsTx,
   skillsValidator,
   skillsGas,
   skillsSideChain,
@@ -61,7 +60,6 @@ const bot = new SaihuBot({
     ...skillBalance,
     ...skillsAccount,
     ...skillsAddress,
-    ...skillsTx,
     ...skillsValidator,
     ...skillsSideChain,
     ...skillsXDAI,

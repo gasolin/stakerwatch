@@ -24,7 +24,7 @@ Open terminal and type `staker help` to find all skills that `staker` command ca
 ```
 $ npx staker help
 
-I have 44 skills:
+I have 34 skills:
 * 🗞 stats - latest Eth2 stake state
 * lastblock|block - get the latest Eth1 block number
 * lastblock-eth2|lastblock-beacon|block-eth2|block-beacon - get the latest Eth2 block number
@@ -40,30 +40,20 @@ I have 44 skills:
 * 🧩debank [address] - check DeFi balance on Debank
 * 🧩zapper [address] - check DeFi balance on Zapper
 * 🧩zerion [address] - check DeFi Balance on Zerion
-* 🔎address|addr [address] - Pick address explorer from the list
-* 🏦anyblock [address] - check contract address on ANYblock
-* 🏦bitquery [address] - check address on explorer.bitquery.io
-* 🏦blockchair [address] - check address on blockchair.com
-* 🏦bloxy [address] - check token symbol, address or tx hash on bloxy.info
-* 🏦etherchain|chain [address] - check contract address on etherchain
-* 🏦etherscan|scan [address] - check contract address on Etherscan
-* 🏦ethplorer [address] - check contract address on ethplorer
-* 🏦tokenview [address] - check contract address on tokenview
-* 🔎tx - Pick a transaction (tx) explorer from the list
-* anyblock-tx|anyblocktx [tx] - check transaction (tx) on ANYblock
-* bitquery-tx|bitquerytx|query-tx|querytx [tx] - check transaction (tx) on bitquery
-* blockchair-tx|blockchairtx [tx] - check transaction (tx) on blockchair.com
-* etherchain-tx|etherchaintx|chain-tx|chaintx [tx] - check transaction (tx) on etherchain
-* etherscan-tx|etherscantx|scan-tx|scantx [tx] - check transaction (tx) on Etherscan
-* ethplorer-tx|ethplorertx [tx] - check transaction (tx) on Ethplorer
-* tokenview-tx|tokenviewtx [tx] - check transaction (tx) on tokenview
+* 🔎address|addr [address|tx] - Pick address explorer from the list
+* 🏦anyblock [address|tx] - check address or tx on ANYblock
+* 🏦bitquery [address|tx] - check address or tx on explorer.bitquery.io
+* 🏦blockchair [address|tx] - check address or tx on blockchair.com
+* 🏦bloxy [address|tx] - check token symbol, address or tx hash on bloxy.info
+* 🏦etherchain|chain [address|tx] - check address or tx on etherchain
+* 🏦etherscan|scan [address|tx] - check address or tx on Etherscan
+* 🏦ethplorer [address|tx] - check address or tx on ethplorer
+* 🏦tokenview [address|tx] - check address or tx on tokenview
 * 🔎validator - Pick a beacon validator explorer from the list
 * 📡beaconchain|beaconcha|beaconcha.in [address] - check validator address or number on beaconscan
 * 📡beaconscan|scan [address] - check validator address or number on BeaconScan
-* 🏦bsc|bscscan [address] - check address on Binance Smart Chain
-* 🏦bsc-tx|bsctx|bscscan-tx|bscscantx [tx] - check transaction (tx) on Binance Smart Chain
-* 🏦xdai [address] - check address on xDai Chain
-* 🏦xdai-tx|xdaitx [tx] - check transaction (tx) on xDai Chain
+* 🏦bsc|bscscan [address|tx] - check address or tx on Binance Smart Chain
+* 🏦xdai [address|tx] - check address or tx on xDai Chain
 * lastblock-xdai|lastblockxdai|block-xdai|blockxdai - get the latest xDai block number
 * 🤩awesome|lucky - Show random awesome site around ethereum
 * 📕chainid - Show EVM network providers chain and network id table
@@ -80,7 +70,6 @@ If you expect to use this tool frequently, install it via command:
 - [Eth2 Stats](#eth2-stats)
 - [Validator](#validator)
 - [Address](#address)
-- [tx](#tx)
 - [gas](#gas)
 - [Account](#account)
 - [On-Chain Data](#on-chain-data)
@@ -168,15 +157,15 @@ Check [address or index] via beaconcha.in
 
 ```
 * 💰balance - Show current balance of [address]
-* 🔎address|addr [address] - Pick address explorer from the list
-* 🏦anyblock [address] - check contract address on ANYblock
-* 🏦bitquery [address] - check address on explorer.bitquery.io
-* 🏦blockchair [address] - check address on blockchair.com
-* 🏦bloxy [address] - check token symbol, address or tx hash on bloxy.info
-* 🏦etherchain|chain [address] - check contract address on Etherchain
-* 🏦etherscan|scan [address] - check contract address on Etherscan
-* 🏦ethplorer [address] - check contract address on ethplorer
-* 🏦tokenview [address] - check contract address on tokenview
+* 🔎address|addr [address|tx] - Pick address explorer from the list
+* 🏦anyblock [address|tx] - check address or tx on ANYblock
+* 🏦bitquery [address|tx] - check address or tx on explorer.bitquery.io
+* 🏦blockchair [address|tx] - check address or tx on blockchair.com
+* 🏦bloxy [address|tx] - check token symbol, address or tx hash on bloxy.info
+* 🏦etherchain|chain [address|tx] - check address or tx on etherchain
+* 🏦etherscan|scan [address|tx] - check address or tx on Etherscan
+* 🏦ethplorer [address|tx] - check address or tx on ethplorer
+* 🏦tokenview [address|tx] - check address or tx on tokenview
 ```
 
 Use `staker balance [addr]` command, you can given a Eth address and get related account balance, including the stable coins (USDt, USDC, Dai...) and lending stable coins in [AAVE](https://aave.com/) and [Compound](https://compound.finance/).
@@ -232,21 +221,7 @@ Check [addr] via Etherscan
 
 It will open browser to search [addr] on Etherscan.
 
-## Tx
-
-Same as address, but use to search transaction (tx).
-
-```
-* 🔎tx - Pick a transaction (tx) explorer from the list
-* anyblock-tx|anyblocktx [tx] - check transaction (tx) on ANYblock
-* bitquery-tx|bitquerytx|query-tx|querytx [tx] - check transaction (tx) on bitquery
-* blockchair-tx|blockchairtx [tx] - check transaction (tx) on blockchair.com
-* 🏦bloxy [address] - check token symbol, address or tx hash on bloxy.info
-* etherchain-tx|etherchaintx|chain-tx|chaintx [tx] - check transaction (tx) on etherchain
-* etherscan-tx|etherscantx|scan-tx|scantx [tx] - check transaction (tx) on etherscan
-* ethplorer-tx|ethplorertx [tx] - check transaction (tx) on Ethplorer
-* tokenview-tx|tokenviewtx [tx] - check transaction (tx) on tokenview
-```
+These commands can be used to search transaction (tx) as well.
 
 - [ANYblock](https://explorer.anyblock.tools/ethereum/ethereum/mainnet)
 - [Bitquery](https://explorer.bitquery.io/ethereum) can check money flow
@@ -321,10 +296,8 @@ Check Account on Defi Explorer
 ```
 
 * 📕chainid - Show EVM network providers chain and network id table
-* 🏦bsc|bscscan [address] - check address on Binance Smart Chain
-* 🏦bsc-tx|bsctx|bscscan-tx|bscscantx [tx] - check transaction (tx) on Binance Smart Chain
-* 🏦xdai [address] - check address on xDai Chain
-* 🏦xdai-tx|xdaitx [tx] - check transaction (tx) on xDai Chain
+* 🏦bsc|bscscan [address|tx] - check address or tx on Binance Smart Chain
+* 🏦xdai [address|tx] - check address or tx on xDai Chain
 * lastblock-xdai|lastblockxdai|block-xdai|blockxdai - get the latest xDai block number
 ```
 
