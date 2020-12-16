@@ -1,3 +1,12 @@
+# 0.20 2012/12/17
+
+Feature
+- [balance-xdai] Show balance of address on xDai chain
+
+Enhancement
+- update README
+- [awesome] add scaffold eth and ethgas.watch link
+
 # 0.19 2012/12/16
 
 Feature
