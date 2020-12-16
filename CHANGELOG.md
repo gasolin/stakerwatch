@@ -6,6 +6,9 @@ Feature
 Enhancement
 - [balance] show 4 digits of stable coins
 
+Fix
+- [gas] fix random picker
+
 # 0.18 2012/12/15
 
 Feature

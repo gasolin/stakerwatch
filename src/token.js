@@ -102,6 +102,7 @@ export const tokenMap = {
   }
 };
 
+// https://blockscout.com/poa/xdai/bridged-tokens
 export const xdaiTokenMap = {
   "0xDDAfbb505ad214D7b80b1f830fcCc89B60fb7A83": {
     "name": "USD Coin",

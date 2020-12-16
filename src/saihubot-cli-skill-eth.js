@@ -55,7 +55,7 @@ export const skillGasEstimator = {
           'gasstation',
           'gastracker',
           'gaspriceoracle',
-        ])} ${data}`),
+        ])}`),
       },
       {
         title: 'Gas Fee',
@@ -103,10 +103,10 @@ export const skillGasTracker = {
   },
   i18n: {
     'en': {
-      gasfee: 'Current gas fee (report by etherscan) is H:{{H}} M:{{M}} L:{{L}} gwei',
+      gasfee: 'Current gas fee is H:{{H}} M:{{M}} L:{{L}} gwei (report by etherscan)',
     },
     'zh_TW': {
-      gasfee: '目前的 gas 費用 (由 etherscan 提供) H:{{H}} M:{{M}} L:{{L}} gwei',
+      gasfee: '目前的 gas 費用 H:{{H}} M:{{M}} L:{{L}} gwei (由 etherscan 提供)',
     },
     props: ['H', 'M', 'L']
   },
@@ -140,10 +140,10 @@ export const skillGasStation = {
   },
   i18n: {
     'en': {
-      gasfee: 'Current gas fee (report by gasstation) is H:{{H}} M:{{M}} L:{{L}} gwei',
+      gasfee: 'Current gas fee is H:{{H}} M:{{M}} L:{{L}} gwei (report by gasstation) ',
     },
     'zh_TW': {
-      gasfee: '目前的 gas 費用 (由 gasstation 提供) H:{{H}} M:{{M}} L:{{L}} gwei',
+      gasfee: '目前的 gas 費用 H:{{H}} M:{{M}} L:{{L}} gwei (由 gasstation 提供)',
     },
     props: ['H', 'M', 'L']
   },
@@ -177,10 +177,10 @@ export const skillGasNow = {
   },
   i18n: {
     'en': {
-      gasfee: 'Current gas fee (report by gasnow) is H:{{H}} M:{{M}} L:{{L}} gwei',
+      gasfee: 'Current gas fee is H:{{H}} M:{{M}} L:{{L}} gwei (report by gasnow) ',
     },
     'zh_TW': {
-      gasfee: '目前的 gas 費用 (由 gasnow 提供) H:{{H}} M:{{M}} L:{{L}} gwei',
+      gasfee: '目前的 gas 費用 H:{{H}} M:{{M}} L:{{L}} gwei (由 gasnow 提供)',
     },
     props: ['H', 'M', 'L']
   },
@@ -214,10 +214,10 @@ export const skillGasPriceOracle = {
   },
   i18n: {
     'en': {
-      gasfee: 'Current gas fee (report by Gas Price Oracle) is H:{{H}} M:{{M}} L:{{L}} gwei',
+      gasfee: 'Current gas fee is H:{{H}} M:{{M}} L:{{L}} gwei (report by Gas Price Oracle)',
     },
     'zh_TW': {
-      gasfee: '目前的 gas 費用 (由 Gas Price Oracle 提供) H:{{H}} M:{{M}} L:{{L}} gwei',
+      gasfee: '目前的 gas 費用 H:{{H}} M:{{M}} L:{{L}} gwei (由 Gas Price Oracle 提供)',
     },
     props: ['H', 'M', 'L']
   },
