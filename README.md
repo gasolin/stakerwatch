@@ -300,9 +300,11 @@ xDai Chain
 
 ```
 * 🏦xdai [address|tx] - check address or tx on xDai Chain
-* lastblock-xdai|lastblockxdai|block-xdai|blockxdai - get the latest xDai block number
 * 💰balance-xdai - Show address balance on xDai chain
+* lastblock-xdai|lastblockxdai|block-xdai|blockxdai - get the latest xDai block number
 ```
+
+- [Blockscout](https://blockscout.com/poa/xdai) xDai Chain explorer.
 
 Binance Smart Chain
 
@@ -311,7 +313,6 @@ Binance Smart Chain
 ```
 
 - [BscScan](https://bscscan.com/) Binance Smart Chain explorer.
-- [Blockscout](https://blockscout.com/poa/xdai) xDai Chain explorer.
 
 ## Other Tools
 
