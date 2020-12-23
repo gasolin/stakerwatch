@@ -2,6 +2,7 @@
 
 Enhancement
 - show `fetching gas...` while fetching gas data
+- add beaconcha education in awesome link
 
 # 0.20 2012/12/17
 

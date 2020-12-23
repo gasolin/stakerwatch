@@ -20,6 +20,7 @@ const AWESOME_LINKS = [
   'https://twitter.com/Eth2Bot',
   'https://www.youtube.com/watch?v=ShJZf5lsXiM',
   'https://ethgas.watch/',
+  'https://beaconcha.in/education',
 ];
 
 /**
