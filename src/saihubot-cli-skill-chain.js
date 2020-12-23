@@ -304,15 +304,19 @@ export const skillGasFee = {
   },
   i18n: {
     'en': {
+      fetching: 'Fetching gas...',
       fee: 'Current on-chain gas fee is {{gas}} gwei',
     },
     'zh_TW': {
+      fetching: '取得 gas 費用...',
       fee: '當前鏈上的 Gas 費用為 {{gas}} gwei',
     },
     props: ['gas']
   },
   rule: /^gasfee/i,
   action: function(robot, msg) {
+    robot.send(t('fetching', {i18n: this.i18n}));
+    robot.render();
     ethFetch(robot.addons.fetch, rpcGasPrice())
     .then(json => {
       const gas = Number(json.result) / 10**9;

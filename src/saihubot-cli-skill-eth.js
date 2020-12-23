@@ -35,6 +35,18 @@ const i18nAddr = {
 
 // ==== GAS ===
 
+const i18nGas = {
+  'en': {
+    fetching: 'Fetching gas...',
+    gasfee: 'Current gas fee is H:{{H}} M:{{M}} L:{{L}} gwei (report by {{source}})',
+  },
+  'zh_TW': {
+    fetching: '取得 gas 費用...',
+    gasfee: '目前的 gas 費用 H:{{H}} M:{{M}} L:{{L}} gwei (由 {{source}} 提供)',
+  },
+  props: ['H', 'M', 'L', 'source']
+}
+
 /**
  * pick gas estimator from the list
  */
@@ -103,26 +115,20 @@ export const skillGasTracker = {
   requirements: {
     addons: ['fetch'],
   },
-  i18n: {
-    'en': {
-      gasfee: 'Current gas fee is H:{{H}} M:{{M}} L:{{L}} gwei (report by etherscan)',
-    },
-    'zh_TW': {
-      gasfee: '目前的 gas 費用 H:{{H}} M:{{M}} L:{{L}} gwei (由 etherscan 提供)',
-    },
-    props: ['H', 'M', 'L']
-  },
   rule: /^(gas)?tracker$/i,
   action: function(robot, msg) {
+    robot.send(t('fetching', {i18n: i18nGas}));
+    robot.render();
     robot.addons.fetch(API.GASTRACKER)
       .then(response => response.json())
       .then(json => {
         robot.sendComponent(<Text>
           {t('gasfee', {
-            i18n: this.i18n,
+            i18n: i18nGas,
             H: json.result.FastGasPrice,
             M: json.result.ProposeGasPrice,
             L: json.result.SafeGasPrice,
+            source: 'Etherscan',
           })}
         </Text>);
         robot.render();
@@ -140,26 +146,20 @@ export const skillGasStation = {
   requirements: {
     addons: ['fetch'],
   },
-  i18n: {
-    'en': {
-      gasfee: 'Current gas fee is H:{{H}} M:{{M}} L:{{L}} gwei (report by gasstation) ',
-    },
-    'zh_TW': {
-      gasfee: '目前的 gas 費用 H:{{H}} M:{{M}} L:{{L}} gwei (由 gasstation 提供)',
-    },
-    props: ['H', 'M', 'L']
-  },
   rule: /^(gas)?station$/i,
   action: function(robot, msg) {
+    robot.send(t('fetching', {i18n: i18nGas}));
+    robot.render();
     robot.addons.fetch(API.GASSTATION)
       .then(response => response.json())
       .then(json => {
         robot.sendComponent(<Text>
           {t('gasfee', {
-            i18n: this.i18n,
+            i18n: i18nGas,
             H: int(json.fast / 10),
             M: int(json.average / 10),
             L: int(json.safeLow / 10),
+            source: 'Eth Gas Station',
           })}
         </Text>);
         robot.render();
@@ -177,26 +177,20 @@ export const skillGasNow = {
   requirements: {
     addons: ['fetch'],
   },
-  i18n: {
-    'en': {
-      gasfee: 'Current gas fee is H:{{H}} M:{{M}} L:{{L}} gwei (report by gasnow) ',
-    },
-    'zh_TW': {
-      gasfee: '目前的 gas 費用 H:{{H}} M:{{M}} L:{{L}} gwei (由 gasnow 提供)',
-    },
-    props: ['H', 'M', 'L']
-  },
   rule: /^(gas)?now$/i,
   action: function(robot, msg) {
+    robot.send(t('fetching', {i18n: i18nGas}));
+    robot.render();
     robot.addons.fetch(API.GASNOW)
       .then(response => response.json())
       .then(json => {
         robot.sendComponent(<Text>
           {t('gasfee', {
-            i18n: this.i18n,
+            i18n: i18nGas,
             H: int(json.data.fast / 10**9),
             M: int(json.data.standard / 10**9),
             L: int(json.data.slow / 10**9),
+            source: 'gasnow',
           })}
         </Text>);
         robot.render();
@@ -214,26 +208,20 @@ export const skillGasPriceOracle = {
   requirements: {
     addons: ['fetch'],
   },
-  i18n: {
-    'en': {
-      gasfee: 'Current gas fee is H:{{H}} M:{{M}} L:{{L}} gwei (report by Gas Price Oracle)',
-    },
-    'zh_TW': {
-      gasfee: '目前的 gas 費用 H:{{H}} M:{{M}} L:{{L}} gwei (由 Gas Price Oracle 提供)',
-    },
-    props: ['H', 'M', 'L']
-  },
   rule: /^(gasprice)?oracle$/i,
   action: function(robot, msg) {
+    robot.send(t('fetching', {i18n: i18nGas}));
+    robot.render();
     robot.addons.fetch(API.GASPRICEORACLE)
       .then(response => response.json())
       .then(json => {
         robot.sendComponent(<Text>
           {t('gasfee', {
-            i18n: this.i18n,
+            i18n: i18nGas,
             H: int(json.fastest),
             M: int(json.standard),
             L: int(json.safeLow),
+            source: 'Etherchain',
           })}
         </Text>);
         robot.render();

@@ -1,3 +1,8 @@
+# 0.21 2012/12/23
+
+Enhancement
+- show `fetching gas...` while fetching gas data
+
 # 0.20 2012/12/17
 
 Feature
