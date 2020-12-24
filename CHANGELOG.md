@@ -1,4 +1,7 @@
-# 0.21 2012/12/23
+# 0.21 2012/12/24
+
+Feature
+- [balance] show Wrapped ETH in balance
 
 Enhancement
 - show `fetching gas...` while fetching gas data

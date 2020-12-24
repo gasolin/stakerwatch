@@ -1,4 +1,11 @@
 export const tokenMap = {
+  "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2": {
+    "name": "Wrapped Ether",
+    "logo": "eth.png",
+    "erc20": true,
+    "symbol": "WETH",
+    "decimals": 18
+  },
   "0x4Fabb145d64652a948d72533023f6E7A623C7C53": {
     "name": "Binance USD",
     "logo": "busd.svg",
