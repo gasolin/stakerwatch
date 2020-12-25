@@ -6,6 +6,7 @@ Feature
 Enhancement
 - show `fetching gas...` while fetching gas data
 - add beaconcha education in awesome link
+- expose source to let staker can be used as a library
 
 Refactor
 - abstract fetchGas addon

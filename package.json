@@ -1,12 +1,13 @@
 {
   "name": "staker",
-  "version": "0.21.3",
+  "version": "0.21.4",
   "description": "Command line Utillity for Ethereum stakers",
   "bin": {
     "staker": "./dist/cli.js"
   },
   "files": [
-    "dist/**"
+    "dist/**",
+    "src/**"
   ],
   "scripts": {
     "start": "babel-node --presets @babel/preset-env src/cli.js",
