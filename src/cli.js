@@ -11,6 +11,7 @@ import {
   addonExec,
   skillHelp,
 } from 'saihubot-cli-adapter';
+import {addonFetchGas} from './saihubot-addon-ethgas';
 import {skillQRCode} from './saihubot-cli-skill-delegates';
 import {
   skillsAccount,
@@ -52,6 +53,7 @@ const bot = new SaihuBot({
     addonFetch,
     addonOpenLink,
     addonExec,
+    addonFetchGas,
   ],
   skills: [
     ...skillsETH2,

@@ -8,8 +8,8 @@ Enhancement
 - add beaconcha education in awesome link
 
 Refactor
+- abstract fetchGas addon
 - move gas skills into separate file
-- abstract fetchGas function
 
 # 0.20 2012/12/17
 

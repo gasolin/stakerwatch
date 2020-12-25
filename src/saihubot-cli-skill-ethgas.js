@@ -3,7 +3,7 @@
 import React from 'React';
 import {Text} from 'ink';
 import {t} from 'saihubot-cli-adapter/dist/i18n';
-import {GAS_ESTIMATOR, fetchGas} from './saihubot-adapter-ethgas'
+import {GAS_ESTIMATOR} from './saihubot-addon-ethgas'
 
 // ==== GAS ===
 
@@ -28,7 +28,7 @@ export const skillGasEstimator = {
   name: 'gas',
   help: '🔎gas - Pick a gas estimator from the list',
   requirements: {
-    addons: ['confirm']
+    addons: ['confirm', 'fetch', 'fetchGas']
   },
   rule: /^gas$/i,
   action: function(robot, msg) {
@@ -87,13 +87,13 @@ export const skillGasTracker = {
   name: 'gastracker',
   help: '🛢 gastracker|tracker - Show current gas fee via Etherscan Gas Tracker',
   requirements: {
-    addons: ['fetch'],
+    addons: ['fetchGas'],
   },
   rule: /^(gas)?tracker$/i,
   action: function(robot, msg) {
     robot.send(t('fetching', {i18n: i18nGas}));
     robot.render();
-    fetchGas(robot.addons.fetch, GAS_ESTIMATOR.GASTRACKER,
+    robot.addons.fetchGas(GAS_ESTIMATOR.GASTRACKER,
       data => {
         robot.sendComponent(<Text>
           {t('gasfee', {
@@ -114,13 +114,13 @@ export const skillGasStation = {
   name: 'gasstation',
   help: '🛢 gasstation|station - Show current gas fee via Eth Gas Station',
   requirements: {
-    addons: ['fetch'],
+    addons: ['fetchGas'],
   },
   rule: /^(gas)?station$/i,
   action: function(robot, msg) {
     robot.send(t('fetching', {i18n: i18nGas}));
     robot.render();
-    fetchGas(robot.addons.fetch, GAS_ESTIMATOR.GASSTATION,
+    robot.addons.fetchGas(GAS_ESTIMATOR.GASSTATION,
       data => {
         robot.sendComponent(<Text>
           {t('gasfee', {
@@ -141,13 +141,13 @@ export const skillGasNow = {
   name: 'gasnow',
   help: '🛢 gasnow|now - Show current gas fee via gasnow',
   requirements: {
-    addons: ['fetch'],
+    addons: ['fetch', 'fetchGas'],
   },
   rule: /^(gas)?now$/i,
   action: function(robot, msg) {
     robot.send(t('fetching', {i18n: i18nGas}));
     robot.render();
-    fetchGas(robot.addons.fetch, GAS_ESTIMATOR.GASNOW,
+    robot.addons.fetchGas(GAS_ESTIMATOR.GASNOW,
       data => {
         robot.sendComponent(<Text>
           {t('gasfee', {
@@ -168,13 +168,13 @@ export const skillGasPriceOracle = {
   name: 'gaspriceoracle',
   help: '🛢 gaspriceoracle|oracle - Show current gas fee via Eth Gas Price Oracle',
   requirements: {
-    addons: ['fetch'],
+    addons: ['fetchGas'],
   },
   rule: /^(gasprice)?oracle$/i,
   action: function(robot, msg) {
     robot.send(t('fetching', {i18n: i18nGas}));
     robot.render();
-    fetchGas(robot.addons.fetch, GAS_ESTIMATOR.GASPRICEORACLE,
+    robot.addons.fetchGas(GAS_ESTIMATOR.GASPRICEORACLE,
       data => {
         robot.sendComponent(<Text>
           {t('gasfee', {
