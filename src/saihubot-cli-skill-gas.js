@@ -2,18 +2,57 @@ import React from 'React';
 import {Text} from 'ink';
 import {t} from 'saihubot-cli-adapter/dist/i18n';
 
-const API = {
-  GASSTATION: 'https://ethgasstation.info/api/ethgasAPI.json',
-  GASNOW: 'https://www.gasnow.org/api/v3/gas/price?utm_source=:gaso',
-  GASTRACKER: 'https://api.etherscan.io/api?module=gastracker&action=gasoracle',
-  GASPRICEORACLE: 'https://etherchain.org/api/gasPriceOracle',
-};
-
 function int(num) {
   return parseInt(num, 10);
 }
 
 // ==== GAS ===
+
+// Addon
+export const fetchGas = (fetch, estimator, callback) =>
+  fetch(estimator.api).then(response => response.json()).then(json => {
+    const data = estimator.processGasData(json);
+    callback && callback(data);
+  });
+
+export const GAS_ESTIMATOR = {
+  GASSTATION: {
+    api: 'https://ethgasstation.info/api/ethgasAPI.json',
+    processGasData: json => ({
+      H: int(json.fast / 10),
+      M: int(json.average / 10),
+      L: int(json.safeLow / 10),
+      source: 'Eth Gas Station',
+    }),
+  },
+  GASNOW: {
+    api: 'https://www.gasnow.org/api/v3/gas/price?utm_source=:gaso',
+    processGasData: json => ({
+      H: int(json.data.fast / 10**9),
+      M: int(json.data.standard / 10**9),
+      L: int(json.data.slow / 10**9),
+      source: 'gasnow',
+    }),
+  },
+  GASTRACKER: {
+    api: 'https://api.etherscan.io/api?module=gastracker&action=gasoracle',
+    processGasData: json => ({
+      H: json.result.FastGasPrice,
+      M: json.result.ProposeGasPrice,
+      L: json.result.SafeGasPrice,
+      source: 'Etherscan',
+    }),
+  },
+  GASPRICEORACLE: {
+    api: 'https://etherchain.org/api/gasPriceOracle',
+    processGasData: json => ({
+      H: int(json.fastest),
+      M: int(json.standard),
+      L: int(json.safeLow),
+      source: 'Etherchain',
+    }),
+  }
+}
 
 const i18nGas = {
   'en': {
@@ -101,20 +140,16 @@ export const skillGasTracker = {
   action: function(robot, msg) {
     robot.send(t('fetching', {i18n: i18nGas}));
     robot.render();
-    robot.addons.fetch(API.GASTRACKER)
-      .then(response => response.json())
-      .then(json => {
+    fetchGas(robot.addons.fetch, GAS_ESTIMATOR.GASTRACKER,
+      data => {
         robot.sendComponent(<Text>
           {t('gasfee', {
             i18n: i18nGas,
-            H: json.result.FastGasPrice,
-            M: json.result.ProposeGasPrice,
-            L: json.result.SafeGasPrice,
-            source: 'Etherscan',
+            ...data,
           })}
         </Text>);
         robot.render();
-      })
+      });
   },
 };
 
@@ -132,20 +167,16 @@ export const skillGasStation = {
   action: function(robot, msg) {
     robot.send(t('fetching', {i18n: i18nGas}));
     robot.render();
-    robot.addons.fetch(API.GASSTATION)
-      .then(response => response.json())
-      .then(json => {
+    fetchGas(robot.addons.fetch, GAS_ESTIMATOR.GASSTATION,
+      data => {
         robot.sendComponent(<Text>
           {t('gasfee', {
             i18n: i18nGas,
-            H: int(json.fast / 10),
-            M: int(json.average / 10),
-            L: int(json.safeLow / 10),
-            source: 'Eth Gas Station',
+            ...data,
           })}
         </Text>);
         robot.render();
-      })
+      });
   },
 };
 
@@ -163,20 +194,16 @@ export const skillGasNow = {
   action: function(robot, msg) {
     robot.send(t('fetching', {i18n: i18nGas}));
     robot.render();
-    robot.addons.fetch(API.GASNOW)
-      .then(response => response.json())
-      .then(json => {
+    fetchGas(robot.addons.fetch, GAS_ESTIMATOR.GASNOW,
+      data => {
         robot.sendComponent(<Text>
           {t('gasfee', {
             i18n: i18nGas,
-            H: int(json.data.fast / 10**9),
-            M: int(json.data.standard / 10**9),
-            L: int(json.data.slow / 10**9),
-            source: 'gasnow',
+            ...data,
           })}
         </Text>);
         robot.render();
-      })
+      });
   },
 };
 
@@ -194,20 +221,16 @@ export const skillGasPriceOracle = {
   action: function(robot, msg) {
     robot.send(t('fetching', {i18n: i18nGas}));
     robot.render();
-    robot.addons.fetch(API.GASPRICEORACLE)
-      .then(response => response.json())
-      .then(json => {
+    fetchGas(robot.addons.fetch, GAS_ESTIMATOR.GASPRICEORACLE,
+      data => {
         robot.sendComponent(<Text>
           {t('gasfee', {
             i18n: i18nGas,
-            H: int(json.fastest),
-            M: int(json.standard),
-            L: int(json.safeLow),
-            source: 'Etherchain',
+            ...data,
           })}
         </Text>);
         robot.render();
-      })
+      });
   },
 };
 
