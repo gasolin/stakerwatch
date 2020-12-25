@@ -18,7 +18,7 @@ import {
   skillsValidator,
   skillsSideChain,
 } from './saihubot-cli-skill-eth';
-import {skillsGas} from './saihubot-skill-gas';
+import {skillsGas} from './saihubot-cli-skill-ethgas';
 import {skillsETH2, skillsXDAI, skillGasFee} from './saihubot-cli-skill-chain';
 import {skills as skillAwesome} from './saihubot-skill-awesome';
 import {skills as skillBalance} from './saihubot-cli-skill-balance';
