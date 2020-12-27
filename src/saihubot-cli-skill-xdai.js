@@ -82,6 +82,7 @@ export const skillLastXdaiBlock = {
 
 export const XdaiBalances = ({addresses, fetch}) => {
   const [balance, setBalance] = useState([]);
+  const [loading, setLoading] = useState(true);
   const data = [];
   useEffect(() => {
     async function fetchXdaiBalance() {
@@ -112,17 +113,23 @@ export const XdaiBalances = ({addresses, fetch}) => {
         }
       }
       setBalance([...balance, ...data]);
+      setLoading(false);
     }
 
     addresses && fetchXdaiBalance();
   }, [addresses, fetch]);
 
+  if (loading) {
+    return (<Text>{t('query', {i18n: i18nXdai})}</Text>)
+  }
+
   return balance.length > 0
     ? (<>
       <Text>{t('xdaiBalance', {i18n: i18nXdai})}</Text>
       <Table data={balance} />
+      <Text> </Text>
     </>)
-    : (<Text>{t('query', {i18n: i18nXdai})}</Text>);
+    : null
 }
 
 /**

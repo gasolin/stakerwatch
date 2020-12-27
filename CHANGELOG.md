@@ -10,6 +10,7 @@ Enhancement
 
 Fix
 - Fix balances with predefined multi addresses
+- Fix query xDai message
 
 Refactor
 - abstract ethRpc.js and parseArg,toArray in utils
