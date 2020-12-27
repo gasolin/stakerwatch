@@ -4,7 +4,7 @@ import { Text } from 'ink';
 import Table from 'ink-table';
 import { t } from 'saihubot-cli-adapter/dist/i18n';
 
-import {getConfig, getNodeURL, xdaiFetch} from './utils';
+import {getConfig, parseArg, getNodeURL, xdaiFetch, toArray} from './utils';
 import {rpcEthBalance, rpcTokenBalance} from './saihubot-cli-skill-chain';
 import {i18nValidator} from './i18n';
 import {tokenMap, xdaiTokenMap} from './token';
@@ -15,14 +15,14 @@ const balanceI18n = {
     token: 'Symbol',
     balance: 'Balance',
     source: 'Source',
-    needAddr: 'Please pass the address or define SAIHUBOT_ETH_ADDR first',
+    needAddr: 'Please pass the address or define SAIHUBOT_ADDR first',
   },
   'zh_TW': {
     query: '查詢餘額中...',
     token: '幣種',
     balance: '餘額',
     source: '來源',
-    needAddr: '請傳入地址或是預先定義 SAIHUBOT_ETH_ADDR 參數',
+    needAddr: '請傳入地址或是預先定義 SAIHUBOT_ADDR 參數',
   },
   props: ['balance', 'usdt']
 };
@@ -80,9 +80,7 @@ const ValidatorBalances = ({validator, fetch}) => {
   const [balance, setBalance] = useState([]);
   if (!validator) return null;
 
-  let validators = typeof validator === 'string' && validator.indexOf(',') > -1
-    ? validator.split(',').map(index => index.trim())
-    : [validator + ''];
+  let validators = toArray(parseArg(validator));
   const isOverflow = validators.length > 100;
   const data = [];
   useEffect(() => {
@@ -94,7 +92,7 @@ const ValidatorBalances = ({validator, fetch}) => {
       fetch(`https://beaconcha.in/api/v1/validator/${validators.join(',')}`)
         .then(response => response.json())
         .then(json => {
-          const arrData = Array.isArray(json.data) ? json.data : [json.data];
+          const arrData = toArray(json.data);
           json.data && Object.values(arrData).map(validator => {
             validator.balance && data.push({
               Symbol: 'ETH',
@@ -164,16 +162,16 @@ const XdaiBalances = ({addresses, fetch}) => {
 
 // support multiple account balance by comma (without space)
 // also shows validator balances
-const Balances = ({address, fetch}) => {
+const Balances = ({addresses, fetch}) => {
   const [validator, setValidator] = useState('');
-  const addresses = address.indexOf(',') > -1 ? address.split(',').map(addr => addr.trim()) : [address];
+  const addrs = toArray(addresses);
 
   useEffect(() => {
     async function fetchValidators() {
-      for (let i = 0; i < addresses.length ; i++) {
-        const json = await fetch(`https://beaconcha.in/api/v1/validator/eth1/${addresses[i]}`)
+      for (let i = 0; i < addrs.length ; i++) {
+        const json = await fetch(`https://beaconcha.in/api/v1/validator/eth1/${addrs[i]}`)
           .then(response => response.json());
-        const validators = Array.isArray(json.data) ? json.data : [json.data];
+        const validators = toArray(json.data);
         if (validators && validators.length > 0) {
           const data = validators.length === 1
             ? validators[0].validatorindex
@@ -183,17 +181,17 @@ const Balances = ({address, fetch}) => {
       }
     }
 
-    if (address) {
+    if (addresses) {
       fetchValidators();
     }
-  }, [address, fetch]);
+  }, [addresses, fetch]);
 
   return (<>
-    <EthBalances addresses={addresses} fetch={fetch} />
+    <EthBalances addresses={addrs} fetch={fetch} />
     <Text> </Text>
     <ValidatorBalances validator={validator} fetch={fetch} />
     <Text> </Text>
-    <XdaiBalances addresses={addresses} fetch={fetch} />
+    <XdaiBalances addresses={addrs} fetch={fetch} />
   </>)
 }
 
@@ -202,7 +200,7 @@ const Balances = ({address, fetch}) => {
  * Includes the stable token load in AAVE and Compound
  *
  * can pass the address, or pre-define the
- * SAIHUBOT_ETH_ADDR environment variable
+ * SAIHUBOT_ADDR environment variable
  */
 export const skillGetBlance = {
   name: 'balance',
@@ -214,15 +212,15 @@ export const skillGetBlance = {
   action: function(robot, msg) {
     let addr = '';
     if (msg[2] === undefined) {
-      addr = getConfig('ETH_ADDR', '');
-      if (addr.trim() === '') {
+      addr = getConfig('ADDR', '');
+      if (!addr) {
         robot.send(t('needAddr', {i18n: balanceI18n}));
         robot.render();
         return;
       }
     }
-    const parsedAddr = addr.trim() || msg[2];
-    robot.sendComponent(<Balances address={parsedAddr} fetch={robot.addons.fetch} />);
+    const parsedAddr = addr || parseArg(msg[2]);
+    robot.sendComponent(<Balances addresses={parsedAddr} fetch={robot.addons.fetch} />);
     robot.render();
   },
 }
@@ -244,14 +242,14 @@ export const skillGetValidatorBlance = {
     let validator = '';
     if (msg[3] === undefined) {
       validator = getConfig('VALIDATOR', '');
-      if (validator === '') {
+      if (!validator) {
         robot.send(t('needAddr', {i18n: i18nValidator}));
         robot.render();
         return;
       }
     }
 
-    const data = validator || msg[3];
+    const data = validator || parseArg(msg[3]);
     robot.sendComponent(<ValidatorBalances validator={data} fetch={robot.addons.fetch} />);
     robot.render();
   }
@@ -273,14 +271,14 @@ export const skillGetXdaiBlance = {
   action: function(robot, msg) {
     let addr = '';
     if (msg[2] === undefined) {
-      addr = getConfig('ETH_ADDR', '');
-      if (addr.trim() === '') {
+      addr = getConfig('ADDR', '');
+      if (!addr) {
         robot.send(t('needAddr', {i18n: balanceI18n}));
         robot.render();
         return;
       }
     }
-    const parsedAddr = addr.trim() || msg[2];
+    const parsedAddr = addr || parseArg(msg[2]);
     robot.sendComponent(<XdaiBalances address={parsedAddr} fetch={robot.addons.fetch} />);
     robot.render();
   },

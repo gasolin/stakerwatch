@@ -8,12 +8,12 @@ const isAddr = data => data.length === 42;
 
 const i18nAddr = {
   'en': {
-    needAddr: 'Please pass the address or define SAIHUBOT_ETH_ADDR first',
+    needAddr: 'Please pass the address or define SAIHUBOT_ADDR first',
     pick: 'pick address explorer from the list',
     random: 'Random',
   },
   'zh_TW': {
-    needAddr: '請傳入地址，或是預先定義 SAIHUBOT_ETH_ADDR 參數',
+    needAddr: '請傳入地址，或是預先定義 SAIHUBOT_ADDR 參數',
     pick: '從列表中選取合適的地址探索工具',
     random: '隨機',
   },
@@ -35,7 +35,7 @@ export const skillAddressExplorer = {
   action: function(robot, msg) {
     let addr = '';
     if (msg[3] === undefined) {
-      addr = getConfig('ETH_ADDR', '');
+      addr = getConfig('ADDR', '');
       if (addr === '') {
         robot.send(t('needAddr', {i18n: i18nAddr}));
         robot.render();
@@ -122,7 +122,7 @@ export const skillSearchEtherscan = {
   action: function(robot, msg) {
     let addr = '';
     if (msg[3] === undefined) {
-      addr = getConfig('ETH_ADDR', '');
+      addr = getConfig('ADDR', '');
       if (addr === '') {
         robot.send(t('needAddr', {i18n: i18nAddr}));
         robot.render();
@@ -144,7 +144,7 @@ export const skillSearchEtherscan = {
  * Check token symbol, address or tx hash on bloxy.info.
  *
  * can pass the address or pre-define the
- * SAIHUBOT_ETH_ADDR environment variable
+ * SAIHUBOT_ADDR environment variable
  */
 export const skillSearchBloxy = {
   name: 'bloxy',
@@ -156,7 +156,7 @@ export const skillSearchBloxy = {
   action: function(robot, msg) {
     let addr = '';
     if (msg[2] === undefined) {
-      addr = getConfig('ETH_ADDR', '');
+      addr = getConfig('ADDR', '');
       if (addr === '') {
         robot.send(t('needAddr', {i18n: i18nAddr}));
         robot.render();
@@ -173,7 +173,7 @@ export const skillSearchBloxy = {
  * Check address or tx on blockchair.
  *
  * can pass the address, or pre-define the
- * SAIHUBOT_ETH_ADDR environment variable
+ * SAIHUBOT_ADDR environment variable
  */
 export const skillSearchBlockchair = {
   name: 'blockchair',
@@ -185,7 +185,7 @@ export const skillSearchBlockchair = {
   action: function(robot, msg) {
     let addr = '';
     if (msg[2] === undefined) {
-      addr = getConfig('ETH_ADDR', '');
+      addr = getConfig('ADDR', '');
       if (addr === '') {
         robot.send(t('needAddr', {i18n: i18nAddr}));
         robot.render();
@@ -207,7 +207,7 @@ export const skillSearchBlockchair = {
  * Check address or tx on bitquery.
  *
  * can pass the address, or pre-define the
- * SAIHUBOT_ETH_ADDR environment variable
+ * SAIHUBOT_ADDR environment variable
  */
 export const skillSearchBitQuery = {
   name: 'bitquery',
@@ -219,7 +219,7 @@ export const skillSearchBitQuery = {
   action: function(robot, msg) {
     let addr = '';
     if (msg[2] === undefined) {
-      addr = getConfig('ETH_ADDR', '');
+      addr = getConfig('ADDR', '');
       if (addr === '') {
         robot.send(t('needAddr', {i18n: i18nAddr}));
         robot.render();
@@ -240,7 +240,7 @@ export const skillSearchBitQuery = {
 /** Check contract address or tx on etherchain.
  *
  * can pass the address, or pre-define the
- * SAIHUBOT_ETH_ADDR environment variable
+ * SAIHUBOT_ADDR environment variable
  */
 export const skillSearchEtherchain = {
   name: 'etherchain',
@@ -252,7 +252,7 @@ export const skillSearchEtherchain = {
   action: function(robot, msg) {
     let addr = '';
     if (msg[3] === undefined) {
-      addr = getConfig('ETH_ADDR', '');
+      addr = getConfig('ADDR', '');
       if (addr === '') {
         robot.send(t('needAddr', {i18n: i18nAddr}));
         robot.render();
@@ -273,7 +273,7 @@ export const skillSearchEtherchain = {
 /** Check contract address or tx on Tokenview.
  *
  * can pass the address, or pre-define the
- * SAIHUBOT_ETH_ADDR environment variable
+ * SAIHUBOT_ADDR environment variable
  */
 export const skillSearchTokenview = {
   name: 'tokenview',
@@ -285,7 +285,7 @@ export const skillSearchTokenview = {
   action: function(robot, msg) {
     let addr = '';
     if (msg[2] === undefined) {
-      addr = getConfig('ETH_ADDR', '');
+      addr = getConfig('ADDR', '');
       if (addr === '') {
         robot.send(t('needAddr', {i18n: i18nAddr}));
         robot.render();
@@ -306,7 +306,7 @@ export const skillSearchTokenview = {
 /** Check contract address or tx on Ethplorer.
  *
  * can pass the address, or pre-define the
- * SAIHUBOT_ETH_ADDR environment variable
+ * SAIHUBOT_ADDR environment variable
  */
 export const skillSearchEthplorer = {
   name: 'ethplorer',
@@ -318,7 +318,7 @@ export const skillSearchEthplorer = {
   action: function(robot, msg) {
     let addr = '';
     if (msg[2] === undefined) {
-      addr = getConfig('ETH_ADDR', '');
+      addr = getConfig('ADDR', '');
       if (addr === '') {
         robot.send(t('needAddr', {i18n: i18nAddr}));
         robot.render();
@@ -339,7 +339,7 @@ export const skillSearchEthplorer = {
 /** Check contract address or tx on ANYblock.
  *
  * can pass the address, or pre-define the
- * SAIHUBOT_ETH_ADDR environment variable
+ * SAIHUBOT_ADDR environment variable
  */
 export const skillSearchAnyblock = {
   name: 'anyblock',
@@ -351,7 +351,7 @@ export const skillSearchAnyblock = {
   action: function(robot, msg) {
     let addr = '';
     if (msg[2] === undefined) {
-      addr = getConfig('ETH_ADDR', '');
+      addr = getConfig('ADDR', '');
       if (addr === '') {
         robot.send(t('needAddr', {i18n: i18nAddr}));
         robot.render();
@@ -375,7 +375,7 @@ export const skillSearchAnyblock = {
  * Check address or tx on bscscan.
  *
  * can pass the address, or pre-define the
- * SAIHUBOT_ETH_ADDR environment variable
+ * SAIHUBOT_ADDR environment variable
  */
 export const skillSearchBSCscan = {
   name: 'bscscan',
@@ -387,7 +387,7 @@ export const skillSearchBSCscan = {
   action: function(robot, msg) {
     let addr = '';
     if (msg[2] === undefined) {
-      addr = getConfig('ETH_ADDR', '');
+      addr = getConfig('ADDR', '');
       if (addr === '') {
         robot.send(t('needAddr', {i18n: i18nAddr}));
         robot.render();
@@ -410,7 +410,7 @@ export const skillSearchBSCscan = {
  * Check address or tx on xDai.
  *
  * can pass the address, or pre-define the
- * SAIHUBOT_ETH_ADDR environment variable
+ * SAIHUBOT_ADDR environment variable
  */
 export const skillSearchXDai = {
   name: 'xdai',
@@ -422,7 +422,7 @@ export const skillSearchXDai = {
   action: function(robot, msg) {
     let addr = '';
     if (msg[2] === undefined) {
-      addr = getConfig('ETH_ADDR', '');
+      addr = getConfig('ADDR', '');
       if (addr === '') {
         robot.send(t('needAddr', {i18n: i18nAddr}));
         robot.render();
@@ -574,7 +574,7 @@ export const skillAccountPicker = {
   action: function(robot, msg) {
     let addr = '';
     if (msg[2] === undefined) {
-      addr = getConfig('ETH_ADDR', '');
+      addr = getConfig('ADDR', '');
       if (addr === '') {
         robot.send(t('needAddr', {i18n: i18nAddr}));
         robot.render();
@@ -619,7 +619,7 @@ export const skillAccountPicker = {
  * Check DeFi Balance on debank.
  *
  * can pass the address, or pre-define the
- * SAIHUBOT_ETH_ADDR environment variable
+ * SAIHUBOT_ADDR environment variable
  */
 export const skillSearchDebank = {
   name: 'debank',
@@ -631,7 +631,7 @@ export const skillSearchDebank = {
   action: function(robot, msg) {
     let addr = '';
     if (msg[2] === undefined) {
-      addr = getConfig('ETH_ADDR', '');
+      addr = getConfig('ADDR', '');
       if (addr === '') {
         robot.send(t('needAddr', {i18n: i18nAddr}));
         robot.render();
@@ -648,7 +648,7 @@ export const skillSearchDebank = {
  * Check DeFi Balance on Zapper.
  *
  * can pass the address, or pre-define the
- * SAIHUBOT_ETH_ADDR environment variable
+ * SAIHUBOT_ADDR environment variable
  */
 export const skillSearchZapper = {
   name: 'zapper',
@@ -660,7 +660,7 @@ export const skillSearchZapper = {
   action: function(robot, msg) {
     let addr = '';
     if (msg[2] === undefined) {
-      addr = getConfig('ETH_ADDR', '');
+      addr = getConfig('ADDR', '');
       if (addr === '') {
         robot.send(t('needAddr', {i18n: i18nAddr}));
         robot.render();
@@ -678,7 +678,7 @@ export const skillSearchZapper = {
  * Check DeFi Balance on Zerion.
  *
  * can pass the address, or pre-define the
- * SAIHUBOT_ETH_ADDR environment variable
+ * SAIHUBOT_ADDR environment variable
  */
 export const skillSearchZerion = {
   name: 'zerion',
@@ -690,7 +690,7 @@ export const skillSearchZerion = {
   action: function(robot, msg) {
     let addr = '';
     if (msg[2] === undefined) {
-      addr = getConfig('ETH_ADDR', '');
+      addr = getConfig('ADDR', '');
       if (addr === '') {
         robot.send(t('needAddr', {i18n: i18nAddr}));
         robot.render();

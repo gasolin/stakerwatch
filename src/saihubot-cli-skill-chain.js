@@ -117,19 +117,19 @@ export const skillLastXdaiBlock = {
 const statsI18n = {
   "en": {
     fetching: 'Fetching data...',
-    summary: `{{balance}} ETH has been deposited for {{validators}} validators`,
+    summary: `💰 Deposited ETH: {{balance}} (for {{validators}} 🧑‍🌾)`,
     statistics: `🤑 Reward Rate: {{apr}}%
-🌾 Participation rate: {{participationRate}}%
-💃 Active Validator: {{activeValidator}}
+🌾 Participation Rate: {{participationRate}}%
+💃 Active Validators: {{activeValidator}}
 📦 Latest Epoch: {{epoch}}
 
-👬 Queued Validator: {{queueValidator}}
+👬 Queued Validators: {{queueValidator}}
 ⏳ Wait time: {{waitTime}}
 `,
   },
   "zh_TW": {
     fetching: '取得資料中...',
-    summary: `已存入 {{balance}} ETH, 支持 {{validators}} 位驗證者`,
+    summary: `💰 共存入 ETH: {{balance}} (支持 {{validators}} 🧑‍🌾)`,
     statistics: `🤑 預估收益率: {{apr}}%
 🌾 參與度: {{participationRate}}%
 💃 活躍驗證者: {{activeValidator}}
@@ -224,14 +224,16 @@ const ProgressBar = ({fetch, ethFetch}) => {
 /**
  * Get Eth2 stake state.
  *
- * 🌾 Participation rate: 99.08%
- * 💃 Active Validator: 25,467
- * 📦 Latest Epoch: 1148
- * 👬 Queued Validator: 10,054
- * ⏳ Wait time: 11 days, 4 hours
+ * 🤑 Reward Rate: 12.00%
+ * 🌾 Participation rate: 98.74%
+ * 💃 Active Validators: 44,017
+ * 📦 Latest Epoch: 5791
  *
- * 1,136,688 ETH has been deposited for 35,521 validators
- * [▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓] 216.81%
+ * 👬 Queued Validators: 20,315
+ * ⏳ Wait time: 15 days, 1 hour
+ *
+ * 💰 Deposited ETH: 2,058,626 (for 64,332 🧑‍🌾)
+ * [▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓] 392.65%
  */
 export const skillEth2Stats = {
   name: 'stakestat',

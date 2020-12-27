@@ -1,7 +1,5 @@
 'use strict';
 
-import React from 'React';
-import {Text} from 'ink';
 import {t} from 'saihubot-cli-adapter/dist/i18n';
 import {GAS_ESTIMATOR} from './saihubot-addon-ethgas'
 
@@ -95,12 +93,10 @@ export const skillGasTracker = {
     robot.render();
     robot.addons.fetchGas(GAS_ESTIMATOR.GASTRACKER,
       data => {
-        robot.sendComponent(<Text>
-          {t('gasfee', {
-            i18n: i18nGas,
-            ...data,
-          })}
-        </Text>);
+        robot.sendComponent(t('gasfee', {
+          i18n: i18nGas,
+          ...data,
+        }));
         robot.render();
       });
   },
@@ -122,12 +118,10 @@ export const skillGasStation = {
     robot.render();
     robot.addons.fetchGas(GAS_ESTIMATOR.GASSTATION,
       data => {
-        robot.sendComponent(<Text>
-          {t('gasfee', {
-            i18n: i18nGas,
-            ...data,
-          })}
-        </Text>);
+        robot.sendComponent(t('gasfee', {
+          i18n: i18nGas,
+          ...data,
+        }));
         robot.render();
       });
   },
@@ -149,12 +143,10 @@ export const skillGasNow = {
     robot.render();
     robot.addons.fetchGas(GAS_ESTIMATOR.GASNOW,
       data => {
-        robot.sendComponent(<Text>
-          {t('gasfee', {
-            i18n: i18nGas,
-            ...data,
-          })}
-        </Text>);
+        robot.send(t('gasfee', {
+          i18n: i18nGas,
+          ...data,
+        }));
         robot.render();
       });
   },
@@ -176,12 +168,10 @@ export const skillGasPriceOracle = {
     robot.render();
     robot.addons.fetchGas(GAS_ESTIMATOR.GASPRICEORACLE,
       data => {
-        robot.sendComponent(<Text>
-          {t('gasfee', {
-            i18n: i18nGas,
-            ...data,
-          })}
-        </Text>);
+        robot.send(t('gasfee', {
+          i18n: i18nGas,
+          ...data,
+        }));
         robot.render();
       });
   },

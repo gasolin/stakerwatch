@@ -138,20 +138,19 @@ xDai Chain Balance
 * 📡beaconscan|scan [address] - check validator address or number on BeaconScan
 ```
 
-
 Get Eth2 stats via `staker stats` command
 
 ```sh
-🤑 Reward rate: 15.26%
-🌾 Participation rate: 98.94%
-💃 Active Validator: 25,463
-📦 Latest Epoch: 1147
+🤑 Reward Rate: 12.00%
+🌾 Participation Rate: 98.74%
+💃 Active Validators: 44,017
+📦 Latest Epoch: 5791
 
-👬 Queued Validator: 10,058
-⏳ Wait time: 11 days, 4 hours
+👬 Queued Validators: 20,315
+⏳ Wait time: 15 days, 1 hour
 
-1,136,688 ETH has been deposited for 35,521 validators
-[▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓] 216.81%
+💰 Deposited ETH: 2,058,626 (for 64,332 🧑‍🌾)
+[▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓] 392.65%
 ```
 
 Given a Eth2 validator address, you can get Eth2 validator balance
@@ -353,7 +352,7 @@ Set `SAIHUBOT_NODE_URL` to the node you want to use, ex: infura, or pick from ht
 
 ### Pre-define Ethereum Address
 
-do `export SAIHUBOT_ETH_ADDR=0x.....` and you can use balance command without pass the address
+do `export SAIHUBOT_ADDR=0x.....,0x.....` and you can use balance command without pass the address
 
 ```sh
 npx staker balance
@@ -363,7 +362,7 @@ The Address has 1 ETH
 
 ### Pre-define Validator Address
 
-do `export SAIHUBOT_ETH_VALIDATOR=12345` and you can use `beaconchain` or `beaconscan` command without pass the address
+do `export SAIHUBOT_VALIDATOR=12345` and you can use `beaconchain` or `beaconscan` command without pass the address
 
 ```sh
 npx staker beaconchain
