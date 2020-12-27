@@ -190,7 +190,7 @@ export const skillGetBlance = {
  */
 export const skillGetValidatorBlance = {
   name: 'balance-validator',
-  help: '💰balance-validator|balance-eth2 - Show Validator\'s balance of [key]',
+  help: '💰balance-(validator|eth2) - Show Validator\'s balance of [key]',
   requirements: {
     addons: ['fetch'],
   },

@@ -63,7 +63,7 @@ export const skillSearchXDai = {
  */
 export const skillLastXdaiBlock = {
   name: 'lastblock-xdai',
-  help: 'lastblock-xdai|lastblockxdai|block-xdai|blockxdai - get the latest xDai block number',
+  help: '🗂 lastblock-xdai|block-xdai - get the latest xDai block number',
   requirements: {
     addons: ['fetch'],
   },

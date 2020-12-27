@@ -7,44 +7,11 @@ import humanizeDuration from 'humanize-duration';
 import commaNumber from 'comma-number';
 import { t } from 'saihubot-cli-adapter/dist/i18n';
 
-import {rpcLastBlock, rpcEthBalance} from './ethRpc';
+import {rpcEthBalance} from './ethRpc';
 import {ethFetch} from './utils';
 
 const ADDR = {
   ETH2_DEPOSIT: '0x00000000219ab540356cbb839cbe05303d7705fa',
-}
-
-/**
- * Get the latest block number.
- */
-export const skillLastBlock = {
-  name: 'lastblock',
-  help: 'lastblock|block - get the latest Eth1 block number',
-  requirements: {
-    addons: ['fetch'],
-  },
-  i18n: {
-    'en': {
-      fetching: 'Fetching data...',
-      summary: 'The latest block is **{{blocknum}}**',
-    },
-    'zh_TW': {
-      fetching: '取得資料中...',
-      summary: '最新的區塊是 **{{blocknum}}**',
-    },
-    props: ['blocknum']
-  },
-  rule: /^(last)?block$/i,
-  action: function(robot, msg) {
-    robot.send(t('fetching', {i18n: this.i18n}));
-    robot.render();
-    ethFetch(robot.addons.fetch, rpcLastBlock)
-      .then(json => {
-        const msg = t('summary', {i18n: this.i18n, blocknum: parseInt(json.result)});
-        robot.send(msg);
-        robot.render();
-      });
-  },
 }
 
 const statsI18n = {
@@ -193,7 +160,7 @@ export const skillEth2Stats = {
  */
 export const skillBeaconLastBlock = {
   name: 'lastBlockBeacon',
-  help: 'lastblock-eth2|lastblock-beacon|block-eth2|block-beacon - get the latest Eth2 block number',
+  help: '🗂 lastblock-(eth2|beacon|validator)|block-(eth2|beacon|validator) - get the latest Eth2 block number',
   requirements: {
     addons: ['fetch'],
   },
@@ -208,7 +175,7 @@ export const skillBeaconLastBlock = {
     },
     props: ['epoch', 'proposer', 'slot']
   },
-  rule: /^(last)?block-(beacon|eth2)$/i,
+  rule: /^(last)?block-?(beacon|eth2|validator)$/i,
   action: function(robot, msg) {
     robot.send(t('fetching', {i18n: this.i18n}));
     robot.render();
@@ -228,6 +195,6 @@ export const skillBeaconLastBlock = {
   },
 }
 
-export const skillsETH2 = [skillEth2Stats, skillLastBlock, skillBeaconLastBlock];
+export const skillsETH2 = [skillEth2Stats, skillBeaconLastBlock];
 const skills = [...skillsETH2];
 export {skills};

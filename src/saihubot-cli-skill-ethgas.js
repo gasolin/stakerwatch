@@ -215,8 +215,8 @@ export const skillGasFee = {
 }
 
 export const skillsGas = [
-  skillGasFee,
   skillGasEstimator,
+  skillGasFee,
   skillGasNow,
   skillGasPriceOracle,
   skillGasStation,

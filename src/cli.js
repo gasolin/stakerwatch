@@ -14,17 +14,18 @@ import {
 import {addonFetchGas} from './saihubot-addon-ethgas';
 import {skillQRCode} from './saihubot-cli-skill-delegates';
 import {
+  skillLastBlock,
   skillsAccount,
   skillsAddress,
   skillsValidator,
   skillsSideChain,
 } from './saihubot-cli-skill-eth';
-import {skillsETH2} from './saihubot-cli-skill-chain';
+import {skillEth2Stats, skillBeaconLastBlock} from './saihubot-cli-skill-eth2';
 import {skillsGas} from './saihubot-cli-skill-ethgas';
-import {skills as skillBalance} from './saihubot-cli-skill-balance';
+import {skillGetBlance, skillGetValidatorBlance} from './saihubot-cli-skill-balance';
 import {skills as skillsXDAI} from './saihubot-cli-skill-xdai';
 import {skillChainId} from './saihubot-cli-skill-chainid';
-import {skills as skillAwesome} from './saihubot-skill-awesome';
+import {skillAwesomeEth} from './saihubot-skill-awesome';
 
 const cli = meow(`
   v${process.env.npm_package_version}
@@ -57,16 +58,19 @@ const bot = new SaihuBot({
     addonFetchGas,
   ],
   skills: [
-    ...skillsETH2,
-    ...skillsGas,
-    ...skillBalance,
-    ...skillsAccount,
+    skillEth2Stats,
+    skillGetBlance,
+    skillLastBlock,
     ...skillsAddress,
+    skillGetValidatorBlance,
+    skillBeaconLastBlock,
     ...skillsValidator,
-    ...skillsSideChain,
+    ...skillsAccount,
+    ...skillsGas,
     ...skillsXDAI,
-    ...skillAwesome,
+    ...skillsSideChain,
     skillChainId,
+    skillAwesomeEth,
     skillQRCode,
     skillHelp,
   ],

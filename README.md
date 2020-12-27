@@ -37,20 +37,8 @@ $ npx staker help
 
 I have 35 skills:
 * 🗞 stats - latest Eth2 stake state
-* lastblock|block - get the latest Eth1 block number
-* lastblock-eth2|lastblock-beacon|block-eth2|block-beacon - get the latest Eth2 block number
-* 🛢 gasfee - Show current on-chain gas fee
-* 🔎gas - Pick a gas estimator from the list
-* 🛢 gasnow|now - Show current gas fee via gasnow
-* 🛢 gaspriceoracle|oracle - Show current gas fee via Eth Gas Price Oracle
-* 🛢 gasstation|station - Show current gas fee via Eth Gas Station
-* 🛢 gastracker|tracker - Show current gas fee via Etherscan Gas Tracker
 * 💰balance - Show [address] balance
-* 💰balance-validator|balance-eth2 - Show Validator's balance of [key]
-* 🔎account|defi - Pick an account explorer from the list
-* 🧩debank [address] - check DeFi balance on Debank
-* 🧩zapper [address] - check DeFi balance on Zapper
-* 🧩zerion [address] - check DeFi Balance on Zerion
+* 🗂 lastblock|block - get the latest Eth1 block number
 * 🔎address|addr [address|tx] - Pick address explorer from the list
 * 🏦anyblock [address|tx] - check address or tx on ANYblock
 * 🏦bitquery [address|tx] - check address or tx on explorer.bitquery.io
@@ -60,15 +48,27 @@ I have 35 skills:
 * 🏦etherscan|scan [address|tx] - check address or tx on Etherscan
 * 🏦ethplorer [address|tx] - check address or tx on ethplorer
 * 🏦tokenview [address|tx] - check address or tx on tokenview
+* 💰balance-(validator|eth2) - Show Validator's balance of [key]
+* 🗂 lastblock-(eth2|beacon|validator)|block-(eth2|beacon|validator) - get the latest Eth2 block number
 * 🔎validator - Pick a beacon validator explorer from the list
 * 📡beaconchain|beaconcha|beaconcha.in [address] - check validator address or number on beaconscan
 * 📡beaconscan|scan [address] - check validator address or number on BeaconScan
-* 🏦bsc|bscscan [address|tx] - check address or tx on Binance Smart Chain
-* lastblock-xdai|lastblockxdai|block-xdai|blockxdai - get the latest xDai block number
+* 🔎account|defi - Pick an account explorer from the list
+* 🧩debank [address] - check DeFi balance on Debank
+* 🧩zapper [address] - check DeFi balance on Zapper
+* 🧩zerion [address] - check DeFi Balance on Zerion
+* 🔎gas - Pick a gas estimator from the list
+* 🛢 gasfee - Show current on-chain gas fee
+* 🛢 gasnow|now - Show current gas fee via gasnow
+* 🛢 gaspriceoracle|oracle - Show current gas fee via Eth Gas Price Oracle
+* 🛢 gasstation|station - Show current gas fee via Eth Gas Station
+* 🛢 gastracker|tracker - Show current gas fee via Etherscan Gas Tracker
+* 🗂 lastblock-xdai|block-xdai - get the latest xDai block number
 * 💰balance-xdai - Show address balance on xDai chain
 * 🏦xdai [address|tx] - check address or tx on xDai Chain
-* 🤩awesome|lucky - Show random awesome site around ethereum
+* 🏦bsc|bscscan [address|tx] - check address or tx on Binance Smart Chain
 * 📕chainid - Show EVM network providers chain and network id table
+* 🤩awesome|lucky - Show random awesome site around ethereum
 * qrcode [text] - Generate QRCode with [text]
 * help - list available skills
 ```

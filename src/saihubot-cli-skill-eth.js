@@ -4,8 +4,42 @@ import {t} from 'saihubot-cli-adapter/dist/i18n';
 
 import {getConfig, getRandomItem} from './utils';
 import {i18nValidator, i18nAddr} from './i18n';
+import {rpcLastBlock} from './ethRpc';
 
 const isAddr = data => data.length === 42;
+
+/**
+ * Get the latest block number.
+ */
+export const skillLastBlock = {
+  name: 'lastblock',
+  help: '🗂 lastblock|block - get the latest Eth1 block number',
+  requirements: {
+    addons: ['fetch'],
+  },
+  i18n: {
+    'en': {
+      fetching: 'Fetching data...',
+      summary: 'The latest block is **{{blocknum}}**',
+    },
+    'zh_TW': {
+      fetching: '取得資料中...',
+      summary: '最新的區塊是 **{{blocknum}}**',
+    },
+    props: ['blocknum']
+  },
+  rule: /^(last)?block$/i,
+  action: function(robot, msg) {
+    robot.send(t('fetching', {i18n: this.i18n}));
+    robot.render();
+    ethFetch(robot.addons.fetch, rpcLastBlock)
+      .then(json => {
+        const msg = t('summary', {i18n: this.i18n, blocknum: parseInt(json.result)});
+        robot.send(msg);
+        robot.render();
+      });
+  },
+}
 
 // ==== ADDRESS EXPLORER ===
 
@@ -682,6 +716,7 @@ export const skillsSideChain = [
 ];
 
 const skills = [
+  skillLastBlock,
   ...skillsAccount,
   ...skillsAddress,
   ...skillsValidator,

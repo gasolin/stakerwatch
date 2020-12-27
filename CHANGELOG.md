@@ -4,9 +4,12 @@ BreakChange
 - [balance][address] use SAIHUBOT_ADDR instead of SAIHUBOT_ETH_ADDR
 
 Enhancement
+- reorganize skills orders in help
 - [stats] update Eth2 deposit stats as
 💰 Deposited ETH: 2,058,626 (for 64,332 🧑‍🌾)
 [▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓] 392.65%
+- add 🗂 for block emoji
+- [lastblock-beacon] support block-eth2 and block-validator
 
 Fix
 - [balance] Fix predefined multi addresses
