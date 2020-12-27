@@ -20,6 +20,7 @@ Refactor
 - put xdai related skills in saihubot-cli-skill-xdai.js
 - move i18nAddr to i18n.js
 - move skillGasFee to saihubot-cli-skill-ethgas
+- move balance-validator to saihubot-cli-skill-eth2
 
 # 0.21 2012/12/24
 
