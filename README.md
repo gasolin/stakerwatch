@@ -387,7 +387,7 @@ Check [ChangeLog](https://github.com/gasolin/stakerwatch/blob/gh-pages/CHANGELOG
 
 ## Document
 
-Check [Document](https://gasolin.github.io/stakerwatch/doc/)
+Check [Document](https://gasolin.github.io/stakerwatch/docs/)
 
 ## Contribution
 

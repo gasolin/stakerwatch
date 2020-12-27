@@ -14,6 +14,7 @@ Enhancement
 Fix
 - [balance] Fix predefined multi addresses
 - [balance][balance-xdai] Fix query xDai message
+- [README] fix docs link
 
 Refactor
 - abstract ethRpc.js and parseArg,toArray in utils
