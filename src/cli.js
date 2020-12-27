@@ -19,7 +19,7 @@ import {
   skillsValidator,
   skillsSideChain,
 } from './saihubot-cli-skill-eth';
-import {skillsETH2, skillGasFee} from './saihubot-cli-skill-chain';
+import {skillsETH2} from './saihubot-cli-skill-chain';
 import {skillsGas} from './saihubot-cli-skill-ethgas';
 import {skills as skillBalance} from './saihubot-cli-skill-balance';
 import {skills as skillsXDAI} from './saihubot-cli-skill-xdai';
@@ -58,7 +58,6 @@ const bot = new SaihuBot({
   ],
   skills: [
     ...skillsETH2,
-    skillGasFee,
     ...skillsGas,
     ...skillBalance,
     ...skillsAccount,

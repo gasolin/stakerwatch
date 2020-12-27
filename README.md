@@ -47,7 +47,6 @@ I have 35 skills:
 * 🛢 gastracker|tracker - Show current gas fee via Etherscan Gas Tracker
 * 💰balance - Show [address] balance
 * 💰balance-validator|balance-eth2 - Show Validator's balance of [key]
-* 💰balance-xdai - Show address balance on xDai chain
 * 🔎account|defi - Pick an account explorer from the list
 * 🧩debank [address] - check DeFi balance on Debank
 * 🧩zapper [address] - check DeFi balance on Zapper
@@ -65,8 +64,9 @@ I have 35 skills:
 * 📡beaconchain|beaconcha|beaconcha.in [address] - check validator address or number on beaconscan
 * 📡beaconscan|scan [address] - check validator address or number on BeaconScan
 * 🏦bsc|bscscan [address|tx] - check address or tx on Binance Smart Chain
-* 🏦xdai [address|tx] - check address or tx on xDai Chain
 * lastblock-xdai|lastblockxdai|block-xdai|blockxdai - get the latest xDai block number
+* 💰balance-xdai - Show address balance on xDai chain
+* 🏦xdai [address|tx] - check address or tx on xDai Chain
 * 🤩awesome|lucky - Show random awesome site around ethereum
 * 📕chainid - Show EVM network providers chain and network id table
 * qrcode [text] - Generate QRCode with [text]

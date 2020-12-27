@@ -7,8 +7,8 @@ import humanizeDuration from 'humanize-duration';
 import commaNumber from 'comma-number';
 import { t } from 'saihubot-cli-adapter/dist/i18n';
 
-import {rpcLastBlock, rpcEthBalance, rpcGasPrice} from './ethRpc';
-import {ethFetch, xdaiFetch} from './utils';
+import {rpcLastBlock, rpcEthBalance} from './ethRpc';
+import {ethFetch} from './utils';
 
 const ADDR = {
   ETH2_DEPOSIT: '0x00000000219ab540356cbb839cbe05303d7705fa',
@@ -228,40 +228,6 @@ export const skillBeaconLastBlock = {
   },
 }
 
-/**
- * Show current ethereum Gas fee from the chain.
- */
-export const skillGasFee = {
-  name: 'gasfee',
-  help: '🛢 gasfee - Show current on-chain gas fee',
-  requirements: {
-    addons: ['fetch'],
-  },
-  i18n: {
-    'en': {
-      fetching: 'Fetching gas...',
-      fee: 'Current on-chain gas fee is {{gas}} gwei',
-    },
-    'zh_TW': {
-      fetching: '取得 gas 費用...',
-      fee: '當前鏈上的 Gas 費用為 {{gas}} gwei',
-    },
-    props: ['gas']
-  },
-  rule: /^gasfee/i,
-  action: function(robot, msg) {
-    robot.send(t('fetching', {i18n: this.i18n}));
-    robot.render();
-    ethFetch(robot.addons.fetch, rpcGasPrice())
-    .then(json => {
-      const gas = Number(json.result) / 10**9;
-      const msg = t('fee', {i18n: this.i18n, gas})
-      robot.send(msg);
-      robot.render();
-    })
-  },
-}
-
 export const skillsETH2 = [skillEth2Stats, skillLastBlock, skillBeaconLastBlock];
-const skills = [...skillsETH2, skillGasFee];
+const skills = [...skillsETH2];
 export {skills};

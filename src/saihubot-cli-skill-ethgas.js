@@ -1,7 +1,9 @@
 'use strict';
 
 import {t} from 'saihubot-cli-adapter/dist/i18n';
+
 import {GAS_ESTIMATOR} from './saihubot-addon-ethgas'
+import {rpcGasPrice} from './ethRpc';
 
 // ==== GAS ===
 
@@ -177,7 +179,43 @@ export const skillGasPriceOracle = {
   },
 };
 
+
+/**
+ * Show current ethereum Gas fee from the chain.
+ */
+export const skillGasFee = {
+  name: 'gasfee',
+  help: '🛢 gasfee - Show current on-chain gas fee',
+  requirements: {
+    addons: ['fetch'],
+  },
+  i18n: {
+    'en': {
+      fetching: 'Fetching gas...',
+      fee: 'Current on-chain gas fee is {{gas}} gwei',
+    },
+    'zh_TW': {
+      fetching: '取得 gas 費用...',
+      fee: '當前鏈上的 Gas 費用為 {{gas}} gwei',
+    },
+    props: ['gas']
+  },
+  rule: /^gasfee/i,
+  action: function(robot, msg) {
+    robot.send(t('fetching', {i18n: this.i18n}));
+    robot.render();
+    ethFetch(robot.addons.fetch, rpcGasPrice())
+    .then(json => {
+      const gas = Number(json.result) / 10**9;
+      const msg = t('fee', {i18n: this.i18n, gas})
+      robot.send(msg);
+      robot.render();
+    })
+  },
+}
+
 export const skillsGas = [
+  skillGasFee,
   skillGasEstimator,
   skillGasNow,
   skillGasPriceOracle,

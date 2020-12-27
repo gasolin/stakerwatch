@@ -1,21 +1,22 @@
 # 0.22 2012/12/27
 
 BreakChange
-- [balance] use SAIHUBOT_ADDR instead of SAIHUBOT_ETH_ADDR
+- [balance][address] use SAIHUBOT_ADDR instead of SAIHUBOT_ETH_ADDR
 
 Enhancement
-- update Eth2 deposit stats as
+- [stats] update Eth2 deposit stats as
 💰 Deposited ETH: 2,058,626 (for 64,332 🧑‍🌾)
 [▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓] 392.65%
 
 Fix
-- Fix balances with predefined multi addresses
-- Fix query xDai message
+- [balance] Fix predefined multi addresses
+- [balance][balance-xdai] Fix query xDai message
 
 Refactor
 - abstract ethRpc.js and parseArg,toArray in utils
 - put xdai related skills in saihubot-cli-skill-xdai.js
 - move i18nAddr to i18n.js
+- move skillGasFee to saihubot-cli-skill-ethgas
 
 # 0.21 2012/12/24
 
