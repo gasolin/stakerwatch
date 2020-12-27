@@ -1,7 +1,7 @@
 # 0.22 2012/12/27
 
 BreakChange
-- [balance] SAIHUBOT_ADDR instead of SAIHUBOT_ETH_ADDR
+- [balance] use SAIHUBOT_ADDR instead of SAIHUBOT_ETH_ADDR
 
 Enhancement
 - update Eth2 deposit stats as
@@ -10,6 +10,11 @@ Enhancement
 
 Fix
 - Fix balances with predefined multi addresses
+
+Refactor
+- abstract ethRpc.js and parseArg,toArray in utils
+- put xdai related skills in saihubot-cli-skill-xdai.js
+- move i18nAddr to i18n.js
 
 # 0.21 2012/12/24
 

@@ -15,3 +15,17 @@ export const i18nValidator = {
   },
   props: [],
 };
+
+export const i18nAddr = {
+  'en': {
+    needAddr: 'Please pass the address or define SAIHUBOT_ADDR first',
+    pick: 'pick address explorer from the list',
+    random: 'Random',
+  },
+  'zh_TW': {
+    needAddr: '請傳入地址，或是預先定義 SAIHUBOT_ADDR 參數',
+    pick: '從列表中選取合適的地址探索工具',
+    random: '隨機',
+  },
+  props: [],
+};

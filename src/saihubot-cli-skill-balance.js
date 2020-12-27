@@ -1,13 +1,15 @@
+'use strict';
+
 import React, {useEffect, useState} from 'react';
 import { getEtherBalances, getTokensBalances } from '@mycrypto/eth-scan';
 import { Text } from 'ink';
 import Table from 'ink-table';
 import { t } from 'saihubot-cli-adapter/dist/i18n';
 
-import {getConfig, parseArg, getNodeURL, xdaiFetch, toArray} from './utils';
-import {rpcEthBalance, rpcTokenBalance} from './saihubot-cli-skill-chain';
+import {getConfig, parseArg, getNodeURL, toArray} from './utils';
+import {XdaiBalances} from './saihubot-cli-skill-xdai';
 import {i18nValidator} from './i18n';
-import {tokenMap, xdaiTokenMap} from './token';
+import {tokenMap} from './token';
 
 const balanceI18n = {
   'en': {
@@ -71,6 +73,7 @@ const EthBalances = ({addresses, fetch}) => {
   ? (<>
     <Text>{t('accountBalance', {i18n: i18nValidator})}</Text>
     <Table data={balance} />
+    <Text> </Text>
   </>)
   : (<Text>{t('query', {i18n: balanceI18n})}</Text>);
 }
@@ -111,53 +114,9 @@ const ValidatorBalances = ({validator, fetch}) => {
       <Text>{t('validatorBalance', {i18n: i18nValidator})}</Text>
       <Text>{isOverflow ? '(Only shows the first 100 validators)' : ''}</Text>
       <Table data={balance} />
+      <Text> </Text>
     </>)
-    : (<Text>{t('query', {i18n: i18nValidator})}</Text>);
-}
-
-const XdaiBalances = ({addresses, fetch}) => {
-  const [balance, setBalance] = useState([]);
-  const data = [];
-  useEffect(() => {
-    async function fetchXdaiBalance() {
-      const tokens = Object.keys(xdaiTokenMap);
-
-      for (let i = 0; i < addresses.length ; i++) {
-        const json = await xdaiFetch(fetch, rpcEthBalance(addresses[i]))
-        const val = json.result === 0x0 ? 0 : Number(json.result)/10**18;
-        if (val > 0) {
-          data.push({
-            Symbol: 'xDai',
-            Balance: val,
-            [t('source', {i18n: balanceI18n})]: '',
-          });
-        }
-
-        for(let j = 0; j < tokens.length; j++) {
-          const currentTokenAddr = tokens[j];
-          const tokenInfo = xdaiTokenMap[currentTokenAddr];
-          const tokenJson = await xdaiFetch(fetch, rpcTokenBalance(addresses[i], currentTokenAddr));
-          if (tokenJson.result !== '0x0000000000000000000000000000000000000000000000000000000000000000') {
-            data.push({
-              Symbol: tokenInfo.symbol,
-              Balance: Number(tokenJson.result) / 10 ** tokenInfo.decimals,
-              [t('source', {i18n: balanceI18n})]: '',
-            });
-          }
-        }
-      }
-      setBalance([...balance, ...data]);
-    }
-
-    addresses && fetchXdaiBalance();
-  }, [addresses, fetch]);
-
-  return balance.length > 0
-    ? (<>
-      <Text>{t('xdaiBalance', {i18n: i18nValidator})}</Text>
-      <Table data={balance} />
-    </>)
-    : (<Text>{t('query', {i18n: i18nValidator})}</Text>);
+    : (<Text>{validators} {t('query', {i18n: i18nValidator})}</Text>);
 }
 
 // support multiple account balance by comma (without space)
@@ -188,9 +147,7 @@ const Balances = ({addresses, fetch}) => {
 
   return (<>
     <EthBalances addresses={addrs} fetch={fetch} />
-    <Text> </Text>
     <ValidatorBalances validator={validator} fetch={fetch} />
-    <Text> </Text>
     <XdaiBalances addresses={addrs} fetch={fetch} />
   </>)
 }
@@ -255,34 +212,5 @@ export const skillGetValidatorBlance = {
   }
 }
 
-/**
- * Get balance of [addr] on xDai Chain.
- *
- * can pass the address, or pre-define the
- * SAIHUBOT_ADDR environment variable
- */
-export const skillGetXdaiBlance = {
-  name: 'balance-xdai',
-  help: '💰balance-xdai - Show address balance on xDai chain',
-  requirements: {
-    addons: ['fetch'],
-  },
-  rule: /(^balance-xdai )(.*)|^balance-xdai$/i,
-  action: function(robot, msg) {
-    let addr = '';
-    if (msg[2] === undefined) {
-      addr = getConfig('ADDR', '');
-      if (!addr) {
-        robot.send(t('needAddr', {i18n: balanceI18n}));
-        robot.render();
-        return;
-      }
-    }
-    const parsedAddr = addr || parseArg(msg[2]);
-    robot.sendComponent(<XdaiBalances address={parsedAddr} fetch={robot.addons.fetch} />);
-    robot.render();
-  },
-}
-
-const skills = [skillGetBlance, skillGetValidatorBlance, skillGetXdaiBlance];
+const skills = [skillGetBlance, skillGetValidatorBlance];
 export {skills};

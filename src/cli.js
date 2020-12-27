@@ -19,11 +19,12 @@ import {
   skillsValidator,
   skillsSideChain,
 } from './saihubot-cli-skill-eth';
+import {skillsETH2, skillGasFee} from './saihubot-cli-skill-chain';
 import {skillsGas} from './saihubot-cli-skill-ethgas';
-import {skillsETH2, skillsXDAI, skillGasFee} from './saihubot-cli-skill-chain';
-import {skills as skillAwesome} from './saihubot-skill-awesome';
 import {skills as skillBalance} from './saihubot-cli-skill-balance';
+import {skills as skillsXDAI} from './saihubot-cli-skill-xdai';
 import {skillChainId} from './saihubot-cli-skill-chainid';
+import {skills as skillAwesome} from './saihubot-skill-awesome';
 
 const cli = meow(`
   v${process.env.npm_package_version}

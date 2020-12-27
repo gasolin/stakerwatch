@@ -1,24 +1,11 @@
 'use strict';
+
 import {t} from 'saihubot-cli-adapter/dist/i18n';
 
 import {getConfig, getRandomItem} from './utils';
-import {i18nValidator} from './i18n';
+import {i18nValidator, i18nAddr} from './i18n';
 
 const isAddr = data => data.length === 42;
-
-const i18nAddr = {
-  'en': {
-    needAddr: 'Please pass the address or define SAIHUBOT_ADDR first',
-    pick: 'pick address explorer from the list',
-    random: 'Random',
-  },
-  'zh_TW': {
-    needAddr: '請傳入地址，或是預先定義 SAIHUBOT_ADDR 參數',
-    pick: '從列表中選取合適的地址探索工具',
-    random: '隨機',
-  },
-  props: [],
-};
 
 // ==== ADDRESS EXPLORER ===
 
@@ -405,41 +392,6 @@ export const skillSearchBSCscan = {
   },
 };
 
-
-/**
- * Check address or tx on xDai.
- *
- * can pass the address, or pre-define the
- * SAIHUBOT_ADDR environment variable
- */
-export const skillSearchXDai = {
-  name: 'xdai',
-  help: '🏦xdai [address|tx] - check address or tx on xDai Chain',
-  requirements: {
-    addons: ['search'],
-  },
-  rule: /(^xdai )(.*)|^xdai$/i,
-  action: function(robot, msg) {
-    let addr = '';
-    if (msg[2] === undefined) {
-      addr = getConfig('ADDR', '');
-      if (addr === '') {
-        robot.send(t('needAddr', {i18n: i18nAddr}));
-        robot.render();
-        return;
-      }
-    }
-    const data = addr || msg[2];
-    if(isAddr(data)) {
-      const url = 'https://blockscout.com/poa/xdai/address/' + data + '/tokens';
-      robot.addons.search('Check', data, url, 'xDai');
-    } else {
-      const url = 'https://blockscout.com/poa/xdai/tx/' + data + '/internal-transactions';
-      robot.addons.search('Check tx', data, url, 'xDai Chain');
-    }
-  },
-};
-
 // ==== BEACON VALIDATOR ===
 
 /**
@@ -727,7 +679,6 @@ export const skillsAccount = [
 ];
 export const skillsSideChain = [
   skillSearchBSCscan,
-  skillSearchXDai,
 ];
 
 const skills = [

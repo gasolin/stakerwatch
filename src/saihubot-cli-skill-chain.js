@@ -6,47 +6,13 @@ import AsciiBar from 'ascii-bar';
 import humanizeDuration from 'humanize-duration';
 import commaNumber from 'comma-number';
 import { t } from 'saihubot-cli-adapter/dist/i18n';
+
+import {rpcLastBlock, rpcEthBalance, rpcGasPrice} from './ethRpc';
 import {ethFetch, xdaiFetch} from './utils';
 
 const ADDR = {
   ETH2_DEPOSIT: '0x00000000219ab540356cbb839cbe05303d7705fa',
 }
-
-let idx = 1;
-
-// https://eth.wiki/json-rpc/API
-const rpcLastBlock = JSON.stringify({
-  jsonrpc: '2.0',
-  id: idx++,
-  method: 'eth_blockNumber',
-  params: [],
-});
-
-export const rpcEthBalance = (address) => JSON.stringify({
-  jsonrpc: '2.0',
-  id: idx++,
-  method: 'eth_getBalance',
-  params: [`${address}`, "latest"],
-});
-
-export const rpcTokenBalance = (address, token) => JSON.stringify({
-  jsonrpc: '2.0',
-  id: idx++,
-  method: 'eth_call',
-  params: [{
-      to: token,
-      data: `0x70a08231${address.replace('0x', '').padStart(64, '0')}`,
-    },
-    'latest'
-  ],
-});
-
-const rpcGasPrice = () => JSON.stringify({
-  jsonrpc: '2.0',
-  id: idx++,
-  method: 'eth_gasPrice',
-  params: [],
-});
 
 /**
  * Get the latest block number.
@@ -73,39 +39,6 @@ export const skillLastBlock = {
     robot.send(t('fetching', {i18n: this.i18n}));
     robot.render();
     ethFetch(robot.addons.fetch, rpcLastBlock)
-      .then(json => {
-        const msg = t('summary', {i18n: this.i18n, blocknum: parseInt(json.result)});
-        robot.send(msg);
-        robot.render();
-      });
-  },
-}
-
-/**
- * Get the latest block number.
- */
-export const skillLastXdaiBlock = {
-  name: 'lastblock-xdai',
-  help: 'lastblock-xdai|lastblockxdai|block-xdai|blockxdai - get the latest xDai block number',
-  requirements: {
-    addons: ['fetch'],
-  },
-  i18n: {
-    'en': {
-      fetching: 'Fetching data...',
-      summary: 'The latest xDai block is **{{blocknum}}**',
-    },
-    'zh_TW': {
-      fetching: '取得資料中...',
-      summary: '最新的xDai區塊是 **{{blocknum}}**',
-    },
-    props: ['blocknum']
-  },
-  rule: /^(last)?block-?xdai$/i,
-  action: function(robot, msg) {
-    robot.send(t('fetching', {i18n: this.i18n}));
-    robot.render();
-    xdaiFetch(robot.addons.fetch, rpcLastBlock)
       .then(json => {
         const msg = t('summary', {i18n: this.i18n, blocknum: parseInt(json.result)});
         robot.send(msg);
@@ -330,6 +263,5 @@ export const skillGasFee = {
 }
 
 export const skillsETH2 = [skillEth2Stats, skillLastBlock, skillBeaconLastBlock];
-export const skillsXDAI = [skillLastXdaiBlock];
-const skills = [...skillsETH2, ...skillsXDAI, skillGasFee];
+const skills = [...skillsETH2, skillGasFee];
 export {skills};
