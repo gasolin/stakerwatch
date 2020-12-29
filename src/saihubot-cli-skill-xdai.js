@@ -14,13 +14,13 @@ const i18nXdai = {
     fetching: 'Fetching xDai data...',
     query: 'Query balance on xDai Chain...',
     summary: 'The latest xDai block is **{{blocknum}}**',
-    xdaiBalance: 'xDai Balance',
+    xdaiBalance: 'xDai Chain Balance',
   },
   'zh_TW': {
     fetching: '取得 xDai 資料中...',
     query: '查詢 xDai 網路餘額中...',
     summary: '最新的xDai區塊是 **{{blocknum}}**',
-    xdaiBalance: 'xDai 餘額',
+    xdaiBalance: 'xDai 網路餘額',
   },
   props: ['blocknum']
 }

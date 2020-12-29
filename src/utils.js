@@ -88,4 +88,4 @@ export const xdaiFetch = (fetch, body) =>
     body,
   }).then(response => response.json());
 
-export const formatAddress = (address) => address && `${address.substring(0, 7)}..`;
+export const formatAddress = (address) => address && `${address.substring(0, 6)}..`;

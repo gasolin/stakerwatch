@@ -6,6 +6,7 @@ Feature
 Enhancement
 - [balance-eth][balance-eth2][balance-xdai] complete the i18n support
 - [balance-eth][balance-xdai] add Address column to identify the balance in which address
+- update README
 
 Fix
 - [balance-eth2][balance-xdai] fix missing import
