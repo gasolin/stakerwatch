@@ -4,9 +4,9 @@ import { Text } from 'ink';
 import Table from 'ink-table';
 import { t } from 'saihubot-cli-adapter/dist/i18n';
 
-import {getConfig, xdaiFetch} from './utils';
+import {getConfig, parseArg, toArray, xdaiFetch, formatAddress} from './utils';
 import {rpcLastBlock, rpcEthBalance, rpcTokenBalance} from './ethRpc';
-import {i18nAddr} from './i18n';
+import {i18nAddr, i18nBalance} from './i18n';
 import {xdaiTokenMap} from './token';
 
 const i18nXdai = {
@@ -14,11 +14,13 @@ const i18nXdai = {
     fetching: 'Fetching xDai data...',
     query: 'Query balance on xDai Chain...',
     summary: 'The latest xDai block is **{{blocknum}}**',
+    xdaiBalance: 'xDai Balance',
   },
   'zh_TW': {
     fetching: '取得 xDai 資料中...',
     query: '查詢 xDai 網路餘額中...',
     summary: '最新的xDai區塊是 **{{blocknum}}**',
+    xdaiBalance: 'xDai 餘額',
   },
   props: ['blocknum']
 }
@@ -93,9 +95,10 @@ export const XdaiBalances = ({addresses, fetch}) => {
         const val = json.result === 0x0 ? 0 : Number(json.result)/10**18;
         if (val > 0) {
           data.push({
-            Symbol: 'xDai',
-            Balance: val,
-            [t('source', {i18n: balanceI18n})]: '',
+            [t('addr', {i18n: i18nBalance})]: formatAddress(addresses[i]),
+            [t('token', {i18n: i18nBalance})]: 'xDai',
+            [t('balance', {i18n: i18nBalance})]: val,
+            [t('source', {i18n: i18nBalance})]: '',
           });
         }
 
@@ -105,9 +108,10 @@ export const XdaiBalances = ({addresses, fetch}) => {
           const tokenJson = await xdaiFetch(fetch, rpcTokenBalance(addresses[i], currentTokenAddr));
           if (tokenJson.result !== '0x0000000000000000000000000000000000000000000000000000000000000000') {
             data.push({
-              Symbol: tokenInfo.symbol,
-              Balance: Number(tokenJson.result) / 10 ** tokenInfo.decimals,
-              [t('source', {i18n: balanceI18n})]: '',
+              [t('addr', {i18n: i18nBalance})]: formatAddress(addresses[i]),
+              [t('token', {i18n: i18nBalance})]: tokenInfo.symbol,
+              [t('balance', {i18n: i18nBalance})]: Number(tokenJson.result) / 10 ** tokenInfo.decimals,
+              [t('source', {i18n: i18nBalance})]: '',
             });
           }
         }
@@ -150,20 +154,21 @@ export const skillGetXdaiBlance = {
     if (msg[2] === undefined) {
       addr = getConfig('ADDR', '');
       if (!addr) {
-        robot.send(t('needAddr', {i18n: balanceI18n}));
+        robot.send(t('needAddr', {i18n: i18nBalance}));
         robot.render();
         return;
       }
     }
     const parsedAddr = addr || parseArg(msg[2]);
-    robot.sendComponent(<XdaiBalances address={parsedAddr} fetch={robot.addons.fetch} />);
+    const addrs = toArray(parsedAddr);
+    robot.sendComponent(<XdaiBalances addresses={addrs} fetch={robot.addons.fetch} />);
     robot.render();
   },
 }
 
 const skills = [
-  skillLastXdaiBlock,
   skillGetXdaiBlance,
+  skillLastXdaiBlock,
   skillSearchXDai,
 ];
 export {skills};

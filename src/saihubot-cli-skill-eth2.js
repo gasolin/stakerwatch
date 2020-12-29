@@ -9,7 +9,7 @@ import commaNumber from 'comma-number';
 import { t } from 'saihubot-cli-adapter/dist/i18n';
 
 import {rpcEthBalance} from './ethRpc';
-import {parseArg, ethFetch, toArray} from './utils';
+import {getConfig, parseArg, ethFetch, toArray} from './utils';
 import {i18nValidator} from './i18n';
 
 const ADDR = {

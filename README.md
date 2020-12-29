@@ -35,9 +35,9 @@ Open terminal and type `staker help` to find all skills that `staker` command ca
 ```
 $ npx staker help
 
-I have 35 skills:
-* 🗞 stats - latest Eth2 stake state
+I have 36 skills:
 * 💰balance - Show [address] balance
+* 💰balance-eth - Show [address] balance on Ethereum Network
 * 🗂 lastblock|block - get the latest Eth1 block number
 * 🔎address|addr [address|tx] - Pick address explorer from the list
 * 🏦anyblock [address|tx] - check address or tx on ANYblock
@@ -53,6 +53,7 @@ I have 35 skills:
 * 🔎validator - Pick a beacon validator explorer from the list
 * 📡beaconchain|beaconcha|beaconcha.in [address] - check validator address or number on beaconscan
 * 📡beaconscan|scan [address] - check validator address or number on BeaconScan
+* 🗞 stats - latest Eth2 stake state
 * 🔎account|defi - Pick an account explorer from the list
 * 🧩debank [address] - check DeFi balance on Debank
 * 🧩zapper [address] - check DeFi balance on Zapper
@@ -63,8 +64,8 @@ I have 35 skills:
 * 🛢 gaspriceoracle|oracle - Show current gas fee via Eth Gas Price Oracle
 * 🛢 gasstation|station - Show current gas fee via Eth Gas Station
 * 🛢 gastracker|tracker - Show current gas fee via Etherscan Gas Tracker
-* 🗂 lastblock-xdai|block-xdai - get the latest xDai block number
 * 💰balance-xdai - Show address balance on xDai chain
+* 🗂 lastblock-xdai|block-xdai - get the latest xDai block number
 * 🏦xdai [address|tx] - check address or tx on xDai Chain
 * 🏦bsc|bscscan [address|tx] - check address or tx on Binance Smart Chain
 * 📕chainid - Show EVM network providers chain and network id table

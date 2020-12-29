@@ -6,29 +6,11 @@ import { Text } from 'ink';
 import Table from 'ink-table';
 import { t } from 'saihubot-cli-adapter/dist/i18n';
 
-import {getConfig, parseArg, getNodeURL, toArray} from './utils';
-import {i18nValidator} from './i18n';
+import {getConfig, parseArg, getNodeURL, toArray, formatAddress} from './utils';
+import {i18nValidator, i18nBalance} from './i18n';
 import {tokenMap} from './token';
 import {ValidatorBalances} from './saihubot-cli-skill-eth2';
 import {XdaiBalances} from './saihubot-cli-skill-xdai';
-
-const balanceI18n = {
-  'en': {
-    query: 'Query current balance...',
-    token: 'Symbol',
-    balance: 'Balance',
-    source: 'Source',
-    needAddr: 'Please pass the address or define SAIHUBOT_ADDR first',
-  },
-  'zh_TW': {
-    query: '查詢餘額中...',
-    token: '幣種',
-    balance: '餘額',
-    source: '來源',
-    needAddr: '請傳入地址或是預先定義 SAIHUBOT_ADDR 參數',
-  },
-  props: ['balance', 'usdt']
-};
 
 const EthBalances = ({addresses, fetch}) => {
   const [balance, setBalance] = useState([]);
@@ -38,12 +20,13 @@ const EthBalances = ({addresses, fetch}) => {
   useEffect(() => {
     async function fetchEthBalance() {
       const ethBalances = await getEtherBalances(getNodeURL(), addresses);
-      Object.values(ethBalances).map(val => {
+      Object.values(ethBalances).map((val, idx) => {
         if (val === 0n) return;
         data.push({
-          [t('token', {i18n:balanceI18n})]: 'ETH',
-          [t('balance', {i18n: balanceI18n})]: (Number(val) / 10**18).toFixed(8),
-          [t('source', {i18n: balanceI18n})]: '',
+          [t('addr', {i18n: i18nBalance})]: formatAddress(addresses[idx]),
+          [t('token', {i18n: i18nBalance})]: 'ETH',
+          [t('balance', {i18n: i18nBalance})]: (Number(val) / 10**18).toFixed(8),
+          [t('source', {i18n: i18nBalance})]: '',
         });
       });
       setBalance([...balance, ...data]);
@@ -56,9 +39,10 @@ const EthBalances = ({addresses, fetch}) => {
             if (val === 0n) return;
             const token = tokenMap[key];
             data.push({
-              Symbol: token.symbol,
-              Balance: (Number(val) / 10**token.decimals).toFixed(4),
-              [t('source', {i18n: balanceI18n})]: token.source || '',
+              [t('addr', {i18n: i18nBalance})]: formatAddress(addr),
+              [t('token', {i18n: i18nBalance})]: token.symbol,
+              [t('balance', {i18n: i18nBalance})]: (Number(val) / 10**token.decimals).toFixed(4),
+              [t('source', {i18n: i18nBalance})]: token.source || '',
             });
           })
         );
@@ -76,7 +60,7 @@ const EthBalances = ({addresses, fetch}) => {
     <Table data={balance} />
     <Text> </Text>
   </>)
-  : (<Text>{t('query', {i18n: balanceI18n})}</Text>);
+  : (<Text>{t('query', {i18n: i18nBalance})}</Text>);
 }
 
 // support multiple account balance by comma (without space)
@@ -131,7 +115,7 @@ export const skillGetBlance = {
     if (msg[2] === undefined) {
       addr = getConfig('ADDR', '');
       if (!addr) {
-        robot.send(t('needAddr', {i18n: balanceI18n}));
+        robot.send(t('needAddr', {i18n: i18nBalance}));
         robot.render();
         return;
       }
@@ -142,5 +126,36 @@ export const skillGetBlance = {
   },
 }
 
-const skills = [skillGetBlance];
+/**
+ * Get ETH and stable coins balance of [address] on Ethereum Network.
+ * Includes the stable token load in AAVE and Compound
+ *
+ * can pass the address, or pre-define the
+ * SAIHUBOT_ADDR environment variable
+ */
+export const skillGetEthBlance = {
+  name: 'balance-eth',
+  help: '💰balance-eth - Show [address] balance on Ethereum Network',
+  requirements: {
+    addons: ['fetch'],
+  },
+  rule: /(^balance-?eth )(.*)|^balance-?eth$/i,
+  action: function(robot, msg) {
+    let addr = '';
+    if (msg[2] === undefined) {
+      addr = getConfig('ADDR', '');
+      if (!addr) {
+        robot.send(t('needAddr', {i18n: i18nBalance}));
+        robot.render();
+        return;
+      }
+    }
+    const parsedAddr = addr || parseArg(msg[2]);
+    const addrs = toArray(parsedAddr);
+    robot.sendComponent(<EthBalances addresses={addrs} fetch={robot.addons.fetch} />);
+    robot.render();
+  },
+}
+
+const skills = [skillGetBlance, skillGetEthBlance];
 export {skills};

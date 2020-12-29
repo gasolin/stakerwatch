@@ -29,3 +29,23 @@ export const i18nAddr = {
   },
   props: [],
 };
+
+export const i18nBalance = {
+  'en': {
+    query: 'Query current balance...',
+    addr: 'Address',
+    token: 'Symbol',
+    balance: 'Balance',
+    source: 'Source',
+    needAddr: 'Please pass the address or define SAIHUBOT_ADDR first',
+  },
+  'zh_TW': {
+    query: '查詢餘額中...',
+    addr: '地址',
+    token: '幣種',
+    balance: '餘額',
+    source: '來源',
+    needAddr: '請傳入地址或是預先定義 SAIHUBOT_ADDR 參數',
+  },
+  props: []
+};

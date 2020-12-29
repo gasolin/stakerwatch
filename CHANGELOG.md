@@ -1,3 +1,16 @@
+# 0.23 2012/12/28
+
+Feature
+- [balance-eth] add skill to only query balance on Eth1
+
+Enhancement
+- [balance-eth][balance-eth2][balance-xdai] complete the i18n support
+- [balance-eth][balance-xdai] add Address column to identify the balance in which address
+
+Fix
+- [balance-eth2][balance-xdai] fix missing import
+
+
 # 0.22 2012/12/27
 
 BreakChange
