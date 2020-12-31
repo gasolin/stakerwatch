@@ -426,125 +426,6 @@ export const skillSearchBSCscan = {
   },
 };
 
-// ==== BEACON VALIDATOR ===
-
-/**
- * pick beacon validator explorer from the list
- *
- * can pass the validator index or address, or pre-define the
- * SAIHUBOT_VALIDATOR environment variable
- */
-export const skillValidatorPicker = {
-  name: 'validator',
-  help: '🔎validator - Pick a beacon validator explorer from the list',
-  requirements: {
-    addons: ['confirm']
-  },
-  rule: /(^validator )(.*)|^validator$/i,
-  action: function(robot, msg) {
-    let validator = '';
-    if (msg[2] === undefined) {
-      validator = getConfig('VALIDATOR', '');
-      if (validator === '') {
-        robot.send(t('needAddr', {i18n: i18nValidator}));
-        robot.render();
-        return;
-      }
-    }
-    const data = validator || msg[2];
-    robot.addons.confirm(t('pick', {i18n: i18nAddr}), [
-      {
-        title: t('random', {i18n: i18nAddr}),
-        id: 'random',
-        rule: /^random/i,
-        action: () => robot.ask(`${getRandomItem([
-          'beaconscan',
-          'beaconchain',
-        ])} ${data}`),
-      },
-      {
-        title: 'Beaconscan',
-        id: 'beaconscan',
-        rule: /^beaconscan/i,
-        action: () => robot.ask(`beaconscan ${data}`),
-      },
-      {
-        title: 'Beaconcha.in',
-        id: 'beaconchain',
-        rule: /^beaconchain/i,
-        action: () => robot.ask(`beaconchain ${data}`),
-      },
-    ]);
-  },
-}
-
-/**
- * Check validator address on beaconscan.
- *
- * can pass the validator index or address, or pre-define the
- * SAIHUBOT_VALIDATOR environment variable
- */
-export const skillSearchBeaconscan = {
-  name: 'beaconscan',
-  help: '📡beaconscan|scan [address] - check validator address or number on BeaconScan',
-  requirements: {
-    addons: ['search'],
-  },
-  rule: /(^beaconscan )(.*)|^beaconscan/i,
-  action: function(robot, msg) {
-    let validator = '';
-    if (msg[2] === undefined) {
-      validator = getConfig('VALIDATOR', '');
-      if (validator === '') {
-        robot.send(t('needAddr', {i18n: i18nValidator}));
-        robot.render();
-        return;
-      }
-    }
-    const data = validator || msg[2];
-    const url = 'https://beaconscan.com/validator/' + data;
-    robot.addons.search('Check', data, url, 'BeaconScan');
-  },
-};
-
-/**
- * Check validator address on beaconcha.in.
- *
- * can pass the validator index or address, or pre-define the
- * SAIHUBOT_VALIDATOR environment variable
- */
-export const skillSearchBeaconchain = {
-  name: 'beaconchain',
-  help: '📡beaconchain|beaconcha|beaconcha.in [address] - check validator address or number on beaconscan',
-  requirements: {
-    addons: ['search'],
-  },
-  i18n: {
-    'en': {
-      needAddr: 'Please pass the index/address or define SAIHUBOT_VALIDATOR first'
-    },
-    'zh_TW': {
-      needAddr: '請傳入索引/地址，或是預先定義 SAIHUBOT_VALIDATOR 參數'
-    },
-    props: [],
-  },
-  rule: /(^beaconcha(in|.in)? )(.*)|^beaconcha(in|.in)?$/i,
-  action: function(robot, msg) {
-    let validator = '';
-    if (msg[2] === undefined) {
-      validator = getConfig('VALIDATOR', '');
-      if (validator === '') {
-        robot.send(t('needAddr', {i18n: i18nValidator}));
-        robot.render();
-        return;
-      }
-    }
-    const data = validator.trim() || msg[3];
-    const url = 'https://beaconcha.in/validator/' + data;
-    robot.addons.search('Check', data, url, 'beaconcha.in');
-  },
-};
-
 // ==== Account/DeFi Balance Tracking ===
 
 /**
@@ -700,11 +581,7 @@ export const skillsAddress = [
   skillSearchEthplorer,
   skillSearchTokenview,
 ];
-export const skillsValidator = [
-  skillValidatorPicker,
-  skillSearchBeaconchain,
-  skillSearchBeaconscan,
-];
+
 export const skillsAccount = [
   skillAccountPicker,
   skillSearchDebank,
@@ -719,7 +596,6 @@ const skills = [
   skillLastBlock,
   ...skillsAccount,
   ...skillsAddress,
-  ...skillsValidator,
   ...skillsSideChain,
 ];
 export {skills};

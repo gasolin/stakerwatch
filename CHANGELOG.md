@@ -1,3 +1,10 @@
+# 0.24 2012/12/31
+
+
+Refactor
+- move skillsValidator to saihubot-cli-skill-eth2
+- update package deps
+
 # 0.23 2012/12/28
 
 Feature

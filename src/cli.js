@@ -17,10 +17,14 @@ import {
   skillLastBlock,
   skillsAccount,
   skillsAddress,
-  skillsValidator,
   skillsSideChain,
 } from './saihubot-cli-skill-eth';
-import {skillEth2Stats, skillBeaconLastBlock, skillGetValidatorBlance} from './saihubot-cli-skill-eth2';
+import {
+  skillEth2Stats,
+  skillBeaconLastBlock,
+  skillGetValidatorBlance,
+  skillsValidator,
+} from './saihubot-cli-skill-eth2';
 import {skillsGas} from './saihubot-cli-skill-ethgas';
 import {skillGetBlance, skillGetEthBlance} from './saihubot-cli-skill-balance';
 import {skills as skillsXDAI} from './saihubot-cli-skill-xdai';
