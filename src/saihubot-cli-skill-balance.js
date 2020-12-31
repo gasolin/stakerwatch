@@ -14,6 +14,7 @@ import {XdaiBalances} from './saihubot-cli-skill-xdai';
 
 const EthBalances = ({addresses, fetch}) => {
   const [balance, setBalance] = useState([]);
+  const [loading, setLoading] = useState(true);
   if (!addresses) return null;
   const data = [];
 
@@ -30,6 +31,7 @@ const EthBalances = ({addresses, fetch}) => {
         });
       });
       setBalance([...balance, ...data]);
+      setLoading(false);
     }
 
     async function fetchTokenBalance() {
@@ -54,13 +56,17 @@ const EthBalances = ({addresses, fetch}) => {
     }
   }, [addresses, fetch]);
 
+  if (loading) {
+    return (<Text>{t('query', {i18n: i18nBalance})}</Text>)
+  }
+
   return balance.length > 0
   ? (<>
     <Text>{t('accountBalance', {i18n: i18nValidator})}</Text>
     <Table data={balance} />
     <Text> </Text>
   </>)
-  : (<Text>{t('query', {i18n: i18nBalance})}</Text>);
+  : null;
 }
 
 // support multiple account balance by comma (without space)

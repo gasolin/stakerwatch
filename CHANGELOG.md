@@ -1,5 +1,7 @@
 # 0.24 2012/12/31
 
+Fix
+- [balance] hide query message after loading balance
 
 Refactor
 - move skillsValidator to saihubot-cli-skill-eth2
