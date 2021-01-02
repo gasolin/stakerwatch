@@ -1,4 +1,4 @@
-# 0.24 2012/12/31
+# 0.24 2021/1/2
 
 Fix
 - [balance] hide query message after loading balance
@@ -10,7 +10,7 @@ Refactor
 - move bsc explorer to saihubot-cli-skill-bsc
 - move eth json rpc to ethRpc
 
-# 0.23 2012/12/28
+# 0.23 2020/12/28
 
 Feature
 - [balance-eth] add skill to only query balance on Eth1
@@ -24,7 +24,7 @@ Fix
 - [balance-eth2][balance-xdai] fix missing import
 
 
-# 0.22 2012/12/27
+# 0.22 2020/12/27
 
 BreakChange
 - [balance][address] use SAIHUBOT_ADDR instead of SAIHUBOT_ETH_ADDR
@@ -49,7 +49,7 @@ Refactor
 - move skillGasFee to saihubot-cli-skill-ethgas
 - move balance-validator to saihubot-cli-skill-eth2
 
-# 0.21 2012/12/24
+# 0.21 2020/12/24
 
 Feature
 - [balance] show Wrapped ETH in balance
@@ -63,7 +63,7 @@ Refactor
 - abstract fetchGas addon
 - move gas skills into separate file
 
-# 0.20 2012/12/17
+# 0.20 2020/12/17
 
 Feature
 - [balance-xdai] Show balance of address on xDai chain
@@ -72,7 +72,7 @@ Enhancement
 - update README
 - [awesome] add scaffold eth and ethgas.watch link
 
-# 0.19 2012/12/16
+# 0.19 2020/12/16
 
 Feature
 - [balance] show WETH and stable coins(USDC, USDT, Dai) balance on xDai chain.
@@ -84,7 +84,7 @@ Enhancement
 Fix
 - [gas] fix random picker
 
-# 0.18 2012/12/15
+# 0.18 2020/12/15
 
 Feature
 - [balance] show xDai balance on xDai chain.
@@ -93,12 +93,12 @@ Feature
 Fix
 - [stats] calc daily activated validators numbers
 
-# 0.17 2012/12/14
+# 0.17 2020/12/14
 
 Feature
 - [anyblock][anyblock-tx] support anyblock explorer
 
-# 0.16 2012/12/13
+# 0.16 2020/12/13
 
 Feature
 - [tokenview][tokenview-tx] support tokenview explorer
@@ -107,7 +107,7 @@ Feature
 Fix
 - [lastblock-eth2] fix descriptions
 
-# 0.15 2012/12/12
+# 0.15 2020/12/12
 
 Feature
 - [balance] show (Eth2) Validator balance that deposit from this address
@@ -140,7 +140,7 @@ staker balance-eth2 [addr1],[addr2]
 staker balance-eth2 12345,23456
 
 
-# 0.14 2012/12/11
+# 0.14 2020/12/11
 
 Fix
 - open browser on Windows
@@ -149,7 +149,7 @@ Refactor
 - update deps
 - [balance][balance-eth2] refactor skills
 
-# 0.13.5 2012/12/8
+# 0.13.5 2020/12/8
 
 Feature
 - [stats] show current network and queued validators info inspired by https://twitter.com/Eth2Bot
@@ -174,7 +174,7 @@ Enhancement
 Fix
 - nit: lastest -> latest
 
-# 0.12 2012/12/5
+# 0.12 2020/12/5
 
 Feature
 - `lastblock-eth2` skill to show beaconchain last block, slot, and the proposer
@@ -184,7 +184,7 @@ Feature
 Enhancement
 - change beacon explorer icon to 📡
 
-# 0.11.1 2012/12/3
+# 0.11.1 2020/12/3
 
 Feature
 - add `etherchain`, `etherchain-tx` skills and `gaspriceoracle` skill
@@ -195,7 +195,7 @@ Enhancement
 Fix
 - [xdai-tx][bsc-tx][blockchair] fix the skill and simplify the regex
 
-# 0.10.0 2012/12/1
+# 0.10.0 2020/12/1
 
 Feature
 - add `chainid` skill to show the table of EVM compatible chains (that can be used in metamask custom network)
