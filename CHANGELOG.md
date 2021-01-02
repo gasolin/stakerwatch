@@ -8,6 +8,7 @@ Refactor
 - update package deps
 - move xdai json rpc to saihubot-cli-skill-xdai
 - move bsc explorer to saihubot-cli-skill-bsc
+- move eth json rpc to ethRpc
 
 # 0.23 2012/12/28
 

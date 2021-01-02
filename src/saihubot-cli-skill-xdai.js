@@ -4,8 +4,8 @@ import { Text } from 'ink';
 import Table from 'ink-table';
 import { t } from 'saihubot-cli-adapter/dist/i18n';
 
-import {getConfig, getRandomItem, baseFetchOptions, parseArg, toArray, formatAddress} from './utils';
-import {rpcLastBlock, rpcEthBalance, rpcTokenBalance} from './ethRpc';
+import {getConfig, getRandomItem, parseArg, toArray, formatAddress} from './utils';
+import {baseFetchOptions, rpcLastBlock, rpcEthBalance, rpcTokenBalance} from './ethRpc';
 import {i18nAddr, i18nBalance} from './i18n';
 import {xdaiTokenMap} from './token';
 

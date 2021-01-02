@@ -8,8 +8,8 @@ import humanizeDuration from 'humanize-duration';
 import commaNumber from 'comma-number';
 import { t } from 'saihubot-cli-adapter/dist/i18n';
 
-import {rpcEthBalance} from './ethRpc';
-import {getConfig, parseArg, ethFetch, toArray} from './utils';
+import {ethFetch, rpcEthBalance} from './ethRpc';
+import {getConfig, parseArg, toArray} from './utils';
 import {i18nValidator} from './i18n';
 
 const ADDR = {

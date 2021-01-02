@@ -1,4 +1,5 @@
 'use strict';
+import {getConfig, getRandomItem} from './utils';
 
 let idx = 1;
 
@@ -35,3 +36,39 @@ export const rpcGasPrice = () => JSON.stringify({
   method: 'eth_gasPrice',
   params: [],
 });
+
+// free nodes without API keys from https://ethereumnodes.com/
+const ETH_NODES = [
+  'https://api.mycryptoapi.com/eth', // MyCrypto
+  'https://web3.1inch.exchange/', // 1inch
+  'https://cloudflare-eth.com/', // Cloudflare
+  'https://mainnet-nethermind.blockscout.com/', // Blockscout
+  'https://nodes.mewapi.io/rpc/eth', // MyEtherWallet
+  'https://mainnet.eth.cloud.ava.do/', // AVADO
+];
+
+let cachedNodeURL = '';
+
+/**
+ * Random pick a ethereum node.
+ *
+ * can set yours via set SAIHUBOT_NODE_URL environment variable.
+ */
+export const getNodeURL = () => {
+  if (cachedNodeURL) return cachedNodeURL;
+  cachedNodeURL = getConfig('NODE_URL', getRandomItem(ETH_NODES));
+  return cachedNodeURL;
+}
+
+export const baseFetchOptions = {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json"
+  },
+};
+
+export const ethFetch = (fetch, body) =>
+  fetch(getNodeURL(), {
+    ...baseFetchOptions,
+    body,
+  }).then(response => response.json());

@@ -4,7 +4,7 @@ import {t} from 'saihubot-cli-adapter/dist/i18n';
 
 import {getConfig, getRandomItem} from './utils';
 import {i18nAddr} from './i18n';
-import {rpcLastBlock} from './ethRpc';
+import {ethFetch, rpcLastBlock} from './ethRpc';
 
 const isAddr = data => data.length === 42;
 

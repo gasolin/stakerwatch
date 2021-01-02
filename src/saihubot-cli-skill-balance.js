@@ -6,7 +6,8 @@ import { Text } from 'ink';
 import Table from 'ink-table';
 import { t } from 'saihubot-cli-adapter/dist/i18n';
 
-import {getConfig, parseArg, getNodeURL, toArray, formatAddress} from './utils';
+import {getConfig, parseArg, toArray, formatAddress} from './utils';
+import {getNodeURL} from './ethRpc';
 import {i18nValidator, i18nBalance} from './i18n';
 import {tokenMap} from './token';
 import {ValidatorBalances} from './saihubot-cli-skill-eth2';
