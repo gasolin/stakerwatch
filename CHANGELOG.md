@@ -6,6 +6,7 @@ Fix
 Refactor
 - move skillsValidator to saihubot-cli-skill-eth2
 - update package deps
+- move xdai json rpc to saihubot-cli-skill-xdai
 - move bsc explorer to saihubot-cli-skill-bsc
 
 # 0.23 2012/12/28

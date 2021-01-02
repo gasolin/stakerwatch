@@ -37,12 +37,6 @@ const ETH_NODES = [
   'https://mainnet.eth.cloud.ava.do/', // AVADO
 ];
 
-// https://www.xdaichain.com/for-developers/developer-resources#json-rpc-endpoints
-const XDAI_NODES = [
-  'https://rpc.xdaichain.com/',
-  'https://xdai.poanetwork.dev/',
-];
-
 let cachedNodeURL = '';
 
 /**
@@ -56,20 +50,7 @@ export const getNodeURL = () => {
   return cachedNodeURL;
 }
 
-let cachedXdaiNodeUrl = '';
-
-/**
- * Random pick a xdai node.
- *
- * can set yours via set SAIHUBOT_XDAI_NODE_URL environment variable.
- */
-export const getXdaiNodeURL = () => {
-  if (cachedXdaiNodeUrl) return cachedXdaiNodeUrl;
-  cachedXdaiNodeUrl = getConfig('XDAI_NODE_URL', getRandomItem(XDAI_NODES));
-  return cachedXdaiNodeUrl;
-}
-
-const baseFetchOptions = {
+export const baseFetchOptions = {
   method: "POST",
   headers: {
     "Content-Type": "application/json"
@@ -78,12 +59,6 @@ const baseFetchOptions = {
 
 export const ethFetch = (fetch, body) =>
   fetch(getNodeURL(), {
-    ...baseFetchOptions,
-    body,
-  }).then(response => response.json());
-
-export const xdaiFetch = (fetch, body) =>
-  fetch(getXdaiNodeURL(), {
     ...baseFetchOptions,
     body,
   }).then(response => response.json());

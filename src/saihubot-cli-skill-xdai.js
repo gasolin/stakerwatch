@@ -4,7 +4,7 @@ import { Text } from 'ink';
 import Table from 'ink-table';
 import { t } from 'saihubot-cli-adapter/dist/i18n';
 
-import {getConfig, parseArg, toArray, xdaiFetch, formatAddress} from './utils';
+import {getConfig, getRandomItem, baseFetchOptions, parseArg, toArray, formatAddress} from './utils';
 import {rpcLastBlock, rpcEthBalance, rpcTokenBalance} from './ethRpc';
 import {i18nAddr, i18nBalance} from './i18n';
 import {xdaiTokenMap} from './token';
@@ -58,6 +58,33 @@ export const skillSearchXDai = {
     }
   },
 };
+
+// ==== xDai Chain JSON RPC ===
+
+// https://www.xdaichain.com/for-developers/developer-resources#json-rpc-endpoints
+export const XDAI_NODES = [
+  'https://rpc.xdaichain.com/',
+  'https://xdai.poanetwork.dev/',
+];
+
+let cachedXdaiNodeUrl = '';
+
+/**
+ * Random pick a xdai node.
+ *
+ * can set yours via set SAIHUBOT_XDAI_NODE_URL environment variable.
+ */
+export const getXdaiNodeURL = () => {
+  if (cachedXdaiNodeUrl) return cachedXdaiNodeUrl;
+  cachedXdaiNodeUrl = getConfig('XDAI_NODE_URL', getRandomItem(XDAI_NODES));
+  return cachedXdaiNodeUrl;
+}
+
+export const xdaiFetch = (fetch, body) =>
+  fetch(getXdaiNodeURL(), {
+    ...baseFetchOptions,
+    body,
+  }).then(response => response.json());
 
 
 /**
