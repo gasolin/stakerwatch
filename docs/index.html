@@ -29,6 +29,16 @@
               
                 
                 <li><a
+                  href='#getnodeurl'
+                  class="">
+                  getNodeURL
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
                   href='#addonfetchgas'
                   class="">
                   addonFetchGas
@@ -52,6 +62,16 @@
                   href='#skillgetethblance'
                   class="">
                   skillGetEthBlance
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#skillsearchbscscan'
+                  class="">
+                  skillSearchBSCscan
                   
                 </a>
                 
@@ -179,9 +199,9 @@
               
                 
                 <li><a
-                  href='#skillsearchbscscan'
+                  href='#skillaccountpicker'
                   class="">
-                  skillSearchBSCscan
+                  skillAccountPicker
                   
                 </a>
                 
@@ -189,9 +209,9 @@
               
                 
                 <li><a
-                  href='#skillaccountpicker'
+                  href='#skillsearchdappradar'
                   class="">
-                  skillAccountPicker
+                  skillSearchDappradar
                   
                 </a>
                 
@@ -359,6 +379,16 @@
               
                 
                 <li><a
+                  href='#getxdainodeurl'
+                  class="">
+                  getXdaiNodeURL
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
                   href='#skilllastxdaiblock'
                   class="">
                   skillLastXdaiBlock
@@ -372,6 +402,36 @@
                   href='#skillgetxdaiblance'
                   class="">
                   skillGetXdaiBlance
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#cachedzksyncnodeurl'
+                  class="">
+                  cachedZkSyncNodeUrl
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#getzksyncnodeurl'
+                  class="">
+                  getZksyncNodeURL
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#skillgetzksyncblance'
+                  class="">
+                  skillGetZksyncBlance
                   
                 </a>
                 
@@ -427,26 +487,6 @@
                 
                 </li>
               
-                
-                <li><a
-                  href='#getnodeurl'
-                  class="">
-                  getNodeURL
-                  
-                </a>
-                
-                </li>
-              
-                
-                <li><a
-                  href='#getxdainodeurl'
-                  class="">
-                  getXdaiNodeURL
-                  
-                </a>
-                
-                </li>
-              
             </ul>
           </div>
           <div class='mt1 h6 quiet'>
@@ -455,6 +495,57 @@
         </div>
       </div>
       <div id='split-right' class='relative overflow-auto height-viewport-100'>
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='getnodeurl'>
+      getNodeURL
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Random pick a ethereum node.</p>
+<p>can set yours via set SAIHUBOT_NODE_URL environment variable.</p>
+
+    <div class='pre p1 fill-light mt0'>getNodeURL</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
         
           
           <section class='p2 mb2 clearfix bg-white minishadow'>
@@ -579,6 +670,58 @@ Includes the stable token load in AAVE and Compound</p>
 SAIHUBOT_ADDR environment variable</p>
 
     <div class='pre p1 fill-light mt0'>skillGetEthBlance</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='skillsearchbscscan'>
+      skillSearchBSCscan
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Check address or tx on bscscan.</p>
+<p>can pass the address, or pre-define the
+SAIHUBOT_ADDR environment variable</p>
+
+    <div class='pre p1 fill-light mt0'>skillSearchBSCscan</div>
   
   
 
@@ -1232,19 +1375,17 @@ SAIHUBOT_ADDR environment variable</p>
   
   <div class='clearfix'>
     
-    <h3 class='fl m0' id='skillsearchbscscan'>
-      skillSearchBSCscan
+    <h3 class='fl m0' id='skillaccountpicker'>
+      skillAccountPicker
     </h3>
     
     
   </div>
   
 
-  <p>Check address or tx on bscscan.</p>
-<p>can pass the address, or pre-define the
-SAIHUBOT_ADDR environment variable</p>
+  <p>pick account explorer from the list</p>
 
-    <div class='pre p1 fill-light mt0'>skillSearchBSCscan</div>
+    <div class='pre p1 fill-light mt0'>skillAccountPicker</div>
   
   
 
@@ -1284,17 +1425,19 @@ SAIHUBOT_ADDR environment variable</p>
   
   <div class='clearfix'>
     
-    <h3 class='fl m0' id='skillaccountpicker'>
-      skillAccountPicker
+    <h3 class='fl m0' id='skillsearchdappradar'>
+      skillSearchDappradar
     </h3>
     
     
   </div>
   
 
-  <p>pick account explorer from the list</p>
+  <p>Check DeFi Balance on DappRadar.</p>
+<p>can pass the address, or pre-define the
+SAIHUBOT_ADDR environment variable</p>
 
-    <div class='pre p1 fill-light mt0'>skillAccountPicker</div>
+    <div class='pre p1 fill-light mt0'>skillSearchDappradar</div>
   
   
 
@@ -2162,6 +2305,57 @@ SAIHUBOT_ADDR environment variable</p>
   
   <div class='clearfix'>
     
+    <h3 class='fl m0' id='getxdainodeurl'>
+      getXdaiNodeURL
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Random pick a xdai node.</p>
+<p>can set yours via set SAIHUBOT_XDAI_NODE_URL environment variable.</p>
+
+    <div class='pre p1 fill-light mt0'>getXdaiNodeURL</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
     <h3 class='fl m0' id='skilllastxdaiblock'>
       skillLastXdaiBlock
     </h3>
@@ -2225,6 +2419,161 @@ SAIHUBOT_ADDR environment variable</p>
 SAIHUBOT_ADDR environment variable</p>
 
     <div class='pre p1 fill-light mt0'>skillGetXdaiBlance</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='cachedzksyncnodeurl'>
+      cachedZkSyncNodeUrl
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Check address or tx on xDai.</p>
+<p>can pass the address, or pre-define the
+SAIHUBOT_ADDR environment variable</p>
+
+    <div class='pre p1 fill-light mt0'>cachedZkSyncNodeUrl</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='getzksyncnodeurl'>
+      getZksyncNodeURL
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Random pick a xdai node.</p>
+<p>can set yours via set SAIHUBOT_ZKSYNC_NODE_URL environment variable.</p>
+
+    <div class='pre p1 fill-light mt0'>getZksyncNodeURL</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='skillgetzksyncblance'>
+      skillGetZksyncBlance
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Get balance of [addr] on ZkSync.</p>
+<p>can pass the address, or pre-define the
+SAIHUBOT_ADDR environment variable</p>
+
+    <div class='pre p1 fill-light mt0'>skillGetZksyncBlance</div>
   
   
 
@@ -2555,108 +2904,6 @@ return as string or array.</p>
         </div>
       
     </div>
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-</section>
-
-          
-        
-          
-          <section class='p2 mb2 clearfix bg-white minishadow'>
-
-  
-  <div class='clearfix'>
-    
-    <h3 class='fl m0' id='getnodeurl'>
-      getNodeURL
-    </h3>
-    
-    
-  </div>
-  
-
-  <p>Random pick a ethereum node.</p>
-<p>can set yours via set SAIHUBOT_NODE_URL environment variable.</p>
-
-    <div class='pre p1 fill-light mt0'>getNodeURL</div>
-  
-  
-
-  
-  
-  
-  
-  
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-</section>
-
-          
-        
-          
-          <section class='p2 mb2 clearfix bg-white minishadow'>
-
-  
-  <div class='clearfix'>
-    
-    <h3 class='fl m0' id='getxdainodeurl'>
-      getXdaiNodeURL
-    </h3>
-    
-    
-  </div>
-  
-
-  <p>Random pick a xdai node.</p>
-<p>can set yours via set SAIHUBOT_XDAI_NODE_URL environment variable.</p>
-
-    <div class='pre p1 fill-light mt0'>getXdaiNodeURL</div>
-  
-  
-
-  
-  
-  
-  
-  
-  
-
   
 
   
