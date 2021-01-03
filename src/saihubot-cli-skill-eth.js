@@ -419,10 +419,17 @@ export const skillAccountPicker = {
         id: 'random',
         rule: /^random/i,
         action: () => robot.ask(`${getRandomItem([
+          'dappradar',
           'debank',
           'zapper',
           'zerion',
         ])} ${data}`),
+      },
+      {
+        title: 'DappRadar',
+        id: 'dappradar',
+        rule: /^dappradar/i,
+        action: () => robot.ask(`dappradar ${data}`),
       },
       {
         title: 'Debank',
@@ -445,6 +452,35 @@ export const skillAccountPicker = {
     ]);
   },
 }
+
+/**
+ * Check DeFi Balance on DappRadar.
+ *
+ * can pass the address, or pre-define the
+ * SAIHUBOT_ADDR environment variable
+ */
+export const skillSearchDappradar = {
+  name: 'dappradar',
+  help: '🧩dappradar [address] - check DeFi balance on DappRadar',
+  requirements: {
+    addons: ['search'],
+  },
+  rule: /(^dappradar )(.*)|^dappradar$/i,
+  action: function(robot, msg) {
+    let addr = '';
+    if (msg[2] === undefined) {
+      addr = getConfig('ADDR', '');
+      if (addr === '') {
+        robot.send(t('needAddr', {i18n: i18nAddr}));
+        robot.render();
+        return;
+      }
+    }
+    const data = addr || msg[2];
+    const url = 'https://dappradar.com/hub/wallet/' + data;
+    robot.addons.search('Check', data, url, 'DappRadar');
+  },
+};
 
 /**
  * Check DeFi Balance on debank.
@@ -548,6 +584,7 @@ export const skillsAddress = [
 
 export const skillsAccount = [
   skillAccountPicker,
+  skillSearchDappradar,
   skillSearchDebank,
   skillSearchZapper,
   skillSearchZerion,

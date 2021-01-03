@@ -35,7 +35,6 @@ Open terminal and type `staker help` to find all skills that `staker` command ca
 ```
 $ npx staker help
 
-I have 36 skills:
 * 💰balance - Show [address] balance
 * 💰balance-eth - Show [address] balance on Ethereum Network
 * 🗂 lastblock|block - get the latest Eth1 block number
@@ -55,6 +54,7 @@ I have 36 skills:
 * 📡beaconscan|scan [address] - check validator address or number on BeaconScan
 * 🗞 stats - latest Eth2 stake state
 * 🔎account|defi - Pick an account explorer from the list
+* 🧩dappradar [address] - check DeFi balance on DappRadar
 * 🧩debank [address] - check DeFi balance on Debank
 * 🧩zapper [address] - check DeFi balance on Zapper
 * 🧩zerion [address] - check DeFi Balance on Zerion
@@ -323,11 +323,13 @@ Check Account on Defi Explorer
 
 ```
 * 🔎account|defi - Pick an account explorer from the list
+* 🧩dappradar [address] - check DeFi balance on DappRadar
 * 🧩debank [address] - check DeFi balance on Debank
 * 🧩zapper [address] - check DeFi balance on Zapper
 * 🧩zerion [address] - check DeFi Balance on Zerion
 ```
 
+- [DappRadar](https://dappradar.com/hub/wallet)
 - [Debank](https://debank.com/)
 - [Zapper](https://zapper.fi/)
 - [Zerion](https://zerion.io/)

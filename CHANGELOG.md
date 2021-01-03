@@ -1,4 +1,7 @@
-# 0.24 2021/1/2
+# 0.24 2021/1/3
+
+Feature
+- search difi balance via DappRadar
 
 Fix
 - [balance] hide query message after loading balance
