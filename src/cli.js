@@ -17,6 +17,7 @@ import {
   skillLastBlock,
   skillsAccount,
   skillsAddress,
+  skillFeesWtf,
 } from './saihubot-cli-skill-eth';
 import {
   skillEth2Stats,
@@ -28,6 +29,7 @@ import {skillsGas} from './saihubot-cli-skill-ethgas';
 import {skillGetBlance, skillGetEthBlance} from './saihubot-cli-skill-balance';
 import {skills as skillsXDAI} from './saihubot-cli-skill-xdai';
 import {skills as skillsBSC} from './saihubot-cli-skill-bsc';
+// import {skills as skillsZkSync} from './saihubot-cli-skill-zksync';
 import {skillChainId} from './saihubot-cli-skill-chainid';
 import {skillAwesomeEth} from './saihubot-skill-awesome';
 
@@ -74,6 +76,8 @@ const bot = new SaihuBot({
     ...skillsGas,
     ...skillsXDAI,
     ...skillsBSC,
+    // ...skillsZkSync,
+    skillFeesWtf,
     skillChainId,
     skillAwesomeEth,
     skillQRCode,

@@ -22,6 +22,7 @@ By the way to avoid single point of failure, the command randomly pick a [free E
 - [Eth2 Validator](#eth2-validator)
 - [Address Explorer](#addres-explorer)
 - [Gas Fee Monitor](#gas-fee)
+- [Fees Analytics](#fees-analytics)
 - [Defi Explorer](#defi-explorer)
 - [Side Chain](#side-chain)
 - [Other Tools](#other-tools)
@@ -35,6 +36,7 @@ Open terminal and type `staker help` to find all skills that `staker` command ca
 ```
 $ npx staker help
 
+I have 38 skills:
 * 💰balance - Show [address] balance
 * 💰balance-eth - Show [address] balance on Ethereum Network
 * 🗂 lastblock|block - get the latest Eth1 block number
@@ -59,15 +61,16 @@ $ npx staker help
 * 🧩zapper [address] - check DeFi balance on Zapper
 * 🧩zerion [address] - check DeFi Balance on Zerion
 * 🔎gas - Pick a gas estimator from the list
-* 🛢 gasfee - Show current on-chain gas fee
-* 🛢 gasnow|now - Show current gas fee via gasnow
-* 🛢 gaspriceoracle|oracle - Show current gas fee via Eth Gas Price Oracle
-* 🛢 gasstation|station - Show current gas fee via Eth Gas Station
-* 🛢 gastracker|tracker - Show current gas fee via Etherscan Gas Tracker
+* ⛽ gasfee - Show current on-chain gas fee
+* ⛽ gasnow|now - Show current gas fee via gasnow
+* ⛽ gaspriceoracle|oracle - Show current gas fee via Eth Gas Price Oracle
+* ⛽ gasstation|station - Show current gas fee via Eth Gas Station
+* ⛽ gastracker|tracker - Show current gas fee via Etherscan Gas Tracker
 * 💰balance-xdai - Show address balance on xDai chain
 * 🗂 lastblock-xdai|block-xdai - get the latest xDai block number
 * 🏦xdai [address|tx] - check address or tx on xDai Chain
 * 🏦bsc|bscscan [address|tx] - check address or tx on Binance Smart Chain
+* 💸feeswtf [address] - Check total fees consumption on fees.wtf
 * 📕chainid - Show EVM network providers chain and network id table
 * 🤩awesome|lucky - Show random awesome site around ethereum
 * qrcode [text] - Generate QRCode with [text]
@@ -283,11 +286,11 @@ These commands can be used to search transaction (tx) as well.
 
 ```
 * 🔎gas - Pick a gas estimator from the list
-* 🛢 gasfee - Show current on-chain gas fee
-* 🛢 gasnow|now - Show current gas fee via gasnow
-* 🛢 gaspriceoracle|oracle - Show current gas fee via Eth Gas Price Oracle
-* 🛢 gasstation|station - Show current gas fee via Eth Gas Station
-* 🛢 gastracker|tracker - Show current gas fee via Etherscan Gas Tracker
+* ⛽ gasfee - Show current on-chain gas fee
+* ⛽ gasnow|now - Show current gas fee via gasnow
+* ⛽ gaspriceoracle|oracle - Show current gas fee via Eth Gas Price Oracle
+* ⛽ gasstation|station - Show current gas fee via Eth Gas Station
+* ⛽ gastracker|tracker - Show current gas fee via Etherscan Gas Tracker
 ```
 
 You can get gas fee estimator from multiple sources
@@ -316,6 +319,12 @@ Current gas fee (report by gasnow) is H:70 M:50 L:48 gwei
 * [Gas Station](https://ethgasstation.info/)
 * [Ethereum Gas Tracker](https://etherscan.io/gastracker) From Etherscan team
 * [ethgas.watch](https://ethgas.watch/) aggregated gas price feed from multiple data sources.
+
+## Fees Analytics
+
+* 💸feeswtf [address] - Check total fees consumption on fees.wtf
+
+[Fees.wtf](https://fees.wtf/)
 
 ## Defi Explorer
 

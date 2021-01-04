@@ -570,6 +570,39 @@ export const skillSearchZerion = {
   },
 };
 
+// ==== Fees ===
+
+/**
+ * Check Total Fees consumption on fees.wtf.
+ *
+ * can pass the address, or pre-define the
+ * SAIHUBOT_ADDR environment variable
+ */
+export const skillFeesWtf = {
+  name: 'feeswtf',
+  help: '💸feeswtf [address] - Check total fees consumption on fees.wtf',
+  requirements: {
+    addons: ['search'],
+  },
+  rule: /(^feeswtf )(.*)|^feeswtf$/i,
+  action: function(robot, msg) {
+    let addr = '';
+    if (msg[2] === undefined) {
+      addr = getConfig('ADDR', '');
+      if (addr === '') {
+        robot.send(t('needAddr', {i18n: i18nAddr}));
+        robot.render();
+        return;
+      }
+    }
+    const data = addr || msg[2];
+    // only support single address
+    const target = Array.isArray(data) ? data[0] : data;
+    const url = 'https://fees.wtf/?address=' + target;
+    robot.addons.search('Check', target, url, 'fees.wtf');
+  },
+};
+
 export const skillsAddress = [
   skillAddressExplorer,
   skillSearchAnyblock,
@@ -594,5 +627,6 @@ const skills = [
   skillLastBlock,
   ...skillsAccount,
   ...skillsAddress,
+  skillFeesWtf,
 ];
 export {skills};

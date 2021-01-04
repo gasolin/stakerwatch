@@ -1,3 +1,11 @@
+# 0.25 2021/1/5
+
+Feature
+- add 💸 fees.wtf fees analytics
+
+Enhancement
+- Change gas estimators' emoji from 🛢 to ⛽
+
 # 0.24 2021/1/3
 
 Feature
