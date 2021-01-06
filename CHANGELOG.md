@@ -1,3 +1,8 @@
+# 0.26 2021/1/6
+
+Feature
+- Show balances of all 1inch tradable tokens from https://tokenlists.org/token-list?url=tokens.1inch.eth
+
 # 0.25 2021/1/5
 
 Feature

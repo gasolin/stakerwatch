@@ -91,7 +91,7 @@ If you expect to use this tool frequently, install it via command:
 
 Use `staker balance [addr]` command, you can given a Eth address and get related account balance on Eth1, Eth2(validator), xDai Chain.
 
-Eth1 also shows the balance of stable coins (USDt, USDC, Dai...) and lending stable coins in [AAVE](https://aave.com/) and [Compound](https://compound.finance/).
+Eth1 also shows the balance of tokens tradable on [1inch](https://tokenlists.org/token-list?url=tokens.1inch.eth).
 
 xDai chain shows the balance of xDai, WETH and stable coins (USDt, USDC, Dai...).
 
@@ -103,17 +103,17 @@ $ npx staker balance [addr]
 Account Balance
 ┌──────────┬────────┬────────────┬────────┐
 │ Address  │ Symbol │ Balance    │ Source │
-├──────────┼────────┼────────────┼────────┤
-│ 0x1234.. │ ETH    │ 1          │        │
-├──────────┼────────┼────────────┼────────┤
-│ 0x1234.. │ USDT   │ 8888       │        │
-├──────────┼────────┼────────────┼────────┤
-│ 0x1234.. │ Dai    │ 123        │        │
-├──────────┼────────┼────────────┼────────┤
-│ 0x1234.. │ aUSDt  │ 1234.56    │AAVE    │
-├──────────┼────────┼────────────┼────────┤
-│ 0x1234.. │ cUSDt  │ 567.89     │Compound│
-└──────────┴────────┴────────────┴────────┘
+├──────────┼────────┼────────────┼───────────────────────────┤
+│ 0x1234.. │ ETH    │ 1          │                           │
+├──────────┼────────┼────────────┼───────────────────────────┤
+│ 0x1234.. │ USDT   │ 8888       │ TetherUSD                 │
+├──────────┼────────┼────────────┼───────────────────────────┤
+│ 0x1234.. │ Dai    │ 123        │ DaiStablecoin             │
+├──────────┼────────┼────────────┼───────────────────────────┤
+│ 0x1234.. │ aUSDt  │ 1234.56    │ AaveInterestbearingUSDT   │
+├──────────┼────────┼────────────┼───────────────────────────┤
+│ 0x1234.. │ cUSDt  │ 567.89     │ CompoundUSDT              │
+└──────────┴────────┴────────────┴───────────────────────────┘
 
 (Eth2) Validator Balance
 ┌────────┬────────────┬────────┐

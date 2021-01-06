@@ -9,9 +9,10 @@ import { t } from 'saihubot-cli-adapter/dist/i18n';
 import {getConfig, parseArg, toArray, formatAddress} from './utils';
 import {getNodeURL} from './ethRpc';
 import {i18nValidator, i18nBalance} from './i18n';
-import {tokenMap} from './token';
 import {ValidatorBalances} from './saihubot-cli-skill-eth2';
 import {XdaiBalances} from './saihubot-cli-skill-xdai';
+
+let cachedTokenMap = [];
 
 const EthBalances = ({addresses, fetch}) => {
   const [balance, setBalance] = useState([]);
@@ -36,16 +37,22 @@ const EthBalances = ({addresses, fetch}) => {
     }
 
     async function fetchTokenBalance() {
-      const tokenBalances = await getTokensBalances(getNodeURL(), addresses, Object.keys(tokenMap));
-        Object.keys(tokenBalances).map(addr =>
+      if (cachedTokenMap.length === 0) {
+        const json  = await fetch('https://wispy-bird-88a7.uniswap.workers.dev/?url=http://tokens.1inch.eth.link')
+          .then(response => response.json());
+        cachedTokenMap = json.tokens
+      }
+      const tokenBalances = await getTokensBalances(getNodeURL(), addresses, cachedTokenMap.map(entry => entry.address));
+        Object.keys(tokenBalances).map(addr => // multi addr
           Object.entries(tokenBalances[addr]).map(([key, val]) => {
             if (val === 0n) return;
-            const token = tokenMap[key];
+
+            const token = cachedTokenMap.find(entry => entry.address === key);
             data.push({
               [t('addr', {i18n: i18nBalance})]: formatAddress(addr),
               [t('token', {i18n: i18nBalance})]: token.symbol,
               [t('balance', {i18n: i18nBalance})]: (Number(val) / 10**token.decimals).toFixed(4),
-              [t('source', {i18n: i18nBalance})]: token.source || '',
+              [t('source', {i18n: i18nBalance})]: token.name || '',
             });
           })
         );
