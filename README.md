@@ -11,9 +11,9 @@ If you are an Eth2 staker, you can use the command to check Eth2 deposit stats, 
 
 Most commands support multiple tools. You can use the default `address, validator, gas` command to explore tools you have rarely experienced.
 
-If you think this tool is useful, please consider show your support with the [Gitcoin Grant](https://gitcoin.co/grants/1664/stakerwatch) along with other great projects.
+To avoid single point of failure, the command randomly pick a [free Ethereum Node](https://ethereumnodes.com/) to fetch the on-chain data instead of counting on [Infura](https://infura.io/). (You can specify a node if you want to)
 
-By the way to avoid single point of failure, the command randomly pick a [free Ethereum Node](https://ethereumnodes.com/) to fetch the on-chain data instead of counting on [Infura](https://infura.io/). (You can specify a node if you want to)
+If you think this tool is useful, please consider support with the [Gitcoin Grant](https://gitcoin.co/grants/1664/stakerwatch) along with other great projects.
 
 ## Contents
 
@@ -31,7 +31,7 @@ By the way to avoid single point of failure, the command randomly pick a [free E
 
 Make sure [node.js](https://nodejs.org) is installed in your device.
 
-Open terminal and type `staker help` to find all skills that `staker` command can do.
+Open terminal and type `npx staker help` to find all skills that `staker` command can do.
 
 ```
 $ npx staker help
@@ -101,8 +101,8 @@ Also support multiple validators balance by comma (without space).
 $ npx staker balance [addr]
 
 Account Balance
-┌──────────┬────────┬────────────┬────────┐
-│ Address  │ Symbol │ Balance    │ Source │
+┌──────────┬────────┬────────────┬───────────────────────────┐
+│ Address  │ Symbol │ Balance    │ Source                    │
 ├──────────┼────────┼────────────┼───────────────────────────┤
 │ 0x1234.. │ ETH    │ 1          │                           │
 ├──────────┼────────┼────────────┼───────────────────────────┤
@@ -142,19 +142,19 @@ Can only query the balance on Ethereum Network with `balance-eth` skill
 $ staker balance-eth [addr]
 
 Account Balance
-┌──────────┬────────┬────────────┬────────┐
-│ Address  │ Symbol │ Balance    │ Source │
-├──────────┼────────┼────────────┼────────┤
-│ 0x1234.. │ ETH    │ 1          │        │
-├──────────┼────────┼────────────┼────────┤
-│ 0x1234.. │ USDT   │ 8888       │        │
-├──────────┼────────┼────────────┼────────┤
-│ 0x1234.. │ Dai    │ 123        │        │
-├──────────┼────────┼────────────┼────────┤
-│ 0x1234.. │ aUSDt  │ 1234.56    │AAVE    │
-├──────────┼────────┼────────────┼────────┤
-│ 0x1234.. │ cUSDt  │ 567.89     │Compound│
-└──────────┴────────┴────────────┴────────┘
+┌──────────┬────────┬────────────┬───────────────────────────┐
+│ Address  │ Symbol │ Balance    │ Source                    │
+├──────────┼────────┼────────────┼───────────────────────────┤
+│ 0x1234.. │ ETH    │ 1          │                           │
+├──────────┼────────┼────────────┼───────────────────────────┤
+│ 0x1234.. │ USDT   │ 8888       │ TetherUSD                 │
+├──────────┼────────┼────────────┼───────────────────────────┤
+│ 0x1234.. │ Dai    │ 123        │ DaiStablecoin             │
+├──────────┼────────┼────────────┼───────────────────────────┤
+│ 0x1234.. │ aUSDt  │ 1234.56    │ AaveInterestbearingUSDT   │
+├──────────┼────────┼────────────┼───────────────────────────┤
+│ 0x1234.. │ cUSDt  │ 567.89     │ CompoundUSDT              │
+└──────────┴────────┴────────────┴───────────────────────────┘
 
 ```
 
@@ -324,7 +324,7 @@ Current gas fee (report by gasnow) is H:70 M:50 L:48 gwei
 
 * 💸feeswtf [address] - Check total fees consumption on fees.wtf
 
-[Fees.wtf](https://fees.wtf/)
+- [Fees.wtf](https://fees.wtf/)
 
 ## Defi Explorer
 
