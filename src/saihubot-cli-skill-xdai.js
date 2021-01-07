@@ -138,7 +138,7 @@ export const XdaiBalances = ({addresses, fetch}) => {
               [t('addr', {i18n: i18nBalance})]: formatAddress(addresses[i]),
               [t('token', {i18n: i18nBalance})]: tokenInfo.symbol,
               [t('balance', {i18n: i18nBalance})]: Number(tokenJson.result) / 10 ** tokenInfo.decimals,
-              [t('source', {i18n: i18nBalance})]: '',
+              [t('source', {i18n: i18nBalance})]: tokenInfo.name,
             });
           }
         }

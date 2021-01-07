@@ -3,6 +3,9 @@
 Feature
 - Show balances of all 1inch tradable tokens from https://tokenlists.org/token-list?url=tokens.1inch.eth
 
+Enhancement
+- [balance-xdai] Show token name
+
 # 0.25 2021/1/5
 
 Feature
