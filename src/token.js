@@ -28,4 +28,10 @@ export const xdaiTokenMap = {
     "symbol": "DAI",
     "decimals": 18
   },
+  "0x4Bd5a011E3Dd015106A6f1326a5ba3378610Cb3b": {
+    "name": "Circles",
+    "erc20": true,
+    "symbol": "CRC",
+    "decimals": 18,
+  }
 };

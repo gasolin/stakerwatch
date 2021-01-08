@@ -3,6 +3,7 @@
 Enhancement
 - [gas] compact report message
 - [gasTracker][gasstation] fix output message
+- [balance-xdai] add Circle UBI balance
 
 # 0.26 2021/1/6
 
