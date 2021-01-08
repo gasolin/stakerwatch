@@ -1,3 +1,11 @@
+# 0.28 2021/1/9
+
+Feature
+- [config] allow search and show related network config
+
+Enhancement
+- [config] add `config` as alias of chainid skill, update help
+
 # 0.27 2021/1/8
 
 Enhancement

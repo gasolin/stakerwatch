@@ -66,12 +66,12 @@ I have 38 skills:
 * ⛽ gaspriceoracle|oracle - Show current gas fee via Eth Gas Price Oracle
 * ⛽ gasstation|station - Show current gas fee via Eth Gas Station
 * ⛽ gastracker|tracker - Show current gas fee via Etherscan Gas Tracker
+* 💸feeswtf [address] - Check total fees consumption on fees.wtf
+* ⛓ config|config [chain] - find MetaMask network config data (chain providers url and network id)
 * 💰balance-xdai - Show address balance on xDai chain
 * 🗂 lastblock-xdai|block-xdai - get the latest xDai block number
 * 🏦xdai [address|tx] - check address or tx on xDai Chain
 * 🏦bsc|bscscan [address|tx] - check address or tx on Binance Smart Chain
-* 💸feeswtf [address] - Check total fees consumption on fees.wtf
-* 📕chainid - Show EVM network providers chain and network id table
 * 🤩awesome|lucky - Show random awesome site around ethereum
 * qrcode [text] - Generate QRCode with [text]
 * help - list available skills
@@ -382,15 +382,29 @@ Binance Smart Chain
 ## Other Tools
 
 ```
+* ⛓ config|config [chain] - find MetaMask network config data (chain providers url and network id)
 * 🤩awesome|lucky - Show random awesome site around ethereum
-* 📕chainid - Show EVM network providers chain and network id table
 * qrcode [text] - Generate QRCode with [text]
 * help - list available skills
 ```
 
-### chainid
+### config / chainid
 
 If you are using Metamask for EVM compatible chain like Huobi eco chain, BSC chain... Can use `npx staker chainid` command to find and fill the Network data of RPC, Chainid, symbol.
+
+ex: search network config for matic chain
+
+```
+┌──────────────────────┬───────────────────────────────────┬─────────┬────────┐
+│ name                 │ rpc                               │ chainId │ symbol │
+├──────────────────────┼───────────────────────────────────┼─────────┼────────┤
+│ Matic Mainnet        │ https://rpc-mainnet.matic.network │ 137     │ MATIC  │
+├──────────────────────┼───────────────────────────────────┼─────────┼────────┤
+│ Matic Testnet Mumbai │ https://rpc-mumbai.matic.today    │ 80001   │ tMATIC │
+└──────────────────────┴───────────────────────────────────┴─────────┴────────┘
+```
+
+Will list all network config if not pass the param.
 
 - [EVM Networks](https://chainid.network/) list appropriate Chain ID and Network ID to connect to the correct chain.
 
