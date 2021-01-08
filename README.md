@@ -345,7 +345,29 @@ Check Account on Defi Explorer
 
 ## Side Chain
 
-xDai Chain
+### config / chainid
+
+```
+* ⛓ config|config [chain] - find MetaMask network config data (chain providers url and network id)
+```
+
+If you are using Metamask for EVM compatible chain like Huobi eco chain, BSC chain... Can use `npx staker chainid` command to find and fill the Network data of RPC, Chainid, symbol.
+
+ex: search network config for matic chain
+
+```
+┌──────────────────────┬───────────────────────────────────┬─────────┬────────┐
+│ name                 │ rpc                               │ chainId │ symbol │
+├──────────────────────┼───────────────────────────────────┼─────────┼────────┤
+│ Matic Mainnet        │ https://rpc-mainnet.matic.network │ 137     │ MATIC  │
+├──────────────────────┼───────────────────────────────────┼─────────┼────────┤
+│ Matic Testnet Mumbai │ https://rpc-mumbai.matic.today    │ 80001   │ tMATIC │
+└──────────────────────┴───────────────────────────────────┴─────────┴────────┘
+```
+
+Will list all network config if not pass the param.
+
+#### xDai Chain
 
 ```
 * 🏦xdai [address|tx] - check address or tx on xDai Chain
@@ -371,7 +393,7 @@ xDai Chain Balance
 
 - [Blockscout](https://blockscout.com/poa/xdai) xDai Chain explorer.
 
-Binance Smart Chain
+#### Binance Smart Chain
 
 ```
 * 🏦bsc|bscscan [address|tx] - check address or tx on Binance Smart Chain
@@ -382,29 +404,10 @@ Binance Smart Chain
 ## Other Tools
 
 ```
-* ⛓ config|config [chain] - find MetaMask network config data (chain providers url and network id)
 * 🤩awesome|lucky - Show random awesome site around ethereum
 * qrcode [text] - Generate QRCode with [text]
 * help - list available skills
 ```
-
-### config / chainid
-
-If you are using Metamask for EVM compatible chain like Huobi eco chain, BSC chain... Can use `npx staker chainid` command to find and fill the Network data of RPC, Chainid, symbol.
-
-ex: search network config for matic chain
-
-```
-┌──────────────────────┬───────────────────────────────────┬─────────┬────────┐
-│ name                 │ rpc                               │ chainId │ symbol │
-├──────────────────────┼───────────────────────────────────┼─────────┼────────┤
-│ Matic Mainnet        │ https://rpc-mainnet.matic.network │ 137     │ MATIC  │
-├──────────────────────┼───────────────────────────────────┼─────────┼────────┤
-│ Matic Testnet Mumbai │ https://rpc-mumbai.matic.today    │ 80001   │ tMATIC │
-└──────────────────────┴───────────────────────────────────┴─────────┴────────┘
-```
-
-Will list all network config if not pass the param.
 
 - [EVM Networks](https://chainid.network/) list appropriate Chain ID and Network ID to connect to the correct chain.
 

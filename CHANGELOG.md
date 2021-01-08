@@ -6,6 +6,9 @@ Feature
 Enhancement
 - [config] add `config` as alias of chainid skill, update help
 
+Fix
+- [gas] fix random pick
+
 # 0.27 2021/1/8
 
 Enhancement
