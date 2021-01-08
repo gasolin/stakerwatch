@@ -10,12 +10,12 @@ import {ethFetch, rpcGasPrice} from './ethRpc';
 const i18nGas = {
   'en': {
     fetching: 'Fetching gas...',
-    gasfee: '⛽️Current gas fee (from {{source}}) \nFast: {{H}}\nAverage: {{M}}\nSlow:{{L}}',
+    gasfee: '⛽️Gas prices (from {{source}}) \n🚀Fast: {{H}} Gwei\n🚘Average: {{M}} Gwei\n🚜Slow:{{L}} Gwei',
     random: 'Random',
   },
   'zh_TW': {
     fetching: '取得 gas 費用...',
-    gasfee: '目前的 gas 費用(來自 {{source}}) \n快速: {{H}}\n普通: {{M}}\n慢: {{L}}',
+    gasfee: '⛽️gas 價格(來自 {{source}}) \n🚀快速: {{H}} Gwei\n🚘普通: {{M}} Gwei\n🚜慢: {{L}} Gwei',
     random: '隨機',
   },
   props: ['H', 'M', 'L', 'source']
