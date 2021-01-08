@@ -17,7 +17,7 @@ export const GAS_ESTIMATOR = {
       H: int(json.fast / 10),
       M: int(json.average / 10),
       L: int(json.safeLow / 10),
-      source: 'Eth Gas Station',
+      source: 'EthGasStation',
     }),
   },
   GASNOW: {
