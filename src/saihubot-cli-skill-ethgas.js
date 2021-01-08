@@ -10,12 +10,12 @@ import {ethFetch, rpcGasPrice} from './ethRpc';
 const i18nGas = {
   'en': {
     fetching: 'Fetching gas...',
-    gasfee: 'Current gas fee is H:{{H}} M:{{M}} L:{{L}} gwei (report by {{source}})',
+    gasfee: '⛽️Current gas fee (from {{source}}) \nFast: {{H}}\nAverage: {{M}}\nSlow:{{L}}',
     random: 'Random',
   },
   'zh_TW': {
     fetching: '取得 gas 費用...',
-    gasfee: '目前的 gas 費用 H:{{H}} M:{{M}} L:{{L}} gwei (由 {{source}} 提供)',
+    gasfee: '目前的 gas 費用(來自 {{source}}) \n快速: {{H}}\n普通: {{M}}\n慢: {{L}}',
     random: '隨機',
   },
   props: ['H', 'M', 'L', 'source']
@@ -95,7 +95,7 @@ export const skillGasTracker = {
     robot.render();
     robot.addons.fetchGas(GAS_ESTIMATOR.GASTRACKER,
       data => {
-        robot.sendComponent(t('gasfee', {
+        robot.send(t('gasfee', {
           i18n: i18nGas,
           ...data,
         }));
@@ -120,7 +120,7 @@ export const skillGasStation = {
     robot.render();
     robot.addons.fetchGas(GAS_ESTIMATOR.GASSTATION,
       data => {
-        robot.sendComponent(t('gasfee', {
+        robot.send(t('gasfee', {
           i18n: i18nGas,
           ...data,
         }));

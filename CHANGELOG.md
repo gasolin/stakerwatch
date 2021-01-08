@@ -1,3 +1,9 @@
+# 0.27 2021/1/8
+
+Enhancement
+- [gas] compact report message
+- [gasTracker][gasstation] fix output message
+
 # 0.26 2021/1/6
 
 Feature
