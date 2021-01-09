@@ -1,10 +1,10 @@
 # 0.28 2021/1/9
 
+Breaking Change
+- [network] replace `chainid` skill with `network|config` skill
+
 Feature
 - [config] allow search and show related network config
-
-Enhancement
-- [config] add `config` as alias of chainid skill, update help
 
 Fix
 - [gas] fix random pick

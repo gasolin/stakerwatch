@@ -67,7 +67,7 @@ I have 38 skills:
 * ⛽ gasstation|station - Show current gas fee via Eth Gas Station
 * ⛽ gastracker|tracker - Show current gas fee via Etherscan Gas Tracker
 * 💸feeswtf [address] - Check total fees consumption on fees.wtf
-* ⛓ config|config [chain] - find MetaMask network config data (chain providers url and network id)
+* ⛓ network|config|network [chain] - find MetaMask network config data (chain providers url and network id)
 * 💰balance-xdai - Show address balance on xDai chain
 * 🗂 lastblock-xdai|block-xdai - get the latest xDai block number
 * 🏦xdai [address|tx] - check address or tx on xDai Chain
@@ -348,14 +348,17 @@ Check Account on Defi Explorer
 ### config / chainid
 
 ```
-* ⛓ config|config [chain] - find MetaMask network config data (chain providers url and network id)
+* ⛓ network|config|network [chain] - find MetaMask network config data (chain providers url and network id)
 ```
 
-If you are using Metamask for EVM compatible chain like Huobi eco chain, BSC chain... Can use `npx staker chainid` command to find and fill the Network data of RPC, Chainid, symbol.
+If you are using Metamask for EVM compatible chain like Huobi eco chain, BSC chain... Can use `npx staker network` command to find and fill the Network data of RPC, Chainid, symbol.
 
 ex: search network config for matic chain
 
 ```
+
+npx staker network matic
+
 ┌──────────────────────┬───────────────────────────────────┬─────────┬────────┐
 │ name                 │ rpc                               │ chainId │ symbol │
 ├──────────────────────┼───────────────────────────────────┼─────────┼────────┤

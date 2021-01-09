@@ -10,7 +10,7 @@ import {getRandomItem} from './utils';
  */
 export const skillChainId = {
   name: 'chainId',
-  help: '⛓ config|config [chain] - find MetaMask network config data (chain providers url and network id)',
+  help: '⛓ network|config|network [chain] - find MetaMask network config data (chain providers url and network id)',
   requirements: {
     addons: ['fetch'],
   },
@@ -23,9 +23,9 @@ export const skillChainId = {
     },
     props: ['term']
   },
-  rule: /(^config )(.*)|^config$|^chainid$/i,
+  rule: /^(network |config )(.*)|^network|config$/i,
   action: function(robot, msg) {
-    robot.send('Fetching chain ids...');
+    robot.send('Fetching network configs...');
     robot.render();
     robot.addons.fetch('https://chainid.network/chains.json')
       .then(response => response.json())
