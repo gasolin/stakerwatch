@@ -13,7 +13,7 @@ const isAddr = data => data.length === 42;
  */
 export const skillLastBlock = {
   name: 'lastblock',
-  help: '🗂 lastblock|block - get the latest Eth1 block number',
+  help: '🗂 lastblock|block|block-eth - get the latest Eth1 block number',
   requirements: {
     addons: ['fetch'],
   },
@@ -28,7 +28,7 @@ export const skillLastBlock = {
     },
     props: ['blocknum']
   },
-  rule: /^(last)?block$/i,
+  rule: /^(last)?block(-eth)?$/i,
   action: function(robot, msg) {
     robot.send(t('fetching', {i18n: this.i18n}));
     robot.render();

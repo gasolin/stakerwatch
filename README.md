@@ -39,7 +39,7 @@ $ npx staker help
 I have 38 skills:
 * 💰balance - Show [address] balance
 * 💰balance-eth - Show [address] balance on Ethereum Network
-* 🗂 lastblock|block - get the latest Eth1 block number
+* 🗂 lastblock|block|block-eth - get the latest Eth1 block number
 * 🔎address|addr [address|tx] - Pick address explorer from the list
 * 🏦anyblock [address|tx] - check address or tx on ANYblock
 * 🏦bitquery [address|tx] - check address or tx on explorer.bitquery.io
@@ -84,7 +84,7 @@ If you expect to use this tool frequently, install it via command:
 ## Eth1
 
 ```
-* lastblock|block - get the latest Eth1 block number
+* 🗂 lastblock|block|block-eth - get the latest Eth1 block number
 * 💰balance - Show [address] balance
 * 💰balance-eth - Show [address] balance on Ethereum Network
 ```

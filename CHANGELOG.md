@@ -1,3 +1,8 @@
+# 0.28 2021/1/10
+
+Enhancement
+[lastblock] can search as `block-eth`
+
 # 0.28 2021/1/9
 
 Breaking Change
