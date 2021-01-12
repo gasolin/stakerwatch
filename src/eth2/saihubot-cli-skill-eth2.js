@@ -143,7 +143,7 @@ export const skillEth2Stats = {
   requirements: {
     addons: ['fetch'],
   },
-  rule: /^stats/i,
+  rule: /^stats$|^stats-eth2$/i,
   action: function(robot, msg) {
     robot.sendComponent(
       <>
