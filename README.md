@@ -36,7 +36,7 @@ Open terminal and type `npx staker help` to find all skills that `staker` comman
 ```
 $ npx staker help
 
-I have 38 skills:
+I have 39 skills:
 * 💰balance - Show [address] balance
 * 💰balance-eth - Show [address] balance on Ethereum Network
 * 🗂 lastblock|block|block-eth - get the latest Eth1 block number
@@ -68,10 +68,11 @@ I have 38 skills:
 * ⛽ gastracker|tracker - Show current gas fee via Etherscan Gas Tracker
 * 💸feeswtf [address] - Check total fees consumption on fees.wtf
 * ⛓ network|config|network [chain] - find MetaMask network config data (chain providers url and network id)
+* 🏦bsc|bscscan [address|tx] - check address or tx on Binance Smart Chain
+* 🏦matics [address|tx] - check address or tx on Matics
 * 💰balance-xdai - Show address balance on xDai chain
 * 🗂 lastblock-xdai|block-xdai - get the latest xDai block number
 * 🏦xdai [address|tx] - check address or tx on xDai Chain
-* 🏦bsc|bscscan [address|tx] - check address or tx on Binance Smart Chain
 * 🤩awesome|lucky - Show random awesome site around ethereum
 * qrcode [text] - Generate QRCode with [text]
 * help - list available skills
@@ -402,7 +403,15 @@ xDai Chain Balance
 * 🏦bsc|bscscan [address|tx] - check address or tx on Binance Smart Chain
 ```
 
-- [BscScan](https://bscscan.com/) Binance Smart Chain explorer.
+- [BscScan Block explorer](https://bscscan.com/) Binance Smart Chain explorer.
+
+#### Matics
+
+```
+* 🏦matics [address|tx] - check address or tx on Matics
+```
+
+- [Matic Block explorer](https://explorer-mainnet.maticvigil.com/)
 
 ## Other Tools
 

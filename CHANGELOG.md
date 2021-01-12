@@ -1,7 +1,11 @@
-# 0.28 2021/1/12
+# 0.29 2021/1/12
+
+Feature
+- [matics] add matics block explorer
 
 Enhancement
-[lastblock] can search as `block-eth`
+- [lastblock] can search as `block-eth`
+- [stats] add stats-eth2 alias
 
 Refactor
 - move eth, eth2, xdai, bsc skills into related folders
