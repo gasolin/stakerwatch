@@ -6,6 +6,7 @@ Feature
 Enhancement
 - [lastblock] can search as `block-eth`
 - [stats] add stats-eth2 alias
+- [Readme] shorten the help list
 
 Refactor
 - move eth, eth2, xdai, bsc skills into related folders
