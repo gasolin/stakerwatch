@@ -2,11 +2,9 @@
 
 import {t} from 'saihubot-cli-adapter/dist/i18n';
 
-import {getConfig, getRandomItem} from '../utils';
+import {getConfig, getRandomItem, isAddr} from '../utils';
 import {i18nAddr} from '../i18n';
 import {ethFetch, rpcLastBlock} from '../ethRpc';
-
-const isAddr = data => data.length === 42;
 
 /**
  * Get the latest block number.

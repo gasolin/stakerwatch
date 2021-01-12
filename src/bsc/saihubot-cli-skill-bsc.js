@@ -1,7 +1,7 @@
-import {getConfig} from '../utils';
-import {i18nAddr} from '../i18n';
+'use strict';
 
-// Side Chain
+import {getConfig, isAddr} from '../utils';
+import {i18nAddr} from '../i18n';
 
 /**
  * Check address or tx on bscscan.

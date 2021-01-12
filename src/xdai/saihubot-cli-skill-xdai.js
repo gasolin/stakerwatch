@@ -3,7 +3,7 @@
 import React from 'react';
 import { t } from 'saihubot-cli-adapter/dist/i18n';
 
-import {getConfig, parseArg, toArray} from '../utils';
+import {getConfig, parseArg, toArray, isAddr} from '../utils';
 import {rpcLastBlock} from '../ethRpc';
 import {i18nAddr, i18nBalance} from '../i18n';
 import XdaiBalances from './XdaiBalances';

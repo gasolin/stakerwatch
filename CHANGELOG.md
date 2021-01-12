@@ -1,10 +1,13 @@
-# 0.28 2021/1/10
+# 0.28 2021/1/12
 
 Enhancement
 [lastblock] can search as `block-eth`
 
 Refactor
 - move eth, eth2, xdai, bsc skills into related folders
+
+Fix
+- [eth][xdai][bsc] fix explorers missing isAddr check
 
 # 0.28 2021/1/9
 

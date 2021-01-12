@@ -28,3 +28,5 @@ export const getConfig = (env, defaultValue) => {
 export const getRandomItem = (arr) => arr[Math.floor(Math.random() * arr.length)];
 
 export const formatAddress = (address) => address && `${address.substring(0, 6)}..`;
+
+export const isAddr = data => data.length === 42;
