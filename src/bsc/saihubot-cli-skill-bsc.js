@@ -1,5 +1,5 @@
-import {getConfig} from './utils';
-import {i18nAddr} from './i18n';
+import {getConfig} from '../utils';
+import {i18nAddr} from '../i18n';
 
 // Side Chain
 

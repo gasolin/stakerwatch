@@ -18,17 +18,17 @@ import {
   skillsAccount,
   skillsAddress,
   skillFeesWtf,
-} from './saihubot-cli-skill-eth';
+} from './eth/saihubot-cli-skill-eth';
 import {
   skillEth2Stats,
   skillBeaconLastBlock,
   skillGetValidatorBlance,
   skillsValidator,
-} from './saihubot-cli-skill-eth2';
-import {skillsGas} from './saihubot-cli-skill-ethgas';
+} from './eth2/saihubot-cli-skill-eth2';
+import {skillsGas} from './eth/saihubot-cli-skill-ethgas';
 import {skillGetBlance, skillGetEthBlance} from './saihubot-cli-skill-balance';
-import {skills as skillsXDAI} from './saihubot-cli-skill-xdai';
-import {skills as skillsBSC} from './saihubot-cli-skill-bsc';
+import {skills as skillsXDAI} from './xdai/saihubot-cli-skill-xdai';
+import {skills as skillsBSC} from './bsc/saihubot-cli-skill-bsc';
 // import {skills as skillsZkSync} from './saihubot-cli-skill-zksync';
 import {skillChainId} from './saihubot-cli-skill-chainid';
 import {skillAwesomeEth} from './saihubot-skill-awesome';

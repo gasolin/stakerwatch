@@ -3,6 +3,9 @@
 Enhancement
 [lastblock] can search as `block-eth`
 
+Refactor
+- move eth, eth2, xdai, bsc skills into related folders
+
 # 0.28 2021/1/9
 
 Breaking Change

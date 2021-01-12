@@ -2,9 +2,10 @@
 
 import {t} from 'saihubot-cli-adapter/dist/i18n';
 
-import {getRandomItem} from './utils';
-import {GAS_ESTIMATOR} from './saihubot-addon-ethgas'
-import {ethFetch, rpcGasPrice} from './ethRpc';
+import {GAS_ESTIMATOR} from '../saihubot-addon-ethgas'
+
+import {getRandomItem} from '../utils';
+import {ethFetch, rpcGasPrice} from '../ethRpc';
 
 // ==== GAS ===
 
