@@ -8,7 +8,7 @@ import commaNumber from 'comma-number';
 import { t } from 'saihubot-cli-adapter/dist/i18n';
 
 import {ethFetch, rpcEthBalance} from '../ethRpc';
-import {getConfig, getRandomItem, parseArg} from '../utils';
+import {getConfig, getRandomItem, parseArg, singleAddr} from '../utils';
 import {i18nValidator, i18nAddr} from '../i18n';
 import ValidatorBalances from './ValidatorBalances';
 
@@ -302,7 +302,7 @@ export const skillSearchBeaconscan = {
         return;
       }
     }
-    const data = validator || msg[2];
+    const data = singleAddr(validator || msg[2]);
     const url = 'https://beaconscan.com/validator/' + data;
     robot.addons.search('Check', data, url, 'BeaconScan');
   },
@@ -340,7 +340,7 @@ export const skillSearchBeaconchain = {
         return;
       }
     }
-    const data = validator.trim() || msg[3];
+    const data = singleAddr(validator.trim() || msg[3]);
     const url = 'https://beaconcha.in/validator/' + data;
     robot.addons.search('Check', data, url, 'beaconcha.in');
   },

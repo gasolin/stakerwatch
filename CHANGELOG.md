@@ -9,6 +9,7 @@ Enhancement
 Fix
 - [validator] fix randon pick
 - [bsc][matics][xdai] show the first pre-defined address
+- [Beaconchain][Beaconscan] show the first pre-defined validator
 
 # 0.29 2021/1/12
 
