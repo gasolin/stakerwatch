@@ -1,6 +1,6 @@
 {
   "name": "staker",
-  "version": "0.29.0",
+  "version": "0.30.0",
   "description": "Command line Utillity for Ethereum stakers",
   "bin": {
     "staker": "./dist/cli.js"
@@ -26,7 +26,11 @@
     "saihubot-skill",
     "ethereum",
     "defi",
-    "beacon"
+    "beacon",
+    "gasfee",
+    "xdai",
+    "bsc",
+    "matics"
   ],
   "author": "Fred Lin <gasolin+saihubot@gmail.com>",
   "license": "MIT",

@@ -8,8 +8,8 @@ import commaNumber from 'comma-number';
 import { t } from 'saihubot-cli-adapter/dist/i18n';
 
 import {ethFetch, rpcEthBalance} from '../ethRpc';
-import {getConfig, parseArg} from '../utils';
-import {i18nValidator} from '../i18n';
+import {getConfig, getRandomItem, parseArg} from '../utils';
+import {i18nValidator, i18nAddr} from '../i18n';
 import ValidatorBalances from './ValidatorBalances';
 
 const ADDR = {

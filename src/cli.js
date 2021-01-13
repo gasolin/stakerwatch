@@ -30,7 +30,7 @@ import {skillGetBlance, skillGetEthBlance} from './saihubot-cli-skill-balance';
 import {skills as skillsXDAI} from './xdai/saihubot-cli-skill-xdai';
 import {skills as skillsBSC} from './bsc/saihubot-cli-skill-bsc';
 import {skills as skillsMatics} from './matics/saihubot-cli-skill-matics';
-// import {skills as skillsZkSync} from './saihubot-cli-skill-zksync';
+import {skills as skillsZkSync} from './zksync/saihubot-cli-skill-zksync';
 import {skillChainId} from './saihubot-cli-skill-chainid';
 import {skillAwesomeEth} from './saihubot-skill-awesome';
 
@@ -80,7 +80,7 @@ const bot = new SaihuBot({
     ...skillsBSC,
     ...skillsMatics,
     ...skillsXDAI,
-    // ...skillsZkSync,
+    ...skillsZkSync,
     skillAwesomeEth,
     skillQRCode,
     skillHelp,

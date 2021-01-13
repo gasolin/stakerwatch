@@ -36,7 +36,7 @@ Open terminal and type `npx staker help` to find all skills that `staker` comman
 ```
 $ npx staker help
 
-I have 39 skills:
+I have 41 skills:
 * 💰balance - Show [address] balance
 ...
 * 🔎address|addr [address|tx] - Pick address explorer from the list
@@ -46,6 +46,7 @@ I have 39 skills:
 * 🔎gas - Pick a gas estimator from the list
 * 💸feeswtf [address] - Check total fees consumption on fees.wtf
 * ⛓ network|config|network [chain] - find MetaMask network config data (chain providers url and network id)
+...
 * 🤩awesome|lucky - Show random awesome site around ethereum
 * qrcode [text] - Generate QRCode with [text]
 * help - list available skills
@@ -68,6 +69,8 @@ Use `staker balance [addr]` command, you can given a Eth address and get related
 Eth1 also shows the balance of tokens tradable on [1inch](https://tokenlists.org/token-list?url=tokens.1inch.eth).
 
 xDai chain shows the balance of xDai, WETH and stable coins (USDt, USDC, Dai...).
+
+zkSync (L2) shows all balances.
 
 Also support multiple validators balance by comma (without space).
 
@@ -107,6 +110,13 @@ xDai Chain Balance
 │ 0x1234.. │ USDT   │ 8888        │        │
 ├──────────┼────────┼─────────────┼────────┤
 │ 0x1234.. │ USDC   │ 123         │        │
+└──────────┴────────┴─────────────┴────────┘
+
+zkSync Balance
+┌──────────┬────────┬─────────────┬────────┐
+│ Address  │ Symbol │ Balance     │ Source │
+├──────────┼────────┼─────────────┼────────┤
+│ 0x1234.. │ USDt   │ 0.01        │        │
 └──────────┴────────┴─────────────┴────────┘
 ```
 
@@ -344,6 +354,22 @@ npx staker network matic
 
 Will list all network config if not pass the param.
 
+#### Binance Smart Chain
+
+```
+* 🏦bsc|bscscan [address|tx] - check address or tx on Binance Smart Chain
+```
+
+- [BscScan Block explorer](https://bscscan.com/) Binance Smart Chain explorer.
+
+#### Matics
+
+```
+* 🏦matics [address|tx] - check address or tx on Matics
+```
+
+- [Matic Block explorer](https://explorer-mainnet.maticvigil.com/)
+
 #### xDai Chain
 
 ```
@@ -370,21 +396,25 @@ xDai Chain Balance
 
 - [Blockscout](https://blockscout.com/poa/xdai) xDai Chain explorer.
 
-#### Binance Smart Chain
+#### zkSYnc
 
 ```
-* 🏦bsc|bscscan [address|tx] - check address or tx on Binance Smart Chain
+* 💰balance-zksync - Show address balance on ZkSync
+* 🏦zksync [address|tx] - check address or tx on zkSync
 ```
 
-- [BscScan Block explorer](https://bscscan.com/) Binance Smart Chain explorer.
-
-#### Matics
-
 ```
-* 🏦matics [address|tx] - check address or tx on Matics
+npm balance-zksync [addr]
+
+zkSync Balance
+┌──────────┬────────┬─────────────┬────────┐
+│ Address  │ Symbol │ Balance     │ Source │
+├──────────┼────────┼─────────────┼────────┤
+│ 0x1234.. │ USDt   │ 0.01        │        │
+└──────────┴────────┴─────────────┴────────┘
 ```
 
-- [Matic Block explorer](https://explorer-mainnet.maticvigil.com/)
+- [zkscan explorer](https://zkscan.io/explorer/)
 
 ## Other Tools
 

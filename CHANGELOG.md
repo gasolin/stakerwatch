@@ -1,3 +1,11 @@
+# 0.30 2021/1/13
+
+Feature
+- [balance-zksync][zksync] support show balance on zkSync
+
+Enhancement
+- add keywords on npm and github
+
 # 0.29 2021/1/12
 
 Feature

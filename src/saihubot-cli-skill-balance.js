@@ -8,6 +8,7 @@ import {i18nBalance} from './i18n';
 import EthBalances from './eth/EthBalances';
 import ValidatorBalances from './eth2/ValidatorBalances';
 import XdaiBalances from './xdai/XdaiBalances';
+import ZksyncBalances from './zksync/ZksyncBalances';
 
 // support multiple account balance by comma (without space)
 // also shows validator balances
@@ -39,6 +40,7 @@ const Balances = ({addresses, fetch}) => {
     <EthBalances addresses={addrs} fetch={fetch} />
     <ValidatorBalances validator={validator} fetch={fetch} />
     <XdaiBalances addresses={addrs} fetch={fetch} />
+    <ZksyncBalances addresses={addrs} fetch={fetch} />
   </>)
 }
 
