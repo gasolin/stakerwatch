@@ -3,7 +3,7 @@
 import React from 'react';
 import { t } from 'saihubot-cli-adapter/dist/i18n';
 
-import {getConfig, parseArg, toArray, isAddr} from '../utils';
+import {getConfig, parseArg, toArray, singleAddr, addrTxSearch} from '../utils';
 import {rpcLastBlock} from '../ethRpc';
 import {i18nAddr, i18nBalance} from '../i18n';
 import XdaiBalances from './XdaiBalances';
@@ -17,7 +17,7 @@ import {xdaiFetch} from './utils'
  */
 export const skillSearchXDai = {
   name: 'xdai',
-  help: '🏦xdai [address|tx] - check address or tx on xDai Chain',
+  help: '🏦xdai [address|tx] - check address or tx on xDai',
   requirements: {
     addons: ['search'],
   },
@@ -32,14 +32,18 @@ export const skillSearchXDai = {
         return;
       }
     }
-    const data = addr || msg[2];
-    if(isAddr(data)) {
-      const url = 'https://blockscout.com/poa/xdai/address/' + data + '/tokens';
-      robot.addons.search('Check', data, url, 'xDai');
-    } else {
-      const url = 'https://blockscout.com/poa/xdai/tx/' + data + '/internal-transactions';
-      robot.addons.search('Check tx', data, url, 'xDai Chain');
-    }
+    // only support single address
+    addrTxSearch(
+      singleAddr(addr || msg[2]),
+      (target) => {
+        const url = 'https://blockscout.com/poa/xdai/address/' + target + '/tokens';
+        robot.addons.search('Check', target, url, 'xDai');
+      },
+      (target) => {
+        const url = 'https://blockscout.com/poa/xdai/tx/' + target + '/internal-transactions';
+        robot.addons.search('Check tx', target, url, 'xDai');
+      }
+    )
   },
 };
 
@@ -99,8 +103,7 @@ export const skillGetXdaiBlance = {
         return;
       }
     }
-    const parsedAddr = addr || parseArg(msg[2]);
-    const addrs = toArray(parsedAddr);
+    const addrs = toArray(addr || parseArg(msg[2]));
     robot.sendComponent(<XdaiBalances addresses={addrs} fetch={robot.addons.fetch} xdaiFetch={xdaiFetch} />);
     robot.render();
   },

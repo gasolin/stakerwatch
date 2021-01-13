@@ -6,6 +6,10 @@ Feature
 Enhancement
 - add keywords on npm and github
 
+Fix
+- [validator] fix randon pick
+- [bsc][matics][xdai] show the first pre-defined address
+
 # 0.29 2021/1/12
 
 Feature

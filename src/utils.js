@@ -30,3 +30,13 @@ export const getRandomItem = (arr) => arr[Math.floor(Math.random() * arr.length)
 export const formatAddress = (address) => address && `${address.substring(0, 6)}..`;
 
 export const isAddr = data => data.length === 42;
+
+export const singleAddr = (data) => Array.isArray(data) ? data[0] : data;
+
+export const addrTxSearch = (target, addrfunc, txfunc) => {
+  if(isAddr(target)) {
+    addrfunc && addrfunc(target);
+  } else {
+    txfunc && txfunc(target);
+  }
+}

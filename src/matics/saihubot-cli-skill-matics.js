@@ -1,6 +1,6 @@
 'use strict';
 
-import {getConfig, isAddr} from '../utils';
+import {getConfig, singleAddr, addrTxSearch} from '../utils';
 import {i18nAddr} from '../i18n';
 
 /**
@@ -26,14 +26,18 @@ export const skillSearchMatics = {
         return;
       }
     }
-    const data = addr || msg[2];
-    if(isAddr(data)) {
-      const url = 'https://explorer-mainnet.maticvigil.com/address/' + data;
-      robot.addons.search('Check', data, url, 'Matics');
-    } else {
-      const url = 'https://explorer-mainnet.maticvigil.com/tx/' + data;
-      robot.addons.search('Check tx', data, url, 'Matics');
-    }
+    // only support single address
+    addrTxSearch(
+      singleAddr(addr || msg[2]),
+      (target) => {
+        const url = 'https://explorer-mainnet.maticvigil.com/address/' + target;
+        robot.addons.search('Check', target, url, 'Matics');
+      },
+      (target) => {
+        const url = 'https://explorer-mainnet.maticvigil.com/tx/' + target;
+        robot.addons.search('Check tx', target, url, 'Matics');
+      }
+    )
   },
 };
 

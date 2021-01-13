@@ -1,6 +1,6 @@
 'use strict';
 
-import {getConfig, isAddr} from '../utils';
+import {getConfig, singleAddr, addrTxSearch} from '../utils';
 import {i18nAddr} from '../i18n';
 
 /**
@@ -26,14 +26,18 @@ export const skillSearchBSCscan = {
         return;
       }
     }
-    const data = addr || msg[2];
-    if(isAddr(data)) {
-      const url = 'https://bscscan.com/address/' + data;
-      robot.addons.search('Check', data, url, 'Binance Smart Chain');
-    } else {
-      const url = 'https://bscscan.com/tx/' + data;
-      robot.addons.search('Check tx', data, url, 'Binance Smart Chain');
-    }
+    // only support single address
+    addrTxSearch(
+      singleAddr(addr || msg[2]),
+      (target) => {
+        const url = 'https://bscscan.com/address/' + target;
+        robot.addons.search('Check', target, url, 'Binance Smart Chain');
+      },
+      (target) => {
+        const url = 'https://bscscan.com/tx/' + target;
+        robot.addons.search('Check tx', target, url, 'Binance Smart Chain');
+      }
+    )
   },
 };
 
