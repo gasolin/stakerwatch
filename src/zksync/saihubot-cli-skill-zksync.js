@@ -35,7 +35,7 @@ export const skillSearchZksync = {
       singleAddr(addr || msg[2]),
       (target) => {
         const url = 'https://zkscan.io/explorer/accounts/' + target;
-      robot.addons.search('Check', target, url, 'zkSync');
+        robot.addons.search('Check', target, url, 'zkSync');
       },
       (target) => {
         const url = 'https://zkscan.io/explorer/transactions/' + target;

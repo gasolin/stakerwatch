@@ -2,7 +2,7 @@
 
 import {t} from 'saihubot-cli-adapter/dist/i18n';
 
-import {getConfig, getRandomItem, isAddr} from '../utils';
+import {getConfig, getRandomItem, singleAddr, addrTxSearch} from '../utils';
 import {i18nAddr} from '../i18n';
 import {ethFetch, rpcLastBlock} from '../ethRpc';
 
@@ -148,14 +148,18 @@ export const skillSearchEtherscan = {
         return;
       }
     }
-    const data = addr || msg[3];
-    if(isAddr(data)) {
-      const url = 'https://www.etherscan.io/address/' + data;
-      robot.addons.search('Check', data, url, 'Etherscan');
-    } else {
-      const url = 'https://www.etherscan.io/tx/' + data;
-      robot.addons.search('Check tx', data, url, 'Etherscan');
-    }
+    // only support single address
+    addrTxSearch(
+      singleAddr(addr || msg[3]),
+      (target) => {
+        const url = 'https://www.etherscan.io/address/' + target;
+        robot.addons.search('Check', target, url, 'Etherscan');
+      },
+      (target) => {
+        const url = 'https://www.etherscan.io/tx/' + target;
+      robot.addons.search('Check tx', target, url, 'Etherscan');
+      }
+    )
   },
 };
 
@@ -182,7 +186,7 @@ export const skillSearchBloxy = {
         return;
       }
     }
-    const data = addr || msg[2];
+    const data = singleAddr(addr || msg[2]);
     const url = 'https://bloxy.info/address/' + data;
     robot.addons.search('Check', data, url, 'bloxy.info');
   },
@@ -211,14 +215,18 @@ export const skillSearchBlockchair = {
         return;
       }
     }
-    const data = addr || msg[2];
-    if(isAddr(data)) {
-      const url = 'https://blockchair.com/ethereum/address/' + data;
-      robot.addons.search('Check', data, url, 'blockchair');
-    } else {
-      const url = 'https://blockchair.com/ethereum/transaction/' + data;
-      robot.addons.search('Check tx', data, url, 'blockchair');
-    }
+    // only support single address
+    addrTxSearch(
+      singleAddr(addr || msg[2]),
+      (target) => {
+        const url = 'https://blockchair.com/ethereum/address/' + target;
+        robot.addons.search('Check', target, url, 'blockchair');
+      },
+      (target) => {
+        const url = 'https://blockchair.com/ethereum/transaction/' + target;
+        robot.addons.search('Check tx', target, url, 'blockchair');
+      }
+    )
   },
 };
 
@@ -245,14 +253,18 @@ export const skillSearchBitQuery = {
         return;
       }
     }
-    const data = addr || msg[2];
-    if(isAddr(data)) {
-      const url = 'https://explorer.bitquery.io/ethereum/address/' + data;
-      robot.addons.search('Check', data, url, 'explorer.bitquery.io');
-    } else {
-      const url = 'https://explorer.bitquery.io/ethereum/tx/' + data;
-      robot.addons.search('Check tx', data, url, 'explorer.bitquery.io');
-    }
+    // only support single address
+    addrTxSearch(
+      singleAddr(addr || msg[2]),
+      (target) => {
+        const url = 'https://explorer.bitquery.io/ethereum/address/' + target;
+        robot.addons.search('Check', target, url, 'explorer.bitquery.io');
+      },
+      (target) => {
+        const url = 'https://explorer.bitquery.io/ethereum/tx/' + target;
+        robot.addons.search('Check tx', target, url, 'explorer.bitquery.io');
+      }
+    )
   },
 };
 
@@ -278,14 +290,18 @@ export const skillSearchEtherchain = {
         return;
       }
     }
-    const data = addr || msg[3];
-    if(isAddr(data)) {
-      const url = 'https://etherchain.org/account/' + data;
-      robot.addons.search('Check', data, url, 'etherchain.org');
-    } else {
-      const url = 'https://etherchain.org/tx/' + data;
-      robot.addons.search('Check tx', data, url, 'etherchain');
-    }
+    // only support single address
+    addrTxSearch(
+      singleAddr(addr || msg[3]),
+      (target) => {
+        const url = 'https://etherchain.org/account/' + target;
+        robot.addons.search('Check', target, url, 'etherchain.org');
+      },
+      (target) => {
+        const url = 'https://etherchain.org/tx/' + target;
+      robot.addons.search('Check tx', target, url, 'etherchain');
+      }
+    )
   },
 };
 
@@ -311,14 +327,18 @@ export const skillSearchTokenview = {
         return;
       }
     }
-    const data = addr || msg[2];
-    if(isAddr(data)) {
-      const url = 'https://eth.tokenview.com/en/address/' + data;
-      robot.addons.search('Check', data, url, 'tokenview');
-    } else {
-      const url = 'https://eth.tokenview.com/en/tx/' + data;
-      robot.addons.search('Check tx', data, url, 'tokenview');
-    }
+    // only support single address
+    addrTxSearch(
+      singleAddr(addr || msg[2]),
+      (target) => {
+        const url = 'https://eth.tokenview.com/en/address/' + target;
+        robot.addons.search('Check', target, url, 'tokenview');
+      },
+      (target) => {
+        const url = 'https://eth.tokenview.com/en/tx/' + target;
+        robot.addons.search('Check tx', target, url, 'tokenview');
+      }
+    )
   },
 };
 
@@ -344,14 +364,18 @@ export const skillSearchEthplorer = {
         return;
       }
     }
-    const data = addr || msg[2];
-    if(isAddr(data)) {
-      const url = 'https://ethplorer.io/address/' + data;
-      robot.addons.search('Check', data, url, 'Ethplorer');
-    } else {
-      const url = 'https://ethplorer.io/tx/' + data;
-      robot.addons.search('Check tx', data, url, 'Ethplorer');
-    }
+    // only support single address
+    addrTxSearch(
+      singleAddr(addr || msg[2]),
+      (target) => {
+        const url = 'https://ethplorer.io/address/' + target;
+        robot.addons.search('Check', target, url, 'Ethplorer');
+      },
+      (target) => {
+        const url = 'https://ethplorer.io/tx/' + target;
+        robot.addons.search('Check tx', target, url, 'Ethplorer');
+      }
+    )
   },
 };
 
@@ -377,14 +401,18 @@ export const skillSearchAnyblock = {
         return;
       }
     }
-    const data = addr || msg[2];
-    if(isAddr(data)) {
-      const url = 'https://explorer.anyblock.tools/ethereum/ethereum/mainnet/address/' + data;
-      robot.addons.search('Check', data, url, 'ANYblock');
-    } else {
-      const url = 'https://explorer.anyblock.tools/ethereum/ethereum/mainnet/transaction/' + data;
-      robot.addons.search('Check tx', data, url, 'ANYblock');
-    }
+    // only support single address
+    addrTxSearch(
+      singleAddr(addr || msg[2]),
+      (target) => {
+        const url = 'https://explorer.anyblock.tools/ethereum/ethereum/mainnet/address/' + target;
+        robot.addons.search('Check', target, url, 'ANYblock');
+      },
+      (target) => {
+        const url = 'https://explorer.anyblock.tools/ethereum/ethereum/mainnet/transaction/' + target;
+        robot.addons.search('Check tx', target, url, 'ANYblock');
+      }
+    )
   },
 };
 
@@ -474,7 +502,7 @@ export const skillSearchDappradar = {
         return;
       }
     }
-    const data = addr || msg[2];
+    const data = singleAddr(addr || msg[2]);
     const url = 'https://dappradar.com/hub/wallet/' + data;
     robot.addons.search('Check', data, url, 'DappRadar');
   },
@@ -503,7 +531,7 @@ export const skillSearchDebank = {
         return;
       }
     }
-    const data = addr || msg[2];
+    const data = singleAddr(addr || msg[2]);
     const url = 'https://debank.com/portfolio/' + data;
     robot.addons.search('Check', data, url, 'Debank');
   },
@@ -532,7 +560,7 @@ export const skillSearchZapper = {
         return;
       }
     }
-    const data = addr || msg[2];
+    const data = singleAddr(addr || msg[2]);
     const url = 'https://zapper.fi/dashboard?address=' + data;
     robot.addons.search('Check', data, url, 'Zapper');
   },
@@ -562,7 +590,7 @@ export const skillSearchZerion = {
         return;
       }
     }
-    const data = addr || msg[2];
+    const data = singleAddr(addr || msg[2]);
     const url = 'https://app.zerion.io/' + data + '/overview';
     robot.addons.search('Check', data, url, 'Zerion');
   },
@@ -593,11 +621,10 @@ export const skillFeesWtf = {
         return;
       }
     }
-    const data = addr || msg[2];
     // only support single address
-    const target = Array.isArray(data) ? data[0] : data;
-    const url = 'https://fees.wtf/?address=' + target;
-    robot.addons.search('Check', target, url, 'fees.wtf');
+    const data = singleAddr(addr || msg[2]);
+    const url = 'https://fees.wtf/?address=' + data;
+    robot.addons.search('Check', data, url, 'fees.wtf');
   },
 };
 
