@@ -6,9 +6,7 @@ import { t } from 'saihubot-cli-adapter/dist/i18n';
 
 import {rpcTokens, rpcZkSyncBalance, zksyncFetch} from './utils';
 
-import {formatAddress} from '../utils';
-
-import {i18nBalance} from '../i18n';
+import {formatData} from '../helpers/format';
 
 const i18nL2 = {
   'en': {
@@ -41,14 +39,15 @@ export const ZksyncBalances = ({addresses, fetch}) => {
         if ((Object.keys(balances)).length > 0) {
           Object.entries(balances).forEach(([sym, balance]) => {
             data.push({
-              [t('addr', {i18n: i18nBalance})]: formatAddress(addresses[i]),
-              [t('token', {i18n: i18nBalance})]: sym,
-              [t('balance', {i18n: i18nBalance})]: (Number(balance) / 10 ** tokenMap[sym].decimals).toFixed(4),
+              address: addresses[i],
+              token: sym,
+              balance: (Number(balance) / 10 ** tokenMap[sym].decimals).toFixed(4),
+              source: '',
             });
           })
         }
       }
-      setBalance([...balance, ...data]);
+      setBalance(data);
       setLoading(false);
     }
 
@@ -62,7 +61,7 @@ export const ZksyncBalances = ({addresses, fetch}) => {
   return balance.length > 0
     ? (<>
       <Text>{t('l2Balance', {i18n: i18nL2})}</Text>
-      <Table data={balance} />
+      <Table data={formatData(balance)} />
       <Text> </Text>
     </>)
     : null

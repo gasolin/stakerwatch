@@ -8,6 +8,7 @@ Refactor
 - get EthBalance with hooks
 - move token list into xdai/token
 - move ethRpc into helpers/
+- i18n table with formatData method in helpers/format
 
 # 0.30 2021/1/13
 

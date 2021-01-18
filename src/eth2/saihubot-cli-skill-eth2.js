@@ -2,15 +2,17 @@
 
 import React, {useEffect, useState} from 'react';
 import { Text } from 'ink';
-import AsciiBar from 'ascii-bar';
+// import AsciiBar from 'ascii-bar';
 import humanizeDuration from 'humanize-duration';
 import commaNumber from 'comma-number';
 import { t } from 'saihubot-cli-adapter/dist/i18n';
 
-import {ethFetch, rpcEthBalance} from '../helpers/ethRpc';
+import ValidatorBalances from './ValidatorBalances';
+
+import {ethFetch} from '../helpers/ethRpc';
 import {getConfig, getRandomItem, parseArg, singleAddr} from '../utils';
 import {i18nValidator, i18nAddr} from '../i18n';
-import ValidatorBalances from './ValidatorBalances';
+import useNativeTokenBalance from '../eth/useNativeTokenBalance';
 
 const ADDR = {
   ETH2_DEPOSIT: '0x00000000219ab540356cbb839cbe05303d7705fa',
@@ -63,14 +65,12 @@ export const calcAPR = (validatorscount) =>  (14300 / Math.sqrt(validatorscount)
 
 const Eth2Stats = ({fetch, ethFetch}) => {
   const [beaconData, setBeaconData] = useState({});
-  const [balance, setBalance] = useState(0);
-  useEffect(() => {
-    async function fetchBalance() {
-      ethFetch(fetch, rpcEthBalance(ADDR.ETH2_DEPOSIT))
-      .then(json => setBalance(Math.floor((json.result)/10**18)));
-    }
-    fetchBalance();
-  }, [ethFetch, fetch]);
+  // const [balance, setBalance] = useState(0);
+  const [loading, balances] = useNativeTokenBalance({
+    addresses: [ADDR.ETH2_DEPOSIT],
+    fetch,
+    networkFetch: ethFetch,
+  })
 
   useEffect(() => {
     async function fetchLatest() {
@@ -81,22 +81,23 @@ const Eth2Stats = ({fetch, ethFetch}) => {
     fetchLatest();
   }, [fetch]);
 
-  const percent = balance/524288;
-  const validators = Math.floor(balance/32);
-  const message = `${parseFloat(percent * 100).toFixed(2)}%`;
+  const balance = balances && balances[0] && balances[0]['balance'] && Math.floor(balances[0]['balance']) || 0;
+  // const percent = balance/524288;
+  const validators = balance && Math.floor(balance/32);
+  // const message = `${parseFloat(percent * 100).toFixed(2)}%`;
 
-  const barSize = 20;
-  const bar = new AsciiBar({
-    formatString: '#bar #message',
-    undoneSymbol: "░",
-    doneSymbol: "▓",
-    width: barSize,
-    total: barSize,
-    start: Math.min(Math.round(percent * barSize), barSize),
-    enableSpinner: false,
-    lastUpdateForTiming: false,
-    message,
-  });
+  // const barSize = 20;
+  // const bar = new AsciiBar({
+  //   formatString: '#bar #message',
+  //   undoneSymbol: "░",
+  //   doneSymbol: "▓",
+  //   width: barSize,
+  //   total: barSize,
+  //   start: Math.min(Math.round(percent * barSize), barSize),
+  //   enableSpinner: false,
+  //   lastUpdateForTiming: false,
+  //   message,
+  // });
 
   const title = t('summary', {
     i18n: statsI18n,
@@ -115,10 +116,10 @@ const Eth2Stats = ({fetch, ethFetch}) => {
     waitTime: beaconData && calcWaitTime(queueValidator, beaconData.validatorscount),
     apr: beaconData &&　calcAPR(beaconData.totalvalidatorbalance / 10**9),
   });
-  return balance ? (<>
+  return !loading ? (<>
       <Text>{stats}</Text>
       <Text>{title}</Text>
-      <Text>{bar.renderLine()}</Text>
+      {/* <Text>{bar.renderLine()}</Text> */}
     </>
   ) : <Text>{t('fetching', {i18n: statsI18n})}</Text>
 }
@@ -135,7 +136,6 @@ const Eth2Stats = ({fetch, ethFetch}) => {
  * ⏳ Wait time: 15 days, 1 hour
  *
  * 💰 Deposited ETH: 2,058,626 (for 64,332 🧑‍🌾)
- * [▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓] 392.65%
  */
 export const skillEth2Stats = {
   name: 'stakestat',

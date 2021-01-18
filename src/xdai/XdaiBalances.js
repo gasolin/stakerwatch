@@ -9,6 +9,7 @@ import {xdaiTokenMap} from './token';
 
 import useNativeTokenBalance from '../eth/useNativeTokenBalance';
 import useTokenBalance from '../eth/useTokenBalance';
+import {formatData} from '../helpers/format';
 
 const i18nXdai = {
   'en': {
@@ -27,6 +28,7 @@ export const XdaiBalances = ({addresses, fetch}) => {
     addresses,
     fetch,
     networkFetch: xdaiFetch,
+    tokenName: 'xDai',
   });
   const [tokenLoading, tokenBalance] = useTokenBalance({
     addresses,
@@ -39,7 +41,7 @@ export const XdaiBalances = ({addresses, fetch}) => {
     return (<Text>{t('query', {i18n: i18nXdai})}</Text>)
   }
 
-  const balance = [...xdaiBalance,...tokenBalance]
+  const balance = [...formatData(xdaiBalance),...formatData(tokenBalance)];
   return balance.length > 0
     ? (<>
       <Text>{t('xdaiBalance', {i18n: i18nXdai})}</Text>

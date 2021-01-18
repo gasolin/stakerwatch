@@ -7,6 +7,7 @@ import { t } from 'saihubot-cli-adapter/dist/i18n';
 
 import useEthscanBalance from './useEthscanBalance';
 import useEthscanTokensBalance from './useEthscanTokensBalance';
+import {formatData} from '../helpers/format';
 
 import {i18nValidator, i18nBalance} from '../i18n';
 
@@ -19,7 +20,7 @@ export const EthBalances = ({addresses, fetch}) => {
     return (<Text>{t('query', {i18n: i18nBalance})}</Text>)
   }
 
-  const balance = [...balanceEth, ...balanceToken];
+  const balance = [...formatData(balanceEth), ...formatData(balanceToken)];
   return balance.length > 0
   ? (<>
     <Text>{t('accountBalance', {i18n: i18nValidator})}</Text>

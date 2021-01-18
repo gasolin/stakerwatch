@@ -1,10 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import { getTokensBalances } from '@mycrypto/eth-scan';
-import { t } from 'saihubot-cli-adapter/dist/i18n';
 
-import {formatAddress} from '../utils';
 import {getNodeURL} from '../helpers/ethRpc';
-import {i18nBalance} from '../i18n';
 
 let cachedTokenMap = [];
 
@@ -28,10 +25,10 @@ export const useEthscanTokensBalance = (fetch, addresses) => {
 
             const token = cachedTokenMap.find(entry => entry.address === key);
             data.push({
-              [t('addr', {i18n: i18nBalance})]: formatAddress(addr),
-              [t('token', {i18n: i18nBalance})]: token.symbol,
-              [t('balance', {i18n: i18nBalance})]: (Number(val) / 10**token.decimals).toFixed(4),
-              [t('source', {i18n: i18nBalance})]: token.name || '',
+              address: addr,
+              token: token.symbol,
+              balance: (Number(val) / 10**token.decimals).toFixed(4),
+              source: token.name || '',
             });
           })
         );
