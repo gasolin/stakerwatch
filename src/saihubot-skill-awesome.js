@@ -22,6 +22,10 @@ const AWESOME_LINKS = [
   'https://ethgas.watch/',
   'https://beaconcha.in/education',
   'https://defipulse.com/',
+  'https://cryptofees.info/',
+  'https://app.defiscore.io/assets/usdt',
+  'https://txstreet.com/',
+  'https://terminal.tokenterminal.com/',
 ];
 
 /**

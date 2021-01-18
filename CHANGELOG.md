@@ -1,5 +1,8 @@
 # 0.31 2021/1/
 
+Enhancement
+- add more awesome links
+
 Refactor
 - refactor EthBalance with hooks
 
