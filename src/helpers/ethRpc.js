@@ -1,5 +1,5 @@
 'use strict';
-import {getConfig, getRandomItem} from './utils';
+import {getConfig, getRandomItem} from '../utils';
 
 let idx = 1;
 

@@ -5,12 +5,11 @@ import Table from 'ink-table';
 import { t } from 'saihubot-cli-adapter/dist/i18n';
 
 import {xdaiFetch} from './utils'
+import {xdaiTokenMap} from './token';
 
 import {formatAddress} from '../utils';
-import {rpcEthBalance, rpcTokenBalance} from '../ethRpc';
+import {rpcEthBalance, rpcTokenBalance} from '../helpers/ethRpc';
 import {i18nBalance} from '../i18n';
-import {xdaiTokenMap} from '../token';
-
 
 const i18nXdai = {
   'en': {

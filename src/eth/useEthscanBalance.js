@@ -3,10 +3,10 @@ import { getEtherBalances } from '@mycrypto/eth-scan';
 import { t } from 'saihubot-cli-adapter/dist/i18n';
 
 import {formatAddress} from '../utils';
-import {getNodeURL} from '../ethRpc';
+import {getNodeURL} from '../helpers/ethRpc';
 import {i18nBalance} from '../i18n';
 
-export const useNativeTokenBalance = (addresses) => {
+export const useEthscanBalance = (addresses) => {
   const [balance, setBalance] = useState([]);
   const [loading, setLoading] = useState(true);
   if (!addresses) return null;
@@ -33,4 +33,4 @@ export const useNativeTokenBalance = (addresses) => {
   return [loading, balance];
 }
 
-export default useNativeTokenBalance;
+export default useEthscanBalance;

@@ -7,7 +7,7 @@ import humanizeDuration from 'humanize-duration';
 import commaNumber from 'comma-number';
 import { t } from 'saihubot-cli-adapter/dist/i18n';
 
-import {ethFetch, rpcEthBalance} from '../ethRpc';
+import {ethFetch, rpcEthBalance} from '../helpers/ethRpc';
 import {getConfig, getRandomItem, parseArg, singleAddr} from '../utils';
 import {i18nValidator, i18nAddr} from '../i18n';
 import ValidatorBalances from './ValidatorBalances';
@@ -61,7 +61,7 @@ export const calcWaitTime = (queueLength, activeValidator) => {
 // https://www.reddit.com/r/ethstaker/comments/k7e9k0/what_will_be_the_minimum_apr_rate_for_eth2_stake/gexwpzq/
 export const calcAPR = (validatorscount) =>  (14300 / Math.sqrt(validatorscount)).toFixed(2);
 
-const ProgressBar = ({fetch, ethFetch}) => {
+const Eth2Stats = ({fetch, ethFetch}) => {
   const [beaconData, setBeaconData] = useState({});
   const [balance, setBalance] = useState(0);
   useEffect(() => {
@@ -147,7 +147,7 @@ export const skillEth2Stats = {
   action: function(robot, msg) {
     robot.sendComponent(
       <>
-        <ProgressBar
+        <Eth2Stats
           fetch = {robot.addons.fetch}
           ethFetch={ethFetch}
         />

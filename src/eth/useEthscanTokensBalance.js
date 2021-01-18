@@ -3,12 +3,12 @@ import { getTokensBalances } from '@mycrypto/eth-scan';
 import { t } from 'saihubot-cli-adapter/dist/i18n';
 
 import {formatAddress} from '../utils';
-import {getNodeURL} from '../ethRpc';
+import {getNodeURL} from '../helpers/ethRpc';
 import {i18nBalance} from '../i18n';
 
 let cachedTokenMap = [];
 
-export const useEthTokensBalance = (addresses, fetch) => {
+export const useEthscanTokensBalance = (addresses, fetch) => {
   const [balance, setBalance] = useState([]);
   const [loading, setLoading] = useState(true);
   if (!addresses) return null;
@@ -44,4 +44,4 @@ export const useEthTokensBalance = (addresses, fetch) => {
   return [loading, balance];
 }
 
-export default useEthTokensBalance;
+export default useEthscanTokensBalance;

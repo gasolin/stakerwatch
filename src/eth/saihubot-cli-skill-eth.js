@@ -4,7 +4,7 @@ import {t} from 'saihubot-cli-adapter/dist/i18n';
 
 import {getConfig, getRandomItem, singleAddr, addrTxSearch} from '../utils';
 import {i18nAddr} from '../i18n';
-import {ethFetch, rpcLastBlock} from '../ethRpc';
+import {ethFetch, rpcLastBlock} from '../helpers/ethRpc';
 
 /**
  * Get the latest block number.

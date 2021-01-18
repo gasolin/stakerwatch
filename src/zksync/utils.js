@@ -1,7 +1,7 @@
 'use strict';
 
 import {getConfig, getRandomItem} from '../utils';
-import {baseFetchOptions} from '../ethRpc';
+import {baseFetchOptions} from '../helpers/ethRpc';
 
 // ==== zkSync JSON RPC ===
 // https://zksync.io/api/v0.1.html
