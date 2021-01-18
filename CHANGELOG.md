@@ -1,3 +1,8 @@
+# 0.31 2021/1/
+
+Refactor
+- refactor EthBalance with hooks
+
 # 0.30 2021/1/13
 
 Feature
