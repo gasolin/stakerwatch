@@ -1,5 +1,8 @@
 # 0.31 2021/1/
 
+Feature
+- [stats] show Trapped ETH percentage
+
 Enhancement
 - add more awesome links
 - show xdai balances then load the rest token balances

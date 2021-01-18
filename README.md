@@ -156,16 +156,16 @@ Account Balance
 Get Eth2 stats via `staker stats` command
 
 ```sh
-🤑 Reward Rate: 12.00%
-🌾 Participation Rate: 98.74%
-💃 Active Validators: 44,017
-📦 Latest Epoch: 5791
+🤑 Reward Rate: 9.91%
+🌾 Participation Rate: 98.99%
+💃 Active Validators: 64,228
+📦 Latest Epoch: 10845
 
-👬 Queued Validators: 20,315
-⏳ Wait time: 15 days, 1 hour
+👬 Queued Validators: 16,658
+⏳ Wait time: 8 days, 2 hours
 
-💰 Deposited ETH: 2,058,626 (for 64,332 🧑‍🌾)
-[▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓] 392.65%
+💰 Deposited ETH: 2,588,354 (for 80,886 🧑‍🌾)
+🪣 Trapped ETH%: 2.26%
 ```
 
 Given a Eth2 validator address, you can get Eth2 validator balance

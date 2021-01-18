@@ -13,6 +13,7 @@ import {ethFetch} from '../helpers/ethRpc';
 import {getConfig, getRandomItem, parseArg, singleAddr} from '../utils';
 import {i18nValidator, i18nAddr} from '../i18n';
 import useNativeTokenBalance from '../eth/useNativeTokenBalance';
+import useCoingeckoTokenStat from '../eth/useCoingeckoTokenStat';
 
 const ADDR = {
   ETH2_DEPOSIT: '0x00000000219ab540356cbb839cbe05303d7705fa',
@@ -21,7 +22,8 @@ const ADDR = {
 const statsI18n = {
   "en": {
     fetching: 'Fetching data...',
-    summary: `💰 Deposited ETH: {{balance}} (for {{validators}} 🧑‍🌾)`,
+    summary: `💰 Deposited ETH: {{balance}} (for {{validators}} 🧑‍🌾)
+🪣 Trapped ETH%: {{circulating}}%`,
     statistics: `🤑 Reward Rate: {{apr}}%
 🌾 Participation Rate: {{participationRate}}%
 💃 Active Validators: {{activeValidator}}
@@ -33,7 +35,9 @@ const statsI18n = {
   },
   "zh_TW": {
     fetching: '取得資料中...',
-    summary: `💰 共存入 ETH: {{balance}} (支持 {{validators}} 🧑‍🌾)`,
+    summary: `💰 共存入 ETH: {{balance}} (可支持 {{validators}} 🧑‍🌾)
+🪣 占總流通ETH比率: {{circulating}}%
+`,
     statistics: `🤑 預估收益率: {{apr}}%
 🌾 參與度: {{participationRate}}%
 💃 活躍驗證者: {{activeValidator}}
@@ -43,7 +47,7 @@ const statsI18n = {
 ⏳ 預估等待時間: {{waitTime}}
 `,
   },
-  props: ['apr', 'balance', 'validators', 'activeValidator', 'participationRate', 'epoch', 'queueValidator', 'waitTime'],
+  props: ['apr', 'balance', 'validators', 'activeValidator', 'participationRate', 'epoch', 'queueValidator', 'waitTime', 'circulating'],
 }
 
 
@@ -65,12 +69,12 @@ export const calcAPR = (validatorscount) =>  (14300 / Math.sqrt(validatorscount)
 
 const Eth2Stats = ({fetch, ethFetch}) => {
   const [beaconData, setBeaconData] = useState({});
-  // const [balance, setBalance] = useState(0);
   const [loading, balances] = useNativeTokenBalance({
     addresses: [ADDR.ETH2_DEPOSIT],
     fetch,
     networkFetch: ethFetch,
   })
+  const [tokenInfo] = useCoingeckoTokenStat(fetch, 'ethereum');
 
   useEffect(() => {
     async function fetchLatest() {
@@ -99,11 +103,6 @@ const Eth2Stats = ({fetch, ethFetch}) => {
   //   message,
   // });
 
-  const title = t('summary', {
-    i18n: statsI18n,
-    balance: commaNumber(balance),
-    validators: balance && commaNumber(validators),
-  });
   // more accurate: active - exit
   const queueValidator = beaconData && (validators - beaconData.validatorscount);
   const stats = t('statistics', {
@@ -116,9 +115,15 @@ const Eth2Stats = ({fetch, ethFetch}) => {
     waitTime: beaconData && calcWaitTime(queueValidator, beaconData.validatorscount),
     apr: beaconData &&　calcAPR(beaconData.totalvalidatorbalance / 10**9),
   });
+  const summary = t('summary', {
+    i18n: statsI18n,
+    balance: commaNumber(balance),
+    validators: balance && commaNumber(validators),
+    circulating: balance && tokenInfo && Number(balance * 100 / tokenInfo[0].circulating_supply).toFixed(2),
+  });
   return !loading ? (<>
       <Text>{stats}</Text>
-      <Text>{title}</Text>
+      <Text>{summary}</Text>
       {/* <Text>{bar.renderLine()}</Text> */}
     </>
   ) : <Text>{t('fetching', {i18n: statsI18n})}</Text>
@@ -127,15 +132,16 @@ const Eth2Stats = ({fetch, ethFetch}) => {
 /**
  * Get Eth2 stake state.
  *
- * 🤑 Reward Rate: 12.00%
- * 🌾 Participation rate: 98.74%
- * 💃 Active Validators: 44,017
- * 📦 Latest Epoch: 5791
+ * 🤑 Reward Rate: 9.92%
+ * 🌾 Participation Rate: 99.05%
+ * 💃 Active Validators: 64,224
+ * 📦 Latest Epoch: 10844
  *
- * 👬 Queued Validators: 20,315
- * ⏳ Wait time: 15 days, 1 hour
+ * 👬 Queued Validators: 16,642
+ * ⏳ Wait time: 8 days, 2 hours
  *
- * 💰 Deposited ETH: 2,058,626 (for 64,332 🧑‍🌾)
+ * 💰 Deposited ETH: 2,587,714 (for 80,866 🧑‍🌾)
+ * 🪣 Trapped ETH%: 2.26%
  */
 export const skillEth2Stats = {
   name: 'stakestat',
