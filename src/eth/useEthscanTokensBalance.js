@@ -8,7 +8,7 @@ import {i18nBalance} from '../i18n';
 
 let cachedTokenMap = [];
 
-export const useEthscanTokensBalance = (addresses, fetch) => {
+export const useEthscanTokensBalance = (fetch, addresses) => {
   const [balance, setBalance] = useState([]);
   const [loading, setLoading] = useState(true);
   if (!addresses) return null;

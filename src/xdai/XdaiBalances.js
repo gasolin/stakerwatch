@@ -7,9 +7,8 @@ import { t } from 'saihubot-cli-adapter/dist/i18n';
 import {xdaiFetch} from './utils'
 import {xdaiTokenMap} from './token';
 
-import {formatAddress} from '../utils';
-import {rpcEthBalance, rpcTokenBalance} from '../helpers/ethRpc';
-import {i18nBalance} from '../i18n';
+import useNativeTokenBalance from '../eth/useNativeTokenBalance';
+import useTokenBalance from '../eth/useTokenBalance';
 
 const i18nXdai = {
   'en': {
@@ -24,50 +23,23 @@ const i18nXdai = {
 }
 
 export const XdaiBalances = ({addresses, fetch}) => {
-  const [balance, setBalance] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const data = [];
-  useEffect(() => {
-    async function fetchXdaiBalance() {
-      const tokens = Object.keys(xdaiTokenMap);
+  const [xdaiLoading, xdaiBalance] = useNativeTokenBalance({
+    addresses,
+    fetch,
+    networkFetch: xdaiFetch,
+  });
+  const [tokenLoading, tokenBalance] = useTokenBalance({
+    addresses,
+    fetch,
+    networkFetch: xdaiFetch,
+    tokenMap: xdaiTokenMap,
+  });
 
-      for (let i = 0; i < addresses.length ; i++) {
-        const json = await xdaiFetch(fetch, rpcEthBalance(addresses[i]))
-        const val = json.result === 0x0 ? 0 : Number(json.result)/10**18;
-        if (val > 0) {
-          data.push({
-            [t('addr', {i18n: i18nBalance})]: formatAddress(addresses[i]),
-            [t('token', {i18n: i18nBalance})]: 'xDai',
-            [t('balance', {i18n: i18nBalance})]: val,
-            [t('source', {i18n: i18nBalance})]: '',
-          });
-        }
-
-        for(let j = 0; j < tokens.length; j++) {
-          const currentTokenAddr = tokens[j];
-          const tokenInfo = xdaiTokenMap[currentTokenAddr];
-          const tokenJson = await xdaiFetch(fetch, rpcTokenBalance(addresses[i], currentTokenAddr));
-          if (tokenJson.result !== '0x0000000000000000000000000000000000000000000000000000000000000000') {
-            data.push({
-              [t('addr', {i18n: i18nBalance})]: formatAddress(addresses[i]),
-              [t('token', {i18n: i18nBalance})]: tokenInfo.symbol,
-              [t('balance', {i18n: i18nBalance})]: Number(tokenJson.result) / 10 ** tokenInfo.decimals,
-              [t('source', {i18n: i18nBalance})]: tokenInfo.name,
-            });
-          }
-        }
-      }
-      setBalance([...balance, ...data]);
-      setLoading(false);
-    }
-
-    addresses && fetchXdaiBalance();
-  }, [addresses, fetch]);
-
-  if (loading) {
+  if (xdaiLoading && tokenLoading) {
     return (<Text>{t('query', {i18n: i18nXdai})}</Text>)
   }
 
+  const balance = [...xdaiBalance,...tokenBalance]
   return balance.length > 0
     ? (<>
       <Text>{t('xdaiBalance', {i18n: i18nXdai})}</Text>

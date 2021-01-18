@@ -2,9 +2,12 @@
 
 Enhancement
 - add more awesome links
+- show xdai balances then load the rest token balances
 
 Refactor
-- refactor EthBalance with hooks
+- get EthBalance with hooks
+- move token list into xdai/token
+- move ethRpc into helpers/
 
 # 0.30 2021/1/13
 
