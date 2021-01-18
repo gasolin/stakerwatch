@@ -1,4 +1,4 @@
-# 0.31 2021/1/
+# 0.31 2021/1/19
 
 Feature
 - [stats] show Trapped ETH percentage

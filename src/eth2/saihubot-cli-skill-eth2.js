@@ -119,7 +119,7 @@ const Eth2Stats = ({fetch, ethFetch}) => {
     i18n: statsI18n,
     balance: commaNumber(balance),
     validators: balance && commaNumber(validators),
-    circulating: balance && tokenInfo && Number(balance * 100 / tokenInfo[0].circulating_supply).toFixed(2),
+    circulating: balance && tokenInfo && tokenInfo[0] && Number(balance * 100 / tokenInfo[0].circulating_supply).toFixed(2),
   });
   return !loading ? (<>
       <Text>{stats}</Text>
