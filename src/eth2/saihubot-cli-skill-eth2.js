@@ -23,7 +23,7 @@ const statsI18n = {
   "en": {
     fetching: 'Fetching data...',
     summary: `💰 Deposited ETH: {{balance}} (for {{validators}} 🧑‍🌾)
-🪣 Trapped ETH%: {{circulating}}%`,
+🪣 Trapped ETH: $\{{sum}}B ({{circulating}}% of circulating supply)`,
     statistics: `🤑 Reward Rate: {{apr}}%
 🌾 Participation Rate: {{participationRate}}%
 💃 Active Validators: {{activeValidator}}
@@ -36,7 +36,7 @@ const statsI18n = {
   "zh_TW": {
     fetching: '取得資料中...',
     summary: `💰 共存入 ETH: {{balance}} (可支持 {{validators}} 🧑‍🌾)
-🪣 占總流通ETH比率: {{circulating}}%
+🪣 鎖倉的ETH: $\{{sum}}B (占總流通量 {{circulating}}%)
 `,
     statistics: `🤑 預估收益率: {{apr}}%
 🌾 參與度: {{participationRate}}%
@@ -47,7 +47,7 @@ const statsI18n = {
 ⏳ 預估等待時間: {{waitTime}}
 `,
   },
-  props: ['apr', 'balance', 'validators', 'activeValidator', 'participationRate', 'epoch', 'queueValidator', 'waitTime', 'circulating'],
+  props: ['apr', 'balance', 'validators', 'activeValidator', 'participationRate', 'epoch', 'queueValidator', 'waitTime', 'circulating', 'sum'],
 }
 
 
@@ -120,6 +120,7 @@ const Eth2Stats = ({fetch, ethFetch}) => {
     balance: commaNumber(balance),
     validators: balance && commaNumber(validators),
     circulating: balance && tokenInfo && tokenInfo[0] && Number(balance * 100 / tokenInfo[0].circulating_supply).toFixed(2),
+    sum: balance && tokenInfo && tokenInfo[0] && Number(balance * tokenInfo[0].current_price / 10**9).toFixed(2),
   });
   return !loading ? (<>
       <Text>{stats}</Text>

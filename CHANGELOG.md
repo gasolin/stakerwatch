@@ -1,7 +1,7 @@
 # 0.31 2021/1/19
 
 Feature
-- [stats] show Trapped ETH percentage
+- [stats] show Trapped ETH amount and the percentage of circulating supply
 
 Enhancement
 - add more awesome links

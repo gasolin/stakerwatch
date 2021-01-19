@@ -1,6 +1,6 @@
 {
   "name": "staker",
-  "version": "0.31.1",
+  "version": "0.31.2",
   "description": "Command line Utillity for Ethereum stakers",
   "bin": {
     "staker": "./dist/cli.js"
