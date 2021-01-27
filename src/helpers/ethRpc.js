@@ -45,6 +45,7 @@ const ETH_NODES = [
   'https://mainnet-nethermind.blockscout.com/', // Blockscout
   'https://nodes.mewapi.io/rpc/eth', // MyEtherWallet
   'https://mainnet.eth.cloud.ava.do/', // AVADO
+  'https://eth-mainnet.zerion.io/',
 ];
 
 let cachedNodeURL = '';
@@ -53,9 +54,10 @@ let cachedNodeURL = '';
  * Random pick a ethereum node.
  *
  * can set yours via set SAIHUBOT_NODE_URL environment variable.
+ * @param {boolean} cache cached the returned node selection in a session (default false)
  */
-export const getNodeURL = () => {
-  if (cachedNodeURL) return cachedNodeURL;
+export const getNodeURL = (cache = false) => {
+  if (cache && cachedNodeURL) return cachedNodeURL;
   cachedNodeURL = getConfig('NODE_URL', getRandomItem(ETH_NODES));
   return cachedNodeURL;
 }

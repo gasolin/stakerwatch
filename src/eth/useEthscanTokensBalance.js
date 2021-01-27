@@ -16,7 +16,7 @@ export const useEthscanTokensBalance = (fetch, addresses) => {
       if (cachedTokenMap.length === 0) {
         const json  = await fetch('https://wispy-bird-88a7.uniswap.workers.dev/?url=http://tokens.1inch.eth.link')
           .then(response => response.json());
-        cachedTokenMap = json.tokens
+        cachedTokenMap = json.tokens;
       }
       const tokenBalances = await getTokensBalances(getNodeURL(), addresses, cachedTokenMap.map(entry => entry.address));
         Object.keys(tokenBalances).map(addr => // multi addr

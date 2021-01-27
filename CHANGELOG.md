@@ -1,3 +1,14 @@
+# 0.32 2021/1/
+
+Enhancement
+- not cache returned nodes
+- add eth2_tooling in awesome list
+- add zerion in free node list
+
+Refactor
+- remove ascii-bar dep
+- update eth-scan
+
 # 0.31 2021/1/19
 
 Feature
