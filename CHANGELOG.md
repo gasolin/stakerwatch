@@ -8,6 +8,9 @@ Enhancement
 - add dao explore in awesome list
 - add network command usage on ethereum, matic, xdai, bsc
 
+Fix
+- [defi] fix specify address
+
 # 0.32 2021/1/27
 
 Enhancement

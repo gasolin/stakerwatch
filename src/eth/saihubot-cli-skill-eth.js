@@ -427,18 +427,15 @@ export const skillAccountPicker = {
   requirements: {
     addons: ['confirm']
   },
-  rule: /^account$|^defi$/i,
+  rule: /^(account )(.*)|^(defi )(.*)|^account$|^defi$/i,
   action: function(robot, msg) {
-    let addr = '';
-    if (msg[2] === undefined) {
-      addr = getConfig('ADDR', '');
-      if (addr === '') {
-        robot.send(t('needAddr', {i18n: i18nAddr}));
-        robot.render();
-        return;
-      }
+    const addr = (msg[4] === undefined) ? getConfig('ADDR', '') : msg[4];
+    if (addr === '') {
+      robot.send(t('needAddr', {i18n: i18nAddr}));
+      robot.render();
+      return;
     }
-    let data = addr || msg[2];
+    let data = singleAddr(addr);
     robot.addons.confirm(t('pick', {i18n: i18nAddr}), [
       {
         title: t('random', {i18n: i18nAddr}),
