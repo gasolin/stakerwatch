@@ -46,6 +46,7 @@ const ETH_NODES = [
   'https://nodes.mewapi.io/rpc/eth', // MyEtherWallet
   'https://mainnet.eth.cloud.ava.do/', // AVADO
   'https://eth-mainnet.zerion.io/',
+  'https://main-light.eth.linkpool.io',
 ];
 
 let cachedNodeURL = '';

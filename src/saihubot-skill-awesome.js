@@ -27,6 +27,7 @@ const AWESOME_LINKS = [
   'https://txstreet.com/',
   'https://terminal.tokenterminal.com/',
   'https://notes.ethereum.org/@protolambda/eth2_tooling',
+  'https://app.daohaus.club/explore',
 ];
 
 /**

@@ -1,6 +1,6 @@
 {
   "name": "staker",
-  "version": "0.32.0",
+  "version": "0.33.0",
   "description": "Command line Utillity for Ethereum stakers",
   "bin": {
     "staker": "./dist/cli.js"
@@ -30,7 +30,7 @@
     "gasfee",
     "xdai",
     "bsc",
-    "matics"
+    "matic"
   ],
   "author": "Fred Lin <gasolin+saihubot@gmail.com>",
   "license": "MIT",

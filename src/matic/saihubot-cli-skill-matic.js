@@ -4,18 +4,18 @@ import {getConfig, singleAddr, addrTxSearch} from '../utils';
 import {i18nAddr} from '../i18n';
 
 /**
- * Check address or tx on Matics.
+ * Check address or tx on Matic.
  *
  * can pass the address, or pre-define the
  * SAIHUBOT_ADDR environment variable
  */
-export const skillSearchMatics = {
-  name: 'matics',
-  help: '🏦matics [address|tx] - check address or tx on Matics',
+export const skillSearchMatic = {
+  name: 'matic',
+  help: '🏦matic [address|tx] - check address or tx on Matic',
   requirements: {
     addons: ['search'],
   },
-  rule: /(^matics )(.*)|^matics$/i,
+  rule: /(^matic )(.*)|^matic$/i,
   action: function(robot, msg) {
     let addr = '';
     if (msg[2] === undefined) {
@@ -42,6 +42,6 @@ export const skillSearchMatics = {
 };
 
 const skills = [
-  skillSearchMatics,
+  skillSearchMatic,
 ];
 export {skills};

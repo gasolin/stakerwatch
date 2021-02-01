@@ -1,4 +1,14 @@
-# 0.32 2021/1/
+# 0.33 2021/2/1
+
+Breaking Change
+- rename matics to matic
+
+Enhancement
+- add https://main-light.eth.linkpool.io as new node
+- add dao explore in awesome list
+- add network command usage on ethereum, matic, xdai, bsc
+
+# 0.32 2021/1/27
 
 Enhancement
 - not cache returned nodes
