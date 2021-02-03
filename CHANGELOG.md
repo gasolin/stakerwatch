@@ -1,3 +1,8 @@
+# 0.34 2021/2/3
+
+* ⛓ nodes - list free accessible ethereum nodes
+* update dependency packages
+
 # 0.33 2021/2/1
 
 Breaking Change

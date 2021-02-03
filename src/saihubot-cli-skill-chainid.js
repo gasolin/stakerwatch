@@ -3,6 +3,7 @@ import React from 'react';
 import Table from 'ink-table';
 import {t} from 'saihubot-cli-adapter/dist/i18n';
 
+import {ETH_NODES} from './helpers/ethRpc';
 import {getRandomItem} from './utils';
 
 /**
@@ -56,5 +57,21 @@ export const skillChainId = {
   }
 }
 
-const skills = [skillChainId];
+/**
+ * List free accessible ethereum nodes.
+ */
+export const skillNodes = {
+  name: 'nodes',
+  help: '⛓ nodes - list free accessible ethereum nodes',
+  requirements: {
+    adapters: ['cli'],
+  },
+  rule: /^nodes$/i,
+  action: function(robot, msg) {
+    robot.send(ETH_NODES.join('\n'));
+    robot.render();
+  }
+}
+
+const skills = [skillChainId, skillNodes];
 export {skills};

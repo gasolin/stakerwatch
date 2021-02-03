@@ -36,7 +36,7 @@ Open terminal and type `npx staker help` to find all skills that `staker` comman
 ```
 $ npx staker help
 
-I have 41 skills:
+I have 42 skills:
 * 💰balance - Show [address] balance
 ...
 * 🔎address|addr [address|tx] - Pick address explorer from the list
@@ -352,6 +352,7 @@ Check Account on Defi Explorer
 
 ```
 * ⛓ network|config|network [chain] - find MetaMask network config data (chain providers url and network id)
+* ⛓ nodes - list free accessible ethereum nodes
 ```
 
 If you are using Metamask for EVM compatible chain like Huobi eco chain, BSC chain... Can use `npx staker network` command to find and fill the Network data of RPC, Chainid, symbol.
@@ -372,6 +373,18 @@ npx staker network matic
 ```
 
 Will list all network config if not pass the param.
+
+
+`staker nodes` command will list free accessible ethereum nodes:
+
+```
+npx staker nodes
+
+https://api.mycryptoapi.com/eth
+https://web3.1inch.exchange/
+https://cloudflare-eth.com/
+...
+```
 
 #### Binance Smart Chain (BSC)
 

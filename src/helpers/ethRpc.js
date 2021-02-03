@@ -38,7 +38,7 @@ export const rpcGasPrice = () => JSON.stringify({
 });
 
 // free nodes without API keys from https://ethereumnodes.com/
-const ETH_NODES = [
+export const ETH_NODES = [
   'https://api.mycryptoapi.com/eth', // MyCrypto
   'https://web3.1inch.exchange/', // 1inch
   'https://cloudflare-eth.com/', // Cloudflare

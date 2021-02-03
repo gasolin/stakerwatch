@@ -31,7 +31,7 @@ import {skills as skillsXDAI} from './xdai/saihubot-cli-skill-xdai';
 import {skills as skillsBSC} from './bsc/saihubot-cli-skill-bsc';
 import {skills as skillsMatic} from './matic/saihubot-cli-skill-matic';
 import {skills as skillsZkSync} from './zksync/saihubot-cli-skill-zksync';
-import {skillChainId} from './saihubot-cli-skill-chainid';
+import {skills as skillsChain} from './saihubot-cli-skill-chainid';
 import {skillAwesomeEth} from './saihubot-skill-awesome';
 
 const cli = meow(`
@@ -76,7 +76,7 @@ const bot = new SaihuBot({
     ...skillsAccount,
     ...skillsGas,
     skillFeesWtf,
-    skillChainId,
+    ...skillsChain,
     ...skillsBSC,
     ...skillsMatic,
     ...skillsXDAI,
