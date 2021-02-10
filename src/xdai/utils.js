@@ -1,7 +1,7 @@
 'use strict';
 
 import {getConfig, getRandomItem} from '../utils';
-import {baseFetchOptions} from '../helpers/ethRpc';
+import {jsonRpcFetch} from '../helpers/jsonRpc';
 
 // ==== xDai Chain JSON RPC ===
 
@@ -25,7 +25,4 @@ export const getXdaiNodeURL = () => {
 }
 
 export const xdaiFetch = (fetch, body) =>
-  fetch(getXdaiNodeURL(), {
-    ...baseFetchOptions,
-    body,
-  }).then(response => response.json());
+  jsonRpcFetch(fetch, getXdaiNodeURL(), body);

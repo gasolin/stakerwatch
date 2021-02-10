@@ -1,4 +1,5 @@
 'use strict';
+import {jsonRpcFetch} from '../helpers/jsonRpc';
 import {getConfig, getRandomItem} from '../utils';
 
 let idx = 1;
@@ -63,15 +64,5 @@ export const getNodeURL = (cache = false) => {
   return cachedNodeURL;
 }
 
-export const baseFetchOptions = {
-  method: "POST",
-  headers: {
-    "Content-Type": "application/json"
-  },
-};
-
 export const ethFetch = (fetch, body) =>
-  fetch(getNodeURL(), {
-    ...baseFetchOptions,
-    body,
-  }).then(response => response.json());
+  jsonRpcFetch(fetch, getNodeURL(), body);

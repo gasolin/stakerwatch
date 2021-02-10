@@ -1,7 +1,7 @@
 'use strict';
 
-import {getConfig, getRandomItem} from '../utils';
-import {baseFetchOptions} from '../helpers/ethRpc';
+import {getConfig} from '../utils';
+import {jsonRpcFetch} from '../helpers/jsonRpc';
 
 // ==== zkSync JSON RPC ===
 // https://zksync.io/api/v0.1.html
@@ -38,7 +38,4 @@ export const getZksyncNodeURL = () => {
 }
 
 export const zksyncFetch = (fetch, body) =>
-  fetch(getZksyncNodeURL(), {
-    ...baseFetchOptions,
-    body,
-  }).then(response => response.json());
+  jsonRpcFetch(fetch, getZksyncNodeURL(), body);
