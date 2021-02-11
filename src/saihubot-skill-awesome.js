@@ -2,32 +2,108 @@
 
 import { t } from 'saihubot-cli-adapter/dist/i18n';
 
+//TODO: add desc
 const AWESOME_LINKS = [
-  'https://twitter.com/stakerwatch',
-  'https://ethstats.net/',
-  'https://studio.glassnode.com/metrics?a=ETH&m=addresses.ActiveCount',
-  'https://www.stateofthedapps.com/rankings/platform/ethereum',
-  'https://debank.com/projects',
-  'https://github.com/ConsenSys/ethereum-developer-tools-list/blob/master/README.md',
-  'https://github.com/bkrem/awesome-solidity',
-  'https://github.com/PhABC/ethereum-token-standards-list',
-  'https://docs.ethhub.io/ethereum-roadmap/ethereum-2.0/eth-2.0-phases/',
-  'https://beaconcha.in/stakingServices',
-  'https://blockchair.com/ethereum',
-  'https://blog.ethereum.org/',
-  'https://launchpad.ethereum.org/',
-  'https://ethernodes.org/',
-  'https://twitter.com/Eth2Bot',
-  'https://www.youtube.com/watch?v=ShJZf5lsXiM',
-  'https://ethgas.watch/',
-  'https://beaconcha.in/education',
-  'https://defipulse.com/',
-  'https://cryptofees.info/',
-  'https://app.defiscore.io/assets/usdt',
-  'https://txstreet.com/',
-  'https://terminal.tokenterminal.com/',
-  'https://notes.ethereum.org/@protolambda/eth2_tooling',
-  'https://app.daohaus.club/explore',
+  {
+    link: 'https://twitter.com/stakerwatch',
+    description: 'twitter for the stakerwat.ch project',
+  },
+  {
+    link: 'https://ethstats.net/',
+    description: 'Ethereum related stats',
+  },
+  {
+    link: 'https://studio.glassnode.com/metrics?a=ETH&m=addresses.ActiveCount',
+    description: '',
+  },
+  {
+    link: 'https://www.stateofthedapps.com/rankings/platform/ethereum',
+    description: '',
+  },
+  {
+    link: 'https://debank.com/projects',
+    description: 'List Defi Projects',
+  },
+  {
+    link: 'https://github.com/ConsenSys/ethereum-developer-tools-list/blob/master/README.md',
+    description: '',
+  },
+  {
+    link: 'https://github.com/bkrem/awesome-solidity',
+    description: 'awesome list of solidity related projects',
+  },
+  {
+    link: 'https://github.com/PhABC/ethereum-token-standards-list',
+    description: '',
+  },
+  {
+    link: 'https://docs.ethhub.io/ethereum-roadmap/ethereum-2.0/eth-2.0-phases/',
+    description: 'Explain Ethereum 2.0 phases',
+  },
+  {
+    link: 'https://beaconcha.in/stakingServices',
+    description: 'List of Ethereum 2.0 staking services',
+  },
+  {
+    link: 'https://blockchair.com/ethereum',
+    description: '',
+  },
+  {
+    link: 'https://blog.ethereum.org/',
+    description: '',
+  },
+  {
+    link: 'https://launchpad.ethereum.org/',
+    description: '',
+  },
+  {
+    link: 'https://ethernodes.org/',
+    description: '',
+  },
+  {
+    link: 'https://www.youtube.com/watch?v=ShJZf5lsXiM',
+    description: '',
+  },
+  {
+    link: 'https://ethgas.watch/',
+    description: 'Collection of gasfee estimators',
+  },
+  {
+    link: 'https://beaconcha.in/education',
+    description: '',
+  },
+  {
+    link: 'https://defipulse.com/',
+    description: '',
+  },
+  {
+    link: 'https://cryptofees.info/',
+    description: '',
+  },
+  {
+    link: 'https://app.defiscore.io/assets/usdt',
+    description: '',
+  },
+  {
+    link: 'https://txstreet.com/',
+    description: '',
+  },
+  {
+    link: 'https://terminal.tokenterminal.com/',
+    description: '',
+  },
+  {
+    link: 'https://notes.ethereum.org/@protolambda/eth2_tooling',
+    description: '',
+  },
+  {
+    link: 'https://app.daohaus.club/explore',
+    description: 'List of DAOs',
+  },
+  {
+    link: 'https://github.com/ethereum/EIPs/tree/master/EIPS',
+    description: 'List of Ethereum Improvement Proposals',
+  },
 ];
 
 /**
@@ -50,7 +126,7 @@ export const skillAwesomeEth = {
   rule: /^awesome|^lucky/i,
   action: function(robot, msg) {
     robot.send(t('desc', {i18n: this.i18n}));
-    robot.addons.openLink(AWESOME_LINKS[Math.floor(Math.random() * AWESOME_LINKS.length)]);
+    robot.addons.openLink(AWESOME_LINKS[Math.floor(Math.random() * AWESOME_LINKS.length)]?.link);
   }
 }
 

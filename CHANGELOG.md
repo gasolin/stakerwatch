@@ -1,3 +1,9 @@
+# 0.35
+
+Refactor
+* distill jsonRpcFetch
+* add descriptions in awesome list
+
 # 0.34 2021/2/3
 
 * ⛓ nodes - list free accessible ethereum nodes

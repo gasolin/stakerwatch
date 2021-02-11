@@ -54,6 +54,10 @@ export const skillChainId = {
         }
         robot.render();
       })
+      .catch(err => {
+        robot.send(err.message);
+        robot.render();
+      })
   }
 }
 

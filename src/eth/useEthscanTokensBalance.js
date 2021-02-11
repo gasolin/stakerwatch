@@ -14,7 +14,7 @@ export const useEthscanTokensBalance = (fetch, addresses) => {
   useEffect(() => {
     async function fetchTokenBalance() {
       if (cachedTokenMap.length === 0) {
-        const json  = await fetch('https://wispy-bird-88a7.uniswap.workers.dev/?url=http://tokens.1inch.eth.link')
+        const json  = await fetch('http://tokenlist.zerion.eth.link')
           .then(response => response.json());
         cachedTokenMap = json.tokens;
       }
