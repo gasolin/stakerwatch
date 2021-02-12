@@ -1,5 +1,5 @@
 // https://blockscout.com/poa/xdai/bridged-tokens
-export const xdaiTokenMap = {
+export const TOKENMAP = {
   "0xDDAfbb505ad214D7b80b1f830fcCc89B60fb7A83": {
     "name": "USD Coin",
     "logo": "usdc.png",

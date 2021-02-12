@@ -25,6 +25,7 @@ import {
   skillGetValidatorBlance,
   skillsValidator,
 } from './eth2/saihubot-cli-skill-eth2';
+// import {skills as skillsDefi} from './eth/saihubot-cli-skill-defi';
 import {skillsGas} from './eth/saihubot-cli-skill-ethgas';
 import {skillGetBlance, skillGetEthBlance} from './saihubot-cli-skill-balance';
 import {skills as skillsXDAI} from './xdai/saihubot-cli-skill-xdai';
@@ -67,6 +68,7 @@ const bot = new SaihuBot({
   skills: [
     skillGetBlance,
     skillGetEthBlance,
+    // ...skillsDefi,
     skillLastBlock,
     ...skillsAddress,
     skillGetValidatorBlance,

@@ -1,4 +1,7 @@
-# 0.35
+# 0.35 2021/2/12
+
+Feature
+* [balance-bsc] support show Binance Smart Chain balance
 
 Refactor
 * distill jsonRpcFetch

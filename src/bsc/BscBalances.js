@@ -4,51 +4,51 @@ import { Text } from 'ink';
 import Table from 'ink-table';
 import { t } from 'saihubot-cli-adapter/dist/i18n';
 
-import {xdaiFetch} from './utils'
+import {bscFetch} from './utils'
 import {TOKENMAP} from './token';
 
 import useNativeTokenBalance from '../eth/useNativeTokenBalance';
 import useTokenBalance from '../eth/useTokenBalance';
 import {formatData} from '../helpers/format';
 
-const i18nXdai = {
+const i18nBSC = {
   'en': {
-    query: 'Query balance on xDai Chain...',
-    xdaiBalance: 'xDai Chain Balance',
+    query: 'Query balance on Binance Smart Chain...',
+    balance: 'Binance Smart Chain Balance',
   },
   'zh_TW': {
-    query: '查詢 xDai 網路餘額中...',
-    xdaiBalance: 'xDai 網路餘額',
+    query: '查詢 Binance 智能網路餘額中...',
+    balance: 'Binance 智能網路餘額',
   },
   props: ['blocknum']
 }
 
-export const XdaiBalances = ({addresses, fetch}) => {
-  const [xdaiLoading, xdaiBalance] = useNativeTokenBalance({
+export const BscBalances = ({addresses, fetch}) => {
+  const [bscLoading, bscBalance] = useNativeTokenBalance({
     addresses,
     fetch,
-    networkFetch: xdaiFetch,
-    tokenName: 'xDai',
+    networkFetch: bscFetch,
+    tokenName: 'BNB',
   });
   const [tokenLoading, tokenBalance] = useTokenBalance({
     addresses,
     fetch,
-    networkFetch: xdaiFetch,
+    networkFetch: bscFetch,
     tokenMap: TOKENMAP,
   });
 
-  if (xdaiLoading && tokenLoading) {
-    return (<Text>{t('query', {i18n: i18nXdai})}</Text>)
+  if (bscLoading && tokenLoading) {
+    return (<Text>{t('query', {i18n: i18nBSC})}</Text>)
   }
 
-  const balance = [...formatData(xdaiBalance),...formatData(tokenBalance)];
+  const balance = [...formatData(bscBalance),...formatData(tokenBalance)];
   return balance.length > 0
     ? (<>
-      <Text>{t('xdaiBalance', {i18n: i18nXdai})}</Text>
+      <Text>{t('balance', {i18n: i18nBSC})}</Text>
       <Table data={balance} />
       <Text> </Text>
     </>)
     : null
 }
 
-export default XdaiBalances;
+export default BscBalances;
