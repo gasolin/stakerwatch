@@ -43,8 +43,8 @@ export const skillChainId = {
         })
         .map(entry => ({
           name: entry.name,
-          rpc: (entry.rpc && getRandomItem(entry.rpc)) || '',
-          chainId: entry.chainId,
+          rpc: entry.rpc && getRandomItem(entry.rpc.filter(rpc => !rpc.startsWith('wss://'))) || '',
+          chainId: '0x' + entry.chainId.toString(16),
           symbol: (entry.nativeCurrency && entry.nativeCurrency.symbol) || '',
         })).filter(entry => entry.rpc !== '');
         if (data.length !== 0) {

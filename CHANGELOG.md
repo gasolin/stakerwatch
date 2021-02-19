@@ -1,7 +1,18 @@
+# 0.36 2021/2/18
+
+Enhancement
+- [network] show hex value of chainId
+
+Fix
+- [network] only shows http rpc
+
 # 0.35 2021/2/12
 
 Feature
 * [balance-bsc] support show Binance Smart Chain balance
+
+Fix
+- [network] https://github.com/ethereum-lists/chains/issues/156
 
 Refactor
 * distill jsonRpcFetch
