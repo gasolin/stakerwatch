@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
-import { getEtherBalances } from '@mycrypto/eth-scan';
+import {getEtherBalances} from '@mycrypto/eth-scan';
 
-import {getNodeURL} from '../helpers/ethRpc';
+import {getNodeURL} from './ethRpc';
 
 export const useEthscanBalance = (addresses) => {
   const [balance, setBalance] = useState([]);
@@ -28,6 +28,6 @@ export const useEthscanBalance = (addresses) => {
   }, [addresses]);
 
   return [loading, balance];
-}
+};
 
 export default useEthscanBalance;

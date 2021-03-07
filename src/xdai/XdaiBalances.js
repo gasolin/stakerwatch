@@ -1,10 +1,10 @@
 'use strict';
 import React, {useEffect, useState} from 'react';
-import { Text } from 'ink';
+import {Text} from 'ink';
 import Table from 'ink-table';
-import { t } from 'saihubot-cli-adapter/dist/i18n';
+import {t} from 'saihubot-cli-adapter/dist/i18n';
 
-import {xdaiFetch} from './utils'
+import {xdaiFetch} from './utils';
 import {TOKENMAP} from './token';
 
 import useNativeTokenBalance from '../eth/useNativeTokenBalance';
@@ -20,8 +20,8 @@ const i18nXdai = {
     query: '查詢 xDai 網路餘額中...',
     xdaiBalance: 'xDai 網路餘額',
   },
-  props: ['blocknum']
-}
+  'props': ['blocknum'],
+};
 
 export const XdaiBalances = ({addresses, fetch}) => {
   const [xdaiLoading, xdaiBalance] = useNativeTokenBalance({
@@ -38,17 +38,17 @@ export const XdaiBalances = ({addresses, fetch}) => {
   });
 
   if (xdaiLoading && tokenLoading) {
-    return (<Text>{t('query', {i18n: i18nXdai})}</Text>)
+    return (<Text>{t('query', {i18n: i18nXdai})}</Text>);
   }
 
-  const balance = [...formatData(xdaiBalance),...formatData(tokenBalance)];
-  return balance.length > 0
-    ? (<>
+  const balance = [...formatData(xdaiBalance), ...formatData(tokenBalance)];
+  return balance.length > 0 ?
+    (<>
       <Text>{t('xdaiBalance', {i18n: i18nXdai})}</Text>
       <Table data={balance} />
       <Text> </Text>
-    </>)
-    : null
-}
+    </>) :
+    null;
+};
 
 export default XdaiBalances;

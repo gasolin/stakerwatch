@@ -1,7 +1,11 @@
 # 0.37 2021/3/03
 
+Enhancement
+- Track BUSD and WBNB for BSC
+
 Refactor
-- update packages
+- Update packages
+- move useEthscanBalance/useEthscanTokensBalance to helpers
 
 # 0.36 2021/2/18
 
