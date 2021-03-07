@@ -1,4 +1,4 @@
-# 0.37 2021/3/03
+# 0.37 2021/3/07
 
 Enhancement
 - Track BUSD and WBNB for BSC
