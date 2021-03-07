@@ -1,9 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {getEtherBalances} from '@mycrypto/eth-scan';
 
-import {getNodeURL} from './ethRpc';
-
-export const useEthscanBalance = (addresses) => {
+export const useEthscanBalance = (addresses, nodeUrl, tokenSymbol = 'ETH') => {
   const [balance, setBalance] = useState([]);
   const [loading, setLoading] = useState(true);
   if (!addresses) return null;
@@ -11,12 +9,12 @@ export const useEthscanBalance = (addresses) => {
 
   useEffect(() => {
     async function fetchEthBalance() {
-      const ethBalances = await getEtherBalances(getNodeURL(), addresses);
+      const ethBalances = await getEtherBalances(nodeUrl, addresses);
       Object.values(ethBalances).map((val, idx) => {
         if (val === 0n) return;
         data.push({
           address: addresses[idx],
-          token: 'ETH',
+          token: tokenSymbol,
           balance: (Number(val) / 10**18).toFixed(8),
           source: '',
         });

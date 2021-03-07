@@ -22,7 +22,7 @@ export const getXdaiNodeURL = () => {
   if (cachedXdaiNodeUrl) return cachedXdaiNodeUrl;
   cachedXdaiNodeUrl = getConfig('XDAI_NODE_URL', getRandomItem(XDAI_NODES));
   return cachedXdaiNodeUrl;
-}
+};
 
 export const xdaiFetch = (fetch, body) =>
   jsonRpcFetch(fetch, getXdaiNodeURL(), body);

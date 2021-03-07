@@ -392,7 +392,6 @@ Will list all network config if not pass the param.
 npx staker nodes
 
 https://api.mycryptoapi.com/eth
-https://web3.1inch.exchange/
 https://cloudflare-eth.com/
 ...
 ```

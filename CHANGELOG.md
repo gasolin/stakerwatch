@@ -3,9 +3,13 @@
 Enhancement
 - Track BUSD and WBNB for BSC
 
+Fix
+- remove https://web3.1inch.exchange/
+
 Refactor
-- Update packages
+- Use ethscan to display xdai token balance
 - move useEthscanBalance/useEthscanTokensBalance to helpers
+- Update packages
 
 # 0.36 2021/2/18
 

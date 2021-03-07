@@ -4,11 +4,11 @@ import {Text} from 'ink';
 import Table from 'ink-table';
 import {t} from 'saihubot-cli-adapter/dist/i18n';
 
-import {xdaiFetch} from './utils';
+import {getXdaiNodeURL} from './utils';
 import {TOKENMAP} from './token';
 
-import useNativeTokenBalance from '../eth/useNativeTokenBalance';
-import useTokenBalance from '../eth/useTokenBalance';
+import useEthscanBalance from '../helpers/useEthscanBalance';
+import useEthscanTokensBalance from '../helpers/useEthscanTokensBalance';
 import {formatData} from '../helpers/format';
 
 const i18nXdai = {
@@ -24,18 +24,17 @@ const i18nXdai = {
 };
 
 export const XdaiBalances = ({addresses, fetch}) => {
-  const [xdaiLoading, xdaiBalance] = useNativeTokenBalance({
-    addresses,
-    fetch,
-    networkFetch: xdaiFetch,
-    tokenName: 'xDai',
-  });
-  const [tokenLoading, tokenBalance] = useTokenBalance({
-    addresses,
-    fetch,
-    networkFetch: xdaiFetch,
-    tokenMap: TOKENMAP,
-  });
+  const nodeUrl = getXdaiNodeURL();
+  const [xdaiLoading, xdaiBalance] = useEthscanBalance(
+      addresses,
+      nodeUrl,
+      'xDAI',
+  );
+  const [tokenLoading, tokenBalance] = useEthscanTokensBalance(
+      addresses,
+      TOKENMAP,
+      nodeUrl,
+  );
 
   if (xdaiLoading && tokenLoading) {
     return (<Text>{t('query', {i18n: i18nXdai})}</Text>);
