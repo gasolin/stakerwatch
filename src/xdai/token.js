@@ -31,4 +31,34 @@ export const TOKENMAP = [
     symbol: 'CRC',
     decimals: 18,
   },
+  {
+    address: '0x8e5bBbb09Ed1ebdE8674Cda39A0c169401db4252',
+    name: 'Wrapped BTC',
+    symbol: 'WBTC',
+    decimals: 8,
+  },
+  {
+    address: '0x82dFe19164729949fD66Da1a37BC70dD6c4746ce',
+    name: 'BAO',
+    symbol: 'BAO',
+    decimals: 18,
+  },
+  {
+    address: '0xD057604A14982FE8D88c5fC25Aac3267eA142a08',
+    name: 'HOPR',
+    symbol: 'HOPR',
+    decimals: 18,
+  },
+  {
+    address: '0xb7D311E2Eb55F2f68a9440da38e7989210b9A05e',
+    name: 'STAKE',
+    symbol: 'STAKE',
+    decimals: 18,
+  },
+  {
+    address: '0xE2e73A1c69ecF83F464EFCE6A5be353a37cA09b2',
+    name: 'Chainlink',
+    symbol: 'LINK',
+    decimals: 18,
+  },
 ];
