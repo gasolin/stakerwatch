@@ -12,7 +12,7 @@ import {
   skillHelp,
 } from 'saihubot-cli-adapter';
 import {addonFetchGas} from './saihubot-addon-ethgas';
-import {skillQRCode} from './saihubot-cli-skill-delegates';
+import {skills as skillDelegates} from './saihubot-cli-skill-delegates';
 import {
   skillLastBlock,
   skillsAccount,
@@ -25,7 +25,7 @@ import {
   skillGetValidatorBlance,
   skillsValidator,
 } from './eth2/saihubot-cli-skill-eth2';
-// import {skills as skillsDefi} from './eth/saihubot-cli-skill-defi';
+// import {skills as skillsDefi} from './defi/saihubot-cli-skill-defi';
 import {skillsGas} from './eth/saihubot-cli-skill-ethgas';
 import {skillGetBlance, skillGetEthBlance} from './saihubot-cli-skill-balance';
 import {skills as skillsXDAI} from './xdai/saihubot-cli-skill-xdai';
@@ -84,7 +84,7 @@ const bot = new SaihuBot({
     ...skillsXDAI,
     ...skillsZkSync,
     skillAwesomeEth,
-    skillQRCode,
+    ...skillDelegates,
     skillHelp,
   ],
   debug: cli.flags && cli.flags.debug,

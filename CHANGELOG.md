@@ -1,3 +1,11 @@
+# 0.38 2021/3/09
+
+Feature
+- [check] add address validation skill
+
+Enhancement
+- track WBTC, BAO, STAKE, HOPR, LINK on Xdai
+
 # 0.37 2021/3/07
 
 Enhancement

@@ -36,7 +36,7 @@ Open terminal and type `npx staker help` to find all skills that `staker` comman
 ```
 $ npx staker help
 
-I have 43 skills:
+I have 44 skills:
 * 💰balance - Show [address] balance
 ...
 * 🔎address|addr [address|tx] - Pick address explorer from the list
@@ -47,8 +47,8 @@ I have 43 skills:
 * 💸feeswtf [address] - Check total fees consumption on fees.wtf
 * ⛓ network|config|network [chain] - find MetaMask network config data (chain providers url and network id)
 ...
-* 🤩awesome|lucky - Show random awesome site around ethereum
 * qrcode [text] - Generate QRCode with [text]
+* check [address] - check if [address] is valid
 * help - list available skills
 ```
 
@@ -519,6 +519,7 @@ zkSync Balance
 ```
 * 🤩awesome|lucky - Show random awesome site around ethereum
 * qrcode [text] - Generate QRCode with [text]
+* check [address] - check if [address] is valid
 * help - list available skills
 ```
 
@@ -532,6 +533,18 @@ Given any text (ex a Eth address) and get the QRCode
 $ npx staker qrcode [addr]
 
 (QRcode shows here)
+```
+
+### check
+
+Given any address to check if address is valid.
+
+Can also check the address checksum.
+
+```sh
+$ npx staker check 0x12345678
+
+false (incorrect format)
 ```
 
 ## Configuable options
