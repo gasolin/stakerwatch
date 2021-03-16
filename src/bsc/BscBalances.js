@@ -1,14 +1,14 @@
 'use strict';
 import React, {useEffect, useState} from 'react';
-import { Text } from 'ink';
+import {Text} from 'ink';
 import Table from 'ink-table';
-import { t } from 'saihubot-cli-adapter/dist/i18n';
+import {t} from 'saihubot-cli-adapter/dist/i18n';
 
-import {bscFetch} from './utils'
+import {getBscNodeURL, BSC_ETHSCAN_CONTRACT} from './utils';
 import {TOKENMAP} from './token';
 
-import useNativeTokenBalance from '../eth/useNativeTokenBalance';
-import useTokenBalance from '../eth/useTokenBalance';
+import useEthscanBalance from '../helpers/useEthscanBalance';
+import useEthscanTokensBalance from '../helpers/useEthscanTokensBalance';
 import {formatData} from '../helpers/format';
 
 const i18nBSC = {
@@ -20,35 +20,36 @@ const i18nBSC = {
     query: '查詢 Binance 智能網路餘額中...',
     balance: 'Binance 智能網路餘額',
   },
-  props: ['blocknum']
-}
+  'props': ['blocknum'],
+};
 
 export const BscBalances = ({addresses, fetch}) => {
-  const [bscLoading, bscBalance] = useNativeTokenBalance({
-    addresses,
-    fetch,
-    networkFetch: bscFetch,
-    tokenName: 'BNB',
-  });
-  const [tokenLoading, tokenBalance] = useTokenBalance({
-    addresses,
-    fetch,
-    networkFetch: bscFetch,
-    tokenMap: TOKENMAP,
-  });
+  const nodeUrl = getBscNodeURL();
+  const [bscLoading, bscBalance] = useEthscanBalance(
+      addresses,
+      nodeUrl,
+      'BNB',
+      BSC_ETHSCAN_CONTRACT,
+  );
+  const [tokenLoading, tokenBalance] = useEthscanTokensBalance(
+      addresses,
+      nodeUrl,
+      TOKENMAP,
+      BSC_ETHSCAN_CONTRACT,
+  );
 
   if (bscLoading && tokenLoading) {
-    return (<Text>{t('query', {i18n: i18nBSC})}</Text>)
+    return (<Text>{t('query', {i18n: i18nBSC})}</Text>);
   }
 
-  const balance = [...formatData(bscBalance),...formatData(tokenBalance)];
-  return balance.length > 0
-    ? (<>
+  const balance = [...formatData(bscBalance), ...formatData(tokenBalance)];
+  return balance.length > 0 ?
+    (<>
       <Text>{t('balance', {i18n: i18nBSC})}</Text>
       <Table data={balance} />
       <Text> </Text>
-    </>)
-    : null
-}
+    </>) :
+    null;
+};
 
 export default BscBalances;

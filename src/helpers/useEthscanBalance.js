@@ -1,7 +1,13 @@
+/* eslint-disable require-jsdoc */
 import React, {useEffect, useState} from 'react';
 import {getEtherBalances} from '@mycrypto/eth-scan';
 
-export const useEthscanBalance = (addresses, nodeUrl, tokenSymbol = 'ETH') => {
+export const useEthscanBalance = (
+    addresses,
+    nodeUrl,
+    tokenSymbol = 'ETH',
+    contractAddress = ''
+) => {
   const [balance, setBalance] = useState([]);
   const [loading, setLoading] = useState(true);
   if (!addresses) return null;
@@ -9,7 +15,9 @@ export const useEthscanBalance = (addresses, nodeUrl, tokenSymbol = 'ETH') => {
 
   useEffect(() => {
     async function fetchEthBalance() {
-      const ethBalances = await getEtherBalances(nodeUrl, addresses);
+      const ethBalances = contractAddress ?
+        await getEtherBalances(nodeUrl, addresses, {contractAddress}) :
+        await getEtherBalances(nodeUrl, addresses);
       Object.values(ethBalances).map((val, idx) => {
         if (val === 0n) return;
         data.push({

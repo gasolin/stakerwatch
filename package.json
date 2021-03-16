@@ -1,6 +1,6 @@
 {
   "name": "staker",
-  "version": "0.38.0",
+  "version": "0.39.0",
   "description": "Command line Utillity for Ethereum stakers",
   "bin": {
     "staker": "./dist/cli.js"
@@ -39,7 +39,7 @@
   },
   "homepage": "http://stakerwat.ch/",
   "dependencies": {
-    "@mycrypto/eth-scan": "^3.2.1",
+    "@mycrypto/eth-scan": "^3.3.0",
     "comma-number": "^2.0.1",
     "humanize-duration": "^3.25.1",
     "ink-table": "^3.0.0",
@@ -56,7 +56,7 @@
     "@babel/preset-react": "^7.12.13",
     "@babel/register": "^7.13.8",
     "chalk": "^4.1.0",
-    "eslint": "^7.21.0",
+    "eslint": "^7.22.0",
     "eslint-config-google": "^0.14.0",
     "eslint-plugin-react": "^7.22.0",
     "eslint-plugin-react-hooks": "^4.2.0"

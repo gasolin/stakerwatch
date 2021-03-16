@@ -1,3 +1,14 @@
+# 0.39 2021/3/16
+
+Feature
+- Web (simplified) version http://stakerwat.ch/
+  - Display Ethereum, xDai, ZkSync balance in one dashboard (plus AAVE borrow/debt)
+
+Refactor
+- deploy eth-scan contract to BSC 0xeC7fb246a68Af0AA1828429B3A7C307e68680407
+- Use ethscan to display BSC token balance
+- update eslint, eth-scan package dependency
+
 # 0.38 2021/3/09
 
 Feature

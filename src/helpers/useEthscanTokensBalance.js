@@ -3,15 +3,21 @@ import React, {useEffect, useState} from 'react';
 import {getTokensBalances} from '@mycrypto/eth-scan';
 
 export const useEthscanTokensBalance = (
-    addresses, tokenMap = [], nodeUrl) => {
+    addresses, tokenMap = [], nodeUrl, contractAddress = '') => {
   const [balance, setBalance] = useState([]);
   const [loading, setLoading] = useState(true);
 
   const data = [];
   useEffect(() => {
     async function fetchTokenBalance() {
-      const tokenBalances = await getTokensBalances(
-          nodeUrl, addresses, tokenMap.map((entry) => entry.address));
+      const tokenBalances = contractAddress ?
+        await getTokensBalances(
+            nodeUrl, addresses,
+            tokenMap.map((entry) => entry.address),
+            {contractAddress}) :
+        await getTokensBalances(
+            nodeUrl, addresses, tokenMap.map((entry) => entry.address));
+
       Object.keys(tokenBalances).map((addr) => // multi addr
         Object.entries(tokenBalances[addr]).map(([key, val]) => {
           if (val === 0n) return;

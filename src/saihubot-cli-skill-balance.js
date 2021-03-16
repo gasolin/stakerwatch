@@ -1,7 +1,7 @@
 'use strict';
 
 import React, {useEffect, useState} from 'react';
-import { t } from 'saihubot-cli-adapter/dist/i18n';
+import {t} from 'saihubot-cli-adapter/dist/i18n';
 
 import {getConfig, parseArg, toArray} from './utils';
 import {i18nBalance} from './i18n';
@@ -19,14 +19,14 @@ const Balances = ({addresses, fetch}) => {
 
   useEffect(() => {
     async function fetchValidators() {
-      for (let i = 0; i < addrs.length ; i++) {
+      for (let i = 0; i < addrs.length; i++) {
         const json = await fetch(`https://beaconcha.in/api/v1/validator/eth1/${addrs[i]}`)
-          .then(response => response.json());
+            .then((response) => response.json());
         const validators = toArray(json.data);
         if (validators && validators.length > 0) {
-          const data = validators.length === 1
-            ? validators[0].validatorindex
-            : validators.filter(data => data.validatorindex !== 0).map(data => data.validatorindex).join(',');
+          const data = validators.length === 1 ?
+            validators[0].validatorindex :
+            validators.filter((data) => data.validatorindex !== 0).map((data) => data.validatorindex).join(',');
           setValidator(validator ? validator + ',' + data : data);
         }
       }
@@ -43,8 +43,8 @@ const Balances = ({addresses, fetch}) => {
     <BscBalances addresses={addrs} fetch={fetch} />
     <XdaiBalances addresses={addrs} fetch={fetch} />
     <ZksyncBalances addresses={addrs} fetch={fetch} />
-  </>)
-}
+  </>);
+};
 
 /**
  * Get ETH and stable coins balance of [address].
@@ -74,7 +74,7 @@ export const skillGetBlance = {
     robot.sendComponent(<Balances addresses={parsedAddr} fetch={robot.addons.fetch} />);
     robot.render();
   },
-}
+};
 
 /**
  * Get ETH and stable coins balance of [address] on Ethereum Network.
@@ -105,7 +105,7 @@ export const skillGetEthBlance = {
     robot.sendComponent(<EthBalances addresses={addrs} fetch={robot.addons.fetch} />);
     robot.render();
   },
-}
+};
 
 const skills = [skillGetBlance, skillGetEthBlance];
 export {skills};
