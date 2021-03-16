@@ -5,6 +5,7 @@
     "lerna": "^4.0.0"
   },
   "scripts": {
-    "setup": "npx lerna bootstrap"
+    "setup": "npx lerna bootstrap",
+    "publish": "npx lerna publish"
   }
 }

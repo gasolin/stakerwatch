@@ -1,4 +1,4 @@
-# 0.39 2021/3/16
+# 0.39.1 2021/3/16
 
 Feature
 - Web (simplified) version http://stakerwat.ch/
@@ -8,6 +8,8 @@ Refactor
 - deploy eth-scan contract to BSC 0xeC7fb246a68Af0AA1828429B3A7C307e68680407
 - Use ethscan to display BSC token balance
 - update eslint, eth-scan package dependency
+- move the main source to master branch
+- Multi repo structure
 
 # 0.38 2021/3/09
 
