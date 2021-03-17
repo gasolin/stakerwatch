@@ -584,34 +584,3 @@ npx staker beaconchain
 
 Check 12345 via beaconchain
 ```
-
-
-# Credit
-
-Stakerwatch is based on [Saihubot](https://github.com/gasolin/saihubot), the chatbot ops framework without server requirement.
-
-It's command line adapter is based on React for CLIs ([ink](https://www.npmjs.com/package/ink)).
-
-## License
-
-Staker use MIT License
-
-## ChangeLog
-
-Check [ChangeLog](https://github.com/gasolin/stakerwatch/blob/gh-pages/CHANGELOG.md)
-
-## Document
-
-Check [Document](https://gasolin.github.io/stakerwatch/docs/)
-
-## Contribution
-
-There are plenty ways to contribute to stakerwatch.
-
-Share your creative Usage on social media.
-
-Translate skills to your languages.
-
-Report bug, add your ideas to https://github.com/gasolin/stakerwatch/issues
-
-Send patch to https://github.com/gasolin/stakerwatch/pulls
