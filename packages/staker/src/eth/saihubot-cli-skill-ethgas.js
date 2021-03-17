@@ -2,7 +2,7 @@
 
 import {t} from 'saihubot-cli-adapter/dist/i18n';
 
-import { GAS_ESTIMATOR_ETHEREUM as GAS_ESTIMATOR, getRandomItem } from 'staker-freenodes'
+import { GAS_ESTIMATOR_ETHEREUM as GAS_ESTIMATOR, getRandomItem, ETH_NODES } from 'staker-freenodes'
 
 import {ethFetch, rpcGasPrice} from '../helpers/ethRpc';
 

@@ -3,8 +3,8 @@
   "version": "0.39.4",
   "description": "free accessible nodes for Ethereum and compatible chains",
   "files": [
-    "src/**",
-    "dist/**"
+    "dist/**",
+    "src/**"
   ],
   "main": "dist/index.js",
   "scripts": {
