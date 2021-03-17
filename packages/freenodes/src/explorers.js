@@ -4,7 +4,7 @@ import {
   CHAIN_XDAI,
   CHAIN_MATIC,
   L2_ZKSYNC,
-} from './constants'
+} from './chains'
 
 export const CHAIN_ETHEREUM_EXPLORER_ETHERSCAN = 'etherscan'
 export const CHAIN_ETHEREUM_EXPLORER_BLOXY = 'bloxy'

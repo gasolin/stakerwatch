@@ -1,4 +1,4 @@
-import { CHAIN_ETHEREUM, CHAIN_XDAI} from 'constants'
+import { CHAIN_ETHEREUM, CHAIN_XDAI} from './chains'
 
 // free nodes without API keys from https://ethereumnodes.com/
 export const ETH_NODES = [
