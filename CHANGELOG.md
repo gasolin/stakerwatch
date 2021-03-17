@@ -1,4 +1,4 @@
-# 0.39.3 2021/3/17
+# 0.39.4 2021/3/17
 
 Feature
 - Web (simplified) version http://stakerwat.ch/

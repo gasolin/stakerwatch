@@ -1,5 +1,5 @@
 'use strict';
-import {XDAI_NODES} from '@staker/freenodes'
+import {XDAI_NODES} from 'staker-freenodes'
 
 import {getConfig, getRandomItem} from '../utils';
 import {jsonRpcFetch} from '../helpers/jsonRpc';

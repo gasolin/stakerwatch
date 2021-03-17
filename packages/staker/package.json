@@ -40,7 +40,7 @@
   "homepage": "http://stakerwat.ch/",
   "dependencies": {
     "@mycrypto/eth-scan": "^3.3.0",
-    "@staker/freenodes": "^0.39.3",
+    "staker-freenodes": "^0.39.3",
     "comma-number": "^2.0.1",
     "humanize-duration": "^3.25.1",
     "ink-table": "^3.0.0",
@@ -61,5 +61,6 @@
     "eslint-config-google": "^0.14.0",
     "eslint-plugin-react": "^7.22.0",
     "eslint-plugin-react-hooks": "^4.2.0"
-  }
+  },
+  "gitHead": "221dba935128f71558ed97e65d16ccb7fb85db03"
 }

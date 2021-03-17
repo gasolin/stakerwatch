@@ -1,5 +1,5 @@
 {
-  "name": "@staker/freenodes",
+  "name": "staker-freenodes",
   "version": "0.39.3",
   "description": "free accessible nodes for Ethereum and compatible chains",
   "files": [
@@ -42,5 +42,6 @@
     "eslint-config-google": "^0.14.0",
     "eslint-plugin-react": "^7.22.0",
     "eslint-plugin-react-hooks": "^4.2.0"
-  }
+  },
+  "gitHead": "221dba935128f71558ed97e65d16ccb7fb85db03"
 }

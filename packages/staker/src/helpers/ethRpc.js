@@ -1,5 +1,5 @@
 'use strict';
-import {ETH_NODES} from '@staker/freenodes';
+import {ETH_NODES} from 'staker-freenodes';
 
 import {jsonRpcFetch} from '../helpers/jsonRpc';
 import {getConfig, getRandomItem} from '../utils';
