@@ -3,7 +3,7 @@
 Feature
 - Web (simplified) version http://stakerwat.ch/
   - Display Ethereum, xDai, ZkSync balance in one dashboard (plus AAVE borrow/debt)
-- Separate nodes, chain explorers and gas estimators definition to separate package @staker/freenode
+- Separate nodes, chain explorers and gas estimators definition to separate package `staker-freenodes`
 
 Refactor
 - deploy eth-scan contract to BSC 0xeC7fb246a68Af0AA1828429B3A7C307e68680407
