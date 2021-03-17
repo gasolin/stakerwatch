@@ -1,8 +1,9 @@
 'use strict';
 
 import {t} from 'saihubot-cli-adapter/dist/i18n';
+import {getRandomItem} from 'staker-freenodes';
 
-import {getConfig, getRandomItem, singleAddr, addrTxSearch} from '../utils';
+import {getConfig, singleAddr, addrTxSearch} from '../utils';
 import {i18nAddr} from '../i18n';
 import {ethFetch, rpcLastBlock} from '../helpers/ethRpc';
 

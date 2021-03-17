@@ -24,10 +24,6 @@ export const getConfig = (env, defaultValue) => {
     defaultValue;
 };
 
-/** get random item from an array. */
-export const getRandomItem = (arr, defaultItem = '') => arr.length > 0 ?
-  arr[Math.floor(Math.random() * arr.length)] : defaultItem;
-
 export const isAddr = (data) => data.startsWith('0x') && data.length === 42;
 
 export const singleAddr = (data) => Array.isArray(data) ? data[0] : data;

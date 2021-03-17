@@ -12,5 +12,7 @@ Install via
 Then you can access predefined  via
 
 ```
-import {ETH_NODES} from 'staker-freenodes'
+import {getNodeURL, CHAIN_ETHEREUM} from 'staker-freenodes'
+
+getNodeURL(CHAIN_ETHEREUM) // return a random free node by chainId
 ```

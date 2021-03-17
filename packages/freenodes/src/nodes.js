@@ -21,8 +21,30 @@ export const NODE_MAP = {
   [CHAIN_XDAI]: XDAI_NODES,
 }
 
+/** get random item from an array. */
+export const getRandomItem = (arr, defaultItem = '') =>
+  arr.length > 0 ? arr[Math.floor(Math.random() * arr.length)] : defaultItem
+
+let cachedNodeURL = ''
+
+/**
+ * Random pick a ethereum node.
+ *
+ * can set yours via set SAIHUBOT_NODE_URL environment variable.
+ * @param {boolean} cache cached the returned node selection in a session (default false)
+ */
+export const getNodeURL = (chainId = CHAIN_ETHEREUM, cache = false) => {
+  if (cache && cachedNodeURL) return cachedNodeURL
+  const nodes = NODE_MAP[chainId]
+  if (!nodes) return ''
+  cachedNodeURL = getRandomItem(nodes, nodes[0])
+  return cachedNodeURL
+}
+
 export default {
   ETH_NODES,
   XDAI_NODES,
   NODE_MAP,
+  getNodeURL,
+  getRandomItem,
 }

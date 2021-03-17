@@ -6,11 +6,12 @@ import { Text } from 'ink';
 import humanizeDuration from 'humanize-duration';
 import commaNumber from 'comma-number';
 import { t } from 'saihubot-cli-adapter/dist/i18n';
+import {getRandomItem} from 'staker-freenodes';
 
 import ValidatorBalances from './ValidatorBalances';
 
 import {ethFetch} from '../helpers/ethRpc';
-import {getConfig, getRandomItem, parseArg, singleAddr} from '../utils';
+import {getConfig, parseArg, singleAddr} from '../utils';
 import {i18nValidator, i18nAddr} from '../i18n';
 import useNativeTokenBalance from '../eth/useNativeTokenBalance';
 import useCoingeckoTokenStat from '../eth/useCoingeckoTokenStat';

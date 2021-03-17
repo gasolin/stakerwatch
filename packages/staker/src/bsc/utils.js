@@ -1,6 +1,8 @@
 'use strict';
 
-import {getConfig, getRandomItem} from '../utils';
+import { getRandomItem } from 'staker-freenodes';
+
+import {getConfig} from '../utils';
 import {jsonRpcFetch} from '../helpers/jsonRpc';
 
 // ==== Binance Smart Chain JSON RPC ===
