@@ -1,4 +1,6 @@
 'use strict';
+import {ETH_NODES} from '@staker/freenodes';
+
 import {jsonRpcFetch} from '../helpers/jsonRpc';
 import {getConfig, getRandomItem} from '../utils';
 
@@ -37,17 +39,6 @@ export const rpcGasPrice = () => JSON.stringify({
   method: 'eth_gasPrice',
   params: [],
 });
-
-// free nodes without API keys from https://ethereumnodes.com/
-export const ETH_NODES = [
-  'https://api.mycryptoapi.com/eth', // MyCrypto
-  'https://cloudflare-eth.com/', // Cloudflare
-  'https://mainnet-nethermind.blockscout.com/', // Blockscout
-  'https://nodes.mewapi.io/rpc/eth', // MyEtherWallet
-  'https://mainnet.eth.cloud.ava.do/', // AVADO
-  'https://eth-mainnet.zerion.io/',
-  'https://main-light.eth.linkpool.io',
-];
 
 let cachedNodeURL = '';
 

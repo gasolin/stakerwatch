@@ -1,11 +1,26 @@
 {
   "name": "root",
   "private": true,
-  "devDependencies": {
-    "lerna": "^4.0.0"
-  },
   "scripts": {
     "setup": "npx lerna bootstrap",
     "publish": "npx lerna publish"
+  },
+  "devDependencies": {
+    "lerna": "^4.0.0"
+  },
+  "eslintConfig": {
+    "extends": [
+      "eslint:recommended",
+      "google"
+    ],
+    "env": {
+      "browser": true,
+      "es6": true
+    },
+    "parser": "@babel/eslint-parser",
+    "parserOptions": {
+      "sourceType": "module",
+      "allowImportExportEverywhere": true
+    }
   }
 }

@@ -2,8 +2,8 @@
 import React from 'react';
 import Table from 'ink-table';
 import {t} from 'saihubot-cli-adapter/dist/i18n';
+import {ETH_NODES} from '@staker/freenodes';
 
-import {ETH_NODES} from './helpers/ethRpc';
 import {getRandomItem} from './utils';
 
 /**
