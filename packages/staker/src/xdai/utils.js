@@ -1,15 +1,10 @@
 'use strict';
+import {XDAI_NODES} from '@staker/freenodes'
 
 import {getConfig, getRandomItem} from '../utils';
 import {jsonRpcFetch} from '../helpers/jsonRpc';
 
 // ==== xDai Chain JSON RPC ===
-
-// https://www.xdaichain.com/for-developers/developer-resources#json-rpc-endpoints
-export const XDAI_NODES = [
-  'https://rpc.xdaichain.com/',
-  'https://xdai.poanetwork.dev/',
-];
 
 let cachedXdaiNodeUrl = '';
 

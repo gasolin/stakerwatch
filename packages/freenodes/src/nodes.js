@@ -10,6 +10,7 @@ export const ETH_NODES = [
   'https://main-light.eth.linkpool.io',
 ]
 
+// https://www.xdaichain.com/for-developers/developer-resources#json-rpc-endpoints
 export const XDAI_NODES = [
   'https://rpc.xdaichain.com/',
   'https://xdai.poanetwork.dev/',
