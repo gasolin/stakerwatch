@@ -1,4 +1,4 @@
-# 0.40.0
+# 0.40.0  2021/3/18
 
 Feature
 - [staker] add optimism address/tx explorer
