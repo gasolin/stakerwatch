@@ -10,6 +10,7 @@ import ValidatorBalances from './eth2/ValidatorBalances';
 import XdaiBalances from './xdai/XdaiBalances';
 import ZksyncBalances from './zksync/ZksyncBalances';
 import BscBalances from './bsc/BscBalances';
+import MaticBalances from './matic/MaticBalances';
 
 // support multiple account balance by comma (without space)
 // also shows validator balances
@@ -42,6 +43,7 @@ const Balances = ({addresses, fetch}) => {
     <ValidatorBalances validator={validator} fetch={fetch} />
     <BscBalances addresses={addrs} fetch={fetch} />
     <XdaiBalances addresses={addrs} fetch={fetch} />
+    <MaticBalances addresses={addrs} fetch={fetch} />
     <ZksyncBalances addresses={addrs} fetch={fetch} />
   </>);
 };

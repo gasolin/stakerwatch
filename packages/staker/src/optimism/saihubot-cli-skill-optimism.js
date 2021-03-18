@@ -77,7 +77,7 @@ export const skillSearchOptimism = {
 // }
 
 const skills = [
-  // skillGetOptimismBlance,
+  // skillGetOptimismBalance,
   skillSearchOptimism,
 ];
 export {skills};

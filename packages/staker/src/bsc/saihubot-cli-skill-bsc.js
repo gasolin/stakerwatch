@@ -51,7 +51,7 @@ export const skillSearchBSCscan = {
  * can pass the address, or pre-define the
  * SAIHUBOT_ADDR environment variable
  */
-export const skillGetBscBlance = {
+export const skillGetBscBalance = {
   name: 'balance-bsc',
   help: '💰balance-bsc - Show address balance on Binance Smart chain',
   requirements: {
@@ -75,7 +75,7 @@ export const skillGetBscBlance = {
 }
 
 const skills = [
-  skillGetBscBlance,
+  skillGetBscBalance,
   skillSearchBSCscan,
 ];
 export {skills};
