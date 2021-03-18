@@ -36,7 +36,7 @@ Open terminal and type `npx staker help` to find all skills that `staker` comman
 ```
 $ npx staker help
 
-I have 44 skills:
+I have 46 skills:
 * 💰balance - Show [address] balance
 ...
 * 🔎address|addr [address|tx] - Pick address explorer from the list
@@ -438,6 +438,7 @@ npx staker network binance
 #### Matic
 
 ```
+* 💰balance-matic - Show address balance on MATIC chain
 * 🏦matic [address|tx] - check address or tx on Matics
 * network matic - show related network config
 ```
@@ -494,7 +495,7 @@ npx staker network xdai
 └────────────┴─────────────────────────────┴─────────┴────────┘
 ```
 
-#### zkSYnc
+#### zkSync
 
 ```
 * 💰balance-zksync - Show address balance on ZkSync
@@ -513,6 +514,12 @@ zkSync Balance
 ```
 
 - [zkscan explorer](https://zkscan.io/explorer/)
+
+#### Optimism
+
+```
+* 🏦optimism [address|tx] - check address or tx on optimism
+```
 
 ## Other Tools
 
