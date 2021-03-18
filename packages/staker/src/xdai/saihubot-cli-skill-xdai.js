@@ -86,7 +86,7 @@ export const skillLastXdaiBlock = {
  * can pass the address, or pre-define the
  * SAIHUBOT_ADDR environment variable
  */
-export const skillGetXdaiBlance = {
+export const skillGetXdaiBalance = {
   name: 'balance-xdai',
   help: '💰balance-xdai - Show address balance on xDai chain',
   requirements: {
@@ -110,7 +110,7 @@ export const skillGetXdaiBlance = {
 }
 
 const skills = [
-  skillGetXdaiBlance,
+  skillGetXdaiBalance,
   skillLastXdaiBlock,
   skillSearchXDai,
 ];

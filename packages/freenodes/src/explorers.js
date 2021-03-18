@@ -4,6 +4,7 @@ import {
   CHAIN_XDAI,
   CHAIN_MATIC,
   L2_ZKSYNC,
+  L2_OPTIMISM,
 } from './chains'
 
 export const CHAIN_ETHEREUM_EXPLORER_ETHERSCAN = 'etherscan'
@@ -23,6 +24,8 @@ export const CHAIN_XDAI_EXPLORER_BLOCKSCOUT = 'blockscout'
 export const CHAIN_MATIC_EXPLORER_BLOCKSCOUT = 'maticvigil'
 
 export const L2_ZKSYNC_EXPLORER = 'Zksync'
+
+export const L2_OPTIMISM_EXPLORER = 'Optimism'
 
 export const EXPLORER_ETHEREUM = {
   [CHAIN_ETHEREUM_EXPLORER_ETHERSCAN]: {
@@ -110,12 +113,21 @@ export const EXPLORER_L2_ZKSYNC = {
   },
 }
 
+export const EXPLORER_L2_OPTIMISM = {
+  [L2_OPTIMISM_EXPLORER]: {
+    address: (target) => `https://mainnet-l2-explorer.surge.sh/account/${target}`,
+    name: 'Optimistic Ethereum Explorer',
+    tx: (target) => `https://mainnet-l2-explorer.surge.sh/tx/${target}`,
+  }
+}
+
 export const EXPLORER_MAP = {
   [CHAIN_ETHEREUM]: EXPLORER_ETHEREUM,
   [CHAIN_BSC]: EXPLORER_BSC,
   [CHAIN_XDAI]: EXPLORER_XDAI,
   [CHAIN_MATIC]: EXPLORER_MATIC,
   [L2_ZKSYNC]: EXPLORER_L2_ZKSYNC,
+  [L2_OPTIMISM]: EXPLORER_L2_OPTIMISM,
 }
 
 export default {
@@ -124,5 +136,6 @@ export default {
   EXPLORER_XDAI,
   EXPLORER_MATIC,
   EXPLORER_L2_ZKSYNC,
+  EXPLORER_L2_OPTIMISM,
   EXPLORER_MAP,
 }

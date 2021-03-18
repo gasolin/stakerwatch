@@ -52,7 +52,7 @@ export const skillSearchZksync = {
  * can pass the address, or pre-define the
  * SAIHUBOT_ADDR environment variable
  */
-export const skillGetZksyncBlance = {
+export const skillGetZksyncBalance = {
   name: 'balance-zksync',
   help: '💰balance-zksync - Show address balance on ZkSync',
   requirements: {
@@ -77,7 +77,7 @@ export const skillGetZksyncBlance = {
 }
 
 const skills = [
-  skillGetZksyncBlance,
+  skillGetZksyncBalance,
   skillSearchZksync,
 ];
 export {skills};

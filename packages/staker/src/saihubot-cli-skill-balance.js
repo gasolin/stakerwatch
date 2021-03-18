@@ -53,7 +53,7 @@ const Balances = ({addresses, fetch}) => {
  * can pass the address, or pre-define the
  * SAIHUBOT_ADDR environment variable
  */
-export const skillGetBlance = {
+export const skillGetBalance = {
   name: 'balance',
   help: '💰balance - Show [address] balance',
   requirements: {
@@ -83,7 +83,7 @@ export const skillGetBlance = {
  * can pass the address, or pre-define the
  * SAIHUBOT_ADDR environment variable
  */
-export const skillGetEthBlance = {
+export const skillGetEthBalance = {
   name: 'balance-eth',
   help: '💰balance-eth - Show [address] balance on Ethereum Network',
   requirements: {
@@ -107,5 +107,5 @@ export const skillGetEthBlance = {
   },
 };
 
-const skills = [skillGetBlance, skillGetEthBlance];
+const skills = [skillGetBalance, skillGetEthBalance];
 export {skills};

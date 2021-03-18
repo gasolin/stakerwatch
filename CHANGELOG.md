@@ -1,3 +1,11 @@
+# 0.40.0
+
+Feature
+- [freenodes] add BSC_NODES, MATIC_NODES, ZKSYNC_NODES, OPTIMISM_NODES, EXPLORER_L2_OPTIMISM
+
+Enhancements
+- update `getRandomItem` to quicker get value from an array with single entry
+
 # 0.39.4 2021/3/17
 
 Feature

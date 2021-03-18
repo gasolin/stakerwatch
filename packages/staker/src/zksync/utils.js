@@ -23,8 +23,7 @@ export const rpcZkSyncBalance = (address) => JSON.stringify({
 });
 
 // https://github.com/matter-labs/zksync/blob/dev/etc/js/env-config.js
-let cachedZkSyncNodeUrl = 'https://api.zksync.io/jsrpc';
-//'https://ropsten-api.zksync.io/jsrpc';
+let cachedZkSyncNodeUrl = '';
 
 /**
  * Random pick a zksync node.
@@ -33,7 +32,7 @@ let cachedZkSyncNodeUrl = 'https://api.zksync.io/jsrpc';
  */
 export const getZksyncNodeURL = () => {
   if (cachedZkSyncNodeUrl) return cachedZkSyncNodeUrl;
-  cachedZkSyncNodeUrl = getConfig('ZKSYNC_NODE_URL', cachedZkSyncNodeUrl);
+  cachedZkSyncNodeUrl = getConfig('ZKSYNC_NODE_URL', 'https://api.zksync.io/jsrpc');
   return cachedZkSyncNodeUrl;
 }
 

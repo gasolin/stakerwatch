@@ -1,4 +1,11 @@
-import { CHAIN_ETHEREUM, CHAIN_XDAI} from './chains'
+import {
+  CHAIN_ETHEREUM,
+  CHAIN_XDAI,
+  CHAIN_BSC,
+  CHAIN_MATIC,
+  L2_ZKSYNC,
+  L2_OPTIMISM,
+} from './chains'
 
 // free nodes without API keys from https://ethereumnodes.com/
 export const ETH_NODES = [
@@ -16,14 +23,52 @@ export const XDAI_NODES = [
   'https://xdai.poanetwork.dev/',
 ]
 
+export const BSC_NODES = [
+  'https://bsc-dataseed1.binance.org',
+  'https://bsc-dataseed2.binance.org',
+  'https://bsc-dataseed3.binance.org',
+  'https://bsc-dataseed4.binance.org',
+  'https://bsc-dataseed1.defibit.io',
+  'https://bsc-dataseed2.defibit.io',
+  'https://bsc-dataseed3.defibit.io',
+  'https://bsc-dataseed4.defibit.io',
+  'https://bsc-dataseed1.ninicoin.io',
+  'https://bsc-dataseed2.ninicoin.io',
+  'https://bsc-dataseed3.ninicoin.io',
+  'https://bsc-dataseed4.ninicoin.io',
+]
+
+export const MATIC_NODES = [
+  'https://rpc-mainnet.maticvigil.com/',
+  'https://rpc-mainnet.matic.network',
+]
+
+export const ZKSYNC_NODES = [
+  'https://api.zksync.io/jsrpc',
+]
+
+export const OPTIMISM_NODES = [
+  'https://mainnet.optimism.io',
+]
+
 export const NODE_MAP = {
   [CHAIN_ETHEREUM]: ETH_NODES,
   [CHAIN_XDAI]: XDAI_NODES,
+  [CHAIN_BSC]: BSC_NODES,
+  [CHAIN_MATIC]: MATIC_NODES,
+  [L2_ZKSYNC]: ZKSYNC_NODES,
+  [L2_OPTIMISM]: OPTIMISM_NODES,
 }
 
 /** get random item from an array. */
-export const getRandomItem = (arr, defaultItem = '') =>
-  arr.length > 0 ? arr[Math.floor(Math.random() * arr.length)] : defaultItem
+export const getRandomItem = (arr, defaultItem = '') => {
+  if (arr.length === 1) {
+    return arr[0]
+  }
+  return Array.isArray(arr) && arr.length > 0
+    ? arr[Math.floor(Math.random() * arr.length)]
+    : defaultItem
+}
 
 let cachedNodeURL = ''
 
@@ -44,6 +89,10 @@ export const getNodeURL = (chainId = CHAIN_ETHEREUM, cache = false) => {
 export default {
   ETH_NODES,
   XDAI_NODES,
+  BSC_NODES,
+  MATIC_NODES,
+  ZKSYNC_NODES,
+  OPTIMISM_NODES,
   NODE_MAP,
   getNodeURL,
   getRandomItem,

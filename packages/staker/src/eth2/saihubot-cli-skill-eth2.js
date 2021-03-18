@@ -211,7 +211,7 @@ export const skillBeaconLastBlock = {
  * can pass the validator key, or pre-define the
  * SAIHUBOT_VALIDATOR environment variable
  */
-export const skillGetValidatorBlance = {
+export const skillGetValidatorBalance = {
   name: 'balance-validator',
   help: '💰balance-(validator|eth2) - Show Validator\'s balance of [key]',
   requirements: {
@@ -357,7 +357,7 @@ export const skillSearchBeaconchain = {
 export const skillsETH2 = [
   skillEth2Stats,
   skillBeaconLastBlock,
-  skillGetValidatorBlance,
+  skillGetValidatorBalance,
 ];
 export const skillsValidator = [
   skillValidatorPicker,
