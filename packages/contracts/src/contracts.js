@@ -1,4 +1,5 @@
-import { CHAIN_XDAI, CHAIN_BSC, CHAIN_MATIC } from 'staker-freenodes'
+import { CHAIN_ETHEREUM, CHAIN_XDAI, CHAIN_BSC, CHAIN_MATIC } from 'staker-freenodes'
+import { ETH_TOKEN_CONTRACTS } from './eth_tokens'
 
 // https://blockscout.com/poa/xdai/bridged-tokens
 export const XDAI_TOKEN_CONTRACTS = [
@@ -193,6 +194,7 @@ export const MATIC_TOKEN_CONTRACTS = [
 ];
 
 export const TOKEN_CONTRACTS = {
+  [CHAIN_ETHEREUM]: ETH_TOKEN_CONTRACTS,
   [CHAIN_XDAI]: XDAI_TOKEN_CONTRACTS,
   [CHAIN_BSC]: BSC_TOKEN_CONTRACTS,
   [CHAIN_MATIC]: MATIC_TOKEN_CONTRACTS,
