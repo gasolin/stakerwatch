@@ -3,9 +3,9 @@ import React, {useEffect, useState} from 'react';
 import {Text} from 'ink';
 import Table from 'ink-table';
 import {t} from 'saihubot-cli-adapter/dist/i18n';
+import {XDAI_TOKEN_CONTRACTS} from 'staker-contracts';
 
 import {getXdaiNodeURL} from './utils';
-import {TOKENMAP} from './token';
 
 import useEthscanBalance from '../helpers/useEthscanBalance';
 import useEthscanTokensBalance from '../helpers/useEthscanTokensBalance';
@@ -32,7 +32,7 @@ export const XdaiBalances = ({addresses, fetch}) => {
   );
   const [tokenLoading, tokenBalance] = useEthscanTokensBalance(
       addresses,
-      TOKENMAP,
+      XDAI_TOKEN_CONTRACTS,
       nodeUrl,
   );
 

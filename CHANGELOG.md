@@ -1,3 +1,11 @@
+# 0.41.0  2021/3/19
+
+Feature
+- [contracts] add `staker-contrats` package
+
+Refactor
+- move token definitions into `staker-contracts`
+
 # 0.40.0  2021/3/18
 
 Feature

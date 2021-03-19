@@ -4,10 +4,9 @@ import {Text} from 'ink';
 import Table from 'ink-table';
 import {t} from 'saihubot-cli-adapter/dist/i18n';
 import {getNodeURL, CHAIN_MATIC} from 'staker-freenodes'
+import {MATIC_TOKEN_CONTRACTS} from 'staker-contracts';
 
 import {MATIC_ETHSCAN_CONTRACT} from './utils';
-import {TOKENMAP} from './token';
-
 import useEthscanBalance from '../helpers/useEthscanBalance';
 import useEthscanTokensBalance from '../helpers/useEthscanTokensBalance';
 import {formatData} from '../helpers/format';
@@ -35,7 +34,7 @@ export const MaticBalances = ({addresses, fetch}) => {
   const [tokenLoading, tokenBalance] = useEthscanTokensBalance(
       addresses,
       nodeUrl,
-      TOKENMAP,
+      MATIC_TOKEN_CONTRACTS,
       MATIC_ETHSCAN_CONTRACT,
   );
 

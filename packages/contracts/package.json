@@ -1,0 +1,50 @@
+{
+  "name": "staker-contracts",
+  "version": "0.40.0",
+  "description": "Token Contracts for Ethereum and compatible chains",
+  "files": [
+    "dist/**",
+    "src/**"
+  ],
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "babel --root-mode=upward ./src --out-dir ./dist --copy-files",
+    "prepublish": "npm run build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gasolin/stakerwatch.git"
+  },
+  "keywords": [
+    "ethereum",
+    "xdai",
+    "bsc",
+    "matic",
+    "polygon",
+    "zksync"
+  ],
+  "author": "Fred Lin <gasolin+saihubot@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/gasolin/stakerwatch/issues"
+  },
+  "homepage": "http://stakerwat.ch/",
+  "dependencies": {
+    "staker-freenodes": "^0.40.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.13.0",
+    "@babel/core": "^7.13.8",
+    "@babel/eslint-parser": "^7.13.8",
+    "@babel/node": "^7.13.0",
+    "@babel/preset-env": "^7.13.9",
+    "@babel/preset-react": "^7.12.13",
+    "@babel/register": "^7.13.8",
+    "eslint": "^7.22.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-plugin-react": "^7.22.0",
+    "eslint-plugin-react-hooks": "^4.2.0"
+  },
+  "gitHead": "221dba935128f71558ed97e65d16ccb7fb85db03"
+}

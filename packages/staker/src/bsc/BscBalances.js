@@ -3,6 +3,7 @@ import React, {useEffect, useState} from 'react';
 import {Text} from 'ink';
 import Table from 'ink-table';
 import {t} from 'saihubot-cli-adapter/dist/i18n';
+import {BSC_TOKEN_CONTRACTS} from 'staker-contracts';
 
 import {getBscNodeURL, BSC_ETHSCAN_CONTRACT} from './utils';
 import {TOKENMAP} from './token';
@@ -34,7 +35,7 @@ export const BscBalances = ({addresses, fetch}) => {
   const [tokenLoading, tokenBalance] = useEthscanTokensBalance(
       addresses,
       nodeUrl,
-      TOKENMAP,
+      BSC_TOKEN_CONTRACTS,
       BSC_ETHSCAN_CONTRACT,
   );
 
