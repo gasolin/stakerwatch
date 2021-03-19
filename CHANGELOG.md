@@ -1,23 +1,17 @@
-# 0.41.0  2021/3/19
-
-Feature
-- [contracts] add `staker-contrats` package
-
-Refactor
-- move token definitions into `staker-contracts`
-
-# 0.40.0  2021/3/18
+# 0.40.1  2021/3/19
 
 Feature
 - [staker] add optimism address/tx explorer
 - [freenodes] add BSC_NODES, MATIC_NODES, ZKSYNC_NODES, OPTIMISM_NODES, EXPLORER_L2_OPTIMISM
 - [balance-matic] show balance on matic chain
+- [contracts] add `staker-contrats` package
 
 Enhancements
 - update `getRandomItem` to quicker get value from an array with single entry
 
 Refactor
 - deploy eth-scan contract to MATIC 0xd570a3C50D157A58625e33C69F1542a5e5594b46
+- move token definitions into `staker-contracts`
 
 # 0.39.4 2021/3/17
 

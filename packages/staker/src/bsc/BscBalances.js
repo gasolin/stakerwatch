@@ -6,7 +6,6 @@ import {t} from 'saihubot-cli-adapter/dist/i18n';
 import {BSC_TOKEN_CONTRACTS} from 'staker-contracts';
 
 import {getBscNodeURL, BSC_ETHSCAN_CONTRACT} from './utils';
-import {TOKENMAP} from './token';
 
 import useEthscanBalance from '../helpers/useEthscanBalance';
 import useEthscanTokensBalance from '../helpers/useEthscanTokensBalance';

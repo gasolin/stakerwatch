@@ -46,7 +46,8 @@
     "react": "^16.14.0",
     "saihubot": "^0.37.0",
     "saihubot-cli-adapter": "^0.37.0",
-    "staker-freenodes": "^0.40.0"
+    "staker-freenodes": "^0.40.0",
+    "staker-contracts": "^0.40.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.13.0",
