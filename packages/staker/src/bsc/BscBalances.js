@@ -23,7 +23,7 @@ const i18nBSC = {
   'props': ['blocknum'],
 };
 
-export const BscBalances = ({addresses, fetch}) => {
+export const BscBalances = ({addresses}) => {
   const nodeUrl = getBscNodeURL();
   const [bscLoading, bscBalance] = useEthscanBalance(
       addresses,

@@ -104,7 +104,7 @@ export const skillGetXdaiBalance = {
       }
     }
     const addrs = toArray(addr || parseArg(msg[2]));
-    robot.sendComponent(<XdaiBalances addresses={addrs} fetch={robot.addons.fetch} xdaiFetch={xdaiFetch} />);
+    robot.sendComponent(<XdaiBalances addresses={addrs} />);
     robot.render();
   },
 }

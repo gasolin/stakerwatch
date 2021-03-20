@@ -23,7 +23,7 @@ const i18nMatic = {
   'props': ['blocknum'],
 };
 
-export const MaticBalances = ({addresses, fetch}) => {
+export const MaticBalances = ({addresses}) => {
   const nodeUrl = getNodeURL(CHAIN_MATIC);
   const [maticLoading, maticBalance] = useEthscanBalance(
       addresses,

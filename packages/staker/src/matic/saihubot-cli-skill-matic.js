@@ -5,7 +5,6 @@ import { t } from 'saihubot-cli-adapter/dist/i18n';
 import {getConfig, parseArg, singleAddr, toArray, addrTxSearch} from '../utils';
 import {i18nAddr} from '../i18n';
 import MaticBalances from './MaticBalances';
-import {maticFetch} from './utils'
 
 /**
  * Check address or tx on Matic.
@@ -70,7 +69,7 @@ export const skillSearchMatic = {
       }
     }
     const addrs = toArray(addr || parseArg(msg[2]));
-    robot.sendComponent(<MaticBalances addresses={addrs} fetch={robot.addons.fetch} maticFetch={maticFetch} />);
+    robot.sendComponent(<MaticBalances addresses={addrs} />);
     robot.render();
   },
 }

@@ -23,7 +23,7 @@ const i18nXdai = {
   'props': ['blocknum'],
 };
 
-export const XdaiBalances = ({addresses, fetch}) => {
+export const XdaiBalances = ({addresses}) => {
   const nodeUrl = getXdaiNodeURL();
   const [xdaiLoading, xdaiBalance] = useEthscanBalance(
       addresses,
