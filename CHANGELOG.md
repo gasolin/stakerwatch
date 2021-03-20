@@ -1,3 +1,9 @@
+# 0.41.0 2021/3/20
+
+Feature
+- [balance-optimism] show optimism balance
+- [contracts] add eth token contracts from 1inch
+
 # 0.40.1  2021/3/19
 
 Feature
