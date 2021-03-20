@@ -36,7 +36,7 @@ Open terminal and type `npx staker help` to find all skills that `staker` comman
 ```
 $ npx staker help
 
-I have 46 skills:
+I have 47 skills:
 * 💰balance - Show [address] balance
 ...
 * 🔎address|addr [address|tx] - Pick address explorer from the list
@@ -370,8 +370,7 @@ If you are using Metamask for EVM compatible chain like Huobi eco chain, BSC cha
 
 ex: search network config for matic chain
 
-```
-
+```sh
 npx staker network matic
 
 ┌──────────────────────┬───────────────────────────────────┬─────────┬────────┐
@@ -422,8 +421,7 @@ Binance Smart Chain Balance
 - [BscScan Block explorer](https://bscscan.com/) Binance Smart Chain explorer.
 
 
-```
-
+```sh
 npx staker network binance
 
 ┌─────────────────────────────┬────────────────────────────────────────────────┬─────────┬────────┐
@@ -502,7 +500,7 @@ npx staker network xdai
 * 🏦zksync [address|tx] - check address or tx on zkSync
 ```
 
-```
+```sh
 npm balance-zksync [addr]
 
 zkSync Balance
@@ -518,7 +516,15 @@ zkSync Balance
 #### Optimism
 
 ```
+* 💰balance-optimism - Show address balance on Optimism
 * 🏦optimism [address|tx] - check address or tx on optimism
+```
+
+```sh
+npm balance-optimism [addr]
+
+Optimism Balance
+...
 ```
 
 ## Other Tools

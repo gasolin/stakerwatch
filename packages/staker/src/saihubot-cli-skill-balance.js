@@ -5,12 +5,14 @@ import {t} from 'saihubot-cli-adapter/dist/i18n';
 
 import {getConfig, parseArg, toArray} from './utils';
 import {i18nBalance} from './i18n';
+
 import EthBalances from './eth/EthBalances';
 import ValidatorBalances from './eth2/ValidatorBalances';
 import XdaiBalances from './xdai/XdaiBalances';
-import ZksyncBalances from './zksync/ZksyncBalances';
 import BscBalances from './bsc/BscBalances';
 import MaticBalances from './matic/MaticBalances';
+import ZksyncBalances from './zksync/ZksyncBalances';
+import OptimismBalances from './optimism/OptimismBalances'
 
 // support multiple account balance by comma (without space)
 // also shows validator balances
@@ -45,6 +47,7 @@ const Balances = ({addresses, fetch}) => {
     <XdaiBalances addresses={addrs} fetch={fetch} />
     <MaticBalances addresses={addrs} fetch={fetch} />
     <ZksyncBalances addresses={addrs} fetch={fetch} />
+    <OptimismBalances addresses={addrs} fetch={fetch} />
   </>);
 };
 
