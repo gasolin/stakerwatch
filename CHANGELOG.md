@@ -3,6 +3,11 @@
 Feature
 - [balance-optimism] show optimism balance
 - [contracts] add eth token contracts from 1inch
+- [contracts] add ETHSCAN_CONTRACT and CHAIN_BASETOKEN
+- [hooks] distill react hooks for fetching balances
+
+Refactor
+- [staker] reuse from staker-contracts
 
 # 0.40.1  2021/3/19
 

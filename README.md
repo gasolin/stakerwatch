@@ -1,9 +1,14 @@
 # stakerwat.ch
-Command line utility for Ethereum stakers.
+
+> Command line utility for Ethereum stakers.
 
 - Staker [![npm version](https://badge.fury.io/js/staker.svg)](https://www.npmjs.com/package/staker)
 
 - Staker-freenodes [![npm version](https://badge.fury.io/js/staker-freenodes.svg)](https://www.npmjs.com/package/staker-freenodes)
+
+- [![NPM](https://img.shields.io/npm/v/staker-contracts.svg)](https://www.npmjs.com/package/staker-contracts)
+
+- [![NPM](https://img.shields.io/npm/v/staker-hooks.svg)](https://www.npmjs.com/package/staker-hooks)
 
 ## Staker Command Usage
 
@@ -43,3 +48,15 @@ Translate skills to your languages.
 Report bug, add your ideas to https://github.com/gasolin/stakerwatch/issues
 
 Send patch to https://github.com/gasolin/stakerwatch/pulls
+
+To boostrap the project after clone the repo
+
+`npm run setup`
+
+To run in packages/[project]
+
+`npm run build`
+
+To deploy to npm
+
+`npm run publish`
