@@ -2,13 +2,13 @@
 
 > Command line utility for Ethereum stakers.
 
-- Staker [![npm version](https://badge.fury.io/js/staker.svg)](https://www.npmjs.com/package/staker)
+- staker [![npm version](https://img.shields.io/npm/v/staker.svg)](https://www.npmjs.com/package/staker)
 
-- Staker-freenodes [![npm version](https://badge.fury.io/js/staker-freenodes.svg)](https://www.npmjs.com/package/staker-freenodes)
+- staker-freenodes [![npm version](https://img.shields.io/npm/v/staker-freenodes.svg)](https://www.npmjs.com/package/staker-freenodes)
 
-- [![NPM](https://img.shields.io/npm/v/staker-contracts.svg)](https://www.npmjs.com/package/staker-contracts)
+- staker-contracts [![NPM](https://img.shields.io/npm/v/staker-contracts.svg)](https://www.npmjs.com/package/staker-contracts)
 
-- [![NPM](https://img.shields.io/npm/v/staker-hooks.svg)](https://www.npmjs.com/package/staker-hooks)
+- staker-hooks [![NPM](https://img.shields.io/npm/v/staker-hooks.svg)](https://www.npmjs.com/package/staker-hooks)
 
 ## Staker Command Usage
 
