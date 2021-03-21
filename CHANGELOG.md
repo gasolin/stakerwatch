@@ -1,4 +1,4 @@
-# 0.41.0 2021/3/20
+# 0.41.1 2021/3/21
 
 Feature
 - [balance-optimism] show optimism balance

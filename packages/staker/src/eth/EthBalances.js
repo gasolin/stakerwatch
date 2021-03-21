@@ -4,23 +4,20 @@ import React from 'react';
 import {Text} from 'ink';
 import Table from 'ink-table';
 import {t} from 'saihubot-cli-adapter/dist/i18n';
+import {CHAIN_ETHEREUM} from 'staker-freenodes';
+import {useEthscanBalance, useEthscanTokensBalance} from 'staker-hooks';
+// import useTokenMap from './useTokenMap';
 
-import useTokenMap from './useTokenMap';
-
-import {getNodeURL} from '../helpers/ethRpc';
-import useEthscanBalance from '../helpers/useEthscanBalance';
-import useEthscanTokensBalance from '../helpers/useEthscanTokensBalance';
 import {formatData} from '../helpers/format';
 
 import {i18nValidator, i18nBalance} from '../i18n';
 
 export const EthBalances = ({addresses, fetch}) => {
   if (!addresses) return null;
-  const nodeUrl = getNodeURL();
-  const [loadEth, balanceEth] = useEthscanBalance(addresses, nodeUrl);
-  const [tokenMap] = useTokenMap(fetch);
+  const [loadEth, balanceEth] = useEthscanBalance(addresses, CHAIN_ETHEREUM);
+  // const [tokenMap] = useTokenMap(fetch);
   const [loadToken, balanceToken] = useEthscanTokensBalance(
-      addresses, tokenMap, nodeUrl);
+      addresses, CHAIN_ETHEREUM);
   if (loadEth && loadToken) {
     return (<Text>{t('query', {i18n: i18nBalance})}</Text>);
   }

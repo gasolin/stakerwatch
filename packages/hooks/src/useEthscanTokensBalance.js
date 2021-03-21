@@ -7,14 +7,14 @@ import {ETHSCAN_CONTRACT, TOKEN_CONTRACTS} from 'staker-contracts'
 export const useEthscanTokensBalance = (addresses, chainId = CHAIN_ETHEREUM, tokenMap = []) => {
   const [balance, setBalance] = useState([]);
   const [loading, setLoading] = useState(true);
-  if (!addresses) return null;
+  if (!Array.isArray(addresses) || addresses.length === 0) return [false, []];
   const nodeUrl = getNodeURL(chainId);
   const contractAddress = ETHSCAN_CONTRACT[chainId];
   const tokens = Array.isArray(tokenMap) && tokenMap.length > 0
     ? tokenMap
     : TOKEN_CONTRACTS[chainId];
-
   const data = [];
+
   useEffect(() => {
     async function fetchTokenBalance() {
       const tokenBalances = await getTokensBalances(
@@ -22,7 +22,6 @@ export const useEthscanTokensBalance = (addresses, chainId = CHAIN_ETHEREUM, tok
         tokens.map((entry) => entry.address),
         {contractAddress}
       );
-
       Object.keys(tokenBalances).map((addr) => // multi addr
         Object.entries(tokenBalances[addr]).map(([key, val]) => {
           if (val === 0n) return;
@@ -39,12 +38,13 @@ export const useEthscanTokensBalance = (addresses, chainId = CHAIN_ETHEREUM, tok
       setBalance(data);
       setLoading(false);
     }
-    if (addresses && tokenMap.length !== 0) {
+
+    if (tokens.length > 0) {
       fetchTokenBalance();
     }
-  }, [addresses, tokenMap]);
+  }, []);
 
   return [loading, balance];
 };
 
-// export default useEthscanTokensBalance;
+export default useEthscanTokensBalance;

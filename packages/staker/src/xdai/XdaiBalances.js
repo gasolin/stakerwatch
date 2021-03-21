@@ -3,12 +3,9 @@ import React, {useEffect, useState} from 'react';
 import {Text} from 'ink';
 import Table from 'ink-table';
 import {t} from 'saihubot-cli-adapter/dist/i18n';
-import {XDAI_TOKEN_CONTRACTS} from 'staker-contracts';
+import {CHAIN_XDAI} from 'staker-freenodes'
+import {useEthscanBalance, useEthscanTokensBalance} from 'staker-hooks';
 
-import {getXdaiNodeURL} from './utils';
-
-import useEthscanBalance from '../helpers/useEthscanBalance';
-import useEthscanTokensBalance from '../helpers/useEthscanTokensBalance';
 import {formatData} from '../helpers/format';
 
 const i18nXdai = {
@@ -24,16 +21,13 @@ const i18nXdai = {
 };
 
 export const XdaiBalances = ({addresses}) => {
-  const nodeUrl = getXdaiNodeURL();
   const [xdaiLoading, xdaiBalance] = useEthscanBalance(
       addresses,
-      nodeUrl,
-      'xDAI',
+      CHAIN_XDAI,
   );
   const [tokenLoading, tokenBalance] = useEthscanTokensBalance(
       addresses,
-      XDAI_TOKEN_CONTRACTS,
-      nodeUrl,
+      CHAIN_XDAI,
   );
 
   if (xdaiLoading && tokenLoading) {

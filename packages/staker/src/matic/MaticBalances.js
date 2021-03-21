@@ -3,12 +3,9 @@ import React, {useEffect, useState} from 'react';
 import {Text} from 'ink';
 import Table from 'ink-table';
 import {t} from 'saihubot-cli-adapter/dist/i18n';
-import {getNodeURL, CHAIN_MATIC} from 'staker-freenodes'
-import {MATIC_TOKEN_CONTRACTS} from 'staker-contracts';
+import {CHAIN_MATIC} from 'staker-freenodes'
+import {useEthscanBalance, useEthscanTokensBalance} from 'staker-hooks';
 
-import {MATIC_ETHSCAN_CONTRACT} from './utils';
-import useEthscanBalance from '../helpers/useEthscanBalance';
-import useEthscanTokensBalance from '../helpers/useEthscanTokensBalance';
 import {formatData} from '../helpers/format';
 
 const i18nMatic = {
@@ -24,18 +21,13 @@ const i18nMatic = {
 };
 
 export const MaticBalances = ({addresses}) => {
-  const nodeUrl = getNodeURL(CHAIN_MATIC);
   const [maticLoading, maticBalance] = useEthscanBalance(
       addresses,
-      nodeUrl,
-      'MATIC',
-      MATIC_ETHSCAN_CONTRACT,
+      CHAIN_MATIC,
   );
   const [tokenLoading, tokenBalance] = useEthscanTokensBalance(
       addresses,
-      nodeUrl,
-      MATIC_TOKEN_CONTRACTS,
-      MATIC_ETHSCAN_CONTRACT,
+      CHAIN_MATIC,
   );
 
   if (maticLoading && tokenLoading) {

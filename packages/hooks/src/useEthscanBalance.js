@@ -7,11 +7,10 @@ import {CHAIN_BASETOKEN, ETHSCAN_CONTRACT} from 'staker-contracts';
 export const useEthscanBalance = (addresses, chainId = CHAIN_ETHEREUM) => {
   const [balance, setBalance] = useState([]);
   const [loading, setLoading] = useState(true);
-  if (!addresses) return null;
+  if (!Array.isArray(addresses) || addresses.length === 0) return [false, []];
   const nodeUrl = getNodeURL(chainId);
   const contractAddress = ETHSCAN_CONTRACT[chainId];
   const tokenSymbol = CHAIN_BASETOKEN[chainId];
-
   const data = [];
 
   useEffect(() => {
@@ -29,10 +28,11 @@ export const useEthscanBalance = (addresses, chainId = CHAIN_ETHEREUM) => {
       setBalance(data);
       setLoading(false);
     }
-    fetchEthBalance();
-  }, [addresses]);
 
+    fetchEthBalance();
+    // run once
+  }, []);
   return [loading, balance];
 };
 
-// export default useEthscanBalance;
+export default useEthscanBalance;

@@ -14,29 +14,31 @@ npm install --save staker-hooks
 
 ```
 import React from 'react'
-import {CHAIN_XDAI} from 'staker-freenodes'
 import {useEthscanBalance, useEthscanTokensBalance} from 'staker-hooks';
 
-export const XdaiBalances = ({addresses}) => {
-  const [xdaiLoading, xdaiBalance] = useEthscanBalance(
+export const XdaiBalances = ({addresses, chainId}) => {
+  const [nativeLoading, nativeBalance] = useEthscanBalance(
       addresses,
-      CHAIN_XDAI, // can neglect if use ethereum chain
+      chainId, // can neglect if use ethereum chain
   );
   const [tokenLoading, tokenBalance] = useEthscanTokensBalance(
       addresses,
-      CHAIN_XDAI, // can neglect if use ethereum chain
+      chainId, // can neglect if use ethereum chain
   );
 
-  if (xdaiLoading && tokenLoading) {
-    return (<Text>{t('query', {i18n: i18nXdai})}</Text>);
+  if (nativeLoading || tokenLoading) {
+    return (<Text>Loading</Text>);
   }
 
-  const balance = [...formatData(xdaiBalance), ...formatData(tokenBalance)];
+  const balance = [...formatData(nativeBalance), ...formatData(tokenBalance)];
   return balance.length > 0 ?
     (<>
-      <Text>{t('xdaiBalance', {i18n: i18nXdai})}</Text>
-      <Table data={balance} />
-      <Text> </Text>
+      {balance.map(token => (
+        <View key={token.token}>
+          <Text>{token.token}</Text>
+          <Text>{token.balance}</Text>
+        </View>
+      ))}
     </>) :
     null;
 }

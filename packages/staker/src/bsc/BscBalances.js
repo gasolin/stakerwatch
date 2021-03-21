@@ -3,12 +3,9 @@ import React, {useEffect, useState} from 'react';
 import {Text} from 'ink';
 import Table from 'ink-table';
 import {t} from 'saihubot-cli-adapter/dist/i18n';
-import {BSC_TOKEN_CONTRACTS} from 'staker-contracts';
+import {CHAIN_BSC} from 'staker-freenodes';
+import {useEthscanBalance, useEthscanTokensBalance} from 'staker-hooks';
 
-import {getBscNodeURL, BSC_ETHSCAN_CONTRACT} from './utils';
-
-import useEthscanBalance from '../helpers/useEthscanBalance';
-import useEthscanTokensBalance from '../helpers/useEthscanTokensBalance';
 import {formatData} from '../helpers/format';
 
 const i18nBSC = {
@@ -24,18 +21,10 @@ const i18nBSC = {
 };
 
 export const BscBalances = ({addresses}) => {
-  const nodeUrl = getBscNodeURL();
-  const [bscLoading, bscBalance] = useEthscanBalance(
-      addresses,
-      nodeUrl,
-      'BNB',
-      BSC_ETHSCAN_CONTRACT,
-  );
+  const [bscLoading, bscBalance] = useEthscanBalance(addresses, CHAIN_BSC);
   const [tokenLoading, tokenBalance] = useEthscanTokensBalance(
       addresses,
-      nodeUrl,
-      BSC_TOKEN_CONTRACTS,
-      BSC_ETHSCAN_CONTRACT,
+      CHAIN_BSC,
   );
 
   if (bscLoading && tokenLoading) {
