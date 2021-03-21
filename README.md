@@ -6,7 +6,7 @@
 
 - staker-contracts [![NPM](https://img.shields.io/npm/v/staker-contracts.svg)](https://www.npmjs.com/package/staker-contracts) Token Contracts for Ethereum and compatible chains
 
-- staker-hooks [![NPM](https://img.shields.io/npm/v/staker-hooks.svg)](https://www.npmjs.com/package/staker-hooks)
+- staker-hooks [![NPM](https://img.shields.io/npm/v/staker-hooks.svg)](https://www.npmjs.com/package/staker-hooks) React Hooks for Ethereum and compatible chains
 
 ## Staker Command Usage
 
