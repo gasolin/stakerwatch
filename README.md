@@ -1,12 +1,10 @@
 # stakerwat.ch
 
-> Command line utility for Ethereum stakers.
+- staker [![npm version](https://img.shields.io/npm/v/staker.svg)](https://www.npmjs.com/package/staker)  Command line utility for Ethereum stakers.
 
-- staker [![npm version](https://img.shields.io/npm/v/staker.svg)](https://www.npmjs.com/package/staker)
+- staker-freenodes [![npm version](https://img.shields.io/npm/v/staker-freenodes.svg)](https://www.npmjs.com/package/staker-freenodes) Library pre-defines nodes, chain explorers, gas estimators for Ethereum compatible chains
 
-- staker-freenodes [![npm version](https://img.shields.io/npm/v/staker-freenodes.svg)](https://www.npmjs.com/package/staker-freenodes)
-
-- staker-contracts [![NPM](https://img.shields.io/npm/v/staker-contracts.svg)](https://www.npmjs.com/package/staker-contracts)
+- staker-contracts [![NPM](https://img.shields.io/npm/v/staker-contracts.svg)](https://www.npmjs.com/package/staker-contracts) Token Contracts for Ethereum and compatible chains
 
 - staker-hooks [![NPM](https://img.shields.io/npm/v/staker-hooks.svg)](https://www.npmjs.com/package/staker-hooks)
 
