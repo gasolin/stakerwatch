@@ -1,10 +1,11 @@
-# 0.41.1 2021/3/21
+# 0.41.3 2021/3/23
 
 Feature
 - [balance-optimism] show optimism balance
 - [contracts] add eth token contracts from 1inch
 - [contracts] add ETHSCAN_CONTRACT and CHAIN_BASETOKEN
 - [hooks] distill react hooks for fetching balances
+- [freenodes] add name prop to gas estimators
 
 Refactor
 - [staker] reuse from staker-contracts

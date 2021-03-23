@@ -4,6 +4,7 @@ function int(num) {
 
 export const GAS_ESTIMATOR_ETHEREUM = {
   GASSTATION: {
+    name: 'gasstation',
     api: 'https://ethgasstation.info/api/ethgasAPI.json',
     processGasData: (json) => ({
       H: int(json.fast / 10),
@@ -13,6 +14,7 @@ export const GAS_ESTIMATOR_ETHEREUM = {
     }),
   },
   GASNOW: {
+    name: 'gasnow',
     api: 'https://www.gasnow.org/api/v3/gas/price?utm_source=:gaso',
     processGasData: (json) => ({
       H: int(json.data.fast / 10 ** 9),
@@ -22,6 +24,7 @@ export const GAS_ESTIMATOR_ETHEREUM = {
     }),
   },
   GASTRACKER: {
+    name: 'gastracker',
     api: 'https://api.etherscan.io/api?module=gastracker&action=gasoracle',
     processGasData: (json) => ({
       H: json.result.FastGasPrice,
@@ -31,6 +34,7 @@ export const GAS_ESTIMATOR_ETHEREUM = {
     }),
   },
   GASPRICEORACLE: {
+    name: 'gaspriceoracle',
     api: 'https://etherchain.org/api/gasPriceOracle',
     processGasData: (json) => ({
       H: int(json.fastest),

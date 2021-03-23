@@ -4,6 +4,8 @@
 
 [![NPM](https://img.shields.io/npm/v/staker-hooks.svg)](https://www.npmjs.com/package/staker-hooks)
 
+Currently provide `useEthscanBalance` and `useEthscanTokensBalance` to query balances via [eth-scan](https://www.npmjs.com/package/@mycrypto/eth-scan) and expand the support chain to Ethereum, xDai, Binance Smart Chain, and Polygon (Matic POS chain).
+
 ## Install
 
 ```sh

@@ -85,7 +85,7 @@ export const skillGasEstimator = {
  * https://ethgasstation.info/https://etherscan.io/gastracker
  */
 export const skillGasTracker = {
-  name: 'gastracker',
+  name: GAS_ESTIMATOR.GASTRACKER.name,
   help: '⛽ gastracker|tracker - Show current gas fee via Etherscan Gas Tracker',
   requirements: {
     addons: ['fetchGas'],
@@ -110,7 +110,7 @@ export const skillGasTracker = {
  * https://ethgasstation.info/
  */
 export const skillGasStation = {
-  name: 'gasstation',
+  name: GAS_ESTIMATOR.GASSTATION.name,
   help: '⛽ gasstation|station - Show current gas fee via Eth Gas Station',
   requirements: {
     addons: ['fetchGas'],
@@ -135,7 +135,7 @@ export const skillGasStation = {
  * https://www.gasnow.org/
  */
 export const skillGasNow = {
-  name: 'gasnow',
+  name: GAS_ESTIMATOR.GASNOW.name,
   help: '⛽ gasnow|now - Show current gas fee via gasnow',
   requirements: {
     addons: ['fetch', 'fetchGas'],
@@ -160,7 +160,7 @@ export const skillGasNow = {
  * https://etherchain.org/tools/gasPriceOracle
  */
 export const skillGasPriceOracle = {
-  name: 'gaspriceoracle',
+  name: GAS_ESTIMATOR.GASPRICEORACLE.name,
   help: '⛽ gaspriceoracle|oracle - Show current gas fee via Eth Gas Price Oracle',
   requirements: {
     addons: ['fetchGas'],
