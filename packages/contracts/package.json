@@ -1,6 +1,6 @@
 {
   "name": "staker-contracts",
-  "version": "0.41.3",
+  "version": "0.42.0",
   "description": "Token Contracts for Ethereum and compatible chains",
   "files": [
     "dist/**",
@@ -31,7 +31,7 @@
   },
   "homepage": "http://stakerwat.ch/",
   "dependencies": {
-    "staker-freenodes": "^0.41.3"
+    "staker-freenodes": "^0.42.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.13.0",
