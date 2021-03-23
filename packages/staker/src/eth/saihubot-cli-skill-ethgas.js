@@ -2,7 +2,14 @@
 
 import {t} from 'saihubot-cli-adapter/dist/i18n';
 
-import { GAS_ESTIMATOR_ETHEREUM as GAS_ESTIMATOR, getRandomItem, ETH_NODES } from 'staker-freenodes'
+import {
+  GAS_ESTIMATOR_ETHEREUM as GAS_ESTIMATOR,
+  GASSTATION,
+  GASNOW,
+  GASTRACKER,
+  GASPRICEORACLE,
+  getRandomItem,
+} from 'staker-freenodes'
 
 import {ethFetch, rpcGasPrice} from '../helpers/ethRpc';
 
@@ -85,7 +92,7 @@ export const skillGasEstimator = {
  * https://ethgasstation.info/https://etherscan.io/gastracker
  */
 export const skillGasTracker = {
-  name: GAS_ESTIMATOR.GASTRACKER.name,
+  name: GASTRACKER,
   help: '⛽ gastracker|tracker - Show current gas fee via Etherscan Gas Tracker',
   requirements: {
     addons: ['fetchGas'],
@@ -94,7 +101,7 @@ export const skillGasTracker = {
   action: function(robot, msg) {
     robot.send(t('fetching', {i18n: i18nGas}));
     robot.render();
-    robot.addons.fetchGas(GAS_ESTIMATOR.GASTRACKER,
+    robot.addons.fetchGas(GAS_ESTIMATOR[GASTRACKER],
       data => {
         robot.send(t('gasfee', {
           i18n: i18nGas,
@@ -110,7 +117,7 @@ export const skillGasTracker = {
  * https://ethgasstation.info/
  */
 export const skillGasStation = {
-  name: GAS_ESTIMATOR.GASSTATION.name,
+  name: GASSTATION,
   help: '⛽ gasstation|station - Show current gas fee via Eth Gas Station',
   requirements: {
     addons: ['fetchGas'],
@@ -119,7 +126,7 @@ export const skillGasStation = {
   action: function(robot, msg) {
     robot.send(t('fetching', {i18n: i18nGas}));
     robot.render();
-    robot.addons.fetchGas(GAS_ESTIMATOR.GASSTATION,
+    robot.addons.fetchGas(GAS_ESTIMATOR[GASSTATION],
       data => {
         robot.send(t('gasfee', {
           i18n: i18nGas,
@@ -135,7 +142,7 @@ export const skillGasStation = {
  * https://www.gasnow.org/
  */
 export const skillGasNow = {
-  name: GAS_ESTIMATOR.GASNOW.name,
+  name: GASNOW,
   help: '⛽ gasnow|now - Show current gas fee via gasnow',
   requirements: {
     addons: ['fetch', 'fetchGas'],
@@ -144,7 +151,7 @@ export const skillGasNow = {
   action: function(robot, msg) {
     robot.send(t('fetching', {i18n: i18nGas}));
     robot.render();
-    robot.addons.fetchGas(GAS_ESTIMATOR.GASNOW,
+    robot.addons.fetchGas(GAS_ESTIMATOR[GASNOW],
       data => {
         robot.send(t('gasfee', {
           i18n: i18nGas,
@@ -160,7 +167,7 @@ export const skillGasNow = {
  * https://etherchain.org/tools/gasPriceOracle
  */
 export const skillGasPriceOracle = {
-  name: GAS_ESTIMATOR.GASPRICEORACLE.name,
+  name: GASPRICEORACLE,
   help: '⛽ gaspriceoracle|oracle - Show current gas fee via Eth Gas Price Oracle',
   requirements: {
     addons: ['fetchGas'],
@@ -169,7 +176,7 @@ export const skillGasPriceOracle = {
   action: function(robot, msg) {
     robot.send(t('fetching', {i18n: i18nGas}));
     robot.render();
-    robot.addons.fetchGas(GAS_ESTIMATOR.GASPRICEORACLE,
+    robot.addons.fetchGas(GAS_ESTIMATOR[GASPRICEORACLE],
       data => {
         robot.send(t('gasfee', {
           i18n: i18nGas,

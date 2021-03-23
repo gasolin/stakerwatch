@@ -2,9 +2,14 @@ function int(num) {
   return parseInt(num, 10)
 }
 
+export const GASSTATION = 'gasstation'
+export const GASNOW = 'gasnow'
+export const GASTRACKER = 'gastracker'
+export const GASPRICEORACLE = 'gaspriceoracle'
+
 export const GAS_ESTIMATOR_ETHEREUM = {
-  GASSTATION: {
-    name: 'gasstation',
+  [GASSTATION]: {
+    name: 'Eth Gas Station',
     api: 'https://ethgasstation.info/api/ethgasAPI.json',
     processGasData: (json) => ({
       H: int(json.fast / 10),
@@ -13,7 +18,7 @@ export const GAS_ESTIMATOR_ETHEREUM = {
       source: 'EthGasStation',
     }),
   },
-  GASNOW: {
+  [GASNOW]: {
     name: 'gasnow',
     api: 'https://www.gasnow.org/api/v3/gas/price?utm_source=:gaso',
     processGasData: (json) => ({
@@ -23,8 +28,8 @@ export const GAS_ESTIMATOR_ETHEREUM = {
       source: 'GasNow',
     }),
   },
-  GASTRACKER: {
-    name: 'gastracker',
+  [GASTRACKER]: {
+    name: 'Etherscan Gas Tracker',
     api: 'https://api.etherscan.io/api?module=gastracker&action=gasoracle',
     processGasData: (json) => ({
       H: json.result.FastGasPrice,
@@ -33,8 +38,8 @@ export const GAS_ESTIMATOR_ETHEREUM = {
       source: 'Etherscan',
     }),
   },
-  GASPRICEORACLE: {
-    name: 'gaspriceoracle',
+  [GASPRICEORACLE]: {
+    name: 'Eth Gas Price Oracle',
     api: 'https://etherchain.org/api/gasPriceOracle',
     processGasData: (json) => ({
       H: int(json.fastest),
