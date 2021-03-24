@@ -4,6 +4,9 @@ Break Change
 - [freenodes][gas estimators] update mapping name and add (plain) name prop
 - [freenodes][defi explorers] add defi explorers mapping
 
+Refactor
+- [staker] reuse from staker-freenodes
+
 # 0.41.3 2021/3/23
 
 Feature
