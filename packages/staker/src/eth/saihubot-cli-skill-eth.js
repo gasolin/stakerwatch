@@ -1,7 +1,14 @@
 'use strict';
 
 import {t} from 'saihubot-cli-adapter/dist/i18n';
-import {getRandomItem} from 'staker-freenodes';
+import {
+  getRandomItem,
+  DEFI_EXPLORER_ETHEREUM,
+  DEFI_DAPPRADAR,
+  DEFI_DEBANK,
+  DEFI_ZAPPER,
+  DEFI_ZERION,
+} from 'staker-freenodes';
 
 import {getConfig, singleAddr, addrTxSearch} from '../utils';
 import {i18nAddr} from '../i18n';
@@ -484,7 +491,7 @@ export const skillAccountPicker = {
  * SAIHUBOT_ADDR environment variable
  */
 export const skillSearchDappradar = {
-  name: 'dappradar',
+  name: DEFI_DAPPRADAR,
   help: '🧩dappradar [address] - check DeFi balance on DappRadar',
   requirements: {
     addons: ['search'],
@@ -501,7 +508,7 @@ export const skillSearchDappradar = {
       }
     }
     const data = singleAddr(addr || msg[2]);
-    const url = 'https://dappradar.com/hub/wallet/' + data;
+    const url = DEFI_EXPLORER_ETHEREUM[DEFI_DAPPRADAR].url(data);
     robot.addons.search('Check', data, url, 'DappRadar');
   },
 };
@@ -513,7 +520,7 @@ export const skillSearchDappradar = {
  * SAIHUBOT_ADDR environment variable
  */
 export const skillSearchDebank = {
-  name: 'debank',
+  name: DEFI_DEBANK,
   help: '🧩debank [address] - check DeFi balance on Debank',
   requirements: {
     addons: ['search'],
@@ -530,7 +537,7 @@ export const skillSearchDebank = {
       }
     }
     const data = singleAddr(addr || msg[2]);
-    const url = 'https://debank.com/portfolio/' + data;
+    const url = DEFI_EXPLORER_ETHEREUM[DEFI_DEBANK].url(data);
     robot.addons.search('Check', data, url, 'Debank');
   },
 };
@@ -542,7 +549,7 @@ export const skillSearchDebank = {
  * SAIHUBOT_ADDR environment variable
  */
 export const skillSearchZapper = {
-  name: 'zapper',
+  name: DEFI_ZAPPER,
   help: '🧩zapper [address] - check DeFi balance on Zapper',
   requirements: {
     addons: ['search'],
@@ -559,7 +566,7 @@ export const skillSearchZapper = {
       }
     }
     const data = singleAddr(addr || msg[2]);
-    const url = 'https://zapper.fi/dashboard?address=' + data;
+    const url = DEFI_EXPLORER_ETHEREUM[DEFI_ZAPPER].url(data);
     robot.addons.search('Check', data, url, 'Zapper');
   },
 };
@@ -589,7 +596,7 @@ export const skillSearchZerion = {
       }
     }
     const data = singleAddr(addr || msg[2]);
-    const url = 'https://app.zerion.io/' + data + '/overview';
+    const url = DEFI_EXPLORER_ETHEREUM[DEFI_ZERION].url(data);
     robot.addons.search('Check', data, url, 'Zerion');
   },
 };

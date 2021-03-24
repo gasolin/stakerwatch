@@ -1,7 +1,8 @@
-# 0.42.0 2021/3/24
+# 0.42.1 2021/3/24
 
 Break Change
 - [freenodes][gas estimators] update mapping name and add (plain) name prop
+- [freenodes][defi explorers] add defi explorers mapping
 
 # 0.41.3 2021/3/23
 
