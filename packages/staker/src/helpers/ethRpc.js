@@ -21,13 +21,29 @@ export const rpcEthBalance = (address) => JSON.stringify({
   params: [`${address}`, "latest"],
 });
 
+const ERC20_GET_BALANCE = '0x70a08231'
 export const rpcTokenBalance = (address, token) => JSON.stringify({
   jsonrpc: '2.0',
   id: idx++,
   method: 'eth_call',
   params: [{
       to: token,
-      data: `0x70a08231${address.replace('0x', '').padStart(64, '0')}`,
+      data: `${ERC20_GET_BALANCE}${address.replace('0x', '').padStart(64, '0')}`,
+    },
+    'latest'
+  ],
+});
+
+const DEFI_SDK_GET_BALANCES = '0xc84aae17'
+export const rpcDefiGetBalances = (address) => JSON.stringify({
+  jsonrpc: '2.0',
+  id: idx++,
+  method: 'eth_call',
+  params: [{
+      // https://docs.zerion.io/smart-contracts/addresses/main-contracts
+      // AdapterRegistry (v3)
+      to: '0xaDfc6460233221eCa99daC25d00f98d32eA3989e',
+      data: `${DEFI_SDK_GET_BALANCES}${address.replace('0x', '').padStart(64, '0')}`,
     },
     'latest'
   ],
