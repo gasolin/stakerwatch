@@ -1,6 +1,6 @@
 {
   "name": "staker",
-  "version": "0.42.2",
+  "version": "0.42.3",
   "description": "Command line Utillity for Ethereum stakers",
   "bin": {
     "staker": "./dist/cli.js"
@@ -46,9 +46,9 @@
     "react": "^16.14.0",
     "saihubot": "^0.37.0",
     "saihubot-cli-adapter": "^0.37.0",
-    "staker-contracts": "^0.42.2",
-    "staker-freenodes": "^0.42.2",
-    "staker-hooks": "^0.42.2"
+    "staker-contracts": "^0.42.3",
+    "staker-freenodes": "^0.42.3",
+    "staker-hooks": "^0.42.3"
   },
   "devDependencies": {
     "@babel/cli": "^7.13.0",
