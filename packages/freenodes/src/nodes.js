@@ -3,6 +3,7 @@ import {
   CHAIN_XDAI,
   CHAIN_BSC,
   CHAIN_MATIC,
+  CHAIN_HECO,
   L2_ZKSYNC,
   L2_OPTIMISM,
 } from './chains'
@@ -23,7 +24,9 @@ export const XDAI_NODES = [
   'https://xdai.poanetwork.dev/',
 ]
 
+// https://docs.binance.org/smart-chain/developer/rpc.html
 export const BSC_NODES = [
+  'https://bsc-dataseed.binance.org/',
   'https://bsc-dataseed1.binance.org',
   'https://bsc-dataseed2.binance.org',
   'https://bsc-dataseed3.binance.org',
@@ -43,6 +46,10 @@ export const MATIC_NODES = [
   'https://rpc-mainnet.matic.network',
 ]
 
+export const HECO_NODES = [
+  'https://http-mainnet.hecochain.com',
+]
+
 export const ZKSYNC_NODES = [
   'https://api.zksync.io/jsrpc',
 ]
@@ -56,6 +63,7 @@ export const NODE_MAP = {
   [CHAIN_XDAI]: XDAI_NODES,
   [CHAIN_BSC]: BSC_NODES,
   [CHAIN_MATIC]: MATIC_NODES,
+  [CHAIN_HECO]: HECO_NODES,
   [L2_ZKSYNC]: ZKSYNC_NODES,
   [L2_OPTIMISM]: OPTIMISM_NODES,
 }
@@ -91,6 +99,7 @@ export default {
   XDAI_NODES,
   BSC_NODES,
   MATIC_NODES,
+  HECO_NODES,
   ZKSYNC_NODES,
   OPTIMISM_NODES,
   NODE_MAP,

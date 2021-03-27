@@ -1,4 +1,10 @@
-# 0.42.1 2021/3/24
+# 0.43 2021/3/27
+
+Feature
+- [staker] add heco address/tx explorer
+- [freenodes] add CHAIN_ID_MAP
+
+# 0.42.3 2021/3/24
 
 Break Change
 - [freenodes][gas estimators] update mapping name and add (plain) name prop

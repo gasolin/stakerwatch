@@ -3,6 +3,7 @@ import {
   CHAIN_BSC,
   CHAIN_XDAI,
   CHAIN_MATIC,
+  CHAIN_HECO,
   L2_ZKSYNC,
   L2_OPTIMISM,
 } from './chains'
@@ -22,6 +23,8 @@ export const CHAIN_BSC_EXPLORER_BITQUERY = 'bitquery'
 export const CHAIN_XDAI_EXPLORER_BLOCKSCOUT = 'blockscout'
 
 export const CHAIN_MATIC_EXPLORER_BLOCKSCOUT = 'maticvigil'
+
+export const CHAIN_HECO_EXPLORER_HECOINFO = 'hecoinfo'
 
 export const L2_ZKSYNC_EXPLORER = 'Zksync'
 
@@ -105,6 +108,14 @@ export const EXPLORER_MATIC = {
   },
 }
 
+export const EXPLORER_HECO = {
+  [CHAIN_HECO_EXPLORER_HECOINFO]: {
+    name: 'HecoInfo Explorer',
+    address: (target) => `https://hecoinfo.com/address/${target}`,
+    tx: (target) => `https://hecoinfo.com/tx/${target}`,
+  }
+}
+
 export const EXPLORER_L2_ZKSYNC = {
   [L2_ZKSYNC_EXPLORER]: {
     name: 'ZkSync Explorer',
@@ -126,6 +137,7 @@ export const EXPLORER_MAP = {
   [CHAIN_BSC]: EXPLORER_BSC,
   [CHAIN_XDAI]: EXPLORER_XDAI,
   [CHAIN_MATIC]: EXPLORER_MATIC,
+  [CHAIN_HECO]: EXPLORER_HECO,
   [L2_ZKSYNC]: EXPLORER_L2_ZKSYNC,
   [L2_OPTIMISM]: EXPLORER_L2_OPTIMISM,
 }
@@ -135,6 +147,7 @@ export default {
   EXPLORER_BSC,
   EXPLORER_XDAI,
   EXPLORER_MATIC,
+  EXPLORER_HECO,
   EXPLORER_L2_ZKSYNC,
   EXPLORER_L2_OPTIMISM,
   EXPLORER_MAP,
