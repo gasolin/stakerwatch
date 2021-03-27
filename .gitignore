@@ -107,3 +107,5 @@ dist
 packages/temp/
 packages/staker/docs/
 dist/
+coingecko_list.js
+useTokenList.js
