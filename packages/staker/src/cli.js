@@ -31,6 +31,7 @@ import {skillGetBalance, skillGetEthBalance} from './saihubot-cli-skill-balance'
 import {skills as skillsXDAI} from './xdai/saihubot-cli-skill-xdai';
 import {skills as skillsBSC} from './bsc/saihubot-cli-skill-bsc';
 import {skills as skillsMatic} from './matic/saihubot-cli-skill-matic';
+import {skills as skillsHeco} from './heco/saihubot-cli-skill-heco';
 import {skills as skillsZkSync} from './zksync/saihubot-cli-skill-zksync';
 import {skills as skillsOptimism} from './optimism/saihubot-cli-skill-optimism';
 import {skills as skillsChain} from './saihubot-cli-skill-chainid';
@@ -82,6 +83,7 @@ const bot = new SaihuBot({
     ...skillsChain,
     ...skillsBSC,
     ...skillsMatic,
+    ...skillsHeco,
     ...skillsXDAI,
     ...skillsZkSync,
     ...skillsOptimism,

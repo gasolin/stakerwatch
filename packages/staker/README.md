@@ -36,7 +36,7 @@ Open terminal and type `npx staker help` to find all skills that `staker` comman
 ```
 $ npx staker help
 
-I have 47 skills:
+I have 48 skills:
 * 💰balance - Show [address] balance
 ...
 * 🔎address|addr [address|tx] - Pick address explorer from the list
@@ -492,6 +492,14 @@ npx staker network xdai
 │ xDAI Chain │ wss://rpc.xdaichain.com/wss │ 100     │ xDAI   │
 └────────────┴─────────────────────────────┴─────────┴────────┘
 ```
+
+#### Huobi Eco Chain
+
+```
+* 🏦heco [address|tx] - check address or tx on Huobi Eco Chain
+```
+
+- [HecoInfo explorer](https://hecoinfo.com)
 
 #### zkSync
 
