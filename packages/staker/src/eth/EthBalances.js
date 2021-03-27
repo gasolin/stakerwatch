@@ -6,7 +6,7 @@ import Table from 'ink-table';
 import {t} from 'saihubot-cli-adapter/dist/i18n';
 import {CHAIN_ETHEREUM} from 'staker-freenodes';
 import {useEthscanBalance, useEthscanTokensBalance} from 'staker-hooks';
-// import useTokenMap from './useTokenMap';
+// import useTokenList from './useTokenList';
 
 import {formatData} from '../helpers/format';
 
@@ -15,7 +15,7 @@ import {i18nValidator, i18nBalance} from '../i18n';
 export const EthBalances = ({addresses, fetch}) => {
   if (!addresses) return null;
   const [loadEth, balanceEth] = useEthscanBalance(addresses, CHAIN_ETHEREUM);
-  // const [tokenMap] = useTokenMap(fetch);
+  // const [tokenMap] = useTokenList(fetch);
   const [loadToken, balanceToken] = useEthscanTokensBalance(
       addresses, CHAIN_ETHEREUM);
   if (loadEth && loadToken) {

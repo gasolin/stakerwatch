@@ -4,6 +4,9 @@ Feature
 - [staker] add heco address/tx explorer
 - [freenodes] add CHAIN_ID_MAP
 
+Fix
+- show chain id as numeric
+
 # 0.42.3 2021/3/24
 
 Break Change
