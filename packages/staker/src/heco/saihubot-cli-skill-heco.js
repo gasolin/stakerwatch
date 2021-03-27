@@ -3,7 +3,7 @@ import React from 'react';
 import { t } from 'saihubot-cli-adapter/dist/i18n';
 import {EXPLORER_HECO, CHAIN_HECO_EXPLORER_HECOINFO} from 'staker-freenodes'
 
-import {getConfig, singleAddr, addrTxSearch} from '../utils';
+import {getConfig, singleAddr, getExplorerLink} from '../utils';
 import {i18nAddr} from '../i18n';
 
 /**
@@ -29,19 +29,12 @@ export const skillSearchHeco = {
         return;
       }
     }
-console.log(CHAIN_HECO_EXPLORER_HECOINFO, EXPLORER_HECO)
-    const explorer = EXPLORER_HECO[CHAIN_HECO_EXPLORER_HECOINFO]
+
     // only support single address
-    addrTxSearch(
+    getExplorerLink(
       singleAddr(addr || msg[2]),
-      (target) => {
-        const url = explorer.address(target);
-        robot.addons.search('Check', target, url, explorer.name);
-      },
-      (target) => {
-        const url = explorer.tx(target);
-        robot.addons.search('Check tx', target, url, explorer.name);
-      }
+      EXPLORER_HECO[CHAIN_HECO_EXPLORER_HECOINFO],
+      robot.addons.search,
     )
   },
 };

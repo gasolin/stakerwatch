@@ -7,6 +7,9 @@ Feature
 Fix
 - show chain id as numeric
 
+Refactor
+- replace addrTxSearch with getExplorerLink
+
 # 0.42.3 2021/3/24
 
 Break Change

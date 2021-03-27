@@ -1,8 +1,9 @@
 'use strict';
 import React from 'react';
 import { t } from 'saihubot-cli-adapter/dist/i18n';
+import {EXPLORER_MATIC, CHAIN_MATIC_EXPLORER_BLOCKSCOUT} from 'staker-freenodes'
 
-import {getConfig, parseArg, singleAddr, toArray, addrTxSearch} from '../utils';
+import {getConfig, parseArg, singleAddr, toArray, getExplorerLink} from '../utils';
 import {i18nAddr} from '../i18n';
 import MaticBalances from './MaticBalances';
 
@@ -29,17 +30,12 @@ export const skillSearchMatic = {
         return;
       }
     }
+
     // only support single address
-    addrTxSearch(
+    getExplorerLink(
       singleAddr(addr || msg[2]),
-      (target) => {
-        const url = 'https://explorer-mainnet.maticvigil.com/address/' + target;
-        robot.addons.search('Check', target, url, 'Matics');
-      },
-      (target) => {
-        const url = 'https://explorer-mainnet.maticvigil.com/tx/' + target;
-        robot.addons.search('Check tx', target, url, 'Matics');
-      }
+      EXPLORER_MATIC[CHAIN_MATIC_EXPLORER_BLOCKSCOUT],
+      robot.addons.search,
     )
   },
 };

@@ -2,8 +2,9 @@
 
 import React from 'react';
 import { t } from 'saihubot-cli-adapter/dist/i18n';
+import { EXPLORER_XDAI, CHAIN_XDAI_EXPLORER_BLOCKSCOUT} from 'staker-freenodes'
 
-import {getConfig, parseArg, toArray, singleAddr, addrTxSearch} from '../utils';
+import {getConfig, parseArg, toArray, singleAddr, getExplorerLink} from '../utils';
 import {rpcLastBlock} from '../helpers/ethRpc';
 import {i18nAddr, i18nBalance} from '../i18n';
 import XdaiBalances from './XdaiBalances';
@@ -33,16 +34,10 @@ export const skillSearchXDai = {
       }
     }
     // only support single address
-    addrTxSearch(
+    getExplorerLink(
       singleAddr(addr || msg[2]),
-      (target) => {
-        const url = 'https://blockscout.com/poa/xdai/address/' + target + '/tokens';
-        robot.addons.search('Check', target, url, 'xDai');
-      },
-      (target) => {
-        const url = 'https://blockscout.com/poa/xdai/tx/' + target + '/internal-transactions';
-        robot.addons.search('Check tx', target, url, 'xDai');
-      }
+      EXPLORER_XDAI[CHAIN_XDAI_EXPLORER_BLOCKSCOUT],
+      robot.addons.search,
     )
   },
 };

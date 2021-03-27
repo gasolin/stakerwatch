@@ -1,10 +1,11 @@
 'use strict';
 import React from 'react';
 import { t } from 'saihubot-cli-adapter/dist/i18n';
+import {EXPLORER_L2_ZKSYNC, L2_ZKSYNC_EXPLORER} from 'staker-freenodes'
 
 import ZksyncBalances from './ZksyncBalances';
 
-import {getConfig, parseArg, toArray, singleAddr, addrTxSearch} from '../utils';
+import {getConfig, parseArg, toArray, singleAddr, getExplorerLink} from '../utils';
 import {i18nBalance} from '../i18n';
 
 /**
@@ -31,16 +32,10 @@ export const skillSearchZksync = {
       }
     }
     // only support single address
-    addrTxSearch(
+    getExplorerLink(
       singleAddr(addr || msg[2]),
-      (target) => {
-        const url = 'https://zkscan.io/explorer/accounts/' + target;
-        robot.addons.search('Check', target, url, 'zkSync');
-      },
-      (target) => {
-        const url = 'https://zkscan.io/explorer/transactions/' + target;
-        robot.addons.search('Check tx', target, url, 'zkSync');
-      }
+      EXPLORER_L2_ZKSYNC[L2_ZKSYNC_EXPLORER],
+      robot.addons.search,
     )
   },
 };

@@ -28,10 +28,10 @@ export const isAddr = (data) => data.startsWith('0x') && data.length === 42;
 
 export const singleAddr = (data) => Array.isArray(data) ? data[0] : data;
 
-export const addrTxSearch = (target, addrfunc, txfunc) => {
+export const getExplorerLink = (target, explorer, action) => {
   if (isAddr(target)) {
-    addrfunc && addrfunc(target);
+    action && action('Check', target, explorer.address(target), explorer.name);
   } else {
-    txfunc && txfunc(target);
+    action && action('Check tx', target, explorer.tx(target), explorer.name);
   }
-};
+}

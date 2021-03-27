@@ -8,9 +8,18 @@ import {
   DEFI_DEBANK,
   DEFI_ZAPPER,
   DEFI_ZERION,
+  EXPLORER_ETHEREUM,
+  CHAIN_ETHEREUM_EXPLORER_ETHERSCAN,
+  CHAIN_ETHEREUM_EXPLORER_BLOXY,
+  CHAIN_ETHEREUM_EXPLORER_BLOCKCHAIR,
+  CHAIN_ETHEREUM_EXPLORER_BITQUERY,
+  CHAIN_ETHEREUM_EXPLORER_ETHERCHAIN,
+  CHAIN_ETHEREUM_EXPLORER_TOKENVIEW,
+  CHAIN_ETHEREUM_EXPLORER_ETHPLORER,
+  CHAIN_ETHEREUM_EXPLORER_ANYBLOCK,
 } from 'staker-freenodes';
 
-import {getConfig, singleAddr, addrTxSearch} from '../utils';
+import {getConfig, singleAddr, getExplorerLink} from '../utils';
 import {i18nAddr} from '../i18n';
 import {ethFetch, rpcLastBlock} from '../helpers/ethRpc';
 
@@ -157,16 +166,10 @@ export const skillSearchEtherscan = {
       }
     }
     // only support single address
-    addrTxSearch(
-      singleAddr(addr || msg[3]),
-      (target) => {
-        const url = 'https://www.etherscan.io/address/' + target;
-        robot.addons.search('Check', target, url, 'Etherscan');
-      },
-      (target) => {
-        const url = 'https://www.etherscan.io/tx/' + target;
-      robot.addons.search('Check tx', target, url, 'Etherscan');
-      }
+    getExplorerLink(
+      singleAddr(addr || msg[2]),
+      EXPLORER_ETHEREUM[CHAIN_ETHEREUM_EXPLORER_ETHERSCAN],
+      robot.addons.search,
     )
   },
 };
@@ -224,16 +227,10 @@ export const skillSearchBlockchair = {
       }
     }
     // only support single address
-    addrTxSearch(
+    getExplorerLink(
       singleAddr(addr || msg[2]),
-      (target) => {
-        const url = 'https://blockchair.com/ethereum/address/' + target;
-        robot.addons.search('Check', target, url, 'blockchair');
-      },
-      (target) => {
-        const url = 'https://blockchair.com/ethereum/transaction/' + target;
-        robot.addons.search('Check tx', target, url, 'blockchair');
-      }
+      EXPLORER_ETHEREUM[CHAIN_ETHEREUM_EXPLORER_BLOCKCHAIR],
+      robot.addons.search,
     )
   },
 };
@@ -262,16 +259,10 @@ export const skillSearchBitQuery = {
       }
     }
     // only support single address
-    addrTxSearch(
+    getExplorerLink(
       singleAddr(addr || msg[2]),
-      (target) => {
-        const url = 'https://explorer.bitquery.io/ethereum/address/' + target;
-        robot.addons.search('Check', target, url, 'explorer.bitquery.io');
-      },
-      (target) => {
-        const url = 'https://explorer.bitquery.io/ethereum/tx/' + target;
-        robot.addons.search('Check tx', target, url, 'explorer.bitquery.io');
-      }
+      EXPLORER_ETHEREUM[CHAIN_ETHEREUM_EXPLORER_BITQUERY],
+      robot.addons.search,
     )
   },
 };
@@ -299,16 +290,10 @@ export const skillSearchEtherchain = {
       }
     }
     // only support single address
-    addrTxSearch(
-      singleAddr(addr || msg[3]),
-      (target) => {
-        const url = 'https://etherchain.org/account/' + target;
-        robot.addons.search('Check', target, url, 'etherchain.org');
-      },
-      (target) => {
-        const url = 'https://etherchain.org/tx/' + target;
-      robot.addons.search('Check tx', target, url, 'etherchain');
-      }
+    getExplorerLink(
+      singleAddr(addr || msg[2]),
+      EXPLORER_ETHEREUM[CHAIN_ETHEREUM_EXPLORER_ETHERCHAIN],
+      robot.addons.search,
     )
   },
 };
@@ -336,16 +321,10 @@ export const skillSearchTokenview = {
       }
     }
     // only support single address
-    addrTxSearch(
+    getExplorerLink(
       singleAddr(addr || msg[2]),
-      (target) => {
-        const url = 'https://eth.tokenview.com/en/address/' + target;
-        robot.addons.search('Check', target, url, 'tokenview');
-      },
-      (target) => {
-        const url = 'https://eth.tokenview.com/en/tx/' + target;
-        robot.addons.search('Check tx', target, url, 'tokenview');
-      }
+      EXPLORER_ETHEREUM[CHAIN_ETHEREUM_EXPLORER_TOKENVIEW],
+      robot.addons.search,
     )
   },
 };
@@ -373,16 +352,10 @@ export const skillSearchEthplorer = {
       }
     }
     // only support single address
-    addrTxSearch(
+    getExplorerLink(
       singleAddr(addr || msg[2]),
-      (target) => {
-        const url = 'https://ethplorer.io/address/' + target;
-        robot.addons.search('Check', target, url, 'Ethplorer');
-      },
-      (target) => {
-        const url = 'https://ethplorer.io/tx/' + target;
-        robot.addons.search('Check tx', target, url, 'Ethplorer');
-      }
+      EXPLORER_ETHEREUM[CHAIN_ETHEREUM_EXPLORER_ETHPLORER],
+      robot.addons.search,
     )
   },
 };
@@ -410,16 +383,10 @@ export const skillSearchAnyblock = {
       }
     }
     // only support single address
-    addrTxSearch(
+    getExplorerLink(
       singleAddr(addr || msg[2]),
-      (target) => {
-        const url = 'https://explorer.anyblock.tools/ethereum/ethereum/mainnet/address/' + target;
-        robot.addons.search('Check', target, url, 'ANYblock');
-      },
-      (target) => {
-        const url = 'https://explorer.anyblock.tools/ethereum/ethereum/mainnet/transaction/' + target;
-        robot.addons.search('Check tx', target, url, 'ANYblock');
-      }
+      EXPLORER_ETHEREUM[CHAIN_ETHEREUM_EXPLORER_ANYBLOCK],
+      robot.addons.search,
     )
   },
 };

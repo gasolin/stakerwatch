@@ -1,8 +1,9 @@
 'use strict';
 import React from 'react';
 import { t } from 'saihubot-cli-adapter/dist/i18n';
+import {EXPLORER_BSC, CHAIN_BSC_EXPLORER_BSCSCAN} from 'staker-freenodes'
 
-import {getConfig, parseArg, singleAddr, toArray, addrTxSearch} from '../utils';
+import {getConfig, parseArg, singleAddr, toArray, getExplorerLink} from '../utils';
 import {i18nAddr} from '../i18n';
 import BscBalances from './BscBalances';
 import {bscFetch} from './utils'
@@ -31,16 +32,10 @@ export const skillSearchBSCscan = {
       }
     }
     // only support single address
-    addrTxSearch(
+    getExplorerLink(
       singleAddr(addr || msg[2]),
-      (target) => {
-        const url = 'https://bscscan.com/address/' + target;
-        robot.addons.search('Check', target, url, 'Binance Smart Chain');
-      },
-      (target) => {
-        const url = 'https://bscscan.com/tx/' + target;
-        robot.addons.search('Check tx', target, url, 'Binance Smart Chain');
-      }
+      EXPLORER_BSC[CHAIN_BSC_EXPLORER_BSCSCAN],
+      robot.addons.search,
     )
   },
 };

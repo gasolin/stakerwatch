@@ -1,10 +1,10 @@
 'use strict';
 import React from 'react';
 import { t } from 'saihubot-cli-adapter/dist/i18n';
+import {EXPLORER_L2_OPTIMISM, L2_OPTIMISM_EXPLORER} from 'staker-freenodes'
 
 import OptimismBalances from './OptimismBalances';
-
-import {getConfig, parseArg, toArray, singleAddr, addrTxSearch} from '../utils';
+import {getConfig, parseArg, toArray, singleAddr, getExplorerLink} from '../utils';
 import {i18nBalance} from '../i18n';
 
 /**
@@ -31,16 +31,10 @@ export const skillSearchOptimism = {
       }
     }
     // only support single address
-    addrTxSearch(
+    getExplorerLink(
       singleAddr(addr || msg[2]),
-      (target) => {
-        const url = `https://mainnet-l2-explorer.surge.sh/account/${target}`;
-        robot.addons.search('Check', target, url, 'optimism');
-      },
-      (target) => {
-        const url = `https://mainnet-l2-explorer.surge.sh/tx/${target}`;
-        robot.addons.search('Check tx', target, url, 'optimism');
-      }
+      EXPLORER_L2_OPTIMISM[L2_OPTIMISM_EXPLORER],
+      robot.addons.search,
     )
   },
 };

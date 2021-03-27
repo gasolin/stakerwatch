@@ -68,7 +68,7 @@ export const EXPLORER_ETHEREUM = {
     tx: (target) => `https://ethplorer.io/tx/${target}`,
   },
   [CHAIN_ETHEREUM_EXPLORER_ANYBLOCK]: {
-    name: 'AnyBlock',
+    name: 'ANYBlock',
     address: (target) =>
       `https://explorer.anyblock.tools/ethereum/ethereum/mainnet/address/${target}`,
     tx: (target) =>
