@@ -3,6 +3,7 @@
 Feature
 - [staker] add heco address/tx explorer
 - [freenodes] add CHAIN_ID_MAP
+- [contracts] add pancakeSwap BSC_TOKEN_CONTRACTS
 
 Fix
 - show chain id as numeric

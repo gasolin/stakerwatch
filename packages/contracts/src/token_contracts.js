@@ -1,5 +1,6 @@
 import { CHAIN_ETHEREUM, CHAIN_XDAI, CHAIN_BSC, CHAIN_MATIC } from 'staker-freenodes'
 import { ETH_TOKEN_CONTRACTS } from './eth_tokens'
+import { BSC_TOKEN_CONTRACTS } from './bsc_tokens'
 
 // https://blockscout.com/poa/xdai/bridged-tokens
 export const XDAI_TOKEN_CONTRACTS = [
@@ -64,46 +65,6 @@ export const XDAI_TOKEN_CONTRACTS = [
     decimals: 18,
   },
 ]
-
-// https://www.binance.org/en/assets-proof
-export const BSC_TOKEN_CONTRACTS = [
-  {
-    address: '0x8ac76a51cc950d9822d68b83fe1ad97b32cd580d',
-    name: 'Binance-Peg USDC',
-    symbol: 'USDC',
-    decimals: 18,
-  },
-  {
-    address: '0x2170ed0880ac9a755fd29b2688956bd959f933f8',
-    name: 'Binance-Peg ETH',
-    symbol: 'ETH',
-    decimals: 18,
-  },
-  {
-    address: '0x55d398326f99059ff775485246999027b3197955',
-    name: 'Binance-Peg USDT',
-    symbol: 'USDT',
-    decimals: 18,
-  },
-  {
-    address: '0x1af3f329e8be154074d8769d1ffa4ee058b1dbc3',
-    name: 'Binance-Peg DAI',
-    symbol: 'DAI',
-    decimals: 18,
-  },
-  {
-    address: '0xe9e7cea3dedca5984780bafc599bd69add087d56',
-    name: 'Binance-Peg BUSD',
-    symbol: 'BUSD',
-    decimals: 18,
-  },
-  {
-    address: '0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c',
-    name: 'Wrapped BNB',
-    symbol: 'BNB',
-    decimals: 18,
-  },
-];
 
 // https://docs.matic.network/docs/develop/network-details/mapped-tokens
 export const MATIC_TOKEN_CONTRACTS = [
