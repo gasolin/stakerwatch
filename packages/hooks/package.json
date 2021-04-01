@@ -1,6 +1,6 @@
 {
   "name": "staker-hooks",
-  "version": "0.43.1",
+  "version": "0.43.2",
   "description": "React Hooks for Ethereum and compatible chains",
   "files": [
     "dist/**",
@@ -31,7 +31,7 @@
   "homepage": "http://stakerwat.ch/",
   "dependencies": {
     "@mycrypto/eth-scan": "^3.3.1",
-    "staker-contracts": "^0.43.1",
+    "staker-contracts": "^0.43.2",
     "staker-freenodes": "^0.43.1"
   },
   "peerDependencies": {
