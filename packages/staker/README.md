@@ -535,6 +535,8 @@ Optimism Balance
 ...
 ```
 
+- [Optimism explorer](https://mainnet-l2-explorer.surge.sh)
+
 ## Other Tools
 
 ```
