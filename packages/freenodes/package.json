@@ -22,7 +22,9 @@
     "bsc",
     "matic",
     "polygon",
-    "zksync"
+    "zksync",
+    "optimism",
+    "heco"
   ],
   "author": "Fred Lin <gasolin+saihubot@gmail.com>",
   "license": "MIT",

@@ -30,7 +30,11 @@
     "gasfee",
     "xdai",
     "bsc",
-    "matic"
+    "matic",
+    "polygon",
+    "zksync",
+    "optimism",
+    "heco"
   ],
   "author": "Fred Lin <gasolin+saihubot@gmail.com>",
   "license": "MIT",

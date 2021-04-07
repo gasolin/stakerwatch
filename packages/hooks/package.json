@@ -18,10 +18,7 @@
   },
   "keywords": [
     "ethereum",
-    "xdai",
-    "bsc",
-    "matic",
-    "polygon"
+    "coingecko"
   ],
   "author": "Fred Lin <gasolin+saihubot@gmail.com>",
   "license": "MIT",
