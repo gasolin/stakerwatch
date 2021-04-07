@@ -1,3 +1,8 @@
+# 0.44 2021/4/4
+
+Enhancement
+- [hooks] useEthscanBalance & useEthscanTokensBalance will update after addresses change
+
 # 0.43 2021/3/27
 
 Feature

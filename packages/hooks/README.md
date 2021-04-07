@@ -12,7 +12,7 @@ Currently provide `useEthscanBalance` and `useEthscanTokensBalance` to query bal
 npm install --save staker-hooks
 ```
 
-## Usage
+## Get native and token balances
 
 ```
 import React from 'react'
@@ -45,6 +45,23 @@ export const XdaiBalances = ({addresses, chainId}) => {
     null;
 }
 ```
+
+## Get tokens price
+
+```
+import React from 'react'
+import {useTokensPrice} from 'staker-hooks';
+
+export const Balances = () => {
+  const [prices] = useTokensPrice(['ETH','BTC'])
+  return (
+    <Text>
+      {JSON.stringify(prices)}
+    </Text>
+  )
+}
+```
+
 ## License
 
 MIT © [gasolin](https://github.com/gasolin)

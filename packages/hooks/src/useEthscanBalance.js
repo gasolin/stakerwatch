@@ -1,13 +1,20 @@
 /* eslint-disable require-jsdoc */
-import {useEffect, useState} from 'react';
+import {useEffect, useRef, useState} from 'react';
 import {getEtherBalances} from '@mycrypto/eth-scan';
 import {getNodeURL, CHAIN_ETHEREUM} from 'staker-freenodes';
 import {CHAIN_BASETOKEN, ETHSCAN_CONTRACT} from 'staker-contracts';
+import isDeepEqual from 'fast-deep-equal/react';
 
 export const useEthscanBalance = (addresses, chainId = CHAIN_ETHEREUM) => {
   const [balance, setBalance] = useState([]);
   const [loading, setLoading] = useState(true);
+  const addrRef = useRef(addresses);
   if (!Array.isArray(addresses) || addresses.length === 0) return [false, []];
+
+  if (!isDeepEqual(addrRef.current, addresses)) {
+    addrRef.current = addresses
+  }
+
   const nodeUrl = getNodeURL(chainId);
   const contractAddress = ETHSCAN_CONTRACT[chainId];
   const tokenSymbol = CHAIN_BASETOKEN[chainId];
@@ -25,13 +32,13 @@ export const useEthscanBalance = (addresses, chainId = CHAIN_ETHEREUM) => {
           source: '',
         });
       });
+
       setBalance(data);
       setLoading(false);
     }
 
     fetchEthBalance();
-    // run once
-  }, []);
+  }, [addrRef.current]);
   return [loading, balance];
 };
 
