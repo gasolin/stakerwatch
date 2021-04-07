@@ -27,7 +27,7 @@ import {
 } from './eth2/saihubot-cli-skill-eth2';
 // import {skills as skillsDefi} from './defi/saihubot-cli-skill-defi';
 import {skillsGas} from './eth/saihubot-cli-skill-ethgas';
-import {skillGetBalance, skillGetEthBalance} from './saihubot-cli-skill-balance';
+import {skillGetBalance, skillGetEthBalance, skillGetTokensPrice} from './saihubot-cli-skill-balance';
 import {skills as skillsXDAI} from './xdai/saihubot-cli-skill-xdai';
 import {skills as skillsBSC} from './bsc/saihubot-cli-skill-bsc';
 import {skills as skillsMatic} from './matic/saihubot-cli-skill-matic';
@@ -71,6 +71,7 @@ const bot = new SaihuBot({
     skillGetBalance,
     skillGetEthBalance,
     // ...skillsDefi,
+    skillGetTokensPrice,
     skillLastBlock,
     ...skillsAddress,
     skillGetValidatorBalance,

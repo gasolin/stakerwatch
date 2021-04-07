@@ -112,5 +112,20 @@ export const skillGetEthBalance = {
   },
 };
 
-const skills = [skillGetBalance, skillGetEthBalance];
+export const skillGetTokensPrice = {
+  name: 'price',
+  help: '💰price - Show token price by symbol',
+  requirements: {
+    addons: ['fetch'],
+  },
+  rule: /(^price )(.*)/i,
+  action: function(robot, msg) {
+    const parsedToken = parseArg(msg[2]);
+    const tokens = toArray(parsedToken);
+    robot.sendComponent(<TokensPrice tokens={tokens} fetch={robot.addons.fetch} />);
+    robot.render();
+  }
+}
+
+const skills = [skillGetBalance, skillGetEthBalance, skillGetTokensPrice];
 export {skills};

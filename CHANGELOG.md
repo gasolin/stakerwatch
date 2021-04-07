@@ -1,5 +1,8 @@
 # 0.44 2021/4/4
 
+Feature
+- [staker] add `price` skill to get tokens price
+
 Enhancement
 - [hooks] useEthscanBalance & useEthscanTokensBalance will update after addresses change
 
