@@ -6,6 +6,10 @@ Feature
 Enhancement
 - [hooks] useEthscanBalance & useEthscanTokensBalance will update after addresses change
 
+Fix
+- [staker] add links
+- [staker][freenodes] update npm keywords
+
 # 0.43 2021/3/27
 
 Feature
