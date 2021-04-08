@@ -26,7 +26,7 @@ export const useTokensPrice = (tokens = [], fetch) => {
       ? `https://api.coingecko.com/api/v3/simple/price?ids=${tokenNum === 1 ? tokenIdMap[0].id : tokenIdMap
           .map((token) => token.id)
           .join('%2C')}&vs_currencies=usd`
-      : '',
+      : ''
     return [url, tokenIdMap]
   }, [tokensRef.current])
 
