@@ -1,6 +1,6 @@
 {
   "name": "staker-hooks",
-  "version": "0.43.2",
+  "version": "0.44.0",
   "description": "React Hooks for Ethereum and compatible chains",
   "files": [
     "dist/**",
@@ -29,8 +29,8 @@
   "dependencies": {
     "@mycrypto/eth-scan": "^3.3.1",
     "fast-deep-equal": "^3.1.3",
-    "staker-contracts": "^0.43.2",
-    "staker-freenodes": "^0.43.1"
+    "staker-contracts": "^0.44.0",
+    "staker-freenodes": "^0.44.0"
   },
   "peerDependencies": {
     "react": ">=16.14.0"
