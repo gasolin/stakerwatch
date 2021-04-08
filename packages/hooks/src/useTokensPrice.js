@@ -6,6 +6,7 @@ import TOKEN_MAP from './coingecko_token_map.json'
 
 export const useTokensPrice = (tokens = [], fetch) => {
   const [tokenPrices, setTokenPrices] = useState([])
+  const [tokenMap, setTokenMap] = useState('[]')
   const tokensRef = useRef(tokens);
 
   if (!isDeepEqual(tokensRef.current, tokens)) {
@@ -20,26 +21,31 @@ export const useTokensPrice = (tokens = [], fetch) => {
       )
       .filter((entry) => entry !== undefined)
     // console.log('tokenIdMap %O', tokenIdMap)
-    return tokenIdMap.length > 0
-      ? `https://api.coingecko.com/api/v3/simple/price?ids=${tokenIdMap
+    const tokenNum = tokenIdMap.length
+    const url = tokenNum > 0
+      ? `https://api.coingecko.com/api/v3/simple/price?ids=${tokenNum === 1 ? tokenIdMap[0].id : tokenIdMap
           .map((token) => token.id)
           .join('%2C')}&vs_currencies=usd`
-      : ''
+      : '',
+    return [url, tokenIdMap]
   }, [tokensRef.current])
 
   useEffect(() => {
     async function getPrices() {
-      const API = coingGeckoSimplePriceAPI(tokens)
-      if (API) {
-        const data = await fetch(API, {
+      const [url, tokenIdMap] = coingGeckoSimplePriceAPI(tokens)
+      if (url) {
+        const data = await fetch(url, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
           },
         })
-        const result = data.json()
+        const result = await data.json()
+        const symbolToIdMap = {}
+        tokenIdMap.map(entry => symbolToIdMap[entry.id] = entry.symbol)
         // console.log('json %O', result)
         setTokenPrices(result)
+        setTokenMap(JSON.stringify(symbolToIdMap))
       }
     }
 
@@ -48,7 +54,7 @@ export const useTokensPrice = (tokens = [], fetch) => {
     }
   }, [coingGeckoSimplePriceAPI, tokensRef.current])
 
-  return [tokenPrices]
+  return [tokenPrices, JSON.parse(tokenMap)]
 }
 
 export default useTokensPrice

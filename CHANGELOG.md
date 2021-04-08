@@ -2,6 +2,7 @@
 
 Feature
 - [staker] add `price` skill to get tokens price
+- [hooks] add useTokensPrice hook to get prices from CoinGecko
 
 Enhancement
 - [hooks] useEthscanBalance & useEthscanTokensBalance will update after addresses change
