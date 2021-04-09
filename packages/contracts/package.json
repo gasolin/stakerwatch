@@ -1,6 +1,6 @@
 {
   "name": "staker-contracts",
-  "version": "0.44.0",
+  "version": "0.44.3",
   "description": "Token Contracts for Ethereum and compatible chains",
   "files": [
     "dist/**",
