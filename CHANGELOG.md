@@ -11,6 +11,10 @@ Fix
 - [staker] add links
 - [staker][freenodes] update npm keywords
 
+Refactor
+- update dependency packages
+- update eth-scan eth/xdai contract address
+
 # 0.43 2021/3/27
 
 Feature

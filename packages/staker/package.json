@@ -43,7 +43,6 @@
   },
   "homepage": "http://stakerwat.ch/",
   "dependencies": {
-    "@mycrypto/eth-scan": "^3.3.0",
     "comma-number": "^2.0.1",
     "humanize-duration": "^3.25.1",
     "ink-table": "^3.0.0",
@@ -55,17 +54,17 @@
     "staker-hooks": "^0.44.2"
   },
   "devDependencies": {
-    "@babel/cli": "^7.13.0",
-    "@babel/core": "^7.13.8",
-    "@babel/eslint-parser": "^7.13.8",
-    "@babel/node": "^7.13.0",
-    "@babel/preset-env": "^7.13.9",
-    "@babel/preset-react": "^7.12.13",
-    "@babel/register": "^7.13.8",
+    "@babel/cli": "^7.13.14",
+    "@babel/core": "^7.13.15",
+    "@babel/eslint-parser": "^7.13.14",
+    "@babel/node": "^7.13.13",
+    "@babel/preset-env": "^7.13.15",
+    "@babel/preset-react": "^7.13.13",
+    "@babel/register": "^7.13.14",
     "chalk": "^4.1.0",
-    "eslint": "^7.22.0",
+    "eslint": "^7.23.0",
     "eslint-config-google": "^0.14.0",
-    "eslint-plugin-react": "^7.22.0",
+    "eslint-plugin-react": "^7.23.2",
     "eslint-plugin-react-hooks": "^4.2.0"
   },
   "gitHead": "221dba935128f71558ed97e65d16ccb7fb85db03"
