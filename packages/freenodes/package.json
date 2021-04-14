@@ -1,6 +1,6 @@
 {
   "name": "staker-freenodes",
-  "version": "0.45.0",
+  "version": "0.46.0",
   "description": "free accessible nodes for Ethereum and compatible chains",
   "files": [
     "dist/**",
