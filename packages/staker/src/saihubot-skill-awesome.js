@@ -104,6 +104,14 @@ const AWESOME_LINKS = [
     link: 'https://github.com/ethereum/EIPs/tree/master/EIPS',
     description: 'List of Ethereum Improvement Proposals',
   },
+  {
+    link: 'https://ethmerge.com/',
+    description: 'The ETH 2.0 merge live document',
+  },
+  {
+    link: 'https://www.l2beat.com/',
+    description: 'Layer 2 project pulse',
+  }
 ];
 
 /**
