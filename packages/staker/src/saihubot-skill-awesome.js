@@ -86,7 +86,7 @@ const AWESOME_LINKS = [
   },
   {
     link: 'https://txstreet.com/',
-    description: '',
+    description: 'Gamify Tx explorer',
   },
   {
     link: 'https://terminal.tokenterminal.com/',
@@ -94,7 +94,7 @@ const AWESOME_LINKS = [
   },
   {
     link: 'https://notes.ethereum.org/@protolambda/eth2_tooling',
-    description: '',
+    description: 'Ethereum 2 tooling',
   },
   {
     link: 'https://app.daohaus.club/explore',
