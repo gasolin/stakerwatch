@@ -1,10 +1,11 @@
-# 0.45 2021/4/15
+# 0.46 2021/4/15
 
 Feature
 - [awesome] add TheMerge and l2beat
 
 Refactor
 - update eth-scan eth/xdai/bsc/matic contract address
+- not generate doc by default
 
 # 0.44 2021/4/8
 
