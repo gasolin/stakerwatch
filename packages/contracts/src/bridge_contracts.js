@@ -78,6 +78,17 @@ export const ETH_BRIDGE_CONTRACTS = {
     "website": "https://fuel.sh/",
     "type": TYPE_LAYER2
   },
+  "ImmutableX": {
+    "bridges": [
+      {
+        "address": "0x5FDCCA53617f4d2b9134B29090C87D01058e27e9",
+        "deployed_at_block": 12011518,
+        "tokens": ["ETH"]
+      }
+    ],
+    "website": "https://www.immutable.com/",
+    "type": TYPE_LAYER2
+  },
   "Loopring": {
     "bridges": [
       {
