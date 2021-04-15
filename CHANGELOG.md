@@ -2,6 +2,7 @@
 
 Feature
 - [awesome] add TheMerge and l2beat
+- [contract] add bridge contracts from https://github.com/krzkaczor/l2beat
 
 Refactor
 - update eth-scan eth/xdai/bsc/matic contract address
