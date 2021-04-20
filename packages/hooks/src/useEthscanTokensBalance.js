@@ -1,5 +1,6 @@
 /* eslint-disable require-jsdoc */
 import {useEffect, useRef, useState} from 'react';
+import {JsonRpcProvider} from '@ethersproject/providers';
 import {getTokensBalances} from '@mycrypto/eth-scan';
 import {getNodeURL, CHAIN_ETHEREUM} from 'staker-freenodes'
 import {ETHSCAN_CONTRACT, TOKEN_CONTRACTS} from 'staker-contracts'
@@ -15,7 +16,7 @@ export const useEthscanTokensBalance = (addresses, chainId = CHAIN_ETHEREUM, tok
     addrRef.current = addresses
   }
 
-  const nodeUrl = getNodeURL(chainId);
+  const nodeUrl = new JsonRpcProvider(getNodeURL(chainId));
   const contractAddress = ETHSCAN_CONTRACT[chainId];
   const tokens = Array.isArray(tokenMap) && tokenMap.length > 0
     ? tokenMap
