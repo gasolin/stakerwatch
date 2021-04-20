@@ -1,8 +1,7 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react'
-import _toLower from 'lodash/toLower'
 import isDeepEqual from 'fast-deep-equal/react';
 
-import TOKEN_MAP from './coingecko_token_map.json'
+import {getTokenPriceQueryUrl} from './tokensPrice'
 
 export const useTokensPrice = (tokens = [], fetch) => {
   const [tokenPrices, setTokenPrices] = useState([])
@@ -13,26 +12,14 @@ export const useTokensPrice = (tokens = [], fetch) => {
     tokensRef.current = tokens
   }
 
-  const coingGeckoSimplePriceAPI = useCallback(() => {
-    // console.log('tokens %O', TOKEN_MAP)
-    const tokenIdMap = tokens
-      .map((symbol) =>
-        TOKEN_MAP.find((entry) => entry.symbol === _toLower(symbol))
-      )
-      .filter((entry) => entry !== undefined)
-    // console.log('tokenIdMap %O', tokenIdMap)
-    const tokenNum = tokenIdMap.length
-    const url = tokenNum > 0
-      ? `https://api.coingecko.com/api/v3/simple/price?ids=${tokenNum === 1 ? tokenIdMap[0].id : tokenIdMap
-          .map((token) => token.id)
-          .join('%2C')}&vs_currencies=usd`
-      : ''
-    return [url, tokenIdMap]
+  // return [url, tokenIdMap]
+  const getSimplePriceAPI = useCallback(() => {
+    return getTokenPriceQueryUrl(tokensRef.current)
   }, [tokensRef.current])
 
   useEffect(() => {
     async function getPrices() {
-      const [url, tokenIdMap] = coingGeckoSimplePriceAPI(tokens)
+      const [url, tokenIdMap] = getSimplePriceAPI(tokens)
       if (url) {
         const data = await fetch(url, {
           method: 'GET',

@@ -1,9 +1,14 @@
+# 0.47 2021/4/16
+
+Fix
+- [hook] useTokensPrice
+- [hook] import url with jsonRPCProvider
+
 # 0.46 2021/4/15
 
 Feature
 - [awesome] add TheMerge and l2beat
 - [contract] add bridge contracts from https://github.com/krzkaczor/l2beat
-- [hook] import url with jsonRPCProvider
 
 Refactor
 - update eth-scan eth/xdai/bsc/matic contract address
