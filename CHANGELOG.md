@@ -1,3 +1,8 @@
+# 0.48
+
+Feature
+- [awesome] add chainlist, Defi Llama, and Ethereum milestones
+
 # 0.47 2021/4/16
 
 Fix

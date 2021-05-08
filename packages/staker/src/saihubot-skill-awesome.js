@@ -111,6 +111,18 @@ const AWESOME_LINKS = [
   {
     link: 'https://www.l2beat.com/',
     description: 'Layer 2 project pulse',
+  },
+  {
+    link: 'https://chainlist.org/',
+    description: 'Helping users connect to EVM powered networks',
+  },
+  {
+    link: 'https://defillama.com/',
+    description: 'list multichain DEFI projects',
+  },
+  {
+    link: 'https://ethereum.org/en/history/',
+    description: 'Ethereum milestones',
   }
 ];
 
