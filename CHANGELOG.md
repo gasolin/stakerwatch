@@ -1,6 +1,7 @@
 # 0.48
 
 Feature
+- [explorer] add okexchain explorer
 - [awesome] add chainlist, Defi Llama, and Ethereum milestones
 
 # 0.47 2021/4/16

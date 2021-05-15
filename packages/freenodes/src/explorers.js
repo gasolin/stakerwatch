@@ -1,9 +1,10 @@
 import {
   CHAIN_ETHEREUM,
   CHAIN_BSC,
-  CHAIN_XDAI,
-  CHAIN_MATIC,
   CHAIN_HECO,
+  CHAIN_MATIC,
+  CHAIN_OKEXCHAIN,
+  CHAIN_XDAI,
   L2_ZKSYNC,
   L2_OPTIMISM,
 } from './chains'
@@ -20,11 +21,13 @@ export const CHAIN_ETHEREUM_EXPLORER_ANYBLOCK = 'anyblock'
 export const CHAIN_BSC_EXPLORER_BSCSCAN = 'bscscan'
 export const CHAIN_BSC_EXPLORER_BITQUERY = 'bitquery'
 
-export const CHAIN_XDAI_EXPLORER_BLOCKSCOUT = 'blockscout'
+export const CHAIN_HECO_EXPLORER_HECOINFO = 'hecoinfo'
 
 export const CHAIN_MATIC_EXPLORER_BLOCKSCOUT = 'maticvigil'
 
-export const CHAIN_HECO_EXPLORER_HECOINFO = 'hecoinfo'
+export const CHAIN_OKEXCHAIN_EXPLORER_OKLINK = 'oklink'
+
+export const CHAIN_XDAI_EXPLORER_BLOCKSCOUT = 'blockscout'
 
 export const L2_ZKSYNC_EXPLORER = 'Zksync'
 
@@ -89,14 +92,12 @@ export const EXPLORER_BSC = {
   },
 }
 
-export const EXPLORER_XDAI = {
-  [CHAIN_XDAI_EXPLORER_BLOCKSCOUT]: {
-    name: 'BlockScout',
-    address: (target) =>
-      `https://blockscout.com/poa/xdai/address/${target}/tokens`,
-    tx: (target) =>
-      `https://blockscout.com/poa/xdai/tx/${target}/internal-transactions`,
-  },
+export const EXPLORER_HECO = {
+  [CHAIN_HECO_EXPLORER_HECOINFO]: {
+    name: 'HecoInfo Explorer',
+    address: (target) => `https://hecoinfo.com/address/${target}`,
+    tx: (target) => `https://hecoinfo.com/tx/${target}`,
+  }
 }
 
 export const EXPLORER_MATIC = {
@@ -108,12 +109,22 @@ export const EXPLORER_MATIC = {
   },
 }
 
-export const EXPLORER_HECO = {
-  [CHAIN_HECO_EXPLORER_HECOINFO]: {
-    name: 'HecoInfo Explorer',
-    address: (target) => `https://hecoinfo.com/address/${target}`,
-    tx: (target) => `https://hecoinfo.com/tx/${target}`,
+export const EXPLORER_OKEXCHAIN = {
+  [CHAIN_OKEXCHAIN_EXPLORER_OKLINK]: {
+    name: 'OKLink',
+    address: (target) => `https://www.oklink.com/okexchain/address/${target}`,
+    tx: (target) => `https://www.oklink.com/okexchain/tx/${target}`,
   }
+}
+
+export const EXPLORER_XDAI = {
+  [CHAIN_XDAI_EXPLORER_BLOCKSCOUT]: {
+    name: 'BlockScout',
+    address: (target) =>
+      `https://blockscout.com/poa/xdai/address/${target}/tokens`,
+    tx: (target) =>
+      `https://blockscout.com/poa/xdai/tx/${target}/internal-transactions`,
+  },
 }
 
 export const EXPLORER_L2_ZKSYNC = {
@@ -135,9 +146,10 @@ export const EXPLORER_L2_OPTIMISM = {
 export const EXPLORER_MAP = {
   [CHAIN_ETHEREUM]: EXPLORER_ETHEREUM,
   [CHAIN_BSC]: EXPLORER_BSC,
-  [CHAIN_XDAI]: EXPLORER_XDAI,
-  [CHAIN_MATIC]: EXPLORER_MATIC,
   [CHAIN_HECO]: EXPLORER_HECO,
+  [CHAIN_OKEXCHAIN]: EXPLORER_OKEXCHAIN,
+  [CHAIN_MATIC]: EXPLORER_MATIC,
+  [CHAIN_XDAI]: EXPLORER_XDAI,
   [L2_ZKSYNC]: EXPLORER_L2_ZKSYNC,
   [L2_OPTIMISM]: EXPLORER_L2_OPTIMISM,
 }
@@ -145,9 +157,10 @@ export const EXPLORER_MAP = {
 export default {
   EXPLORER_ETHEREUM,
   EXPLORER_BSC,
-  EXPLORER_XDAI,
-  EXPLORER_MATIC,
   EXPLORER_HECO,
+  EXPLORER_MATIC,
+  EXPLORER_OKEXCHAIN,
+  EXPLORER_XDAI,
   EXPLORER_L2_ZKSYNC,
   EXPLORER_L2_OPTIMISM,
   EXPLORER_MAP,
@@ -161,9 +174,10 @@ export default {
   CHAIN_ETHEREUM_EXPLORER_ANYBLOCK,
   CHAIN_BSC_EXPLORER_BSCSCAN,
   CHAIN_BSC_EXPLORER_BITQUERY,
-  CHAIN_XDAI_EXPLORER_BLOCKSCOUT,
-  CHAIN_MATIC_EXPLORER_BLOCKSCOUT,
   CHAIN_HECO_EXPLORER_HECOINFO,
+  CHAIN_MATIC_EXPLORER_BLOCKSCOUT,
+  CHAIN_OKEXCHAIN_EXPLORER_OKLINK,
+  CHAIN_XDAI_EXPLORER_BLOCKSCOUT,
   L2_ZKSYNC_EXPLORER,
   L2_OPTIMISM_EXPLORER,
 }
