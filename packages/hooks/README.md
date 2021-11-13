@@ -1,5 +1,7 @@
 # staker-hooks
 
+> DEPRECATED: people interest in this package please consider to [useDapp](https://github.com/EthWorks/useDApp)
+
 > React Hooks for Ethereum and compatible chains
 
 [![NPM](https://img.shields.io/npm/v/staker-hooks.svg)](https://www.npmjs.com/package/staker-hooks)
