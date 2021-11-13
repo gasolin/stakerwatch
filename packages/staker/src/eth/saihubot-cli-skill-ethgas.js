@@ -5,7 +5,6 @@ import {t} from 'saihubot-cli-adapter/dist/i18n';
 import {
   GAS_ESTIMATOR_ETHEREUM as GAS_ESTIMATOR,
   GASSTATION,
-  GASNOW,
   GASTRACKER,
   GASPRICEORACLE,
   getRandomItem,
@@ -47,7 +46,6 @@ export const skillGasEstimator = {
         rule: /^random/i,
         action: () => robot.ask(`${getRandomItem([
           'gasfee',
-          'gasnow',
           'gasstation',
           'gastracker',
           'gaspriceoracle',
@@ -58,12 +56,6 @@ export const skillGasEstimator = {
         id: 'fee',
         rule: /^fee/i,
         action: () => robot.ask(`gasfee`),
-      },
-      {
-        title: 'Gas Now',
-        id: 'now',
-        rule: /^now/i,
-        action: () => robot.ask(`gasnow`),
       },
       {
         title: 'Gas Price Oracle',
@@ -138,31 +130,6 @@ export const skillGasStation = {
 };
 
 /**
- * Show current ethereum Gas fee via gasnow.
- * https://www.gasnow.org/
- */
-export const skillGasNow = {
-  name: GASNOW,
-  help: '⛽ gasnow|now - Show current gas fee via gasnow',
-  requirements: {
-    addons: ['fetch', 'fetchGas'],
-  },
-  rule: /^(gas)?now$/i,
-  action: function(robot, msg) {
-    robot.send(t('fetching', {i18n: i18nGas}));
-    robot.render();
-    robot.addons.fetchGas(GAS_ESTIMATOR[GASNOW],
-      data => {
-        robot.send(t('gasfee', {
-          i18n: i18nGas,
-          ...data,
-        }));
-        robot.render();
-      });
-  },
-};
-
-/**
  * Show current ethereum Gas fee via Eth GAS PRICE ORACLE.
  * https://etherchain.org/tools/gasPriceOracle
  */
@@ -225,7 +192,6 @@ export const skillGasFee = {
 export const skillsGas = [
   skillGasEstimator,
   skillGasFee,
-  skillGasNow,
   skillGasPriceOracle,
   skillGasStation,
   skillGasTracker,

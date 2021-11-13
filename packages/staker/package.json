@@ -43,10 +43,10 @@
   },
   "homepage": "http://stakerwat.ch/",
   "dependencies": {
-    "comma-number": "^2.0.1",
-    "humanize-duration": "^3.25.1",
+    "comma-number": "^2.1.0",
+    "humanize-duration": "^3.27.0",
     "ink-table": "^3.0.0",
-    "react": "^16.14.0",
+    "react": "^17.0.2",
     "saihubot": "^0.37.0",
     "saihubot-cli-adapter": "^0.37.0",
     "staker-contracts": "^0.48.0",
@@ -54,18 +54,18 @@
     "staker-hooks": "^0.48.0"
   },
   "devDependencies": {
-    "@babel/cli": "^7.13.14",
-    "@babel/core": "^7.13.15",
-    "@babel/eslint-parser": "^7.13.14",
-    "@babel/node": "^7.13.13",
-    "@babel/preset-env": "^7.13.15",
-    "@babel/preset-react": "^7.13.13",
-    "@babel/register": "^7.13.14",
-    "chalk": "^4.1.0",
-    "eslint": "^7.23.0",
+    "@babel/cli": "^7.16.0",
+    "@babel/core": "^7.16.0",
+    "@babel/eslint-parser": "^7.16.3",
+    "@babel/node": "^7.16.0",
+    "@babel/preset-env": "^7.16.0",
+    "@babel/preset-react": "^7.16.0",
+    "@babel/register": "^7.16.0",
+    "chalk": "^4.1.2",
+    "eslint": "^8.2.0",
     "eslint-config-google": "^0.14.0",
-    "eslint-plugin-react": "^7.23.2",
-    "eslint-plugin-react-hooks": "^4.2.0"
+    "eslint-plugin-react": "^7.27.0",
+    "eslint-plugin-react-hooks": "^4.3.0"
   },
   "gitHead": "221dba935128f71558ed97e65d16ccb7fb85db03"
 }

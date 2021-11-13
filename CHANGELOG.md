@@ -1,3 +1,12 @@
+# 0.49
+
+Break Change
+- deprecate staker-hook (prefer useDapp)
+- remove gasnow command
+
+Refactor
+- update packages
+
 # 0.48
 
 Feature

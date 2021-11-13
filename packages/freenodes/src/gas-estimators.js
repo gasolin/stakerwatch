@@ -3,7 +3,6 @@ function int(num) {
 }
 
 export const GASSTATION = 'gasstation'
-export const GASNOW = 'gasnow'
 export const GASTRACKER = 'gastracker'
 export const GASPRICEORACLE = 'gaspriceoracle'
 
@@ -16,16 +15,6 @@ export const GAS_ESTIMATOR_ETHEREUM = {
       M: int(json.average / 10),
       L: int(json.safeLow / 10),
       source: 'EthGasStation',
-    }),
-  },
-  [GASNOW]: {
-    name: 'gasnow',
-    api: 'https://www.gasnow.org/api/v3/gas/price?utm_source=:gaso',
-    processGasData: (json) => ({
-      H: int(json.data.fast / 10 ** 9),
-      M: int(json.data.standard / 10 ** 9),
-      L: int(json.data.slow / 10 ** 9),
-      source: 'GasNow',
     }),
   },
   [GASTRACKER]: {
