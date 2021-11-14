@@ -360,7 +360,7 @@ Check Account on Defi Explorer
 ### config / chainid
 
 ```
-* ⛓ network|config|network [chain] - find MetaMask network config data (chain providers url and network id)
+* ⛓ network|config|network [chain] - find network config data (chain providers url and network id)
 * ⛓ nodes - list free accessible ethereum nodes
 ```
 
@@ -382,6 +382,26 @@ npx staker network matic
 
 Will list all network config if not pass the param.
 
+short name or chainId could work
+
+```sh
+npx staker network bsc
+
+───────────────────────────┬────────────────────────────────────────┬────────┬─────── name                       │ rpc                                    │ chainId│ symbol │
+Binance Smart Chain Mainnet│ https://bsc-dataseed1.defibit.io       │ 56     │ BNB    │
+Binance Smart Chain Testnet│ https://data-seed-prebsc-1-s2...       │ 97     │ tBNB   │
+
+```
+
+```sh
+npx staker network 56
+
+┌─────────────────────────────┬───────────────────────────────────┬─────────┬────────┐
+│ name                        │ rpc                               │ chainId │ symbol │
+├─────────────────────────────┼───────────────────────────────────┼─────────┼────────┤
+│ Binance Smart Chain Mainnet │ https://bsc-dataseed1.ninicoin.io │ 56      │ BNB    │
+└─────────────────────────────┴───────────────────────────────────┴─────────┴────────┘
+```
 
 `staker nodes` command will list free accessible ethereum nodes:
 

@@ -9,7 +9,7 @@ import {ETH_NODES, getRandomItem} from 'staker-freenodes';
  */
 export const skillChainId = {
   name: 'chainId',
-  help: '⛓ network|config|network [chain] - find MetaMask network config data (chain providers url and network id)',
+  help: '⛓ network|config|network [chain] - find network config data (chain providers url and network id)',
   requirements: {
     addons: ['fetch'],
   },
@@ -22,7 +22,7 @@ export const skillChainId = {
     },
     props: ['term']
   },
-  rule: /^(network |config )(.*)|^network|config$/i,
+  rule: /^(network |config )(.*)|^(network|config)/i,
   action: function(robot, msg) {
     robot.send('Fetching network configs...');
     robot.render();
@@ -34,13 +34,21 @@ export const skillChainId = {
           if (!term) {
             return true
           }
+          if (!isNaN(+term)) {
+            return entry.chainId === +term
+          }
+
           const lterm = term.toLowerCase();
           const name = entry.name.toLowerCase();
+          const chain = entry.chain.toLowerCase();
           const symbol = entry.nativeCurrency.symbol.toLowerCase();
-          return name.indexOf(lterm) > -1 || symbol.indexOf(lterm) > -1;
+          return name.indexOf(lterm) > -1
+                 || chain.indexOf(lterm) > -1
+                 || symbol.indexOf(lterm) > -1;
         })
         .map(entry => ({
           name: entry.name,
+          // randomly pick an rpc url
           rpc: entry.rpc && getRandomItem(entry.rpc.filter(rpc => !rpc.startsWith('wss://'))) || '',
           chainId: entry.chainId, //'0x' + entry.chainId.toString(16),
           symbol: (entry.nativeCurrency && entry.nativeCurrency.symbol) || '',

@@ -1,13 +1,16 @@
-# 0.49
+# 0.49.1 2021/11/14
 
 Break Change
 - deprecate staker-hook (prefer useDapp)
 - remove gasnow command
 
+Feature
+- [network] support search via chain name (ex: network BSC) or chainId (ex: network 56)
+
 Refactor
 - update packages
 
-# 0.48
+# 0.48 2021/5/15
 
 Feature
 - [explorer] add okexchain explorer
