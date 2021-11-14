@@ -6,7 +6,7 @@ import {
   CHAIN_HECO,
   L2_ZKSYNC,
   L2_OPTIMISM,
-} from './chains'
+} from './chains.js'
 
 // free nodes without API keys from https://ethereumnodes.com/
 export const ETH_NODES = [

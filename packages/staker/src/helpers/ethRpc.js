@@ -1,8 +1,8 @@
 'use strict';
 import {ETH_NODES, getRandomItem} from 'staker-freenodes';
 
-import {jsonRpcFetch} from '../helpers/jsonRpc';
-import {getConfig} from '../utils';
+import {jsonRpcFetch} from '../helpers/jsonRpc.js';
+import {getConfig} from '../utils.js';
 
 let idx = 1;
 

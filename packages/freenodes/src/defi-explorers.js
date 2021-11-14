@@ -1,4 +1,4 @@
-import { CHAIN_ETHEREUM, CHAIN_BSC } from './chains'
+import { CHAIN_ETHEREUM, CHAIN_BSC } from './chains.js'
 
 export const DEFI_DAPPRADAR = 'dappradar'
 export const DEFI_DEBANK = 'debank'

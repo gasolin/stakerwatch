@@ -19,9 +19,9 @@ import {
   CHAIN_ETHEREUM_EXPLORER_ANYBLOCK,
 } from 'staker-freenodes';
 
-import {getConfig, singleAddr, getExplorerLink} from '../utils';
-import {i18nAddr} from '../i18n';
-import {ethFetch, rpcLastBlock} from '../helpers/ethRpc';
+import {getConfig, singleAddr, getExplorerLink} from '../utils.js';
+import {i18nAddr} from '../i18n.js';
+import {ethFetch, rpcLastBlock} from '../helpers/ethRpc.js';
 
 /**
  * Get the latest block number.

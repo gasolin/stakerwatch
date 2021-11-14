@@ -8,9 +8,9 @@ import {CHAIN_ETHEREUM} from 'staker-freenodes';
 import {useEthscanBalance, useEthscanTokensBalance} from 'staker-hooks';
 // import useTokenList from './useTokenList';
 
-import {formatData} from '../helpers/format';
+import {formatData} from '../helpers/format.js';
 
-import {i18nValidator, i18nBalance} from '../i18n';
+import {i18nValidator, i18nBalance} from '../i18n.js';
 
 export const EthBalances = ({addresses, fetch}) => {
   if (!addresses) return null;

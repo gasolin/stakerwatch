@@ -3,9 +3,9 @@ import React from 'react';
 import { t } from 'saihubot-cli-adapter/dist/i18n';
 import {EXPLORER_MATIC, CHAIN_MATIC_EXPLORER_BLOCKSCOUT} from 'staker-freenodes'
 
-import {getConfig, parseArg, singleAddr, toArray, getExplorerLink} from '../utils';
-import {i18nAddr} from '../i18n';
-import MaticBalances from './MaticBalances';
+import {getConfig, parseArg, singleAddr, toArray, getExplorerLink} from '../utils.js';
+import {i18nAddr} from '../i18n.js';
+import MaticBalances from './MaticBalances.js';
 
 /**
  * Check address or tx on Matic.

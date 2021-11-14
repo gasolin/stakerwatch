@@ -3,10 +3,10 @@ import React from 'react';
 import { t } from 'saihubot-cli-adapter/dist/i18n';
 import {EXPLORER_BSC, CHAIN_BSC_EXPLORER_BSCSCAN} from 'staker-freenodes'
 
-import {getConfig, parseArg, singleAddr, toArray, getExplorerLink} from '../utils';
-import {i18nAddr} from '../i18n';
-import BscBalances from './BscBalances';
-import {bscFetch} from './utils'
+import {getConfig, parseArg, singleAddr, toArray, getExplorerLink} from '../utils.js';
+import {i18nAddr} from '../i18n.js';
+import BscBalances from './BscBalances.js';
+import {bscFetch} from './utils.js'
 
 /**
  * Check address or tx on bscscan.

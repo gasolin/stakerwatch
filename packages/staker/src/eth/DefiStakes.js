@@ -2,8 +2,8 @@ import React, {useEffect, useState} from 'react';
 import {t} from 'saihubot-cli-adapter/dist/i18n';
 import {Text} from 'ink';
 
-import {ethFetch, rpcDefiGetBalances} from '../helpers/ethRpc';
-import {i18nBalance} from '../i18n';
+import {ethFetch, rpcDefiGetBalances} from '../helpers/ethRpc.js';
+import {i18nBalance} from '../i18n.js';
 
 export const DefiStakes = ({address, fetch}) => {
   const [balance, setBalance] = useState('');

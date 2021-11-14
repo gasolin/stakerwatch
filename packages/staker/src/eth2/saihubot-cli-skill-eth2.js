@@ -8,13 +8,13 @@ import commaNumber from 'comma-number';
 import { t } from 'saihubot-cli-adapter/dist/i18n';
 import {getRandomItem} from 'staker-freenodes';
 
-import ValidatorBalances from './ValidatorBalances';
+import ValidatorBalances from './ValidatorBalances.js';
 
-import {ethFetch} from '../helpers/ethRpc';
-import {getConfig, parseArg, singleAddr} from '../utils';
-import {i18nValidator, i18nAddr} from '../i18n';
-import useNativeTokenBalance from '../eth/useNativeTokenBalance';
-import useCoingeckoTokenStat from '../eth/useCoingeckoTokenStat';
+import {ethFetch} from '../helpers/ethRpc.js';
+import {getConfig, parseArg, singleAddr} from '../utils.js';
+import {i18nValidator, i18nAddr} from '../i18n.js';
+import useNativeTokenBalance from '../eth/useNativeTokenBalance.js';
+import useCoingeckoTokenStat from '../eth/useCoingeckoTokenStat.js';
 
 const ADDR = {
   ETH2_DEPOSIT: '0x00000000219ab540356cbb839cbe05303d7705fa',

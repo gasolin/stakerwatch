@@ -1,6 +1,6 @@
 import { CHAIN_ETHEREUM, CHAIN_XDAI, CHAIN_BSC, CHAIN_MATIC } from 'staker-freenodes'
-import { ETH_TOKEN_CONTRACTS } from './eth_tokens'
-import { BSC_TOKEN_CONTRACTS } from './bsc_tokens'
+import { ETH_TOKEN_CONTRACTS } from './eth_tokens.js'
+import { BSC_TOKEN_CONTRACTS } from './bsc_tokens.js'
 
 // https://blockscout.com/poa/xdai/bridged-tokens
 export const XDAI_TOKEN_CONTRACTS = [

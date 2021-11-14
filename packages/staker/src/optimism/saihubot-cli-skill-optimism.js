@@ -3,9 +3,9 @@ import React from 'react';
 import { t } from 'saihubot-cli-adapter/dist/i18n';
 import {EXPLORER_L2_OPTIMISM, L2_OPTIMISM_EXPLORER} from 'staker-freenodes'
 
-import OptimismBalances from './OptimismBalances';
-import {getConfig, parseArg, toArray, singleAddr, getExplorerLink} from '../utils';
-import {i18nBalance} from '../i18n';
+import OptimismBalances from './OptimismBalances.js';
+import {getConfig, parseArg, toArray, singleAddr, getExplorerLink} from '../utils.js';
+import {i18nBalance} from '../i18n.js';
 
 /**
  * Check address or tx on optimism.

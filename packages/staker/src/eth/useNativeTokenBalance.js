@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 
-import {rpcEthBalance} from '../helpers/ethRpc';
+import {rpcEthBalance} from '../helpers/ethRpc.js';
 
 export const useNativeTokenBalance = ({
   addresses,

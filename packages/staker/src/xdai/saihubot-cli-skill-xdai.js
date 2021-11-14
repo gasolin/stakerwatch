@@ -4,11 +4,11 @@ import React from 'react';
 import { t } from 'saihubot-cli-adapter/dist/i18n';
 import { EXPLORER_XDAI, CHAIN_XDAI_EXPLORER_BLOCKSCOUT} from 'staker-freenodes'
 
-import {getConfig, parseArg, toArray, singleAddr, getExplorerLink} from '../utils';
-import {rpcLastBlock} from '../helpers/ethRpc';
-import {i18nAddr, i18nBalance} from '../i18n';
-import XdaiBalances from './XdaiBalances';
-import {xdaiFetch} from './utils'
+import {getConfig, parseArg, toArray, singleAddr, getExplorerLink} from '../utils.js';
+import {rpcLastBlock} from '../helpers/ethRpc.js';
+import {i18nAddr, i18nBalance} from '../i18n.js';
+import XdaiBalances from './XdaiBalances.js';
+import {xdaiFetch} from './utils.js'
 
 /**
  * Check address or tx on xDai.

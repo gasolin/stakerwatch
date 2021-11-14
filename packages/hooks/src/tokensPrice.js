@@ -1,5 +1,5 @@
 
-import _toLower from 'lodash/toLower'
+import _toLower from 'lodash/toLower.js'
 
 import TOKEN_MAP from './coingecko_token_map.json'
 

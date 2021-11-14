@@ -1,6 +1,6 @@
 import { t } from 'saihubot-cli-adapter/dist/i18n';
 
-import {i18nBalance} from '../i18n';
+import {i18nBalance} from '../i18n.js';
 
 export const formatAddress = (address) => address && `${address.substring(0, 6)}..`;
 
