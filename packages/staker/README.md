@@ -301,7 +301,6 @@ These commands can be used to search transaction (tx) as well.
 ```
 * 🔎gas - Pick a gas estimator from the list
 * ⛽ gasfee - Show current on-chain gas fee
-* ⛽ gasnow|now - Show current gas fee via gasnow
 * ⛽ gaspriceoracle|oracle - Show current gas fee via Eth Gas Price Oracle
 * ⛽ gasstation|station - Show current gas fee via Eth Gas Station
 * ⛽ gastracker|tracker - Show current gas fee via Etherscan Gas Tracker
@@ -320,15 +319,14 @@ pick address explorer from the list
   Gas Tracker
 ```
 
-Or check specific gas fee estimator like [gasnow](https://www.gasnow.org/)
+Or check specific gas fee estimator like [ETH GAS STATION](https://ethgasstation.info/)
 
 ```sh
-$ npx staker gasnow
+$ npx staker gasstation
 
-Current gas fee (report by gasnow) is H:70 M:50 L:48 gwei
+Current gas fee (report by EthGasStation) is H:70 M:50 L:48 gwei
 ```
 
-- [Gasnow](https://www.gasnow.org/) - Data from SparkPool Miner
 * [Gas Price Oracle](https://etherchain.org/tools/gasPriceOracle) From EtherChain team
 * [Gas Station](https://ethgasstation.info/)
 * [Ethereum Gas Tracker](https://etherscan.io/gastracker) From Etherscan team

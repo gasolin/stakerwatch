@@ -1,6 +1,8 @@
 {
   "packages": [
-    "packages/*"
+    "packages/contracts",
+    "packages/freenodes",
+    "packages/staker"
   ],
   "version": "0.49.0"
 }
