@@ -1,3 +1,11 @@
+# 0.50 2022/1/7
+
+Enhancement
+- [freenode] use polyscan explorer for polygon
+
+Refactor
+- update packages
+
 # 0.49.1 2021/11/14
 
 Break Change
