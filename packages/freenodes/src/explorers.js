@@ -104,8 +104,8 @@ export const EXPLORER_MATIC = {
   [CHAIN_MATIC_EXPLORER_BLOCKSCOUT]: {
     name: 'Matic Explorer',
     address: (target) =>
-      `https://explorer-mainnet.maticvigil.com/address/${target}`,
-    tx: (target) => `https://explorer-mainnet.maticvigil.com/tx/${target}`,
+      `https://polygonscan.com/address/${target}`,
+    tx: (target) => `https://polygonscan.com/tx/${target}`,
   },
 }
 
