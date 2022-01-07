@@ -102,7 +102,7 @@ export const EXPLORER_HECO = {
 
 export const EXPLORER_MATIC = {
   [CHAIN_MATIC_EXPLORER_BLOCKSCOUT]: {
-    name: 'Matic Explorer',
+    name: 'Polygon Explorer',
     address: (target) =>
       `https://polygonscan.com/address/${target}`,
     tx: (target) => `https://polygonscan.com/tx/${target}`,
