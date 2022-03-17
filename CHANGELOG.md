@@ -1,3 +1,9 @@
+# 0.51 2022/3/17
+
+Refactor
+- update packages
+- distill DEFAULT_WELCOME_MESSAGES
+
 # 0.50 2022/1/7
 
 Enhancement
