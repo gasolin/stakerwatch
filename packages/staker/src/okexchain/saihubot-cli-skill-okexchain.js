@@ -3,8 +3,8 @@ import React from 'react';
 import { t } from 'saihubot-cli-adapter/dist/i18n';
 import {EXPLORER_OKEXCHAIN, CHAIN_OKEXCHAIN_EXPLORER_OKLINK} from 'staker-freenodes'
 
-import {getConfig, singleAddr, getExplorerLink} from '../utils';
-import {i18nAddr} from '../i18n';
+import {getConfig, singleAddr, getExplorerLink} from '../utils.js';
+import {i18nAddr} from '../i18n.js';
 
 /**
  * Check address or tx on OKExChain.

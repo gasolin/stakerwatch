@@ -2,8 +2,8 @@
 
 import { BSC_NODES, getRandomItem } from 'staker-freenodes';
 
-import {getConfig} from '../utils';
-import {jsonRpcFetch} from '../helpers/jsonRpc';
+import {getConfig} from '../utils.js';
+import {jsonRpcFetch} from '../helpers/jsonRpc.js';
 
 // ==== Binance Smart Chain JSON RPC ===
 

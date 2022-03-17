@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 
-import {rpcTokenBalance} from '../helpers/ethRpc';
+import {rpcTokenBalance} from '../helpers/ethRpc.js';
 
 export const useTokenBalance = ({
   addresses,

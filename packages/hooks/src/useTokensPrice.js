@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react'
-import isDeepEqual from 'fast-deep-equal/react';
+import isDeepEqual from 'fast-deep-equal/react.js';
 
-import {getTokenPriceQueryUrl} from './tokensPrice'
+import {getTokenPriceQueryUrl} from './tokensPrice.js'
 
 export const useTokensPrice = (tokens = [], fetch) => {
   const [tokenPrices, setTokenPrices] = useState([])

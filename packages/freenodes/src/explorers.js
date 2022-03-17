@@ -7,7 +7,7 @@ import {
   CHAIN_XDAI,
   L2_ZKSYNC,
   L2_OPTIMISM,
-} from './chains'
+} from './chains.js'
 
 export const CHAIN_ETHEREUM_EXPLORER_ETHERSCAN = 'etherscan'
 export const CHAIN_ETHEREUM_EXPLORER_BLOXY = 'bloxy'

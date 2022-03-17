@@ -4,9 +4,9 @@ import { Text } from 'ink';
 import Table from 'ink-table';
 import { t } from 'saihubot-cli-adapter/dist/i18n';
 
-import {rpcTokens, rpcZkSyncBalance, zksyncFetch} from './utils';
+import {rpcTokens, rpcZkSyncBalance, zksyncFetch} from './utils.js';
 
-import {formatData} from '../helpers/format';
+import {formatData} from '../helpers/format.js';
 
 const i18nL2 = {
   'en': {

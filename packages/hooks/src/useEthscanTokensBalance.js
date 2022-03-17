@@ -4,7 +4,7 @@ import {JsonRpcProvider} from '@ethersproject/providers';
 import {getTokensBalances} from '@mycrypto/eth-scan';
 import {getNodeURL, CHAIN_ETHEREUM} from 'staker-freenodes'
 import {ETHSCAN_CONTRACT, TOKEN_CONTRACTS} from 'staker-contracts'
-import isDeepEqual from 'fast-deep-equal/react';
+import isDeepEqual from 'fast-deep-equal/react.js';
 
 export const useEthscanTokensBalance = (addresses, chainId = CHAIN_ETHEREUM, tokenMap = []) => {
   const [balance, setBalance] = useState([]);

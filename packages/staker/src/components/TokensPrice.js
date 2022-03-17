@@ -3,7 +3,7 @@
 import React from 'react';
 import {View, Text} from 'ink';
 import {useTokensPrice} from 'staker-hooks';
-import _toUpper from 'lodash/toUpper';
+import _toUpper from 'lodash/toUpper.js';
 
 export const TokensPrice = ({tokens, fetch}) => {
   const [tokenPrices, tokenIdMap] = useTokensPrice(tokens, fetch);

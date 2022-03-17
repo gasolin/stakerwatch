@@ -1,3 +1,3 @@
-export * from './useEthscanBalance'
-export * from './useEthscanTokensBalance'
-export * from './useTokensPrice'
+export * from './useEthscanBalance.js'
+export * from './useEthscanTokensBalance.js'
+export * from './useTokensPrice.js'

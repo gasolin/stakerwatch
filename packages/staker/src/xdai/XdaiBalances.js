@@ -6,7 +6,7 @@ import {t} from 'saihubot-cli-adapter/dist/i18n';
 import {CHAIN_XDAI} from 'staker-freenodes'
 import {useEthscanBalance, useEthscanTokensBalance} from 'staker-hooks';
 
-import {formatData} from '../helpers/format';
+import {formatData} from '../helpers/format.js';
 
 const i18nXdai = {
   'en': {

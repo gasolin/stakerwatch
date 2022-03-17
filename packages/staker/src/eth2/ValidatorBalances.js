@@ -5,8 +5,8 @@ import { Text } from 'ink';
 import Table from 'ink-table';
 import { t } from 'saihubot-cli-adapter/dist/i18n';
 
-import {parseArg, toArray} from '../utils';
-import {i18nValidator} from '../i18n';
+import {parseArg, toArray} from '../utils.js';
+import {i18nValidator} from '../i18n.js';
 
 // support multiple validators balance by comma (without space)
 export const ValidatorBalances = ({validator, fetch}) => {

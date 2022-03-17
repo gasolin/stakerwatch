@@ -3,9 +3,9 @@
 import React from 'react';
 import {t} from 'saihubot-cli-adapter/dist/i18n';
 
-import DefiStakes from './DefiStakes'
-import {getConfig, singleAddr} from '../utils';
-import {i18nAddr} from '../i18n';
+import DefiStakes from './DefiStakes.js'
+import {getConfig, singleAddr} from '../utils.js';
+import {i18nAddr} from '../i18n.js';
 
 /**
  * Show balance in Defi projects.

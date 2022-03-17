@@ -10,7 +10,7 @@ import {
   getRandomItem,
 } from 'staker-freenodes'
 
-import {ethFetch, rpcGasPrice} from '../helpers/ethRpc';
+import {ethFetch, rpcGasPrice} from '../helpers/ethRpc.js';
 
 // ==== GAS ===
 

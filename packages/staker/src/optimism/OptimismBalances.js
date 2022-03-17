@@ -5,8 +5,8 @@ import { Text } from 'ink';
 import Table from 'ink-table';
 import { t } from 'saihubot-cli-adapter/dist/i18n';
 
-import useNativeTokenBalance from '../eth/useNativeTokenBalance';
-import {optimismFetch} from './utils'
+import useNativeTokenBalance from '../eth/useNativeTokenBalance.js';
+import {optimismFetch} from './utils.js'
 
 const i18nL2 = {
   'en': {

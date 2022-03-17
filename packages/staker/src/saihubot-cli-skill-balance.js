@@ -3,16 +3,16 @@
 import React, {useEffect, useState} from 'react';
 import {t} from 'saihubot-cli-adapter/dist/i18n';
 
-import {getConfig, parseArg, toArray} from './utils';
-import {i18nBalance} from './i18n';
-import EthBalances from './eth/EthBalances';
-import ValidatorBalances from './eth2/ValidatorBalances';
-import XdaiBalances from './xdai/XdaiBalances';
-import BscBalances from './bsc/BscBalances';
-import MaticBalances from './matic/MaticBalances';
-import ZksyncBalances from './zksync/ZksyncBalances';
-import OptimismBalances from './optimism/OptimismBalances'
-import TokensPrice from './components/TokensPrice';
+import {getConfig, parseArg, toArray} from './utils.js';
+import {i18nBalance} from './i18n.js';
+import EthBalances from './eth/EthBalances.js';
+import ValidatorBalances from './eth2/ValidatorBalances.js';
+import XdaiBalances from './xdai/XdaiBalances.js';
+import BscBalances from './bsc/BscBalances.js';
+import MaticBalances from './matic/MaticBalances.js';
+import ZksyncBalances from './zksync/ZksyncBalances.js';
+import OptimismBalances from './optimism/OptimismBalances.js'
+import TokensPrice from './components/TokensPrice.js';
 
 // support multiple account balance by comma (without space)
 // also shows validator balances
